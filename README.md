@@ -1,126 +1,156 @@
 # FusedSpaceFed
 
-**Enhanced Federated Learning Through Dual-Space Data Fusion**
+Reference implementation for **FusedSpaceFed: Enhanced Federated Learning
+Through Dual-Space Data Fusion**.
 
-> FusedSpaceFed mitigates client drift in non-IID federated settings by fusing original inputs with autoencoder-based reconstructions, aligning local gradients through a shared global decoder.
+The code follows the two-phase protocol in the manuscript:
 
----
+1. each client keeps a private encoder;
+2. the server broadcasts the shared decoder and classifier;
+3. the client freezes decoder and classifier and warms up only its encoder with
+   pixel-wise reconstruction loss;
+4. the client unfreezes the full pipeline and trains it using classification
+   loss only on `x + D(E_i(x))`;
+5. only decoder and classifier parameters are sent to the server and averaged.
 
-## Overview
+FedAvg, FedProx and SCAFFOLD use the same ResNet20-v2 classifier and initial
+classifier parameters.
 
-Federated Learning on heterogeneous data suffers from **gradient dissimilarity**: when client distributions differ, local updates diverge from the global objective, slowing convergence. This problem is especially acute in medical imaging, where instrumental biases (different scanners, protocols, calibrations) introduce systematic site-specific shifts unrelated to the underlying pathology.
+## Repository layout
 
-FusedSpaceFed addresses this at the **representation level** rather than purely at the optimizer level. Each client trains a private encoder $E_i$ that captures local data characteristics, while a globally aggregated decoder $D$ learns a federation-wide reconstructive consensus. The classifier receives the fused input $x + D(E_i(x))$, a partially calibrated signal that reduces gradient divergence across clients.
+| File | Purpose |
+|---|---|
+| `fusedspacefed_core.py` | Models, clients, partitions, aggregation, metrics and gradient dissimilarity |
+| `train_medmnist.py` | All 12 MedMNIST datasets, Dirichlet and pathological experiments |
+| `train_femnist.py` | Natural writer-level clients from the LEAF FEMNIST JSON files |
+| `tests/test_core.py` | Partition, aggregation, architecture and gradient-flow checks |
+| `REPRODUCIBILITY.md` | Exact mapping from manuscript statements to code and documented defaults |
+| `.github/workflows/tests.yml` | Automatic syntax and unit tests after every GitHub push |
 
-### Key ideas
 
-- **Asymmetric aggregation**: encoders stay private; decoder and classifier are averaged across clients each round.
-- **Encoder warm-up**: at the start of every round, each encoder is re-aligned to the frozen global decoder — a thermalization step that promotes a shared latent language.
-- **Task-aware reconstruction**: classification gradients flow through $\tilde{x} = D(E_i(x))$ into the autoencoder, so the reconstruction is shaped by both pixel fidelity and discriminative utility.
-- **Exact dissimilarity decomposition**: $\Gamma_{\text{fused}} = \Gamma_{\text{orig}} + R + \Phi$, where $\Phi < 0$ when reconstructions anti-correlate with gradient deviations — a verifiable *calibration condition* under which FusedSpaceFed provably improves over FedAvg.
+## Installation
 
-## Architecture
-
-```
-Input x ──┬──────────────────────────┐
-           │                          │  (identity)
-           ▼                          │
-      Encoder Eᵢ  (private)          │
-           │                          │
-           ▼                          │
-      Decoder D   (global)           │
-           │                          │
-           ▼                          ▼
-         x̃ = D(Eᵢ(x))       ──►   x + x̃   ──►  Classifier C (global)  ──►  ŷ
-```
-
-## Results
-
-### Accuracy under strong non-IID conditions (Dirichlet α = 0.05)
-
-| Dataset   | FedAvg | FedProx | SCAFFOLD | **FusedSpaceFed** |
-|-----------|-------:|--------:|---------:|------------------:|
-| Path      | 53.45  | 48.11   | 39.90    | **60.77**         |
-| Chest     | 90.28  | 89.93   | 89.44    | **93.22**         |
-| Derma     | 67.70  | 65.94   | 63.35    | **69.60**         |
-| OCT       | 41.56  | 42.50   | 38.69    | **46.25**         |
-| Pneumonia | 69.12  | 70.24   | 70.01    | **72.95**         |
-| Retina    | 48.13  | 49.69   | 48.75    | **53.00**         |
-| Breast    | 80.25  | 79.33   | 77.78    | **81.61**         |
-| Blood     | 53.87  | 47.38   | 45.68    | **58.83**         |
-
-### Pathological partitioning (2 classes per client)
-
-| Dataset | FedAvg | FedProx | SCAFFOLD | **FusedSpaceFed** |
-|---------|-------:|--------:|---------:|------------------:|
-| Path    | 20.49  | 19.66   | 17.16    | **50.94**         |
-| Derma   | 25.75  | 24.43   | 22.46    | **48.15**         |
-| Retina  | 34.37  | 33.02   | 26.61    | **49.26**         |
-| Blood   | 18.22  | 19.48   | 18.10    | **30.60**         |
-
-### Stress test: accuracy vs. heterogeneity
-
-![Test accuracy vs. Dirichlet α for the Path dataset. FusedSpaceFed degrades later than all baselines.](accuracy_FSF.jpg)
-
-### Gradient dissimilarity vs. heterogeneity
-
-![Γ(x) vs. Dirichlet α for the Path dataset. FusedSpaceFed maintains lower gradient dissimilarity up to moderate heterogeneity.](gamma_FSF.jpg)
-
-### FEMNIST
-
-| Method            | Accuracy | Γ(x) | F1    | Balanced Acc. |
-|-------------------|:--------:|:-----:|:-----:|:-------------:|
-| FedAvg            | 85.49    | 0.83  | 66.87 | 67.09         |
-| FedProx           | 84.73    | 0.81  | 64.16 | 65.81         |
-| SCAFFOLD          | 84.51    | 0.78  | 65.68 | 66.46         |
-| **FusedSpaceFed** | **86.82**| **0.71**| **68.77**| **68.38** |
-
-## Reproduction
-
-### Requirements
-
-```
-torch >= 2.0
-torchvision
-medmnist
-numpy
-```
-
-### Training
+Python 3.10 or newer is recommended.
 
 ```bash
-# FusedSpaceFed on MedMNIST with Dirichlet α = 0.05
-python train.py --method fusedspacefed --dataset pathmnist --alpha 0.05 \
-    --clients 10 --rounds 50 --local_epochs 3 --dz 16 --lambda_rec 1.0
-
-# Baselines
-python train.py --method fedavg   --dataset pathmnist --alpha 0.05
-python train.py --method fedprox  --dataset pathmnist --alpha 0.05
-python train.py --method scaffold --dataset pathmnist --alpha 0.05
+git clone https://github.com/CuriosAI/FusedSpaceFed.git
+cd FusedSpaceFed
+python -m venv .venv
 ```
 
-### Key hyperparameters
+Activate the environment:
 
-| Parameter | Description | Default |
-|-----------|-------------|---------|
-| `--dz`    | Latent bottleneck dimension | 16 |
-| `--lambda_rec` | Reconstruction loss weight | 1.0 |
-| `--warmup_epochs` | Encoder warm-up epochs per round | 1 |
-| `--alpha` | Dirichlet concentration (lower = more non-IID) | 0.5 |
-| `--clients` | Number of federated clients | 10 |
-| `--rounds` | Communication rounds | 50 |
+```bash
+# Linux/macOS
+source .venv/bin/activate
+
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
+```
+
+Then install and test:
+
+```bash
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pytest -q
+```
+
+## MedMNIST
+
+The script downloads the official splits through the `medmnist` package. It
+loads the 64x64 release and resizes inputs to 32x32, as recorded in the output
+configuration.
+
+Paper configuration for PathMNIST at alpha 0.05:
+
+```bash
+python train_medmnist.py \
+  --dataset pathmnist \
+  --partition dirichlet \
+  --alpha 0.05 \
+  --clients 10 \
+  --rounds 50 \
+  --local-epochs 3 \
+  --warmup-epochs 1 \
+  --methods fedavg fedprox scaffold fusedspacefed
+```
+
+The default is five independent runs with seeds `41 42 43 44 45`. The default
+`dz` is read from the manuscript's “Best dz” column for each dataset. Override
+it only for a pre-declared validation sweep:
+
+```bash
+python train_medmnist.py --dataset retinamnist --alpha 0.50 --dz 64
+```
+
+Pathological two-class partition:
+
+```bash
+python train_medmnist.py \
+  --dataset dermamnist \
+  --partition pathological \
+  --classes-per-client 2
+```
+
+The script supports:
+
+`pathmnist`, `chestmnist`, `dermamnist`, `octmnist`, `pneumoniamnist`,
+`retinamnist`, `breastmnist`, `bloodmnist`, `tissuemnist`, `organamnist`,
+`organcmnist`, and `organsmnist`.
+
+## FEMNIST
+
+Prepare FEMNIST with the official LEAF preprocessing pipeline. Pass the LEAF
+FEMNIST directory whose structure is:
+
+```text
+femnist/
+└── data/
+    ├── train/*.json
+    └── test/*.json
+```
+
+Then run:
+
+```bash
+python train_femnist.py \
+  --leaf-root /path/to/leaf/data/femnist \
+  --max-clients 3400 \
+  --clients-per-round 340 \
+  --rounds 50 \
+  --local-epochs 3 \
+  --methods fedavg fedprox scaffold fusedspacefed
+```
+
+Every LEAF writer remains a client. The script does not pool writers and does
+not manufacture a second synthetic Dirichlet partition.
+
+## Outputs and evaluation safeguards
+
+Each command writes a JSON file under `results/` containing:
+
+- every CLI option and seed;
+- Python, package, CUDA/cuDNN and device versions;
+- a partition audit;
+- per-round training losses;
+- final accuracy, macro F1, balanced accuracy and gradient dissimilarity;
+- mean and sample standard deviation across independent runs.
+
+The official test split is evaluated only once, after the final communication
+round. FusedSpaceFed's FEMNIST test prediction uses each writer's own private encoder
+together with the final shared decoder and classifier.
+
+See [REPRODUCIBILITY.md](REPRODUCIBILITY.md).
 
 ## Citation
 
 ```bibtex
 @article{dicecco2025fusedspacefed,
-  title     = {FusedSpaceFed: Enhanced Federated Learning Through Dual-Space Data Fusion},
-  author    = {Di Cecco, Antonio and Metta, Carlo and Bianchi, Luigi Amedeo
-               and Vegli{\'o}, Michelangelo and Parton, Maurizio},
-  year      = {2025}
+  title  = {FusedSpaceFed: Enhanced Federated Learning Through Dual-Space Data Fusion},
+  author = {Di Cecco, Antonio and Metta, Carlo and Bianchi, Luigi Amedeo and
+            Veglio, Michelangelo and Parton, Maurizio},
+  year   = {2026}
 }
 ```
 
-## License
-
-TBD
