@@ -145,12 +145,3 @@ See [REPRODUCIBILITY.md](REPRODUCIBILITY.md).
 
 ## Citation
 
-```bibtex
-@article{dicecco2025fusedspacefed,
-  title  = {FusedSpaceFed: Enhanced Federated Learning Through Dual-Space Data Fusion},
-  author = {Di Cecco, Antonio and Metta, Carlo and Bianchi, Luigi Amedeo and
-            Veglio, Michelangelo and Parton, Maurizio},
-  year   = {2026}
-}
-```
-
