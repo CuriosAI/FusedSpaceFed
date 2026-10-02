@@ -33,7 +33,7 @@ classifier parameters.
 Python 3.10 or newer is recommended.
 
 ```bash
-git clone https://github.com/CuriosAI/FusedSpaceFed.git
+git clone githubname.git
 cd FusedSpaceFed
 python -m venv .venv
 ```
