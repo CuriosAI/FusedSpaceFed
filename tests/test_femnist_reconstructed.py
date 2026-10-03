@@ -7,6 +7,7 @@ from pathlib import Path
 import random
 import shutil
 import zipfile
+import weakref
 
 import numpy as np
 from PIL import Image
@@ -228,6 +229,59 @@ def test_phase_steps_and_optimizer_continuity():
     for parameter in client.autoencoder.decoder_parameters():
         assert int(client.ae_optimizer.state[parameter]["step"]) == 2
     assert metrics["warmup_samples"] == metrics["classification_samples"] == 4
+    for key in ("warmup_autoencoder", "classification_autoencoder", "classification_classifier"):
+        stats = metrics["gradient_clipping"][key]
+        assert stats["steps"] == 2 and 0 <= stats["clipped_steps"] <= 2
+        assert np.isfinite(stats["max_norm_before_clip"])
+
+
+@pytest.mark.parametrize("component", ["autoencoder", "classifier"])
+def test_optimizer_hooks_clip_large_gradients_before_update(component):
+    client = make_test_client()
+    client.phase = "classification"
+    optimizer = client.ae_optimizer if component == "autoencoder" else client.classifier_optimizer
+    parameter = optimizer.param_groups[0]["params"][0]
+    parameter.grad = torch.zeros_like(parameter)
+    parameter.grad.reshape(-1)[:2] = torch.tensor([3.0, 4.0])
+    optimizer.step()
+    assert float(parameter.grad.norm()) <= client.gradient_clip_norm
+    assert parameter.grad.reshape(-1)[:2].tolist() == pytest.approx([0.6, 0.8], abs=1e-6)
+    stats = client.gradient_statistics[f"classification_{component}"]
+    assert stats["steps"] == stats["clipped_steps"] == 1
+    assert stats["max_norm_before_clip"] == 5.0
+    assert torch.isfinite(parameter).all()
+
+
+def test_nonfinite_gradient_aborts_before_mutating_parameters_or_optimizer():
+    client = make_test_client()
+    parameter = client.classifier_optimizer.param_groups[0]["params"][0]
+    before = parameter.detach().clone()
+    parameter.grad = torch.full_like(parameter, float("inf"))
+    with pytest.raises(RuntimeError, match="Invalid classifier gradient norm.*client=test"):
+        client.classifier_optimizer.step()
+    assert torch.equal(parameter, before)
+    assert not client.classifier_optimizer.state
+
+
+def test_nonfinite_forward_identifies_component_and_phase():
+    client = make_test_client()
+    client._set_trainable(encoder=False, decoder=False, classifier=True)
+    client.classifier.layers[-1].bias.data.fill_(float("inf"))
+    with pytest.raises(RuntimeError, match="Non-finite classifier output.*phase=classification"):
+        client.classifier(torch.zeros(1, 1, 28, 28))
+
+
+def test_aggregated_nonfinite_shared_weights_are_rejected():
+    with pytest.raises(RuntimeError, match="Non-finite aggregated"):
+        aggregate_shared([{"w": torch.tensor([float("nan")])}],
+                         [{"final.weight": torch.tensor([1.0])}])
+
+
+def test_numerical_hooks_do_not_keep_client_alive_after_participation():
+    client = make_test_client()
+    reference = weakref.ref(client)
+    del client
+    assert reference() is None
 
 
 def test_uniform_aggregation_only_shared_components():

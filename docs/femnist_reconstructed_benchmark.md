@@ -5,6 +5,10 @@ delle sole classi insufficienti. [Protocollo e limiti di comparabilità](femnist
 restano il riferimento scientifico: confronto fra cinque risultati nostri e
 baseline pubblicate, senza replica esatta o riesecuzione delle baseline.
 Nessuna delle cinque run definitive è stata avviata durante l'implementazione.
+Il primo tentativo del quinto compito si è arrestato al round 53 del seed 41.
+La configurazione corrente applica la stabilizzazione autorizzata in
+[§12 del protocollo](femnist_fedrep_protocol.md#12-stabilizzazione-autorizzata-durante-il-quinto-compito);
+il tentativo precedente resta conservato e le nuove run ripartono dall'inizio.
 
 ## File e compatibilità
 
@@ -80,9 +84,10 @@ dal maggior resto, senza nuovi sorteggi.
 
 - SHA-256 archivio: `b387d65249b2d0ed429cf81967d4c40a9d01ca2f7bb3931c6a36d825bc22d411`.
 - SHA-256 canonico partizione: `7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734`.
-- SHA-256 canonico configurazione: `809d987e704f495072fecd53bf5f08cb930e3685616417c9adab34d1c0d87101`.
+- SHA-256 canonico configurazione finale con clipping: `d8684b56bb5d6066dbb2d1351aebd52d68344e787f668a16e5f907b8aed8b1d0`.
+- Configurazione precedente, conservata nei risultati dell'arresto e dello smoke: `809d987e704f495072fecd53bf5f08cb930e3685616417c9adab34d1c0d87101`.
 
-## Run definitive predisposte, non eseguite
+## Run definitive con configurazione stabilizzata
 
 Comando esatto per **una** run, seed 41, GPU 1:
 
@@ -90,7 +95,7 @@ Comando esatto per **una** run, seed 41, GPU 1:
 /home/schroeder/miniconda3/envs/general_ml/bin/python train_femnist_reconstructed.py run \
   --config configs/femnist_reconstructed.json \
   --partition _local/femnist_reconstructed/partition \
-  --output _local/femnist_reconstructed/runs/seed-41 \
+  --output _local/femnist_reconstructed/runs/clipped-v1/seed-41 \
   --seed 41 --device cuda:1
 ```
 
@@ -101,6 +106,11 @@ Il profilo prevede 200 round, 15 client/round, batch 10, un'epoca di warm-up,
 cinque di classificazione, `d_z=64`, Float32 senza AMP/TF32 e aggregazione
 uniforme. Gli optimizer sono nuovi a ogni partecipazione; Adam rimane lo
 stesso fra le due fasi di quella partecipazione.
+Ogni optimizer limita a 1.0 la norma L2 dei propri gradienti attivi prima
+dell'update. Si salvano le norme prima del clipping e i conteggi di intervento.
+Questa modifica non si applica agli entry point preesistenti: il core e le
+architetture sono invariati. Output/gradienti/condivisi non finiti arrestano
+il processo, senza saltare batch o sostituire valori.
 
 La valutazione del test avviene solo dopo l'aggregazione dei round **191–200**,
 su tutti i client con condivisi correnti ed encoder persistenti, senza
@@ -125,7 +135,7 @@ della propria run.
 /home/schroeder/miniconda3/envs/general_ml/bin/python train_femnist_reconstructed.py run \
   --config configs/femnist_reconstructed.json \
   --partition _local/femnist_reconstructed/partition \
-  --output _local/femnist_reconstructed/runs/seed-41 \
+  --output _local/femnist_reconstructed/runs/clipped-v1/seed-41 \
   --seed 41 --device cuda:1 --resume
 ```
 
@@ -159,7 +169,7 @@ due trasferimenti dei condivisi. I picchi RAM e CUDA si riferiscono al processo
 della sessione; una ripresa non sostituisce i tempi già salvati dei round.
 Valutazione e profilazione non consumano i generatori di training.
 
-## Verifiche e smoke GPU eseguiti
+## Verifiche e smoke GPU originari del quarto compito
 
 Suite completa nell'ambiente esistente:
 
@@ -268,3 +278,27 @@ fra più GPU; non è una misura del costo delle baseline pubblicate.
 
 I dettagli macchina e gli artefatti di verifica restano in `_local/`; si
 versionano soltanto codice, test, configurazione e questa documentazione.
+
+## Verifica della stabilizzazione del quinto compito
+
+Suite completa con lo stesso comando: **35 test passati in 7.36 s**.
+Sei casi aggiunti verificano clipping Adam/SGD prima dell'update,
+gradiente non finito rifiutato senza modificare parametri o optimizer,
+output non finito con contesto, rifiuto dei condivisi non finiti e rilascio
+dei client senza riferimenti circolari introdotti dagli hook.
+I test precedenti continuano a verificare le due fasi, persistenza,
+aggregazione, metriche, finestra e ripresa.
+
+La diagnosi originale riproduce il round 53 dal checkpoint del round 52:
+`f_00076`, classificazione, logits non finiti dopo 14 update SGD. La norma
+SGD arriva a `1.99e32` e quella Adam a `2.37e34`; i tensori in ingresso
+restano finiti. Il replay con la correzione completa tutti i 15 client
+del round in 12.55 s. Entrambe le operazioni usano esclusivamente training,
+vietano il caricamento dei test e non modificano il vecchio checkpoint.
+
+Le due tracce sono in `_local/femnist_reconstructed/diagnosis-round53/` e
+`verification-clipped-round53/`. Nessuno stato del replay viene usato
+nelle run definitive. La soglia 1.0 è stata fissata una volta, per stabilità,
+senza tuning sul test. Le cinque run finali sono nuove, sequenziali sulla
+GPU 1, con seed 41–45; risultati e tempi effettivi saranno archiviati in
+`artifacts/femnist_reconstructed/` al completamento verificato.

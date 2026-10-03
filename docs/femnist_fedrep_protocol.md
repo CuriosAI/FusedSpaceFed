@@ -7,7 +7,8 @@ rimangono risultati pubblicati. Dopo l'arresto per pool insufficiente (§10),
 l'utente ha autorizzato la sola riduzione proporzionale delle quote delle
 classi insufficienti (§11). Il benchmark implementa questa costruzione nostra,
 distinta dal protocollo originale. Le cinque run definitive e il loro test
-restano da eseguire; verifiche e smoke sono descritti nella
+sono oggetto del quinto compito; dopo l'arresto numerico del seed 41,
+l'utente ha autorizzato la stabilizzazione descritta in §12. Verifiche e smoke sono descritti nella
 [guida operativa](femnist_reconstructed_benchmark.md).
 
 ## 1. Riferimento e punto di partenza
@@ -211,8 +212,8 @@ FEMNIST attuale.
 Le seguenti sono **nostre decisioni di ricostruzione**, approvate dall'utente
 nel quarto compito, anche quando riprendono un valore da una fonte. Non
 certificano il protocollo originale. Un solo profilo vale per tutte le cinque
-run previste. L'unica modifica successiva autorizzata riguarda l'allocazione
-dei dati, per risolvere il problema storico in §10 senza riuso (§11).
+run previste. Le modifiche successive autorizzate sono l'allocazione dei
+dati (§11) e la stabilizzazione numerica comune alle cinque run (§12).
 
 | Voce | Decisione approvata e rapporto con il riferimento |
 |---|---|
@@ -228,6 +229,7 @@ dei dati, per risolvere il problema storico in §10 senza riuso (§11).
 | Due fasi | Un'epoca MSE del solo encoder con decoder/classificatore congelati; poi cinque epoche di classificazione end-to-end con tutti e tre i componenti aggiornabili, senza loss di ricostruzione nella seconda fase. Il warm-up non equivale alle dieci epoche della testa FedRep. |
 | Classificatore: optimizer | SGD LR 0.01, momentum 0.5, decay `1e-4` sui pesi e zero sui bias; batch 10, ultimo batch mantenuto, LR costante. Momentum e decay sono adattamenti espliciti rispetto all'attuale FusedSpaceFed. |
 | Autoencoder: optimizer | Adam LR 0.001, betas `(0.9,0.999)`, epsilon `1e-8`, decay zero, usato nelle due fasi. Sono scelte FusedSpaceFed nostre, non impostazioni degli autori FedRep. |
+| Stabilità numerica | Dopo l'errore numerico del quinto compito, clipping L2 a norma 1.0 dei gradienti attivi di ciascun optimizer prima del suo aggiornamento, in entrambe le fasi (§12). Soglia fissata sulla diagnosi del training; nessuna scelta basata sul test. |
 | Inizializzazione | Per ogni run creare un solo template casuale di classificatore e uno di autoencoder, con inizializzazione dei layer PyTorch registrata. Usare copie dello stesso encoder iniziale per tutti i client e lo stesso decoder iniziale condiviso, come nel runner attuale; non reinizializzare l'encoder alle partecipazioni successive. Anche questa è una scelta nostra. |
 | Persistenza | Conservare l'encoder di ogni client fra partecipazioni; sovrascrivere decoder e classificatore con gli stati condivisi correnti. Come nel runner attuale, ricreare gli optimizer a ogni partecipazione; mantenere lo stesso Adam fra le due fasi di quel round. Al test usare l'encoder persistente, o il suo stato iniziale se il client non ha ancora partecipato, registrando i conteggi delle partecipazioni. |
 | Aggregazione | Conservare la **media uniforme** di decoder e classificatore definita nel paper FusedSpaceFed. Il codice FedRep pesa per campioni di training: è un limite di comparabilità. Non è approvata una variante pesata. |
@@ -432,7 +434,7 @@ identificatori d'origine, hash PNG e array, seed, versioni e statistiche.
 
 - Partizione canonica SHA-256:
   `7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734`.
-- Configurazione canonica SHA-256:
+- Configurazione canonica SHA-256 del quarto compito, prima della stabilizzazione:
   `809d987e704f495072fecd53bf5f08cb930e3685616417c9adab34d1c0d87101`.
 - Artefatti: `_local/femnist_reconstructed/partition/`, esclusi da Git.
 - Rapporto di fallimento precedente conservato, SHA-256:
@@ -444,6 +446,62 @@ sufficienti e riuso della stessa partizione senza sovrascritture. Questi sono
 dati e regole della **nostra ricostruzione adattata alla capacità disponibile**,
 non una replica esatta del benchmark FedRep o una riesecuzione comune delle
 baseline.
+
+## 12. Stabilizzazione autorizzata durante il quinto compito
+
+Il primo tentativo definitivo, seed 41, codice `53302c9`, si è fermato
+durante il round 53 per loss non finita. Il checkpoint del round 52 è
+integro; non era stata eseguita alcuna valutazione del test. Tentativo e
+log rimangono in `_local/femnist_reconstructed/runs/seed-41/` e `logs/`.
+L'utente ha revocato il vincolo di sola diagnosi e autorizzato correzioni
+di codice e training, con configurazione comune e ripartenza dall'inizio
+quando cambiano gli aggiornamenti.
+
+La riproduzione del round 53, usando soltanto training e senza modificare
+quel checkpoint, individua il client `f_00076`, fase di classificazione.
+Gli input fusi restano finiti, con modulo massimo circa 58–71, mentre
+la norma dei gradienti SGD cresce da decine fino a `1.99e32`. I logits
+arrivano a `2.94e33`, poi diventano non finiti. La ricostruzione non limitata
+può amplificare gli input del classificatore; i dati grezzi restano in
+`[0,1]`. È evidenza di esplosione degli aggiornamenti, non di dataset vuoto.
+
+La correzione è `gradient_clip_norm=1.0`: norma L2 congiunta dei gradienti
+attivi **all'interno di ciascun optimizer**, ridotta a massimo 1 prima
+del suo normale aggiornamento. Warm-up: solo encoder, Adam; classificazione:
+encoder+decoder, Adam, e classificatore, SGD, separatamente. Si limita il
+gradiente della loss, prima dell'eventuale weight decay interno di SGD.
+Non si aggiungono normalizzazioni, attivazioni d'uscita, loss, fasi o
+parametri di modello. Adam resta continuo fra le due fasi e gli optimizer
+si ricreano a ogni partecipazione. Learning rate e tutte le altre decisioni
+rimangono quelli della sezione 6.
+
+La soglia unitaria è una scelta conservativa nostra, fissata prima delle
+nuove run e del test. Non è un valore recuperato da FedRep né il risultato
+di tuning o confronto di accuratezze. Si registrano numero di passi,
+numero di clipping e norma media/massima prima del clipping per fase e
+optimizer. Output, gradienti e condivisi aggregati non finiti causano
+un errore esplicito; non vengono sostituiti valori o saltati minibatch.
+
+La suite completa passa **35 test**, inclusi clipping prima degli update,
+rifiuto di gradienti non finiti senza mutare parametri/stati optimizer,
+flusso delle due fasi, rilascio dei client e ripresa identica su dati sintetici. La verifica
+GPU del round problematico completa tutti i 15 client con loss e pesi
+finiti in 12.55 s, senza test; per `f_00076` la loss di classificazione
+è 0.41336. La sua norma SGD massima prima del clipping è 35.79.
+Questo replay verifica la correzione; i suoi pesi non inizializzano le run.
+
+- Configurazione finale canonica SHA-256:
+  `d8684b56bb5d6066dbb2d1351aebd52d68344e787f668a16e5f907b8aed8b1d0`.
+- Partizione, seed dati e hash degli array sono invariati rispetto a §11.
+- Nuove run: `_local/femnist_reconstructed/runs/clipped-v1/seed-{41..45}/`.
+- Tutte ripartono dal round 0 con i propri seed, mai dal vecchio checkpoint.
+
+Il clipping cambia gli aggiornamenti, quindi i primi 52 round del tentativo
+fallito non si combinano con i risultati finali. Le nuove cinque run
+condividono questo solo profilo. Il costo dello smoke originario non misura
+il costo della versione corretta, che va registrato durante la campagna.
+Restano tutti i limiti del confronto con risultati pubblicati, compresa
+questa ulteriore scelta di training nostra.
 
 [P-index]: https://proceedings.mlr.press/v139/collins21a.html
 [P-pdf]: https://proceedings.mlr.press/v139/collins21a/collins21a.pdf

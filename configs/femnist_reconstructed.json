@@ -30,6 +30,7 @@
     "autoencoder_betas": [0.9, 0.999],
     "autoencoder_eps": 1e-8,
     "autoencoder_weight_decay": 0.0,
+    "gradient_clip_norm": 1.0,
     "aggregation": "uniform",
     "precision": "float32",
     "amp": false,

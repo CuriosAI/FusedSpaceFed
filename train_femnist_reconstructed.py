@@ -20,6 +20,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import weakref
 
 PROCESS_START = time.perf_counter()
 os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
@@ -80,8 +81,61 @@ class BenchmarkClient(FusedSpaceFedClient):
             self.autoencoder.parameters(), lr=settings["autoencoder_lr"],
             betas=tuple(settings["autoencoder_betas"]), eps=settings["autoencoder_eps"],
             weight_decay=settings["autoencoder_weight_decay"])
+        self.gradient_clip_norm = settings["gradient_clip_norm"]
+        if not math.isfinite(self.gradient_clip_norm) or self.gradient_clip_norm <= 0:
+            raise ValueError("gradient_clip_norm must be finite and positive")
+        self.phase = "classification"
+        self.gradient_statistics = {}
+        # Hooks must not keep clients/GPU tensors alive after a participation.
+        owner = weakref.proxy(self)
+        def before_step(optimizer, args, kwargs):
+            owner._clip_gradients(optimizer, args, kwargs)
+        def after_forward(module, inputs, outputs):
+            owner._check_forward(module, inputs, outputs)
+        self.ae_optimizer.register_step_pre_hook(before_step)
+        self.classifier_optimizer.register_step_pre_hook(before_step)
+        self.autoencoder.register_forward_hook(after_forward)
+        self.classifier.register_forward_hook(after_forward)
+
+    def _context(self) -> str:
+        return f"client={self.client_id}, round={getattr(self, 'round_number', '?')}, phase={self.phase}"
+
+    def _check_forward(self, module, inputs, outputs) -> None:
+        tensors = outputs if isinstance(outputs, tuple) else (outputs,)
+        if any(not bool(torch.isfinite(value).all()) for value in tensors):
+            component = "autoencoder" if module is self.autoencoder else "classifier"
+            raise RuntimeError(f"Non-finite {component} output; {self._context()}")
+
+    def _clip_gradients(self, optimizer, args, kwargs) -> None:
+        """Clip each optimizer's active loss gradients before its normal update."""
+        component = "autoencoder" if optimizer is self.ae_optimizer else "classifier"
+        parameters = [parameter for group in optimizer.param_groups for parameter in group["params"]
+                      if parameter.requires_grad and parameter.grad is not None]
+        if not parameters:
+            raise RuntimeError(f"No active {component} gradients; {self._context()}")
+        try:
+            norm = float(nn.utils.clip_grad_norm_(parameters, self.gradient_clip_norm,
+                                                 norm_type=2.0, error_if_nonfinite=True))
+        except RuntimeError as error:
+            raise RuntimeError(f"Invalid {component} gradient norm; {self._context()}: {error}") from error
+        key = f"{self.phase}_{component}"
+        stats = self.gradient_statistics.setdefault(
+            key, {"steps": 0, "clipped_steps": 0, "sum_norm_before_clip": 0.0, "max_norm_before_clip": 0.0})
+        stats["steps"] += 1
+        stats["clipped_steps"] += int(norm > self.gradient_clip_norm)
+        stats["sum_norm_before_clip"] += norm
+        stats["max_norm_before_clip"] = max(stats["max_norm_before_clip"], norm)
+
+    def _warmup(self, epochs: int) -> list[float]:
+        self.phase = "warmup"
+        return super()._warmup(epochs)
+
+    def _joint_train(self, epochs: int) -> list[float]:
+        self.phase = "classification"
+        return super()._joint_train(epochs)
 
     def train_round(self, warmup_epochs: int, local_epochs: int) -> dict:
+        self.gradient_statistics = {}
         synchronize(self.device)
         start = time.perf_counter()
         warmup = self._warmup(warmup_epochs)
@@ -100,6 +154,11 @@ class BenchmarkClient(FusedSpaceFedClient):
                 "warmup_samples": warmup_epochs * self.num_samples,
                 "classification_samples": local_epochs * self.num_samples,
                 "warmup_seconds": middle - start, "classification_seconds": end - middle,
+                "gradient_clipping": {
+                    key: {"steps": value["steps"], "clipped_steps": value["clipped_steps"],
+                          "max_norm_before_clip": value["max_norm_before_clip"],
+                          "mean_norm_before_clip": value["sum_norm_before_clip"] / value["steps"]}
+                    for key, value in self.gradient_statistics.items()},
                 "optimizer_state_bytes": optimizer_bytes(self.ae_optimizer)
                                          + optimizer_bytes(self.classifier_optimizer)}
 
@@ -110,7 +169,10 @@ def aggregate_shared(classifiers: list[dict], decoders: list[dict]) -> tuple[dic
     if len(classifiers) != len(decoders):
         raise ValueError("Shared-state list lengths differ")
     weights = [1] * len(classifiers)
-    return weighted_average_states(classifiers, weights), weighted_average_states(decoders, weights)
+    averaged = weighted_average_states(classifiers, weights), weighted_average_states(decoders, weights)
+    if any(not bool(torch.isfinite(value).all()) for state in averaged for value in state.values()):
+        raise RuntimeError("Non-finite aggregated shared state; refusing to checkpoint this round")
+    return averaged
 
 
 def accuracy_metrics(counts: dict[str, dict]) -> dict:
@@ -291,6 +353,7 @@ class BenchmarkRunner:
                             batch_size=self.config["training"]["batch_size"], shuffle=True,
                             generator=generator, num_workers=0, drop_last=False)
         client = BenchmarkClient(client_id, loader, self.config["training"], self.device)
+        client.round_number = round_number
         client.set_encoder_state(self.state["encoders"].get(client_id, self.state["initial_encoder"]))
         client.set_decoder_state(self.state["global_decoder"])
         client.set_classifier_state(self.state["global_classifier"])
