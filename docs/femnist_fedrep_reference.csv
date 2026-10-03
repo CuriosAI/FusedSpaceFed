@@ -1,0 +1,16 @@
+method,value,uncertainty,uncertainty_type,unit,metric,result_origin,dataset,reference_column,source_url,source_pdf_page,source_printed_page,source_table
+Local Only,60.86,,not_reported,percent,test_accuracy,reported,FEMNIST,"(150,3)",https://proceedings.mlr.press/v139/collins21a/collins21a.pdf,9,2097,1
+FedAvg,51.64,,not_reported,percent,test_accuracy,reported,FEMNIST,"(150,3)",https://proceedings.mlr.press/v139/collins21a/collins21a.pdf,9,2097,1
+FedAvg+FT,72.41,,not_reported,percent,test_accuracy,reported,FEMNIST,"(150,3)",https://proceedings.mlr.press/v139/collins21a/collins21a.pdf,9,2097,1
+FedProx,18.89,,not_reported,percent,test_accuracy,reported,FEMNIST,"(150,3)",https://proceedings.mlr.press/v139/collins21a/collins21a.pdf,9,2097,1
+FedProx+FT,53.54,,not_reported,percent,test_accuracy,reported,FEMNIST,"(150,3)",https://proceedings.mlr.press/v139/collins21a/collins21a.pdf,9,2097,1
+SCAFFOLD,17.65,,not_reported,percent,test_accuracy,reported,FEMNIST,"(150,3)",https://proceedings.mlr.press/v139/collins21a/collins21a.pdf,9,2097,1
+SCAFFOLD+FT,52.11,,not_reported,percent,test_accuracy,reported,FEMNIST,"(150,3)",https://proceedings.mlr.press/v139/collins21a/collins21a.pdf,9,2097,1
+Fed-MTL,54.11,,not_reported,percent,test_accuracy,reported,FEMNIST,"(150,3)",https://proceedings.mlr.press/v139/collins21a/collins21a.pdf,9,2097,1
+PerFedAvg,71.51,,not_reported,percent,test_accuracy,reported,FEMNIST,"(150,3)",https://proceedings.mlr.press/v139/collins21a/collins21a.pdf,9,2097,1
+LG-Fed,62.08,,not_reported,percent,test_accuracy,reported,FEMNIST,"(150,3)",https://proceedings.mlr.press/v139/collins21a/collins21a.pdf,9,2097,1
+L2GD,66.18,,not_reported,percent,test_accuracy,reported,FEMNIST,"(150,3)",https://proceedings.mlr.press/v139/collins21a/collins21a.pdf,9,2097,1
+APFL,70.74,,not_reported,percent,test_accuracy,reported,FEMNIST,"(150,3)",https://proceedings.mlr.press/v139/collins21a/collins21a.pdf,9,2097,1
+Ditto,68.28,,not_reported,percent,test_accuracy,reported,FEMNIST,"(150,3)",https://proceedings.mlr.press/v139/collins21a/collins21a.pdf,9,2097,1
+FedPer,76.91,,not_reported,percent,test_accuracy,reported,FEMNIST,"(150,3)",https://proceedings.mlr.press/v139/collins21a/collins21a.pdf,9,2097,1
+FedRep (Ours),78.56,,not_reported,percent,test_accuracy,reported,FEMNIST,"(150,3)",https://proceedings.mlr.press/v139/collins21a/collins21a.pdf,9,2097,1
