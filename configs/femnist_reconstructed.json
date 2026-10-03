@@ -1,0 +1,50 @@
+{
+  "benchmark": "femnist_fedrep_capacity_aware_v1",
+  "data": {
+    "source_url": "https://s3.amazonaws.com/nist-srd/SD19/by_class.zip",
+    "source_bytes": 1031576378,
+    "classes": "abcdefghij",
+    "num_clients": 150,
+    "classes_per_client": 3,
+    "pool_per_class": 4000,
+    "lognormal_mean": 4.0,
+    "lognormal_sigma": 1.0,
+    "count_offset": 100.0,
+    "train_fraction": 0.9,
+    "seed": 20261003,
+    "allocation": "proportional_largest_remainder_v1"
+  },
+  "training": {
+    "rounds": 200,
+    "clients_per_round": 15,
+    "batch_size": 10,
+    "warmup_epochs": 1,
+    "classification_epochs": 5,
+    "dz": 64,
+    "classifier_dims": [784, 512, 256, 64, 10],
+    "classifier_lr": 0.01,
+    "classifier_momentum": 0.5,
+    "classifier_weight_decay": 0.0001,
+    "classifier_bias_decay": 0.0,
+    "autoencoder_lr": 0.001,
+    "autoencoder_betas": [0.9, 0.999],
+    "autoencoder_eps": 1e-8,
+    "autoencoder_weight_decay": 0.0,
+    "aggregation": "uniform",
+    "precision": "float32",
+    "amp": false,
+    "optimizer_reset": "each_participation",
+    "torch_threads": 4,
+    "num_workers": 0
+  },
+  "evaluation": {
+    "first_round": 191,
+    "last_round": 200,
+    "primary": "sample_weighted_accuracy_percent",
+    "also_record": "uniform_client_accuracy_percent",
+    "adaptation_epochs": 0
+  },
+  "run_seeds": [41, 42, 43, 44, 45],
+  "partition_sha256": "7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734",
+  "source_archive_sha256": "b387d65249b2d0ed429cf81967d4c40a9d01ca2f7bb3931c6a36d825bc22d411"
+}

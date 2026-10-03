@@ -7,3 +7,4 @@ results/
 *.pt
 *.pth
 /paper/build/
+/_local/

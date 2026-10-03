@@ -511,16 +511,22 @@ class FusedSpaceFedClient:
         device: torch.device,
         classifier_lr: float = 0.01,
         autoencoder_lr: float = 0.001,
+        *,
+        classifier: nn.Module | None = None,
+        use_amp: bool = True,
     ):
         self.client_id = client_id
         self.loader = loader
         self.task = task
         self.device = device
         self.autoencoder = UNetSmallAE(in_channels, dz).to(device)
-        self.classifier = ResNet20V2(num_classes, in_channels).to(device)
+        self.classifier = (
+            ResNet20V2(num_classes, in_channels) if classifier is None else classifier
+        ).to(device)
         self.ae_optimizer = torch.optim.Adam(self.autoencoder.parameters(), lr=autoencoder_lr)
         self.classifier_optimizer = torch.optim.SGD(self.classifier.parameters(), lr=classifier_lr)
-        self.scaler = _new_scaler(device)
+        self.use_amp = use_amp
+        self.scaler = _new_scaler(device) if use_amp else None
 
     @property
     def num_samples(self) -> int:
@@ -566,7 +572,7 @@ class FusedSpaceFedClient:
             for inputs, _ in self.loader:
                 inputs = inputs.to(self.device, non_blocking=True)
                 self.ae_optimizer.zero_grad(set_to_none=True)
-                with _autocast_context(self.device):
+                with _autocast_context(self.device) if self.use_amp else nullcontext():
                     reconstruction, _ = self.autoencoder(inputs)
                     loss = F.mse_loss(reconstruction, inputs)
                 if self.scaler is not None:
@@ -590,7 +596,7 @@ class FusedSpaceFedClient:
                 targets = targets.to(self.device, non_blocking=True)
                 self.ae_optimizer.zero_grad(set_to_none=True)
                 self.classifier_optimizer.zero_grad(set_to_none=True)
-                with _autocast_context(self.device):
+                with _autocast_context(self.device) if self.use_amp else nullcontext():
                     reconstruction, _ = self.autoencoder(inputs)
                     logits = self.classifier(inputs + reconstruction)
                     loss = task_loss(logits, targets, self.task)

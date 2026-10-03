@@ -1,10 +1,14 @@
 # Confronto FEMNIST con i risultati pubblicati di FedRep
 
-Questo documento identifica il riferimento di letteratura e propone il profilo
-per **cinque sole run di FusedSpaceFed**. Le decisioni indicate come proposte
-richiedono approvazione prima dell'implementazione. Le baseline rimangono
-risultati pubblicati; il presente lavoro non avvia training, preparazione dei
-dati o modifiche al metodo.
+Questo documento identifica il riferimento di letteratura e il profilo per
+**cinque sole run di FusedSpaceFed**. Le proposte del terzo compito sono state
+approvate dall'utente nel quarto compito, il 3 ottobre 2026. Le baseline
+rimangono risultati pubblicati. Dopo l'arresto per pool insufficiente (§10),
+l'utente ha autorizzato la sola riduzione proporzionale delle quote delle
+classi insufficienti (§11). Il benchmark implementa questa costruzione nostra,
+distinta dal protocollo originale. Le cinque run definitive e il loro test
+restano da eseguire; verifiche e smoke sono descritti nella
+[guida operativa](femnist_reconstructed_benchmark.md).
 
 ## 1. Riferimento e punto di partenza
 
@@ -202,15 +206,19 @@ le nostre misure con i valori pubblicati, rendendo esplicite le differenze.
 Nessuna lacuna viene riempita automaticamente con i default del runner
 FEMNIST attuale.
 
-## 6. Profilo FusedSpaceFed proposto, da approvare
+## 6. Profilo FusedSpaceFed approvato per la ricostruzione
 
-Le seguenti sono **nostre decisioni proposte**, anche quando riprendono un
-valore da una fonte. Si deve approvare un solo profilo per tutte le cinque run.
+Le seguenti sono **nostre decisioni di ricostruzione**, approvate dall'utente
+nel quarto compito, anche quando riprendono un valore da una fonte. Non
+certificano il protocollo originale. Un solo profilo vale per tutte le cinque
+run previste. L'unica modifica successiva autorizzata riguarda l'allocazione
+dei dati, per risolvere il problema storico in §10 senza riuso (§11).
 
-| Voce | Proposta e rapporto con il riferimento |
+| Voce | Decisione approvata e rapporto con il riferimento |
 |---|---|
 | Dati | In assenza dei JSON originali, ricostruire 150 client sintetici su a–j dai PNG NIST, con tre classi cicliche per client, pool massimo 4,000/classe e conteggi derivati dalla ricetta `LogNormal(4,1)+100`. Questa è una nuova partizione, non quella recuperata dagli autori. |
-| Unicità e split | Ordinare i percorsi prima del campionamento; allocare senza riuso globale degli identificatori delle immagini; mescolare per client e dividere 90/10 con arrotondamento come sopra, senza stratificazione aggiuntiva. Se un pool non basta, fermare la preparazione senza rimpiazzare immagini o cambiare seed automaticamente. Salvare e controllare manifesti e hash; training e test devono essere disgiunti anche fra client. La rimozione del riuso del generatore storico è una differenza esplicita. |
+| Quote e unicità | Conservare richieste, seed e pool storici della nostra ricostruzione. Per le sole classi insufficienti ridurre proporzionalmente le quote con prodotti interi e maggiori resti, pari merito per ID crescente, come in §11. Allocare senza riuso degli identificatori d'origine. Fermarsi se una classe assegnata scompare da un client; nessun altro fallback. |
+| Split | Mescolare per client e dividere 90/10 con arrotondamento come sopra, senza stratificazione aggiuntiva. Salvare manifesti e hash; training e test non vuoti e disgiunti anche fra client. |
 | Validation | Nessuno split di validation per questo profilo a iperparametri prefissati. Non usare test o accuratezza negli ultimi dieci round per tuning, scelta dei seed o arresto anticipato. Un eventuale split di validation richiederebbe una decisione diversa prima delle run. |
 | Preprocessing | Float32 1×28×28, grayscale e scala `[0,1]` secondo il generatore; preservare l'orientamento dei PNG. Nessun resize a 32×32, normalizzazione MNIST o augmentation. Verificare la conversione con le librerie già installate prima della preparazione definitiva. |
 | Classificatore | MLP 784→512→256→64→10 con bias e ReLU, seguendo le dimensioni comuni a C21/C22. Restituire logits e usare cross-entropy standard per preservare la loss FusedSpaceFed. La discrepanza con il forward Softmax del codice storico rimane dichiarata. |
@@ -222,18 +230,20 @@ valore da una fonte. Si deve approvare un solo profilo per tutte le cinque run.
 | Autoencoder: optimizer | Adam LR 0.001, betas `(0.9,0.999)`, epsilon `1e-8`, decay zero, usato nelle due fasi. Sono scelte FusedSpaceFed nostre, non impostazioni degli autori FedRep. |
 | Inizializzazione | Per ogni run creare un solo template casuale di classificatore e uno di autoencoder, con inizializzazione dei layer PyTorch registrata. Usare copie dello stesso encoder iniziale per tutti i client e lo stesso decoder iniziale condiviso, come nel runner attuale; non reinizializzare l'encoder alle partecipazioni successive. Anche questa è una scelta nostra. |
 | Persistenza | Conservare l'encoder di ogni client fra partecipazioni; sovrascrivere decoder e classificatore con gli stati condivisi correnti. Come nel runner attuale, ricreare gli optimizer a ogni partecipazione; mantenere lo stesso Adam fra le due fasi di quel round. Al test usare l'encoder persistente, o il suo stato iniziale se il client non ha ancora partecipato, registrando i conteggi delle partecipazioni. |
-| Aggregazione | Proposta: conservare la **media uniforme** di decoder e classificatore definita nel paper FusedSpaceFed. Il codice FedRep pesa per campioni di training: è un limite di comparabilità. Adottare tali pesi richiederebbe l'approvazione esplicita di una variante dell'aggregazione del nostro metodo; non si prevedono entrambe le campagne. |
-| Precisione | Float32 senza AMP per questo piccolo setting, da approvare; il runner esistente usa AMP su CUDA. Registrare comunque precisione, versioni e impostazioni di determinismo effettive. |
-| Seed | Proporre un solo seed dati **20261003**, per una partizione congelata comune; seed delle cinque run **41,42,43,44,45**. Sono nostri seed, non quelli originali. Separare e registrare i generatori di dati/split, inizializzazione, selezione client e shuffle dei batch. |
+| Aggregazione | Conservare la **media uniforme** di decoder e classificatore definita nel paper FusedSpaceFed. Il codice FedRep pesa per campioni di training: è un limite di comparabilità. Non è approvata una variante pesata. |
+| Precisione | Float32 senza AMP; il runner esistente usa AMP su CUDA. Registrare comunque precisione, versioni e impostazioni di determinismo effettive. |
+| Seed | Un solo seed dati **20261003**, per una partizione congelata comune; seed delle cinque run **41,42,43,44,45**. Sono nostri seed, non quelli originali. Separare e registrare i generatori di dati/split, inizializzazione, selezione client e shuffle dei batch. |
 
-L'adattamento futuro richiede un classificatore selezionabile e un loader/runner
-dedicato a questo setting: `FusedSpaceFedClient` oggi costruisce direttamente
-ResNet20-v2 in [fusedspacefed_core.py](../fusedspacefed_core.py) e
-`train_femnist.py` fissa 62 classi. Riutilizzare la logica delle
-due fasi e degli stati privati senza cambiare il comportamento degli entry
-point esistenti. Questa attività non aggiunge tali componenti.
+L'adattamento richiede un classificatore selezionabile e un loader/runner
+dedicato a questo setting: al punto di partenza `FusedSpaceFedClient`
+costruiva direttamente ResNet20-v2 in
+[fusedspacefed_core.py](../fusedspacefed_core.py), mentre `train_femnist.py`
+fissa 62 classi. Il quarto compito aggiunge un preparatore e un runner dedicati,
+riutilizzando le due fasi del core e preservandone i default: classificatore
+opzionale e possibilità di disabilitare AMP sono i soli nuovi punti di
+estensione. Gli entry point precedenti e il manoscritto restano invariati.
 
-### Metrica primaria e reporting proposti
+### Metrica primaria e reporting approvati
 
 Per ogni seed `s`, dopo l'aggregazione dei round `t=191,...,200`, valutare
 tutti i 150 client sui rispettivi test locali con decoder/classificatore
@@ -245,8 +255,8 @@ A(s)   = mean_{t=191,...,200} A(s,t)
 risultato ours = mean_{s in {41,42,43,44,45}} A(s)
 ```
 
-La ponderazione per campioni segue il codice storico ed è una decisione da
-confermare, dato che il paper non esplicita i pesi. Salvare corrette/totali
+La ponderazione per campioni segue il codice storico ed è la decisione
+approvata, dato che il paper non esplicita i pesi. Salvare corrette/totali
 e accuratezza per client e round, così la media uniforme dei client resta
 calcolabile dagli stessi dati senza altre run. L'eventuale deviazione standard
 nostra è quella campionaria dei **cinque valori `A(s)`**, con `ddof=1`, in
@@ -283,24 +293,24 @@ devono registrare:
 
 I risultati rimangono un confronto **`ours` contro `reported`**, con partizioni
 e seed originali non recuperati, versione di valutazione incerta e adattamenti
-espliciti di loss, aggregazione e budget. Non è una riesecuzione controllata
+espliciti di quote, proporzioni di classe, loss, aggregazione e budget. Non è una riesecuzione controllata
 comune delle baseline. La sola nuova deviazione standard non permette test
 statistici appaiati o incertezze sulle differenze con i valori pubblicati.
 Non attribuire alle baseline tempi/costi misurati sulle nostre run. Non
 rieseguire altre campagne per risolvere questi limiti.
 
-## 8. Decisioni necessarie prima dell'implementazione
+## 8. Decisioni D1–D6 approvate nel quarto compito
 
-| Decisione | Proposta da approvare |
+| Decisione | Scelta approvata dall'utente |
 |---|---|
-| D1: disponibilità e partizione | Accettare una ricostruzione dichiarata a 150 client, con seed dati 20261003 e allocazione disgiunta, oppure usare soltanto eventuali originali verificati se resi disponibili. Non affermare che i JSON originali siano già recuperati. |
-| D2: classificatore e loss | Accettare le dimensioni MLP del codice storico, che differiscono dalla descrizione del supplemento, e logits con cross-entropy standard invece della composizione Softmax→CrossEntropyLoss. |
-| D3: aggregazione | Confermare la media uniforme del nostro paper e la relativa differenza dal riferimento, oppure approvare esplicitamente una sola variante pesata per campioni di training. |
-| D4: iperparametri del nostro metodo | Confermare warm-up 1, classificazione 5, `d_z=64`, Adam 0.001, SGD 0.01 con momentum/decay sopra dichiarati, inizializzazione comune, reset degli optimizer e precisione Float32; nessun tuning sul test. |
-| D5: valutazione | Confermare stati condivisi correnti, test locali pesati per campioni, finestra 191–200, assenza di adattamento finale e reporting delle cinque statistiche per seed. |
-| D6: repliche e presentazione | Confermare seed 41–45 su una partizione congelata e accettare il confronto con letteratura con i limiti esplicitati. Esattamente cinque run FusedSpaceFed, senza baseline o campagne ulteriori. |
+| D1: disponibilità e partizione | Ricostruzione dichiarata a 150 client, seed dati 20261003 e allocazione disgiunta. Dopo il primo arresto (§10), è autorizzata soltanto la riduzione proporzionale con maggiori resti (§11). Non sono recuperati i JSON originali. |
+| D2: classificatore e loss | MLP con le dimensioni del codice storico, che differiscono dalla descrizione del supplemento; logits con cross-entropy standard. |
+| D3: aggregazione | Media uniforme del nostro paper; differenza dal riferimento dichiarata. |
+| D4: iperparametri del nostro metodo | Warm-up 1, classificazione 5, `d_z=64`, Adam 0.001, SGD 0.01 con momentum/decay sopra dichiarati, inizializzazione comune, reset degli optimizer e Float32 senza AMP; nessun tuning sul test. |
+| D5: valutazione | Stati condivisi correnti, test locali pesati per campioni, conteggi per client e media uniforme, finestra 191–200, nessun adattamento finale. |
+| D6: repliche e presentazione | Seed 41–45 su una sola partizione congelata; confronto con risultati pubblicati con i limiti esplicitati. Esattamente cinque run FusedSpaceFed, senza baseline o campagne ulteriori. |
 
-## 9. Verifiche svolte in questo incarico
+## 9. Verifiche svolte nel terzo compito (studio)
 
 La trascrizione è stata controllata sulla pagina PDF originale, anche
 visivamente, e contro il testo estratto della Tabella 1. Il CSV conserva ordine
@@ -311,6 +321,129 @@ FusedSpaceFed, le fonti pubblicate, le due copie storiche e il preprocessing
 LEAF. Nessun dataset completo, ambiente o pacchetto è stato scaricato o
 installato per l'esecuzione; nessun training è stato avviato. I soli file da
 versionare sono questo documento e il CSV di riferimento.
+
+## 10. Primo tentativo del quarto compito: arresto per insufficienza del pool
+
+Il 3 ottobre 2026 il quarto compito è iniziato su `main` pulito e allineato
+a `origin/main`, commit `939c584cbeb1db6cb37ba0314ca15ab0214d599a`, dopo
+fetch. È stato scaricato, una sola volta, l'archivio NIST già identificato,
+senza cambiare ambienti o pacchetti. L'archivio e la ricevuta verificabile
+restano in `_local/femnist_reconstructed/source/`, esclusi da Git.
+
+- URL: `https://s3.amazonaws.com/nist-srd/SD19/by_class.zip`.
+- Dimensione: 1,031,576,378 byte.
+- SHA-256: `b387d65249b2d0ed429cf81967d4c40a9d01ca2f7bb3931c6a36d825bc22d411`.
+
+Il pool storico è `by_class/<hex>/train_<hex>/*.png`, come in §4. Il limite
+4,000 è un massimo e non garantisce che ogni classe disponga di tanti PNG.
+L'implementazione fissa separatamente `random.Random(20261003)` per il
+mescolamento dei percorsi ordinati, `Generator(PCG64(20261003))` per i
+conteggi lognormali e `random.Random(20261004)` per lo split locale. Sono
+generatori espliciti della nostra ricostruzione, non seed originali recuperati.
+La verifica sugli identificatori effettivi dell'archivio ha dato:
+
+| Lettera | PNG distinti nella cartella storica | Pool dopo il limite 4,000 | Richiesti dalla ricetta | Mancanti |
+|---|---:|---:|---:|---:|
+| a | 11196 | 4000 | 2828 | 0 |
+| b | 5551 | 4000 | 2506 | 0 |
+| c | 2792 | 2792 | 2474 | 0 |
+| d | 11421 | 4000 | 2325 | 0 |
+| e | 28299 | 4000 | 2558 | 0 |
+| f | 2493 | 2493 | 2555 | 62 |
+| g | 3839 | 3839 | 2578 | 0 |
+| h | 9713 | 4000 | 2869 | 0 |
+| i | 2788 | 2788 | 3078 | 290 |
+| j | 1920 | 1920 | 3196 | 1276 |
+
+La prima guardia interviene al client `f_00108` (indice 108): per `j` la
+richiesta cumulativa arriva a 1964, oltre i 1920 disponibili. Il controllo
+indipendente delle richieste di tutti i 150 client conferma insufficienze
+anche per `f` e `i`. La ricetta richiederebbe 26,967 esempi complessivi;
+questo è un conteggio richiesto, **non una partizione preparata**.
+
+Quel tentativo si è fermato prima di convertire o salvare array train/test
+e manifesti di una partizione. Il rapporto macchina è conservato soltanto in
+`_local/femnist_reconstructed/partition_failure.json`.
+
+In quel tentativo non sono stati cambiati seed, lognormale, classi, numerosità o split, né
+riusati PNG o aggiunti esempi da altre cartelle. Il download resta
+riutilizzabile. Non sono stati avviati smoke test GPU, valutazioni del test,
+baseline o run definitive. L'implementazione era rimasta incompleta e non
+pubblicata. L'autorizzazione successiva dell'utente risolve esclusivamente
+l'allocazione mediante la regola esplicita in §11; questo resoconto è
+conservato come traccia dell'arresto iniziale.
+
+Verifiche del lavoro già scritto prima dell'arresto: `py_compile` dei due
+moduli dedicati e del core riuscito; suite esistente
+`tests/test_core.py`: **7 passed in 3.71s**, su CPU nell'ambiente `general_ml`;
+`git diff --check` riuscito. La guardia di esaurimento è stata riprodotta
+indipendentemente sull'archivio. Non sono completati i test mirati del nuovo
+runner, la verifica di ripresa e lo smoke GPU in quel tentativo. Nessun commit
+o push era stato eseguito. La successiva implementazione e le sue verifiche
+sono descritte nella guida operativa.
+
+## 11. Allocazione proporzionale autorizzata e partizione congelata
+
+Si mantengono archivio NIST, cartelle `train_<hex>`, a–j, 150 client, tre
+classi cicliche, seed 20261003 e tutti i 26,967 esempi **richiesti** dai
+sorteggi originali. Non si risorteggia. Per la classe `c`, siano `k[i,c]` le
+richieste originali, `D[c]` la loro somma, `N[c]` il numero di identificatori
+del pool dopo il limite 4,000 e `M[c]=min(D[c],N[c])`.
+
+Se `D[c] <= N[c]`, le quote restano `k[i,c]`. Altrimenti:
+
+1. Quota iniziale `a[i,c] = (k[i,c] * M[c]) // D[c]`.
+2. Distribuire `M[c] - sum_i a[i,c]` esempi ai resti
+   `(k[i,c] * M[c]) % D[c]` maggiori.
+3. Risolvere le parità per identificatore del client crescente.
+
+Tutti i prodotti, divisioni e resti dell'allocazione usano interi Python,
+senza arrotondamento floating point. I client senza quella classe hanno
+richiesta e assegnazione zero. I cursori avanzano e non si azzerano. La
+funzione `proportional_quotas` in
+[femnist_reconstructed_data.py](../femnist_reconstructed_data.py) implementa
+la regola; `plan_partition` conserva separatamente quote richieste e assegnate.
+
+| Classe ridotta | Richiesta D | Pool N | Assegnazione M | Rapporto intero di riduzione |
+|---|---:|---:|---:|---|
+| f | 2555 | 2493 | 2493 | 2493/2555 |
+| i | 3078 | 2788 | 2788 | 2788/3078 |
+| j | 3196 | 1920 | 1920 | 1920/3196 |
+
+Le altre sette classi mantengono tutte le quote. Le quote di **105 client**
+cambiano: anche numerosità e proporzioni di classe cambiano nei client
+coinvolti. Ogni client conserva le tre classi prima dello split e nel training;
+lo split locale resta un mescolamento non stratificato, seguito da
+`floor(0.9*N_i)` training e resto test. Non si garantiscono tre classi in ogni
+test locale. Tutti i test sono non vuoti.
+
+| Conteggio per client | Totale | Media | Minimo | Massimo |
+|---|---:|---:|---:|---:|
+| Richieste originali | 26967 | 179.780000 | 102 | 1050 |
+| Assegnati prima dello split | 25339 | 168.926667 | 97 | 877 |
+| Training | 22736 | 151.573333 | 87 | 789 |
+| Test | 2603 | 17.353333 | 10 | 88 |
+
+Il totale 25,339 è stato verificato sul risultato della regola e non imposto
+al campionatore. Non sono stati ricercati media 148 o minimo 50 della
+pubblicazione. Il manifesto contiene disponibilità, fattori e rapporti di
+riduzione, sorteggi originali, richieste e assegnazioni di ogni client/classe,
+identificatori d'origine, hash PNG e array, seed, versioni e statistiche.
+
+- Partizione canonica SHA-256:
+  `7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734`.
+- Configurazione canonica SHA-256:
+  `809d987e704f495072fecd53bf5f08cb930e3685616417c9adab34d1c0d87101`.
+- Artefatti: `_local/femnist_reconstructed/partition/`, esclusi da Git.
+- Rapporto di fallimento precedente conservato, SHA-256:
+  `260f7cef5adb56c039f7d36e0a9f1fd3931f56eaee919487d4fa2a6722337ea4`.
+
+L'audit controlla i 25,339 identificatori unici, disgiunzione globale dei due
+split, tre classi di training per client, quote invariate nelle classi
+sufficienti e riuso della stessa partizione senza sovrascritture. Questi sono
+dati e regole della **nostra ricostruzione adattata alla capacità disponibile**,
+non una replica esatta del benchmark FedRep o una riesecuzione comune delle
+baseline.
 
 [P-index]: https://proceedings.mlr.press/v139/collins21a.html
 [P-pdf]: https://proceedings.mlr.press/v139/collins21a/collins21a.pdf
