@@ -6,3 +6,4 @@ data/
 results/
 *.pt
 *.pth
+/paper/build/
