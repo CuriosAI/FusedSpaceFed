@@ -1,0 +1,52 @@
+{
+  "builder_sha256": "835f284411613924ceb372fec4cc6fb8c84b833194778bd08d8f58b1c62b463b",
+  "inputs_byte_sha256": {
+    "artifacts/femnist_reconstructed/manifest.json": "f5fbe620f4d776bf47ab943c879660bbd261b07c700a5721a531a6bdcd5e7433",
+    "docs/femnist_fedrep_reference.csv": "088de22df17d3e3e1b3f878bb347ff9dc91bc3239525fd949a1f315001bd29cc",
+    "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970"
+  },
+  "legacy_source": {
+    "missing": [
+      "MedMNIST per-seed outputs/variances",
+      "writer FEMNIST per-seed outputs",
+      "numerical source data of legacy stress-test JPG figures"
+    ],
+    "origin": "previously reported manuscript aggregates, not recovered run outputs",
+    "rows": 144,
+    "source_byte_sha256": "64a2d707d624f593b7eb29c089b0e3185b372ed52bed0d6768a8b1ed1a032377",
+    "source_commit": "fc067b423115a2b5e0c51bae5a025b86aeaf37d1",
+    "source_path": "paper/aistats_2027.tex",
+    "uncertainty_policy": "Missing values stay empty. Writer FEMNIST \u00b1 values are preserved as reported dispersion; the convention cannot be independently audited from run-level files."
+  },
+  "matplotlib": "3.9.2",
+  "notes": "Reproduces aggregates and figures only; original medical runs and legacy JPG curves are not regenerated.",
+  "numpy": "2.0.2",
+  "output_byte_sha256": {
+    "artifacts/paper_revision/analysis_summary.json": "b5738b68a27748e78e68dfbcd5b339de15017d83030f1340c1cdc0321e83ac82",
+    "artifacts/paper_revision/legacy_metrics.csv": "59436a0d744ea70b1e94a2e900d67933968ccf7c5b6f7639ea78186360027a25",
+    "artifacts/paper_revision/legacy_source_manifest.json": "27ce6de51e9ef065dc90aa7b9793e85cb2c042ca500c4e58140b60a275574e74",
+    "artifacts/paper_revision/mean_gains.csv": "28ac9eeaf3714743e07447d514c5a5a344f02f1ffee32ac018dd89977e89ecdf",
+    "artifacts/paper_revision/model_capacity.csv": "e67cdf0986697e682dde7ba586a746558ff037fcb8bb2b74503b5158f1e365eb",
+    "artifacts/paper_revision/reconstructed_round_metrics.csv": "27a4a5574f423b39e921198d86dcf0de7b3c63b43a4828e040d2da4f84039847",
+    "artifacts/paper_revision/reconstructed_seed_metrics.csv": "5000b37bcb0252bf071ee45c2195d928f6521de20f4a45491a065df137a88c5d",
+    "paper/figures/femnist_reconstructed_seeds.pdf": "1b8b8fda311722937129b7b3ab329f02d07d2111ab74d0afe8290ee8b8a2df3d",
+    "paper/figures/femnist_reconstructed_seeds.svg": "435b00580ccd304f1fb433c04fc3665367a39b2467ecb88933c9bb12feac6600",
+    "paper/figures/heterogeneity_gains.pdf": "3bbc979981875b7b16ab47631b3d47c43cbfa29e108665d27ee8fc755da058c4",
+    "paper/figures/heterogeneity_gains.svg": "c47bbeb4e120740cb2a679f2f4773389c40eead49d2c1e0f66e4a709046418e2",
+    "paper/figures/pathological_accuracy.pdf": "3e21706988d9d8cc13edf52b9d3fe38ab491e4903d74a7df75dd84a97633cf57",
+    "paper/figures/pathological_accuracy.svg": "a4abb657fb17f453b914915b23c3800d7ae5d7495f08b248fa5a103856d7f586",
+    "paper/generated/fedrep_published.tex": "9ffe653819c7f75c383dfe7973df30ba4462f29bffa99e78944aec545f5f1b0d",
+    "paper/generated/gradient.tex": "e6eb47fecf76f0558277500e82346850dba36283881da9eb61a03fadc521fd69",
+    "paper/generated/medical_moderate.tex": "1ef2271717652daa18dc6c47f6d1ce8d50c0169296f657ed2863fd5c301ec786",
+    "paper/generated/medical_strong.tex": "f69fb5aa524fe70d476e73f7bbbcc9258341189e1e0eba9c67f5df4d20295f29",
+    "paper/generated/model_capacity.tex": "cd71301f11eb97d7854e5065f4c20d66e7200f6b6a3d162a9d3eced7ca7ff19f",
+    "paper/generated/pathological.tex": "d7160518212e5723c5201098b56e55499b0e056c8d2440682a46ff2244d91517",
+    "paper/generated/reconstructed_costs.tex": "023ccaf15c43ef78fa52ffd0d68941ad19ba30aa4e4fee865dbf2aa8efcfc392",
+    "paper/generated/reconstructed_femnist.tex": "9284a0a9a8f37ef0d0ed1d44cbe6e1cc0dda241d24ad202b034d8f4fe0a6c0cd",
+    "paper/generated/writer_femnist.tex": "4a5d250e88e5ef57aef440bc0ba5ac4b31413d6e5d31fbb26d510d7e2dcc8b26"
+  },
+  "python": "3.12.7",
+  "schema": 1,
+  "source_commit": "fc067b423115a2b5e0c51bae5a025b86aeaf37d1",
+  "torch": "2.5.1+cu124"
+}

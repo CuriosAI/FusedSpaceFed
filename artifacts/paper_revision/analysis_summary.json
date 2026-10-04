@@ -1,0 +1,48 @@
+{
+  "capacity_overhead_range_percent": [
+    21.007422571096154,
+    42.97619529648212
+  ],
+  "legacy_error_bars_invented": false,
+  "legacy_mean_comparisons": {
+    "dirichlet_0.05": {
+      "all_margins_descriptive": true,
+      "datasets": 12,
+      "max_margin_percentage_points": 7.32,
+      "median_margin_percentage_points": 2.635,
+      "min_margin_percentage_points": 0.12,
+      "positive_mean_margins": 12
+    },
+    "dirichlet_0.50": {
+      "all_margins_descriptive": true,
+      "datasets": 12,
+      "max_margin_percentage_points": 2.68,
+      "median_margin_percentage_points": 0.49,
+      "min_margin_percentage_points": -0.35,
+      "positive_mean_margins": 9
+    },
+    "pathological_2": {
+      "all_margins_descriptive": true,
+      "datasets": 4,
+      "max_margin_percentage_points": 30.45,
+      "median_margin_percentage_points": 18.645,
+      "min_margin_percentage_points": 11.12,
+      "positive_mean_margins": 4
+    }
+  },
+  "legacy_significance_claims": false,
+  "new_campaigns": 0,
+  "primary_metric": "sample_weighted_accuracy_percent",
+  "primary_metric_fixed_before_analysis": true,
+  "reconstructed_statistics": {
+    "sample_weighted_accuracy_percent": {
+      "mean": 64.73684210526315,
+      "std": 10.631866815734886
+    },
+    "uniform_client_accuracy_percent": {
+      "mean": 65.24045602163939,
+      "std": 11.47403401788911
+    }
+  },
+  "training_or_model_evaluation_performed": false
+}
