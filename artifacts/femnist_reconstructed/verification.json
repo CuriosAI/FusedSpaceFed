@@ -1,0 +1,885 @@
+{
+  "all_tracked_files_unchanged_since_campaign_start": true,
+  "campaign_event_file_sha256": "93b186aab4c465ded23d65fd169660a062974c3e9fbd46bdf07548a075b273ea",
+  "campaign_wall_seconds": 12930.956314551062,
+  "code_commit": "cd433abf545647d64d1ec94db86d998de38e3401",
+  "config_sha256": "d8684b56bb5d6066dbb2d1351aebd52d68344e787f668a16e5f907b8aed8b1d0",
+  "metric_unit": "percent",
+  "model_evaluations_during_verification": 0,
+  "original_failed_attempt_preserved": true,
+  "partition_arrays": {
+    "test_images.npy": {
+      "dtype": "uint8",
+      "sha256": "6320ead59b0f3c7cb6b9481253b44eab633969e459259b3699443a8b380a68f4",
+      "shape": [
+        2603,
+        1,
+        28,
+        28
+      ]
+    },
+    "test_labels.npy": {
+      "dtype": "int64",
+      "sha256": "b30761434995d564b9b18c1339ce18937d0b93371ad50e2fab7140c748486fd6",
+      "shape": [
+        2603
+      ]
+    },
+    "train_images.npy": {
+      "dtype": "uint8",
+      "sha256": "c73d6a991ba20fcbcdc96bd8a48892376e1c6ad20e3acfdf66f0d1a5ad613b00",
+      "shape": [
+        22736,
+        1,
+        28,
+        28
+      ]
+    },
+    "train_labels.npy": {
+      "dtype": "int64",
+      "sha256": "a7a476444153ead2f7f8fc4f7613c27860ce2092ae371d3831ddf4047758517f",
+      "shape": [
+        22736
+      ]
+    }
+  },
+  "partition_manifest_file_sha256": "c561e07852ff958b12180921454d73b01494c22e5f925d5e3157e4ea8e9da6dc",
+  "partition_sha256": "7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734",
+  "partition_statistics": {
+    "before_split": {
+      "max": 877,
+      "mean": 168.92666666666668,
+      "min": 97,
+      "per_class": [
+        2828,
+        2506,
+        2474,
+        2325,
+        2558,
+        2493,
+        2578,
+        2869,
+        2788,
+        1920
+      ],
+      "total": 25339
+    },
+    "clients_with_reduced_quotas": 105,
+    "original_requests": {
+      "max": 1050,
+      "mean": 179.78,
+      "min": 102,
+      "per_class": [
+        2828,
+        2506,
+        2474,
+        2325,
+        2558,
+        2555,
+        2578,
+        2869,
+        3078,
+        3196
+      ],
+      "total": 26967
+    },
+    "test": {
+      "max": 88,
+      "mean": 17.35333333333333,
+      "min": 10,
+      "per_class": [
+        285,
+        265,
+        253,
+        231,
+        258,
+        277,
+        252,
+        293,
+        295,
+        194
+      ],
+      "total": 2603
+    },
+    "train": {
+      "max": 789,
+      "mean": 151.57333333333332,
+      "min": 87,
+      "per_class": [
+        2543,
+        2241,
+        2221,
+        2094,
+        2300,
+        2216,
+        2326,
+        2576,
+        2493,
+        1726
+      ],
+      "total": 22736
+    }
+  },
+  "runs": [
+    {
+      "checkpoint_bytes": 47457950,
+      "checkpoint_sha256": "80e7c57f27f90845915a646f43d94ba780b9d331e7c9e1b7e8c3a067505c8b0f",
+      "clients_per_evaluation": 150,
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "train_femnist_reconstructed.py",
+        "run",
+        "--config",
+        "configs/femnist_reconstructed.json",
+        "--partition",
+        "_local/femnist_reconstructed/partition",
+        "--output",
+        "_local/femnist_reconstructed/runs/clipped-v1/seed-41",
+        "--seed",
+        "41",
+        "--device",
+        "cuda:1"
+      ],
+      "completed_round": 200,
+      "costs": {
+        "aggregation_seconds": 1.0306392996571958,
+        "checkpoint_bytes_written_cumulative": 9001191878,
+        "checkpoint_seconds": 50.70863527641632,
+        "classification_loss_mean_over_minibatches": 0.2781602174960479,
+        "classification_samples": 2284785,
+        "classification_seconds": 2105.2014739802107,
+        "classification_steps": 234955,
+        "classifier_steps": 234955,
+        "communication_bytes_theoretical": 14287368000,
+        "compute_seconds": 2369.5871758676367,
+        "decoder_steps": 234955,
+        "encoder_steps": 281946,
+        "evaluation_seconds": 7.960467301891185,
+        "optimizer_state_bytes_max_per_participation": 3135512,
+        "total_io_seconds": 72.86499973165337,
+        "total_seconds": 2359.075416962849,
+        "warmup_loss_mean_over_minibatches": 4506.576789021856,
+        "warmup_samples": 456957,
+        "warmup_seconds": 215.98615692928433,
+        "warmup_steps": 46991
+      },
+      "ended_utc": "2026-10-03T22:18:20.466098+00:00",
+      "evaluation_rounds": [
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200
+      ],
+      "exit_code": 0,
+      "finite_model_tensors": 1834,
+      "gradient_clipping": {
+        "classification_autoencoder": {
+          "clipped_fraction": 0.5926794492562406,
+          "clipped_steps": 139253,
+          "max_norm_before_clip": 687.6959228515625,
+          "mean_norm_before_clip": 9.062887501749666,
+          "steps": 234955
+        },
+        "classification_classifier": {
+          "clipped_fraction": 0.6783554297631461,
+          "clipped_steps": 159383,
+          "max_norm_before_clip": 1881.97265625,
+          "mean_norm_before_clip": 19.918834202202525,
+          "steps": 234955
+        },
+        "warmup_autoencoder": {
+          "clipped_fraction": 0.9853163371709476,
+          "clipped_steps": 46301,
+          "max_norm_before_clip": 41559200.0,
+          "mean_norm_before_clip": 98991.32303193897,
+          "steps": 46991
+        }
+      },
+      "initialization": {
+        "autoencoder_initialization_seed": 1000041,
+        "batch_shuffle": "run_seed*10000000 + (round-1)*10000 + client_index",
+        "classifier_initialization_seed": 41,
+        "selection": "Generator PCG64(run_seed)"
+      },
+      "last_session_wall_seconds": 2445.210499866982,
+      "metrics_reconstructed_from_counts": {
+        "sample_weighted_accuracy_percent": 79.527468305801,
+        "uniform_client_accuracy_percent": 80.72938387665705
+      },
+      "model_tensor_elements": 11435899,
+      "parameters": {
+        "classifier": 550346,
+        "classifier_state_bytes": 2201384,
+        "client_pipeline_total": 667099,
+        "decoder_state_bytes": 179844,
+        "encoder_state_bytes_per_client": 287168,
+        "logical_private_encoder_bytes_all_clients": 43075200,
+        "private_encoder_per_client": 71792,
+        "shared_decoder": 44961
+      },
+      "participations": {
+        "max": 32,
+        "mean": 20,
+        "min": 6,
+        "total": 3000
+      },
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1544.08984375,
+      "persistent_encoders": 150,
+      "process_wall_seconds": 2447.0899720040616,
+      "results_json_sha256": "72ba0f1f07012e90ff81e5023a79e6fff554ba30bd2937389982d37bebe01491",
+      "resumed": false,
+      "runtime": {
+        "amp": false,
+        "cublas_workspace_config": ":4096:8",
+        "cuda": "12.4",
+        "cudnn": 90100,
+        "deterministic_algorithms": true,
+        "device": "cuda:1",
+        "gpu": "NVIDIA RTX 6000 Ada Generation",
+        "gpu_total_bytes": 50865307648,
+        "numpy": "2.0.2",
+        "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.39",
+        "precision": "float32",
+        "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:27:36) [GCC 11.2.0]",
+        "tf32": false,
+        "torch": "2.5.1+cu124",
+        "torch_threads": 4
+      },
+      "seed": 41,
+      "sessions": 1,
+      "snapshot_count": 201,
+      "started_utc": "2026-10-03T21:37:33.376122+00:00",
+      "status": "completed",
+      "test_examples_per_evaluation": 2603,
+      "timings_jsonl_sha256": "14e239ee2954d79df0bdd40bfe46e48e93e7c04ccd514ef08c3b070d8582d5ae"
+    },
+    {
+      "checkpoint_bytes": 47457950,
+      "checkpoint_sha256": "de916699b5a9dff84b2c682320763934c9b46b90f9f9ac2f28439966716a0f97",
+      "clients_per_evaluation": 150,
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "train_femnist_reconstructed.py",
+        "run",
+        "--config",
+        "configs/femnist_reconstructed.json",
+        "--partition",
+        "_local/femnist_reconstructed/partition",
+        "--output",
+        "_local/femnist_reconstructed/runs/clipped-v1/seed-42",
+        "--seed",
+        "42",
+        "--device",
+        "cuda:1"
+      ],
+      "completed_round": 200,
+      "costs": {
+        "aggregation_seconds": 1.1831888429587707,
+        "checkpoint_bytes_written_cumulative": 8974718774,
+        "checkpoint_seconds": 50.61193725594785,
+        "classification_loss_mean_over_minibatches": 0.6462636509433619,
+        "classification_samples": 2278775,
+        "classification_seconds": 2204.8522417788627,
+        "classification_steps": 234465,
+        "classifier_steps": 234465,
+        "communication_bytes_theoretical": 14287368000,
+        "compute_seconds": 2488.965499931015,
+        "decoder_steps": 234465,
+        "encoder_steps": 281358,
+        "evaluation_seconds": 8.505058739101514,
+        "optimizer_state_bytes_max_per_participation": 3135512,
+        "total_io_seconds": 72.8528687764192,
+        "total_seconds": 2477.7322421494173,
+        "warmup_loss_mean_over_minibatches": 280.0771305763523,
+        "warmup_samples": 455755,
+        "warmup_seconds": 232.03978036844637,
+        "warmup_steps": 46893
+      },
+      "ended_utc": "2026-10-03T23:01:07.792581+00:00",
+      "evaluation_rounds": [
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200
+      ],
+      "exit_code": 0,
+      "finite_model_tensors": 1834,
+      "gradient_clipping": {
+        "classification_autoencoder": {
+          "clipped_fraction": 0.7405753523980125,
+          "clipped_steps": 173639,
+          "max_norm_before_clip": 3850.996826171875,
+          "mean_norm_before_clip": 15.222733893815326,
+          "steps": 234465
+        },
+        "classification_classifier": {
+          "clipped_fraction": 0.8726035868893012,
+          "clipped_steps": 204595,
+          "max_norm_before_clip": 683.8626708984375,
+          "mean_norm_before_clip": 17.873419573608874,
+          "steps": 234465
+        },
+        "warmup_autoencoder": {
+          "clipped_fraction": 0.8410850233510332,
+          "clipped_steps": 39441,
+          "max_norm_before_clip": 387435.15625,
+          "mean_norm_before_clip": 5968.981676784269,
+          "steps": 46893
+        }
+      },
+      "initialization": {
+        "autoencoder_initialization_seed": 1000042,
+        "batch_shuffle": "run_seed*10000000 + (round-1)*10000 + client_index",
+        "classifier_initialization_seed": 42,
+        "selection": "Generator PCG64(run_seed)"
+      },
+      "last_session_wall_seconds": 2564.648550976999,
+      "metrics_reconstructed_from_counts": {
+        "sample_weighted_accuracy_percent": 62.74683058009988,
+        "uniform_client_accuracy_percent": 62.731426073054195
+      },
+      "model_tensor_elements": 11435899,
+      "parameters": {
+        "classifier": 550346,
+        "classifier_state_bytes": 2201384,
+        "client_pipeline_total": 667099,
+        "decoder_state_bytes": 179844,
+        "encoder_state_bytes_per_client": 287168,
+        "logical_private_encoder_bytes_all_clients": 43075200,
+        "private_encoder_per_client": 71792,
+        "shared_decoder": 44961
+      },
+      "participations": {
+        "max": 33,
+        "mean": 20,
+        "min": 10,
+        "total": 3000
+      },
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1540.140625,
+      "persistent_encoders": 150,
+      "process_wall_seconds": 2567.1373188459547,
+      "results_json_sha256": "e47a62b8279fb57bc292c2826c8c34fd8ca00ae6866edf581c9c862df32b4a6e",
+      "resumed": false,
+      "runtime": {
+        "amp": false,
+        "cublas_workspace_config": ":4096:8",
+        "cuda": "12.4",
+        "cudnn": 90100,
+        "deterministic_algorithms": true,
+        "device": "cuda:1",
+        "gpu": "NVIDIA RTX 6000 Ada Generation",
+        "gpu_total_bytes": 50865307648,
+        "numpy": "2.0.2",
+        "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.39",
+        "precision": "float32",
+        "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:27:36) [GCC 11.2.0]",
+        "tf32": false,
+        "torch": "2.5.1+cu124",
+        "torch_threads": 4
+      },
+      "seed": 42,
+      "sessions": 1,
+      "snapshot_count": 201,
+      "started_utc": "2026-10-03T22:18:20.655258+00:00",
+      "status": "completed",
+      "test_examples_per_evaluation": 2603,
+      "timings_jsonl_sha256": "52c08811d41fd21576d515050f0dc2f8b7c11911b2f070261e5707b68998fd9a"
+    },
+    {
+      "checkpoint_bytes": 47457950,
+      "checkpoint_sha256": "3f274cdf1e428c315e90a37436491ed9286d2d66b6a6a63e89cf371e61f55d0b",
+      "clients_per_evaluation": 150,
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "train_femnist_reconstructed.py",
+        "run",
+        "--config",
+        "configs/femnist_reconstructed.json",
+        "--partition",
+        "_local/femnist_reconstructed/partition",
+        "--output",
+        "_local/femnist_reconstructed/runs/clipped-v1/seed-43",
+        "--seed",
+        "43",
+        "--device",
+        "cuda:1"
+      ],
+      "completed_round": 200,
+      "costs": {
+        "aggregation_seconds": 1.4925704442430288,
+        "checkpoint_bytes_written_cumulative": 8975300802,
+        "checkpoint_seconds": 51.541153571452014,
+        "classification_loss_mean_over_minibatches": 0.4607693456114894,
+        "classification_samples": 2271300,
+        "classification_seconds": 2242.2385437072953,
+        "classification_steps": 233695,
+        "classifier_steps": 233695,
+        "communication_bytes_theoretical": 14287368000,
+        "compute_seconds": 2539.8981745666824,
+        "decoder_steps": 233695,
+        "encoder_steps": 280434,
+        "evaluation_seconds": 9.777048789896071,
+        "optimizer_state_bytes_max_per_participation": 3135512,
+        "total_io_seconds": 73.9995183236897,
+        "total_seconds": 2527.0142545775743,
+        "warmup_loss_mean_over_minibatches": 1504.1916010616255,
+        "warmup_samples": 454260,
+        "warmup_seconds": 242.24832181958482,
+        "warmup_steps": 46739
+      },
+      "ended_utc": "2026-10-03T23:44:47.192854+00:00",
+      "evaluation_rounds": [
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200
+      ],
+      "exit_code": 0,
+      "finite_model_tensors": 1834,
+      "gradient_clipping": {
+        "classification_autoencoder": {
+          "clipped_fraction": 0.6393761098868183,
+          "clipped_steps": 149419,
+          "max_norm_before_clip": 5353.708984375,
+          "mean_norm_before_clip": 9.229562746952716,
+          "steps": 233695
+        },
+        "classification_classifier": {
+          "clipped_fraction": 0.8298679903292754,
+          "clipped_steps": 193936,
+          "max_norm_before_clip": 1993.8887939453125,
+          "mean_norm_before_clip": 19.3331206797276,
+          "steps": 233695
+        },
+        "warmup_autoencoder": {
+          "clipped_fraction": 0.9285393354586106,
+          "clipped_steps": 43399,
+          "max_norm_before_clip": 31610728.0,
+          "mean_norm_before_clip": 6406.315636261763,
+          "steps": 46739
+        }
+      },
+      "initialization": {
+        "autoencoder_initialization_seed": 1000043,
+        "batch_shuffle": "run_seed*10000000 + (round-1)*10000 + client_index",
+        "classifier_initialization_seed": 43,
+        "selection": "Generator PCG64(run_seed)"
+      },
+      "last_session_wall_seconds": 2616.6529869519873,
+      "metrics_reconstructed_from_counts": {
+        "sample_weighted_accuracy_percent": 63.66500192086055,
+        "uniform_client_accuracy_percent": 63.22923273814362
+      },
+      "model_tensor_elements": 11435899,
+      "parameters": {
+        "classifier": 550346,
+        "classifier_state_bytes": 2201384,
+        "client_pipeline_total": 667099,
+        "decoder_state_bytes": 179844,
+        "encoder_state_bytes_per_client": 287168,
+        "logical_private_encoder_bytes_all_clients": 43075200,
+        "private_encoder_per_client": 71792,
+        "shared_decoder": 44961
+      },
+      "participations": {
+        "max": 28,
+        "mean": 20,
+        "min": 9,
+        "total": 3000
+      },
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1541.3359375,
+      "persistent_encoders": 150,
+      "process_wall_seconds": 2619.2148786090547,
+      "results_json_sha256": "7371b77e1514596488d90cc0254048f195b8156b8bb4bed8e0a0886f1bc46a86",
+      "resumed": false,
+      "runtime": {
+        "amp": false,
+        "cublas_workspace_config": ":4096:8",
+        "cuda": "12.4",
+        "cudnn": 90100,
+        "deterministic_algorithms": true,
+        "device": "cuda:1",
+        "gpu": "NVIDIA RTX 6000 Ada Generation",
+        "gpu_total_bytes": 50865307648,
+        "numpy": "2.0.2",
+        "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.39",
+        "precision": "float32",
+        "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:27:36) [GCC 11.2.0]",
+        "tf32": false,
+        "torch": "2.5.1+cu124",
+        "torch_threads": 4
+      },
+      "seed": 43,
+      "sessions": 1,
+      "snapshot_count": 201,
+      "started_utc": "2026-10-03T23:01:07.977972+00:00",
+      "status": "completed",
+      "test_examples_per_evaluation": 2603,
+      "timings_jsonl_sha256": "b66cfba2dbefc344f830d71c12762f0765ebd03e5fb9ea8427b6affecab2ce4b"
+    },
+    {
+      "checkpoint_bytes": 47457950,
+      "checkpoint_sha256": "4df6d12dcde904e7d37b592b32d118c80234f7bbc0c9fdbf291c651fc991f375",
+      "clients_per_evaluation": 150,
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "train_femnist_reconstructed.py",
+        "run",
+        "--config",
+        "configs/femnist_reconstructed.json",
+        "--partition",
+        "_local/femnist_reconstructed/partition",
+        "--output",
+        "_local/femnist_reconstructed/runs/clipped-v1/seed-44",
+        "--seed",
+        "44",
+        "--device",
+        "cuda:1"
+      ],
+      "completed_round": 200,
+      "costs": {
+        "aggregation_seconds": 1.401710102101788,
+        "checkpoint_bytes_written_cumulative": 8966866410,
+        "checkpoint_seconds": 53.419315301347524,
+        "classification_loss_mean_over_minibatches": 0.483640361619198,
+        "classification_samples": 2282830,
+        "classification_seconds": 2218.4656486954773,
+        "classification_steps": 234920,
+        "classifier_steps": 234920,
+        "communication_bytes_theoretical": 14287368000,
+        "compute_seconds": 2514.867892923299,
+        "decoder_steps": 234920,
+        "encoder_steps": 281904,
+        "evaluation_seconds": 7.594784087035805,
+        "optimizer_state_bytes_max_per_participation": 3135512,
+        "total_io_seconds": 76.0974962816108,
+        "total_seconds": 2504.2476019120077,
+        "warmup_loss_mean_over_minibatches": 1002.9340228835717,
+        "warmup_samples": 456566,
+        "warmup_seconds": 238.20917405979708,
+        "warmup_steps": 46984
+      },
+      "ended_utc": "2026-10-04T00:28:03.726332+00:00",
+      "evaluation_rounds": [
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200
+      ],
+      "exit_code": 0,
+      "finite_model_tensors": 1834,
+      "gradient_clipping": {
+        "classification_autoencoder": {
+          "clipped_fraction": 0.6659969351268517,
+          "clipped_steps": 156456,
+          "max_norm_before_clip": 3053.874267578125,
+          "mean_norm_before_clip": 10.139918637257157,
+          "steps": 234920
+        },
+        "classification_classifier": {
+          "clipped_fraction": 0.8063681253192576,
+          "clipped_steps": 189432,
+          "max_norm_before_clip": 1905.723876953125,
+          "mean_norm_before_clip": 18.520135113634606,
+          "steps": 234920
+        },
+        "warmup_autoencoder": {
+          "clipped_fraction": 0.9538779158862591,
+          "clipped_steps": 44817,
+          "max_norm_before_clip": 5868007.0,
+          "mean_norm_before_clip": 8750.968592704288,
+          "steps": 46984
+        }
+      },
+      "initialization": {
+        "autoencoder_initialization_seed": 1000044,
+        "batch_shuffle": "run_seed*10000000 + (round-1)*10000 + client_index",
+        "classifier_initialization_seed": 44,
+        "selection": "Generator PCG64(run_seed)"
+      },
+      "last_session_wall_seconds": 2593.967990932986,
+      "metrics_reconstructed_from_counts": {
+        "sample_weighted_accuracy_percent": 67.8025355359201,
+        "uniform_client_accuracy_percent": 70.15349286439536
+      },
+      "model_tensor_elements": 11435899,
+      "parameters": {
+        "classifier": 550346,
+        "classifier_state_bytes": 2201384,
+        "client_pipeline_total": 667099,
+        "decoder_state_bytes": 179844,
+        "encoder_state_bytes_per_client": 287168,
+        "logical_private_encoder_bytes_all_clients": 43075200,
+        "private_encoder_per_client": 71792,
+        "shared_decoder": 44961
+      },
+      "participations": {
+        "max": 34,
+        "mean": 20,
+        "min": 10,
+        "total": 3000
+      },
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1531.01171875,
+      "persistent_encoders": 150,
+      "process_wall_seconds": 2596.343838342,
+      "results_json_sha256": "0d7f7ae5c671230daca40c058508fdaf4e0c28fb1959d1b457235c92bb570650",
+      "resumed": false,
+      "runtime": {
+        "amp": false,
+        "cublas_workspace_config": ":4096:8",
+        "cuda": "12.4",
+        "cudnn": 90100,
+        "deterministic_algorithms": true,
+        "device": "cuda:1",
+        "gpu": "NVIDIA RTX 6000 Ada Generation",
+        "gpu_total_bytes": 50865307648,
+        "numpy": "2.0.2",
+        "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.39",
+        "precision": "float32",
+        "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:27:36) [GCC 11.2.0]",
+        "tf32": false,
+        "torch": "2.5.1+cu124",
+        "torch_threads": 4
+      },
+      "seed": 44,
+      "sessions": 1,
+      "snapshot_count": 201,
+      "started_utc": "2026-10-03T23:44:47.382489+00:00",
+      "status": "completed",
+      "test_examples_per_evaluation": 2603,
+      "timings_jsonl_sha256": "2f583492a2b7072bd1ddf9deeedaf6edf9da6666591d2570c2cb289c8bc58ef1"
+    },
+    {
+      "checkpoint_bytes": 47457950,
+      "checkpoint_sha256": "3c7d5425d33a1b0f1125b2442de29f6af92672a06ec0eccbc17b2b49056a7a06",
+      "clients_per_evaluation": 150,
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "train_femnist_reconstructed.py",
+        "run",
+        "--config",
+        "configs/femnist_reconstructed.json",
+        "--partition",
+        "_local/femnist_reconstructed/partition",
+        "--output",
+        "_local/femnist_reconstructed/runs/clipped-v1/seed-45",
+        "--seed",
+        "45",
+        "--device",
+        "cuda:1"
+      ],
+      "completed_round": 200,
+      "costs": {
+        "aggregation_seconds": 1.7264484361512586,
+        "checkpoint_bytes_written_cumulative": 9005266258,
+        "checkpoint_seconds": 51.576778104761615,
+        "classification_loss_mean_over_minibatches": 0.7094281069725071,
+        "classification_samples": 2260780,
+        "classification_seconds": 2311.4984635085566,
+        "classification_steps": 232730,
+        "classifier_steps": 232730,
+        "communication_bytes_theoretical": 14287368000,
+        "compute_seconds": 2619.3344780154293,
+        "decoder_steps": 232730,
+        "encoder_steps": 279276,
+        "evaluation_seconds": 8.861900476971641,
+        "optimizer_state_bytes_max_per_participation": 3135512,
+        "total_io_seconds": 75.33850022242405,
+        "total_seconds": 2607.0327938493574,
+        "warmup_loss_mean_over_minibatches": 20.491860127957008,
+        "warmup_samples": 452156,
+        "warmup_seconds": 250.81817971891724,
+        "warmup_steps": 46546
+      },
+      "ended_utc": "2026-10-04T01:13:04.152322+00:00",
+      "evaluation_rounds": [
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200
+      ],
+      "exit_code": 0,
+      "finite_model_tensors": 1834,
+      "gradient_clipping": {
+        "classification_autoencoder": {
+          "clipped_fraction": 0.7116486916168951,
+          "clipped_steps": 165622,
+          "max_norm_before_clip": 1024.75,
+          "mean_norm_before_clip": 7.630811289044456,
+          "steps": 232730
+        },
+        "classification_classifier": {
+          "clipped_fraction": 0.9574485455248571,
+          "clipped_steps": 222827,
+          "max_norm_before_clip": 483.27764892578125,
+          "mean_norm_before_clip": 12.213305675647963,
+          "steps": 232730
+        },
+        "warmup_autoencoder": {
+          "clipped_fraction": 0.46843982297082454,
+          "clipped_steps": 21804,
+          "max_norm_before_clip": 222024.421875,
+          "mean_norm_before_clip": 233.04822559371294,
+          "steps": 46546
+        }
+      },
+      "initialization": {
+        "autoencoder_initialization_seed": 1000045,
+        "batch_shuffle": "run_seed*10000000 + (round-1)*10000 + client_index",
+        "classifier_initialization_seed": 45,
+        "selection": "Generator PCG64(run_seed)"
+      },
+      "last_session_wall_seconds": 2697.9271308790194,
+      "metrics_reconstructed_from_counts": {
+        "sample_weighted_accuracy_percent": 49.942374183634264,
+        "uniform_client_accuracy_percent": 49.358744555946735
+      },
+      "model_tensor_elements": 11435899,
+      "parameters": {
+        "classifier": 550346,
+        "classifier_state_bytes": 2201384,
+        "client_pipeline_total": 667099,
+        "decoder_state_bytes": 179844,
+        "encoder_state_bytes_per_client": 287168,
+        "logical_private_encoder_bytes_all_clients": 43075200,
+        "private_encoder_per_client": 71792,
+        "shared_decoder": 44961
+      },
+      "participations": {
+        "max": 30,
+        "mean": 20,
+        "min": 10,
+        "total": 3000
+      },
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1529.83203125,
+      "persistent_encoders": 150,
+      "process_wall_seconds": 2700.235380501952,
+      "results_json_sha256": "66511004b48ebe7b76c959e1e5db1c777f732e4cd39754770a6c57c02c2657a5",
+      "resumed": false,
+      "runtime": {
+        "amp": false,
+        "cublas_workspace_config": ":4096:8",
+        "cuda": "12.4",
+        "cudnn": 90100,
+        "deterministic_algorithms": true,
+        "device": "cuda:1",
+        "gpu": "NVIDIA RTX 6000 Ada Generation",
+        "gpu_total_bytes": 50865307648,
+        "numpy": "2.0.2",
+        "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.39",
+        "precision": "float32",
+        "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:27:36) [GCC 11.2.0]",
+        "tf32": false,
+        "torch": "2.5.1+cu124",
+        "torch_threads": 4
+      },
+      "seed": 45,
+      "sessions": 1,
+      "snapshot_count": 201,
+      "started_utc": "2026-10-04T00:28:03.916937+00:00",
+      "status": "completed",
+      "test_examples_per_evaluation": 2603,
+      "timings_jsonl_sha256": "27785492e926442990ecf1034416f6197c4434cb0c6dff4c58199c41ee2207f8"
+    }
+  ],
+  "schema": 1,
+  "source_archive_sha256": "b387d65249b2d0ed429cf81967d4c40a9d01ca2f7bb3931c6a36d825bc22d411",
+  "status": "passed",
+  "sum_last_session_wall_seconds": 12918.407159607974,
+  "sum_process_wall_seconds": 12930.021388303023,
+  "summary_independent": {
+    "sample_weighted_accuracy_percent": {
+      "mean": 64.73684210526315,
+      "std": 10.631866815734886,
+      "values": [
+        79.527468305801,
+        62.74683058009988,
+        63.66500192086055,
+        67.8025355359201,
+        49.942374183634264
+      ]
+    },
+    "uniform_client_accuracy_percent": {
+      "mean": 65.24045602163939,
+      "std": 11.47403401788911,
+      "values": [
+        80.72938387665705,
+        62.731426073054195,
+        63.22923273814362,
+        70.15349286439536,
+        49.358744555946735
+      ]
+    }
+  },
+  "timing_notes": "One session per seed, no resumes. Outer timers include process startup/exit and polling. Phase/aggregation/evaluation timers are nested inside compute_seconds; checkpoint_seconds is nested inside total_io_seconds. Do not sum nested timers. CUDA peaks are Torch allocator values, not full driver/context NVML peaks.",
+  "tracked_files_sha256": {
+    ".github/workflows/tests.yml": "10f8f800cfed52bc582fe08463be36d91d3dad7b575ba2d75967ae91ce745224",
+    ".gitignore": "5c3659f16f521a75b4f6052f21856a1984551ccb570570a01aa30b22099a0251",
+    "README.md": "44d712535fa15754cb566775c38ecafaa21ffee5499b5b6c6279ecb078690387",
+    "REPRODUCIBILITY.md": "b872a40b6e41c8dd21e9884e82244ef031ee288a0a58a521bbf97d75d54bba59",
+    "accuracy_FSF.jpg": "015a8a41cff2ffecae0e2357182b9e2e51a1c6d39f5089510ae71ad475905ebd",
+    "configs/femnist_reconstructed.json": "b99cd6699b5d297d296c1080f106c34f4ce62c6096025dc6814bc125bd5e8921",
+    "docs/femnist_fedrep_protocol.md": "21c1bfb1eeeac099c99b7d1233d14045ed0ae06ca2c2f5bab0cf9a45feb1b7d4",
+    "docs/femnist_fedrep_reference.csv": "088de22df17d3e3e1b3f878bb347ff9dc91bc3239525fd949a1f315001bd29cc",
+    "docs/femnist_reconstructed_benchmark.md": "40388a40f6cc6984ddf7746ed20fbb349d37f9c9ead3e2a983936e9905fc2d52",
+    "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+    "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+    "gamma_FSF.jpg": "37f44eba95b71e8ed658763c50bae104183cf71ce7de4cb9190228b759c6495d",
+    "paper/README.md": "92f1894785b4a29bb76a17faf0ed92d7871fba00b0d9b08018cb918afe9f44e7",
+    "paper/accuracy_FSF.jpg": "015a8a41cff2ffecae0e2357182b9e2e51a1c6d39f5089510ae71ad475905ebd",
+    "paper/aistats2027.sty": "33ab38f8aac4b2f1df9fe67e354928598200584e9568385f32deb889e1b81d42",
+    "paper/aistats_2027.tex": "64a2d707d624f593b7eb29c089b0e3185b372ed52bed0d6768a8b1ed1a032377",
+    "paper/fancyhdr.sty": "b56ec4434b9f4607529a4b23dc68ad8d4b94f1f631c8cddaf7da78140d53a5ea",
+    "paper/gamma_FSF.jpg": "37f44eba95b71e8ed658763c50bae104183cf71ce7de4cb9190228b759c6495d",
+    "paper/references.bib": "c7f9fa43a02d4e52fca5800c01808248d372d32ccaf6f3988c5b12903f1a2d7f",
+    "requirements.txt": "35e1e755195966c4f3ae14c3b64f4ae8d5e36a238b5162905767c34f96854f91",
+    "tests/test_core.py": "47e6db9d4865c6105d89f6b9b206a5b494e37492dbf8820a6a702ac535d8bb26",
+    "tests/test_femnist_reconstructed.py": "ce50b391056763ed5ed7b3b816c536581a78d2febd5bc01aafa698f984a6f5cd",
+    "train_femnist.py": "a24af07e89a0b1dff307cd327d18ab02677725bd4c01d8ee1e9279cc12fe56ee",
+    "train_femnist_reconstructed.py": "a32fe126fd2d7ca463366202dd0352323e77510dd13f1a341868d083941a7f66",
+    "train_medmnist.py": "1a9194feb180f2cd690ae09b48f77cff29e454f6e2b86e346a9492aba1ecb004"
+  },
+  "uncertainty": "sample standard deviation of five run means, ddof=1",
+  "verified_utc": "2026-10-04T01:22:27.389377+00:00",
+  "verifier_sha256": "6170226bad0b6e951cde7b00a2114c745561efb2508822357cc1f2043165483d"
+}
