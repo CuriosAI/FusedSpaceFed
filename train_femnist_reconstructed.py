@@ -236,6 +236,8 @@ def git_metadata() -> dict:
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=REPO, text=True).strip()
     clean = not subprocess.check_output(["git", "status", "--porcelain"], cwd=REPO, text=True).strip()
     files = ["fusedspacefed_core.py", "femnist_reconstructed_data.py", "train_femnist_reconstructed.py"]
+    files.extend(name for name in ("femnist_calibration_data.py", "calibrate_femnist_reconstructed.py")
+                 if (REPO / name).is_file())
     return {"commit": commit, "working_tree_clean": clean,
             "code_sha256": {name: file_hash(REPO / name) for name in files}}
 
@@ -258,8 +260,10 @@ class BenchmarkRunner:
     """One run; exclusive directory ownership, resumable only at round boundaries."""
     def __init__(self, config: dict, partition: FrozenPartition, output: Path, seed: int,
                  device: str, mode: str = "definitive", rounds: int | None = None, resume: bool = False):
-        if mode not in ("definitive", "smoke"):
+        if mode not in ("definitive", "smoke", "calibration"):
             raise ValueError("Unknown run mode")
+        if mode == "calibration" and getattr(partition, "access_policy", None) != "training_arrays_only":
+            raise ValueError("Calibration requires a training-only validation partition")
         self.config, self.partition, self.output = config, partition, Path(output)
         self.seed, self.device, self.mode = seed, torch.device(device), mode
         self.rounds = config["training"]["rounds"] if rounds is None else rounds
@@ -280,6 +284,10 @@ class BenchmarkRunner:
                         "partition_sha256": partition.sha256, "seed": seed, "mode": mode,
                         "rounds": self.rounds, "device": str(self.device),
                         "code_sha256": current_git["code_sha256"]}
+            if mode == "calibration":
+                identity.update(data_view_sha256=partition.view_sha256,
+                                data_access_policy=partition.access_policy,
+                                evaluation_split="validation")
             if partition.manifest["recipe"] != config["data"]:
                 raise ValueError("Partition recipe and run configuration differ")
             if resume:
@@ -325,6 +333,11 @@ class BenchmarkRunner:
                                   "classifier_state_bytes": tensor_bytes(classifier.state_dict()),
                                   "encoder_state_bytes_per_client": tensor_bytes(encoder),
                                   "decoder_state_bytes": tensor_bytes(decoder)}}
+                if mode == "calibration":
+                    view = partition.validation_manifest
+                    self.state["validation_definition"] = {
+                        key: view[key] for key in ("view_sha256", "parent_partition_sha256",
+                                                  "source_train_files", "split", "statistics")}
                 self.state["parameters"]["client_pipeline_total"] = (
                     self.state["parameters"]["classifier"] + self.state["parameters"]["private_encoder_per_client"]
                     + self.state["parameters"]["shared_decoder"])
@@ -363,6 +376,7 @@ class BenchmarkRunner:
     def evaluate(self) -> dict:
         if self.mode == "smoke":
             raise RuntimeError("Smoke mode must never evaluate the definitive test")
+        split = "validation" if self.mode == "calibration" else "test"
         devices = [self.device.index] if self.device.type == "cuda" else []
         # Constructor and DataLoader RNG consumption must not alter training.
         with torch.random.fork_rng(devices=devices):
@@ -373,18 +387,24 @@ class BenchmarkRunner:
             counts = {}
             for client_id in sorted(self.partition.clients):
                 autoencoder.load_encoder_state(self.state["encoders"].get(client_id, self.state["initial_encoder"]))
-                loader = DataLoader(self.partition.dataset(client_id, "test"),
+                loader = DataLoader(self.partition.dataset(client_id, split),
                                     batch_size=self.config["training"]["batch_size"], shuffle=False, num_workers=0)
                 correct, total = 0, 0
                 for inputs, targets in loader:
                     inputs, targets = inputs.to(self.device), targets.to(self.device)
                     reconstruction, _ = autoencoder(inputs)
-                    prediction = classifier(inputs + reconstruction).argmax(dim=1)
+                    logits = classifier(inputs + reconstruction)
+                    if not bool(torch.isfinite(reconstruction).all()) or not bool(torch.isfinite(logits).all()):
+                        raise RuntimeError(f"Non-finite {split} output; client={client_id}")
+                    prediction = logits.argmax(dim=1)
                     correct += int((prediction == targets).sum().item())
                     total += len(targets)
                 counts[client_id] = {"correct": correct, "total": total,
                                      "participations": self.state["participations"][client_id]}
-        return accuracy_metrics(counts)
+        return {"split": split, **accuracy_metrics(counts)}
+
+    def should_evaluate(self, round_number: int) -> bool:
+        return self.mode == "definitive" and evaluation_round(round_number, self.config)
 
     @torch.no_grad()
     def profile_training_inference(self) -> dict:
@@ -434,8 +454,10 @@ class BenchmarkRunner:
         result = {key: self.state[key] for key in ("schema", "identity", "git", "runtime", "config",
                                                   "resume_commits", "completed_round", "history",
                                                   "participations", "parameters", "rng_description")}
+        if "validation_definition" in self.state:
+            result["validation_definition"] = self.state["validation_definition"]
         result["status"] = "completed" if self.state["completed_round"] == self.rounds else "paused"
-        result["summary"] = final_statistics(self.state["history"], self.config) if self.mode == "definitive" else None
+        result["summary"] = final_statistics(self.state["history"], self.config) if self.mode in ("definitive", "calibration") else None
         result["checkpoint_bytes"] = (self.output / "checkpoint.pt").stat().st_size
         result["checkpoint_sha256"] = file_hash(self.output / "checkpoint.pt")
         result["last_checkpoint_seconds"] = checkpoint_seconds
@@ -482,7 +504,7 @@ class BenchmarkRunner:
             self.state["global_classifier"], self.state["global_decoder"] = classifier, decoder
             aggregation_seconds = time.perf_counter() - aggregation_start
             evaluation_start = time.perf_counter()
-            evaluation = self.evaluate() if self.mode == "definitive" and evaluation_round(round_number, self.config) else None
+            evaluation = self.evaluate() if self.should_evaluate(round_number) else None
             synchronize(self.device)
             record = {"round": round_number, "active_clients": active, "clients": local_records,
                       "aggregation_seconds": aggregation_seconds,
@@ -503,7 +525,10 @@ class BenchmarkRunner:
 
 def validate_definitive_config(config: dict, partition: FrozenPartition, seed: int) -> None:
     reference = json.loads((REPO / "configs/femnist_reconstructed.json").read_text())
-    if config != reference or seed not in config["run_seeds"]:
+    if config != reference:
+        from calibrate_femnist_reconstructed import validate_selected_config
+        validate_selected_config(config)
+    if seed not in config["run_seeds"]:
         raise ValueError("Use the explicit approved configuration and one of seeds 41--45")
     if partition.manifest["recipe"] != reference["data"]:
         raise ValueError("Definitive run requires the approved frozen partition")
@@ -569,6 +594,9 @@ def main() -> None:
     if args.command == "summarize":
         print(json.dumps(summarize_runs(config, args.runs, args.output), indent=2))
         return
+    if args.command == "run" and args.config.resolve() == (REPO / "configs/femnist_reconstructed_calibrated.json").resolve():
+        from calibrate_femnist_reconstructed import validate_selected_config
+        validate_selected_config(config)
     partition = FrozenPartition(args.partition)
     validate_definitive_config(config, partition, args.seed)
     mode = "definitive" if args.command == "run" else "smoke"

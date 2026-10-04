@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "campaign": "femnist_calibration_v1",
+  "reference_config": "configs/femnist_reconstructed.json",
+  "reference_config_sha256": "d8684b56bb5d6066dbb2d1351aebd52d68344e787f668a16e5f907b8aed8b1d0",
+  "partition_sha256": "7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734",
+  "validation": {"seed": 20261004, "numerator": 1, "denominator": 5},
+  "tuning_seeds": [141, 142],
+  "screening": {"rounds": 80, "first_round": 71, "last_round": 80, "promote_alternatives": 2},
+  "confirmation": {"rounds": 200, "first_round": 191, "last_round": 200},
+  "selection": {
+    "primary": "sample_weighted_accuracy_percent",
+    "rule": "mean of the two tuning-seed means over validation rounds 191--200",
+    "tie_break": "candidate identifier ascending",
+    "reference_always_confirmed": true
+  },
+  "budget": {"max_candidates": 6, "max_calibration_rounds": 1440, "new_definitive_rounds": 1000},
+  "candidates": [
+    {"id": "00-reference", "overrides": {}},
+    {"id": "01-ae-3e-4", "overrides": {"autoencoder_lr": 0.0003}},
+    {"id": "02-ae-1e-4", "overrides": {"autoencoder_lr": 0.0001}},
+    {"id": "03-classifier-2e-2", "overrides": {"autoencoder_lr": 0.0003, "classifier_lr": 0.02}},
+    {"id": "04-classifier-5e-3", "overrides": {"autoencoder_lr": 0.0003, "classifier_lr": 0.005}},
+    {"id": "05-clip-2", "overrides": {"autoencoder_lr": 0.0003, "gradient_clip_norm": 2.0}}
+  ]
+}
