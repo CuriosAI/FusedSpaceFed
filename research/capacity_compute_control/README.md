@@ -44,6 +44,17 @@ select_hyperparameters.py followed by freeze_final_configs.py in a fresh copy
 without existing selection/final registry. Both refuse overwrite. The archive
 will provide all numerical calibration results without checkpoints/images.
 
+Completed numeric delivery: CAPACITY_COMPUTE_REPORT.md, artifacts/summary.json,
+all eighteen calibration results and six definitive results compressed losslessly,
+and their timing JSONL. artifact_manifest.json hashes every public payload file.
+The independent audit requires only the Python standard library and reads no
+images or checkpoints; run from the repository root (the parent Digits partition
+manifest is kept in its existing directory):
+
+```bash
+python3 research/capacity_compute_control/audit_results.py verify
+```
+
 ```bash
 env CUDA_VISIBLE_DEVICES= OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 /home/schroeder/miniconda3/envs/general_ml/bin/python -B -m pytest tests research/feature_shift_digits/tests research/capacity_compute_control/tests -q
 ```

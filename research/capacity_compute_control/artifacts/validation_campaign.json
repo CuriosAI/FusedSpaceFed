@@ -1,0 +1,157 @@
+{
+  "code_commit": "5ed5ab48e70063a0d5baf03e5f7c5f56bc6f4ebe",
+  "ended_utc": "2026-10-05T18:19:56.313339+00:00",
+  "external_actions": "none",
+  "max_per_gpu": 1,
+  "max_processes": 2,
+  "process_wall_seconds_sum": 2816.3081196569838,
+  "runs": [
+    {
+      "device": "cuda:1",
+      "ended_utc": "2026-10-05T17:59:07.475642+00:00",
+      "exit_code": 0,
+      "name": "FusedSpaceFed-candidate-00",
+      "process_wall_seconds": 162.1065917420201,
+      "started_utc": "2026-10-05T17:56:25.369678+00:00"
+    },
+    {
+      "device": "cuda:0",
+      "ended_utc": "2026-10-05T17:58:56.440114+00:00",
+      "exit_code": 0,
+      "name": "FedAvg-candidate-00",
+      "process_wall_seconds": 151.0386117969174,
+      "started_utc": "2026-10-05T17:56:25.402115+00:00"
+    },
+    {
+      "device": "cuda:0",
+      "ended_utc": "2026-10-05T18:01:38.550126+00:00",
+      "exit_code": 0,
+      "name": "FusedSpaceFed-candidate-01",
+      "process_wall_seconds": 162.07884841994382,
+      "started_utc": "2026-10-05T17:58:56.471925+00:00"
+    },
+    {
+      "device": "cuda:1",
+      "ended_utc": "2026-10-05T18:01:38.550847+00:00",
+      "exit_code": 0,
+      "name": "FedAvg-candidate-01",
+      "process_wall_seconds": 151.04366981913336,
+      "started_utc": "2026-10-05T17:59:07.507766+00:00"
+    },
+    {
+      "device": "cuda:1",
+      "ended_utc": "2026-10-05T18:04:22.688999+00:00",
+      "exit_code": 0,
+      "name": "FusedSpaceFed-candidate-02",
+      "process_wall_seconds": 164.1081567457877,
+      "started_utc": "2026-10-05T18:01:38.581484+00:00"
+    },
+    {
+      "device": "cuda:0",
+      "ended_utc": "2026-10-05T18:04:09.652371+00:00",
+      "exit_code": 0,
+      "name": "FedAvg-candidate-02",
+      "process_wall_seconds": 151.04120629513636,
+      "started_utc": "2026-10-05T18:01:38.611768+00:00"
+    },
+    {
+      "device": "cuda:0",
+      "ended_utc": "2026-10-05T18:06:50.762798+00:00",
+      "exit_code": 0,
+      "name": "FusedSpaceFed-candidate-03",
+      "process_wall_seconds": 161.07820907304995,
+      "started_utc": "2026-10-05T18:04:09.685226+00:00"
+    },
+    {
+      "device": "cuda:1",
+      "ended_utc": "2026-10-05T18:06:55.798347+00:00",
+      "exit_code": 0,
+      "name": "FedAvg-candidate-03",
+      "process_wall_seconds": 153.0774529511109,
+      "started_utc": "2026-10-05T18:04:22.721501+00:00"
+    },
+    {
+      "device": "cuda:0",
+      "ended_utc": "2026-10-05T18:09:33.915422+00:00",
+      "exit_code": 0,
+      "name": "FusedSpaceFed-candidate-04",
+      "process_wall_seconds": 163.12020157882944,
+      "started_utc": "2026-10-05T18:06:50.795864+00:00"
+    },
+    {
+      "device": "cuda:1",
+      "ended_utc": "2026-10-05T18:09:22.875610+00:00",
+      "exit_code": 0,
+      "name": "FedAvg-candidate-04",
+      "process_wall_seconds": 147.0445083209779,
+      "started_utc": "2026-10-05T18:06:55.831740+00:00"
+    },
+    {
+      "device": "cuda:1",
+      "ended_utc": "2026-10-05T18:12:06.015384+00:00",
+      "exit_code": 0,
+      "name": "FusedSpaceFed-candidate-05",
+      "process_wall_seconds": 163.10712451278232,
+      "started_utc": "2026-10-05T18:09:22.908866+00:00"
+    },
+    {
+      "device": "cuda:0",
+      "ended_utc": "2026-10-05T18:12:00.983036+00:00",
+      "exit_code": 0,
+      "name": "FedAvg-candidate-05",
+      "process_wall_seconds": 147.03433581907302,
+      "started_utc": "2026-10-05T18:09:33.949285+00:00"
+    },
+    {
+      "device": "cuda:0",
+      "ended_utc": "2026-10-05T18:14:43.113117+00:00",
+      "exit_code": 0,
+      "name": "FusedSpaceFed-candidate-06",
+      "process_wall_seconds": 162.0999601020012,
+      "started_utc": "2026-10-05T18:12:01.013822+00:00"
+    },
+    {
+      "device": "cuda:1",
+      "ended_utc": "2026-10-05T18:14:37.078346+00:00",
+      "exit_code": 0,
+      "name": "FedAvg-candidate-06",
+      "process_wall_seconds": 151.03024859097786,
+      "started_utc": "2026-10-05T18:12:06.048732+00:00"
+    },
+    {
+      "device": "cuda:1",
+      "ended_utc": "2026-10-05T18:17:19.225240+00:00",
+      "exit_code": 0,
+      "name": "FusedSpaceFed-candidate-07",
+      "process_wall_seconds": 162.11534457514063,
+      "started_utc": "2026-10-05T18:14:37.110597+00:00"
+    },
+    {
+      "device": "cuda:0",
+      "ended_utc": "2026-10-05T18:17:10.183951+00:00",
+      "exit_code": 0,
+      "name": "FedAvg-candidate-07",
+      "process_wall_seconds": 147.0388010609895,
+      "started_utc": "2026-10-05T18:14:43.145775+00:00"
+    },
+    {
+      "device": "cuda:0",
+      "ended_utc": "2026-10-05T18:19:52.310154+00:00",
+      "exit_code": 0,
+      "name": "FusedSpaceFed-candidate-08",
+      "process_wall_seconds": 162.09092100709677,
+      "started_utc": "2026-10-05T18:17:10.219838+00:00"
+    },
+    {
+      "device": "cuda:1",
+      "ended_utc": "2026-10-05T18:19:55.311907+00:00",
+      "exit_code": 0,
+      "name": "FedAvg-candidate-08",
+      "process_wall_seconds": 156.05392724601552,
+      "started_utc": "2026-10-05T18:17:19.258638+00:00"
+    }
+  ],
+  "started_utc": "2026-10-05T17:56:25.339260+00:00",
+  "status": "completed",
+  "wall_seconds": 1410.9771139619406
+}

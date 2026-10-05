@@ -1,0 +1,61 @@
+{
+  "code_commit": "325d614da052330312faa908e540dfc3a3713350",
+  "ended_utc": "2026-10-05T19:08:31.278614+00:00",
+  "external_actions": "none",
+  "max_per_gpu": 1,
+  "max_processes": 2,
+  "process_wall_seconds_sum": 5326.299043641891,
+  "runs": [
+    {
+      "device": "cuda:1",
+      "ended_utc": "2026-10-05T18:39:10.784115+00:00",
+      "exit_code": 0,
+      "name": "FusedSpaceFed-seed-42",
+      "process_wall_seconds": 929.2405802460853,
+      "started_utc": "2026-10-05T18:23:41.544170+00:00"
+    },
+    {
+      "device": "cuda:0",
+      "ended_utc": "2026-10-05T18:37:38.732176+00:00",
+      "exit_code": 0,
+      "name": "FedAvg-seed-42",
+      "process_wall_seconds": 837.1565555310808,
+      "started_utc": "2026-10-05T18:23:41.576249+00:00"
+    },
+    {
+      "device": "cuda:0",
+      "ended_utc": "2026-10-05T18:53:28.057045+00:00",
+      "exit_code": 0,
+      "name": "FusedSpaceFed-seed-43",
+      "process_wall_seconds": 949.29290984408,
+      "started_utc": "2026-10-05T18:37:38.764866+00:00"
+    },
+    {
+      "device": "cuda:1",
+      "ended_utc": "2026-10-05T18:53:10.021206+00:00",
+      "exit_code": 0,
+      "name": "FedAvg-seed-43",
+      "process_wall_seconds": 839.2061011318583,
+      "started_utc": "2026-10-05T18:39:10.815739+00:00"
+    },
+    {
+      "device": "cuda:1",
+      "ended_utc": "2026-10-05T19:08:30.277491+00:00",
+      "exit_code": 0,
+      "name": "FusedSpaceFed-seed-44",
+      "process_wall_seconds": 920.2240705129225,
+      "started_utc": "2026-10-05T18:53:10.054086+00:00"
+    },
+    {
+      "device": "cuda:0",
+      "ended_utc": "2026-10-05T19:07:39.268352+00:00",
+      "exit_code": 0,
+      "name": "FedAvg-seed-44",
+      "process_wall_seconds": 851.1788263758644,
+      "started_utc": "2026-10-05T18:53:28.090114+00:00"
+    }
+  ],
+  "started_utc": "2026-10-05T18:23:41.510680+00:00",
+  "status": "completed",
+  "wall_seconds": 2689.7709039030597
+}
