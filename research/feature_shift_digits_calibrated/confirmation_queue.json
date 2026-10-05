@@ -1,0 +1,46 @@
+{
+  "jobs": [
+    {
+      "config": "research/feature_shift_digits_calibrated/configs/confirmation/pilot-reference-seed-142.json",
+      "name": "pilot-reference-seed-142",
+      "output": "_local/feature_shift_digits_calibrated/confirmation/pilot-reference-seed-142"
+    },
+    {
+      "config": "research/feature_shift_digits_calibrated/configs/confirmation/pilot-reference-seed-143.json",
+      "name": "pilot-reference-seed-143",
+      "output": "_local/feature_shift_digits_calibrated/confirmation/pilot-reference-seed-143"
+    },
+    {
+      "config": "research/feature_shift_digits_calibrated/configs/confirmation/previous-selected-reference-seed-142.json",
+      "name": "previous-selected-reference-seed-142",
+      "output": "_local/feature_shift_digits_calibrated/confirmation/previous-selected-reference-seed-142"
+    },
+    {
+      "config": "research/feature_shift_digits_calibrated/configs/confirmation/previous-selected-reference-seed-143.json",
+      "name": "previous-selected-reference-seed-143",
+      "output": "_local/feature_shift_digits_calibrated/confirmation/previous-selected-reference-seed-143"
+    },
+    {
+      "config": "research/feature_shift_digits_calibrated/configs/confirmation/expanded-1-2-seed-142.json",
+      "name": "expanded-1-2-seed-142",
+      "output": "_local/feature_shift_digits_calibrated/confirmation/expanded-1-2-seed-142"
+    },
+    {
+      "config": "research/feature_shift_digits_calibrated/configs/confirmation/expanded-1-2-seed-143.json",
+      "name": "expanded-1-2-seed-143",
+      "output": "_local/feature_shift_digits_calibrated/confirmation/expanded-1-2-seed-143"
+    },
+    {
+      "config": "research/feature_shift_digits_calibrated/configs/confirmation/expanded-2-1-seed-142.json",
+      "name": "expanded-2-1-seed-142",
+      "output": "_local/feature_shift_digits_calibrated/confirmation/expanded-2-1-seed-142"
+    },
+    {
+      "config": "research/feature_shift_digits_calibrated/configs/confirmation/expanded-2-1-seed-143.json",
+      "name": "expanded-2-1-seed-143",
+      "output": "_local/feature_shift_digits_calibrated/confirmation/expanded-2-1-seed-143"
+    }
+  ],
+  "phase": "confirmation",
+  "plan_sha256": "ba564b57b239052ec1676827ac1c4ee43952449414eef63a5c19e26948319afc"
+}

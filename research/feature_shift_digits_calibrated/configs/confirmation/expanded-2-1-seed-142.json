@@ -1,0 +1,42 @@
+{
+  "candidate_id": "expanded-2-1",
+  "method": "FusedSpaceFed",
+  "parent_partition_sha256": "7a762ffb10da74e3f0dee9a6f519e6c4057e2a5b47995a0546ee5a871eb47b58",
+  "phase": "confirmation",
+  "plan_file": "research/feature_shift_digits_calibrated/search_plan.json",
+  "plan_sha256": "ba564b57b239052ec1676827ac1c4ee43952449414eef63a5c19e26948319afc",
+  "profile_file": "research/capacity_compute_control/flop_profile.json",
+  "profile_sha256": "164f242a968689c6c1a819fd353317c0a858b8c316a80b8244da0ed8c53f6a12",
+  "seed": 142,
+  "shortlist_file": "research/feature_shift_digits_calibrated/shortlist.json",
+  "shortlist_sha256": "72ef3597d0945693d4176d5a32456e78a30196c8285046e10339def00aa8cb62",
+  "training": {
+    "aggregation": "uniform",
+    "amp": false,
+    "autoencoder_betas": [
+      0.9,
+      0.999
+    ],
+    "autoencoder_eps": 1e-08,
+    "autoencoder_lr": 0.0003,
+    "autoencoder_weight_decay": 0.0,
+    "batch_size": 32,
+    "classification_epochs": 1,
+    "classifier_lr": 0.1,
+    "classifier_momentum": 0.0,
+    "classifier_weight_decay": 0.0,
+    "clients_per_round": 5,
+    "drop_last": false,
+    "dz": 64,
+    "gradient_clip_norm": 10.0,
+    "num_workers": 0,
+    "optimizer_reset": "each_participation; Adam continuous between phases",
+    "precision": "float32",
+    "rounds": 300,
+    "tf32": false,
+    "torch_threads": 4,
+    "warmup_epochs": 1
+  },
+  "validation_file": "research/capacity_compute_control/validation_split.json",
+  "validation_sha256": "3dfc26c3fda17f266fb2ffa9899f23b4a5b50cd006742bb84d5b215e412a6943"
+}

@@ -1,0 +1,95 @@
+{
+  "candidate_ids": [
+    "expanded-1-2",
+    "expanded-2-1",
+    "pilot-reference",
+    "previous-selected-reference"
+  ],
+  "no_test_scores_used": true,
+  "plan_sha256": "ba564b57b239052ec1676827ac1c4ee43952449414eef63a5c19e26948319afc",
+  "rule": "top two screening candidates plus both references (deduplicated), fresh starts; greatest mean of two final validation accuracies",
+  "scores": [
+    {
+      "candidate_id": "pilot-reference",
+      "configuration_sha256": "acc0ae9b98f830a978e8be61a1f2518a4af2670f19cd119b004e37dc9025ddc2",
+      "directory": "_local/feature_shift_digits_calibrated/screening/pilot-reference-seed-142",
+      "result_sha256": "d0be8a3f76fa782f4bd26d506bbc424ca684729ea05fef686c3fd63d4f059987",
+      "seed": 142,
+      "uniform_validation_accuracy_percent": 77.04697986577182
+    },
+    {
+      "candidate_id": "expanded-0-0",
+      "configuration_sha256": "d8807e5cc0acb668ec62e47b712e2722c67e0079d5fd85a0e773ddadaf1e4b56",
+      "directory": "_local/feature_shift_digits_calibrated/screening/expanded-0-0-seed-142",
+      "result_sha256": "41ba8553c63b16f10a0415a4e0b8a9431b367cc7a7e5a83606c536ad00cc5a0c",
+      "seed": 142,
+      "uniform_validation_accuracy_percent": 80.67114093959731
+    },
+    {
+      "candidate_id": "previous-selected-reference",
+      "configuration_sha256": "a32de5a26031d52625c1e4d364138ffc452881a7086b010ba8faf4d24ed38ab3",
+      "directory": "_local/feature_shift_digits_calibrated/screening/previous-selected-reference-seed-142",
+      "result_sha256": "4ce1b5b07d7f09e34f0ded0a7ed72bac772806ba75b5167318e62b2c4527db10",
+      "seed": 142,
+      "uniform_validation_accuracy_percent": 79.06040268456375
+    },
+    {
+      "candidate_id": "expanded-0-2",
+      "configuration_sha256": "7cf782293031dd7202f99ac9a80e5ed5e27261c77b9acee29efa0ce0c72464df",
+      "directory": "_local/feature_shift_digits_calibrated/screening/expanded-0-2-seed-142",
+      "result_sha256": "c89c6c8ea44b9837ba24a467792370df3be9c9d8e1aaf4c94b4d9ac53e297884",
+      "seed": 142,
+      "uniform_validation_accuracy_percent": 81.61073825503355
+    },
+    {
+      "candidate_id": "expanded-1-0",
+      "configuration_sha256": "ff2d29d393f42372dfe25c0cf21ceddf9414d83d75dce6f58bfa1f757240fd1b",
+      "directory": "_local/feature_shift_digits_calibrated/screening/expanded-1-0-seed-142",
+      "result_sha256": "9ea2754ec3b7bf388d86ea610b9a1dd047f975627025c9d6bc92b98922d83b5e",
+      "seed": 142,
+      "uniform_validation_accuracy_percent": 81.20805369127517
+    },
+    {
+      "candidate_id": "expanded-1-1",
+      "configuration_sha256": "c750c1dd8791a4a9af1957ada8c749d8f1f9faf0f5fde0335731dcbfccd70023",
+      "directory": "_local/feature_shift_digits_calibrated/screening/expanded-1-1-seed-142",
+      "result_sha256": "2331b915c94cc14bbb6c52affd51ce4596b142c5945097a6d928520fd93fe015",
+      "seed": 142,
+      "uniform_validation_accuracy_percent": 81.74496644295301
+    },
+    {
+      "candidate_id": "expanded-1-2",
+      "configuration_sha256": "09fe760245a4f942025a45e30eb60d166b4d197c9ed40a4fe8bfcc438d6b2975",
+      "directory": "_local/feature_shift_digits_calibrated/screening/expanded-1-2-seed-142",
+      "result_sha256": "cf66210b553a7b2b42f30c4c5737457ac4a18854d0c302b43ec742197674b20b",
+      "seed": 142,
+      "uniform_validation_accuracy_percent": 84.29530201342281
+    },
+    {
+      "candidate_id": "expanded-2-0",
+      "configuration_sha256": "8a8c59f639146a939a022521e76101bae48afb0279a8a20e82762f37bc22f4f1",
+      "directory": "_local/feature_shift_digits_calibrated/screening/expanded-2-0-seed-142",
+      "result_sha256": "012f5bba1654ae0f55d42a4af2cb49ea295e4bf61478e86cc5643f95efe9e520",
+      "seed": 142,
+      "uniform_validation_accuracy_percent": 83.75838926174497
+    },
+    {
+      "candidate_id": "expanded-2-1",
+      "configuration_sha256": "68607f32c654a56f6047bdfc9e303515aead4df7ed42d0d40f5141190c51845e",
+      "directory": "_local/feature_shift_digits_calibrated/screening/expanded-2-1-seed-142",
+      "result_sha256": "0bc3e85510d995d14ac6630fa6960b61f4c50401c1982f5d08a5416f21602f75",
+      "seed": 142,
+      "uniform_validation_accuracy_percent": 84.96644295302013
+    },
+    {
+      "candidate_id": "expanded-2-2",
+      "configuration_sha256": "354fec398880e61defd46313dbbf46cdfb90ff2723bb584637b9f7b88136a764",
+      "directory": "_local/feature_shift_digits_calibrated/screening/expanded-2-2-seed-142",
+      "result_sha256": "d8e08c3f71ab563851369a0cc0a38683cbd1e7c5cd063b31fd75adc4dd539b8f",
+      "seed": 142,
+      "uniform_validation_accuracy_percent": 83.48993288590604
+    }
+  ],
+  "screening_campaign_sha256": "c16dc8186164dd5cfbac0798330c297090727ac3b763f249b36ba89f583d609c",
+  "shortlist_sha256": "72ef3597d0945693d4176d5a32456e78a30196c8285046e10339def00aa8cb62"
+}
