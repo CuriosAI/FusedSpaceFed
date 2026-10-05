@@ -1,6 +1,11 @@
 # FusedSpaceFed Digits, calibrazione dedicata
 
 Il piano e i criteri sono in [PROTOCOL.md](PROTOCOL.md) e `search_plan.json`.
+La campagna è conclusa: [report](CALIBRATED_DIGITS_REPORT.md),
+[sintesi numerica](artifacts/summary.json) e
+[cinque seed](artifacts/final_accuracy.csv). La media uniforme è
+85,8624% ± 0,8469 (SD campionaria), con miglioramento di4,5954 punti sul pilota;
+le medie restano sotto quelle delle baseline pubblicate in tutti i domini.
 Tutti i nuovi tentativi e checkpoint sono conservati separatamente in
 `_local/feature_shift_digits_calibrated/`; il pilota e il controllo precedente
 restano immutati. Questa directory raccoglie codice, configurazioni, verifiche
