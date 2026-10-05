@@ -29,6 +29,28 @@ e tempi reali. Non crea le directory delle run prima del runner, non sovrascrive
 artefatti e non interrompe processi esterni. La ripresa è esplicita, direttamente
 con `runner.py --resume` e gli stessi argomenti/configurazione/device/commit.
 
+Successiva modifica autorizzata dall'utente: le sei conferme rimaste usano
+3+3 slot e le cinque finali3+2. Il piano scientifico non cambia.
+`parallel_controller.py` adotta i worker del vecchio coordinatore sospeso:
+
+```bash
+/home/schroeder/miniconda3/envs/general_ml/bin/python research/feature_shift_digits_calibrated/parallel_controller.py \
+  --queue research/feature_shift_digits_calibrated/confirmation_queue.json \
+  --receipt _local/feature_shift_digits_calibrated/confirmation_campaign.json \
+  --logs _local/feature_shift_digits_calibrated/logs/confirmation \
+  --gpu1-slots 3 --gpu0-slots 3 --adopt-stopped-scheduler 1200340
+
+# Dopo il congelamento della configurazione:
+/home/schroeder/miniconda3/envs/general_ml/bin/python research/feature_shift_digits_calibrated/parallel_controller.py \
+  --queue research/feature_shift_digits_calibrated/final_queue.json \
+  --receipt _local/feature_shift_digits_calibrated/final_campaign.json \
+  --logs _local/feature_shift_digits_calibrated/logs/final \
+  --gpu1-slots 3 --gpu0-slots 2
+```
+
+Il PID di adozione è storico, specifico di questa campagna; non va riutilizzato
+per una nuova campagna. In una nuova esecuzione si omette l'adozione.
+
 ```bash
 /home/schroeder/miniconda3/envs/general_ml/bin/python research/feature_shift_digits_calibrated/audit.py \
   --run _local/feature_shift_digits_calibrated/final/ID-CONFIGURAZIONE-seed-42

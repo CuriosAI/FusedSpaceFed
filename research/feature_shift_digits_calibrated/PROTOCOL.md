@@ -80,3 +80,16 @@ Parametri, passi, tempi, picchi memoria e conteggio FLOP convenzionale incluse
 le due fasi sono registrati; i FLOP escludono BN/attivazioni/loss/copie e non
 equivalgono a istruzioni hardware o energia. Hash dei byte test sono controlli
 d'integrità, non valutazioni di un modello durante la calibrazione.
+
+## Aggiornamento di sola orchestrazione richiesto dall'utente
+
+Dopo lo screening e le prime due conferme, l'utente ha richiesto maggiore
+concorrenza: le sei conferme rimaste eseguono3 processi su ciascuna GPU; le
+cinque definitive eseguono3 processi su GPU1 e2 su GPU0. Il piano scientifico,
+split, griglia, criterio, seed, epoche e round restano quelli registrati.
+`execution_amendment.json` registra questa modifica organizzativa senza
+riscrivere il piano originale. I due training già attivi continuano da dove
+sono: il nuovo coordinatore adotta i PID e legge lo stato d'uscita Linux dei
+figli del vecchio coordinatore sospeso. Solo il vecchio coordinatore viene
+ritirato dopo l'uscita dei suoi figli; nessun segnale ai training o ai lavori
+esterni. Tempi e commit sono attribuiti separatamente ai singoli worker.

@@ -73,7 +73,7 @@ def build():
             if lines != result['history']:
                 raise ValueError('Timings JSONL differs from saved history')
             execution = next(row for row in receipt['runs'] if row['name'] == job['name'])
-            if result['identity']['code']['commit'] != receipt['code_commit'] or result['identity']['device'] != execution['device']:
+            if result['identity']['code']['commit'] != execution.get('code_commit', receipt['code_commit']) or result['identity']['device'] != execution['device']:
                 raise ValueError('Code/device differs from execution receipt')
             if len(result['sessions']) != 1 or result['sessions'][0]['start_round'] != 1:
                 raise ValueError('Not a fresh initialization; review explicitly')
@@ -222,7 +222,7 @@ def make_report(summary, plan, shortlist):
         rows.append(f"- {phase}: {len(receipt['runs'])} run; tempo controller {receipt['wall_seconds']/60:.3f} min; somma tempi processi {receipt['process_wall_seconds_sum']/60:.3f} min; exit code tutti0.")
     cost = summary['runtime_cost']
     rows.extend(['', f"Intervallo reale dall'inizio dello screening alla conclusione dei cinque seed: {cost['campaign_interval_wall_seconds']/60:.3f} min, compresi intervalli per selezione/commit. Somma processi: {cost['worker_process_seconds_sum']/3600:.4f} ore. Somma FLOP convenzionali training: {cost['counted_training_flops_sum']/1e15:.6f} PFLOP. Per ogni finale: {final_costs[0]['counted_training_flops']/1e12:.6f} TFLOP (dense forward/backward più costo dichiarato optimizer/clipping). BN, attivazioni, pooling, loss, copie, controlli finiti, aggregazione e overhead kernel non sono compresi: non è energia misurata o conteggio di istruzioni GPU.", '',
-                 'Nessuna interruzione/ripresa o errore numerico nelle run archiviate. I tempi processo includono import/startup; quelli del runner includono verifica dati, addestramento, checkpoint e valutazione. Due processi propri al massimo, uno per GPU; nessuna azione sui lavori esterni. GPU0 è condivisa con `tesi_giovanni` per autorizzazione dell’utente.', '',
+                 'Nessuna interruzione/ripresa o errore numerico nei training archiviati. I tempi processo includono import/startup; quelli del runner includono verifica dati, addestramento, checkpoint e valutazione. Lo screening usa una run per GPU. Su successiva richiesta dell’utente, le sei conferme rimaste sono eseguite insieme,3 per GPU, preservando le due run già attive; il solo vecchio coordinatore è sospeso e poi ritirato dopo l’uscita dei suoi figli. Le cinque finali usano3 processi su GPU1 e2 su GPU0. Nessun segnale ai processi di training o ai lavori esterni. GPU0 resta condivisa con `tesi_giovanni` per autorizzazione dell’utente. Nei due worker adottati il tempo processo è ricavato dall’intervallo UTC dell’intera run, non dalla sola sessione del nuovo coordinatore.', '',
                  '## Riproduzione e artefatti', '',
                  'Piano, shortlist, selezione, configurazioni ed esatti comandi sono versionati. `artifacts/` contiene tutti i risultati JSON compressi senza perdita, i timings JSONL, i receipt dei controller, `summary.json` e `final_accuracy.csv`. `artifact_manifest.json` contiene hash/byte e commit di training. Dataset, checkpoint e log completi restano privati; SHA dei checkpoint sono registrati, i checkpoint non sono pubblicati.', '',
                  'Comandi eseguiti dalla radice, Python general_ml; per ogni fase:', '', '```bash',
@@ -230,14 +230,24 @@ def make_report(summary, plan, shortlist):
                  '  --queue research/feature_shift_digits_calibrated/FASE_queue.json \\',
                  '  --receipt _local/feature_shift_digits_calibrated/FASE_campaign.json \\',
                  '  --logs _local/feature_shift_digits_calibrated/logs/FASE',
-                 '# FASE = screening, confirmation, final; fra le fasi:',
+                 '# Controller iniziale per screening e avvio conferme; fra le fasi:',
                  '/home/schroeder/miniconda3/envs/general_ml/bin/python research/feature_shift_digits_calibrated/select_stage.py --stage confirmation',
                  '/home/schroeder/miniconda3/envs/general_ml/bin/python research/feature_shift_digits_calibrated/select_stage.py --stage final',
+                 '# Richiesta successiva: adozione conferme3+3, finali3+2 (comandi completi nei receipt e README):',
+                 '/home/schroeder/miniconda3/envs/general_ml/bin/python research/feature_shift_digits_calibrated/parallel_controller.py \\',
+                 '  --queue research/feature_shift_digits_calibrated/confirmation_queue.json \\',
+                 '  --receipt _local/feature_shift_digits_calibrated/confirmation_campaign.json \\',
+                 '  --logs _local/feature_shift_digits_calibrated/logs/confirmation \\',
+                 '  --gpu1-slots 3 --gpu0-slots 3 --adopt-stopped-scheduler 1200340',
+                 '/home/schroeder/miniconda3/envs/general_ml/bin/python research/feature_shift_digits_calibrated/parallel_controller.py \\',
+                 '  --queue research/feature_shift_digits_calibrated/final_queue.json \\',
+                 '  --receipt _local/feature_shift_digits_calibrated/final_campaign.json \\',
+                 '  --logs _local/feature_shift_digits_calibrated/logs/final --gpu1-slots 3 --gpu0-slots 2',
                  '/home/schroeder/miniconda3/envs/general_ml/bin/python research/feature_shift_digits_calibrated/archive.py --verify', '```', '',
                  'Commit scientifici della campagna: ' + ', '.join(f'`{value}`' for value in sorted({row['commit'] for row in all_costs})) + '. Il commit finale di archivio è identificato dalla cronologia Git del manifesto.', '',
                  '## Limiti e interpretazione', '',
                  'Il pilota e i risultati del precedente controllo erano già noti: questa è una ricerca retrospettiva, con selezione numerica training-validation separata dal nuovo test. Una validation di745 esempi riutilizzata e due seed di conferma non escludono sovradattamento della ricerca. La griglia L9 non esaurisce le interazioni; nessuna affermazione di ottimalità degli iperparametri.', '',
-                 'Il confronto con gli avversari pubblicati è descrittivo: nessuna baseline comune rieseguita, seed/split originali e modalità esatta della statistica non certificati. Dati da mirror successivo collegato al repository degli autori; identificatori di riga sono disgiunti nei file disponibili, non ricostruiscono gli ID originali prima del resplit. MNIST-M deriva da MNIST, quindi i domini non sono sorgenti totalmente indipendenti. Fused ha encoder/decoder e computazione warm-up aggiuntivi; stesso classificatore non implica pari costo. Il BN condiviso di Fused differisce dal BN locale di FedBN. Eccezioni, medie e tutti i seed rimangono visibili, senza selezione dopo il test.', ''])
+                 'Il confronto con gli avversari pubblicati è descrittivo: nessuna baseline comune rieseguita, seed/split originali e modalità esatta della statistica non certificati. Dati da mirror successivo collegato al repository degli autori; identificatori di riga sono disgiunti nei file disponibili, non ricostruiscono gli ID originali prima del resplit. MNIST-M deriva da MNIST, quindi i domini non sono sorgenti totalmente indipendenti. Fused ha encoder/decoder e computazione warm-up aggiuntivi; stesso classificatore non implica pari costo. Il BN condiviso di Fused differisce dal BN locale di FedBN. La nuova calibrazione dedicata ha un budget diverso da quello delle baseline pubblicate e del precedente controllo: queste run non sostituiscono il confronto di capacità/calcolo già archiviato, né ne estendono le conclusioni causali. Eccezioni, medie e tutti i seed rimangono visibili, senza selezione dopo il test.', ''])
     return '\n'.join(rows)
 
 

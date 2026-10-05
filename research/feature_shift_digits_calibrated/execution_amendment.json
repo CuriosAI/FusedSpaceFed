@@ -1,0 +1,20 @@
+{
+  "adopted_workers": [
+    1207434,
+    1207684
+  ],
+  "confirmation_gpu_slots": {
+    "cuda:0": 3,
+    "cuda:1": 3
+  },
+  "duration_attribution": "whole process UTC interval for adopted workers; own monotonic clocks for new workers",
+  "existing_training": "continues without signals or restart",
+  "final_gpu_slots": {
+    "cuda:0": 2,
+    "cuda:1": 3
+  },
+  "reason": "user requests six confirmations3+3, then all five finals3+2 concurrently",
+  "scheduler_pid": 1200340,
+  "scientific_changes": [],
+  "scientific_plan_sha256": "ba564b57b239052ec1676827ac1c4ee43952449414eef63a5c19e26948319afc"
+}
