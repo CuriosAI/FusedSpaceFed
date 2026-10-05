@@ -1,0 +1,553 @@
+{
+  "adaptation_epochs": 0,
+  "archive_numeric_helper_sha256": "300a1453915cf198344bb100aacf85647bbccedb9975a68aa7df76cc8b000234",
+  "benchmark": "femnist_fedrep_capacity_aware_v1",
+  "clients": 150,
+  "code_commit": "8e89ef477743fb9ed25a46036ae9cc87d78dd965",
+  "code_sha256": {
+    "calibrate_femnist_reconstructed.py": "d19792a92dd1a3cd9fa94afdc70e6337fab31d78556eb898b4550188e07a622c",
+    "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+    "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+    "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+    "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+  },
+  "communication_theoretical_bytes_all_five_runs": 71436840000,
+  "communication_theoretical_bytes_per_round": 71436840,
+  "communication_theoretical_bytes_per_run": 14287368000,
+  "config_file_sha256": "a681b4453d924174b69aff76a7de6df151d1a33d77fa35be72215a68eeeb25a3",
+  "config_path": "configs/femnist_reconstructed_calibrated.json",
+  "config_sha256": "b8ed1193867310fc0f3b9102bf27a5600913696c04f4a412e87b9dd167f64e6b",
+  "configuration": {
+    "benchmark": "femnist_fedrep_capacity_aware_v1",
+    "data": {
+      "allocation": "proportional_largest_remainder_v1",
+      "classes": "abcdefghij",
+      "classes_per_client": 3,
+      "count_offset": 100.0,
+      "lognormal_mean": 4.0,
+      "lognormal_sigma": 1.0,
+      "num_clients": 150,
+      "pool_per_class": 4000,
+      "seed": 20261003,
+      "source_bytes": 1031576378,
+      "source_url": "https://s3.amazonaws.com/nist-srd/SD19/by_class.zip",
+      "train_fraction": 0.9
+    },
+    "evaluation": {
+      "adaptation_epochs": 0,
+      "also_record": "uniform_client_accuracy_percent",
+      "first_round": 191,
+      "last_round": 200,
+      "primary": "sample_weighted_accuracy_percent"
+    },
+    "partition_sha256": "7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734",
+    "run_seeds": [
+      41,
+      42,
+      43,
+      44,
+      45
+    ],
+    "source_archive_sha256": "b387d65249b2d0ed429cf81967d4c40a9d01ca2f7bb3931c6a36d825bc22d411",
+    "training": {
+      "aggregation": "uniform",
+      "amp": false,
+      "autoencoder_betas": [
+        0.9,
+        0.999
+      ],
+      "autoencoder_eps": 1e-08,
+      "autoencoder_lr": 0.0003,
+      "autoencoder_weight_decay": 0.0,
+      "batch_size": 10,
+      "classification_epochs": 5,
+      "classifier_bias_decay": 0.0,
+      "classifier_dims": [
+        784,
+        512,
+        256,
+        64,
+        10
+      ],
+      "classifier_lr": 0.02,
+      "classifier_momentum": 0.5,
+      "classifier_weight_decay": 0.0001,
+      "clients_per_round": 15,
+      "dz": 64,
+      "gradient_clip_norm": 1.0,
+      "num_workers": 0,
+      "optimizer_reset": "each_participation",
+      "precision": "float32",
+      "rounds": 200,
+      "torch_threads": 4,
+      "warmup_epochs": 1
+    }
+  },
+  "costs": {
+    "calibration_elapsed_to_freeze_seconds": 32365.0,
+    "calibration_process_wall_seconds": 15757.390896785422,
+    "cost_scopes_not_additive": true,
+    "evaluation_seconds_nested_in_compute": 47.576224335702136,
+    "gap_after_calibration_freeze_until_final_start_seconds": 34849.889024,
+    "native_worker_calendar_union_seconds": 7518.664884,
+    "native_worker_process_wall_seconds": 12799.606280399486,
+    "scheduler_session_wall_seconds": 7519.118560438976,
+    "unique_compute_seconds": 12411.381138947792
+  },
+  "descriptive_delta_pp": {
+    "final_minus_selected_validation": {
+      "sample_weighted_accuracy_percent": -9.723196861519952,
+      "uniform_client_accuracy_percent": -8.680125631359886
+    },
+    "primary_versus_reported_fedrep": 0.4857164809834842,
+    "versus_previous_ours": {
+      "sample_weighted_accuracy_percent": 14.308874375720336,
+      "uniform_client_accuracy_percent": 15.66279956321064
+    }
+  },
+  "evaluation_window": [
+    191,
+    200
+  ],
+  "executed_code_commit": "8e89ef477743fb9ed25a46036ae9cc87d78dd965",
+  "execution_policy": {
+    "authorization_sha256": "77536330c140e886666b9a1d2a25fbbb557a6595a538619f855e247bf57c78ac",
+    "external_process_actions": "none",
+    "maximum_ours_per_gpu": 1,
+    "maximum_ours_training_processes": 2,
+    "minimum_free_mib": 2048,
+    "mode": "one_run_per_gpu_parallel",
+    "per_seed_devices": {
+      "41": "cuda:1",
+      "42": "cuda:0",
+      "43": "cuda:1",
+      "44": "cuda:0",
+      "45": "cuda:1"
+    },
+    "policy_file_sha256": "e5449e560416ce32ded6df1af31ba423dcd734be5dd7a7cd1f52f33e47f537a9",
+    "policy_sha256": "7f1b7057933483e0b7863d3f329228aaee6e7108ddb4a8410e9eb51f3f9925c4",
+    "runtime_normalization": "device field only",
+    "scheduler_sha256": "aed9fd2873d25cf455b208a8d8f8d9988df178c93bd24b16bd99e575f0a1badf"
+  },
+  "files": {
+    "README.md": {
+      "bytes": 9635,
+      "sha256": "8848b113d32a981009585fd1351052fcd46e6e8509c7d48758aad5b5c8afebb6"
+    },
+    "campaign_summary.json": {
+      "bytes": 22741,
+      "sha256": "6fb0dc80865c79627ac6839763f9f44226679459d82e03f04ef29174b88e4f53"
+    },
+    "seed-41/results.json.gz": {
+      "bytes": 510268,
+      "sha256": "3c38604369fb6e23a4aec63683e10ac4e7bc12f4dbefff58b952232ef9f42efa"
+    },
+    "seed-41/timings.jsonl": {
+      "bytes": 29409,
+      "sha256": "1109d175d040c5e07293062a885334766b8a24021f3cf615dba2735d93061794"
+    },
+    "seed-42/results.json.gz": {
+      "bytes": 509684,
+      "sha256": "3d36821675e45861e10e3a71481d49ec039344dc4247bc6a0659027ef05b2492"
+    },
+    "seed-42/timings.jsonl": {
+      "bytes": 29432,
+      "sha256": "e02407c046686872c6b665dd37964c0f390144f829c43dcc26695a5832b29cbf"
+    },
+    "seed-43/results.json.gz": {
+      "bytes": 508691,
+      "sha256": "6717d60212cc72bbb8ee96fa4d726569463c6d1efbdb9c0caadf20887b92372f"
+    },
+    "seed-43/timings.jsonl": {
+      "bytes": 29416,
+      "sha256": "595eb8372ae25cdff17e22cb788bed1830441a2cd5c1d045eea8f4a03d0d3bf3"
+    },
+    "seed-44/results.json.gz": {
+      "bytes": 510895,
+      "sha256": "f5d97616f50a89120dbb7db8f67f817bcd6b6a597110296bf8c2fec0cd134cba"
+    },
+    "seed-44/timings.jsonl": {
+      "bytes": 29422,
+      "sha256": "a8cb8d527bb3b8dd6798d83eb151e03ea6ec153d2ed4f4d257660b894c596bc1"
+    },
+    "seed-45/results.json.gz": {
+      "bytes": 509187,
+      "sha256": "6adde4e49c2cb44ee4dfaa6be532d010121e1c3d8d516f50b03092345376df00"
+    },
+    "seed-45/timings.jsonl": {
+      "bytes": 29427,
+      "sha256": "9ec441b059d9ceb71ca9f555a6b69ac36cfde60f72d3afb498cd08108467c20f"
+    },
+    "summary.json": {
+      "bytes": 827,
+      "sha256": "0ca453854b2d472817703b15107b9cb94aa5aa8084523326be4123874f9fab68"
+    }
+  },
+  "hash_notes": "File hashes identify raw bytes; configuration/partition hashes identify canonical JSON. Generated manifest must exclude its own hash.",
+  "kind": "validation_calibrated_fusedspacefed_reconstructed_femnist",
+  "limitations": [
+    "Original test already known from the previous stabilized campaign; calibration selection used training-derived validation only.",
+    "One fixed validation partition, six candidates and two tuning seeds; no global optimality claim.",
+    "Final training restores all original training examples; validation/test examples and run seeds differ.",
+    "Reconstructed synthetic clients and capacity-reduced allocation; not exact FedRep replication or a controlled common-baseline comparison.",
+    "Published baseline variances unavailable; no paired test, significance claim or baseline uncertainty imputed.",
+    "Ten test evaluations reuse the same test; ddof=1 uses five run means, not fifty independent observations.",
+    "Worker cost, elapsed scheduler time, waits and nested compute/IO are distinct and nonadditive; logical communication is not measured network traffic."
+  ],
+  "memory_note": "Torch allocator CUDA peaks exclude driver/context and external jobs; no simultaneous total RSS measurement.",
+  "native_commands_display": [
+    {
+      "device": "cuda:1",
+      "repository_relative_command": "python train_femnist_reconstructed.py run --config configs/femnist_reconstructed_calibrated.json --partition _local/femnist_reconstructed/partition --output _local/femnist_reconstructed/calibrated-v1/runs/seed-41 --seed 41 --device cuda:1",
+      "seed": 41
+    },
+    {
+      "device": "cuda:0",
+      "repository_relative_command": "python train_femnist_reconstructed.py run --config configs/femnist_reconstructed_calibrated.json --partition _local/femnist_reconstructed/partition --output _local/femnist_reconstructed/calibrated-v1/runs/seed-42 --seed 42 --device cuda:0",
+      "seed": 42
+    },
+    {
+      "device": "cuda:1",
+      "repository_relative_command": "python train_femnist_reconstructed.py run --config configs/femnist_reconstructed_calibrated.json --partition _local/femnist_reconstructed/partition --output _local/femnist_reconstructed/calibrated-v1/runs/seed-43 --seed 43 --device cuda:1",
+      "seed": 43
+    },
+    {
+      "device": "cuda:0",
+      "repository_relative_command": "python train_femnist_reconstructed.py run --config configs/femnist_reconstructed_calibrated.json --partition _local/femnist_reconstructed/partition --output _local/femnist_reconstructed/calibrated-v1/runs/seed-44 --seed 44 --device cuda:0",
+      "seed": 44
+    },
+    {
+      "device": "cuda:1",
+      "repository_relative_command": "python train_femnist_reconstructed.py run --config configs/femnist_reconstructed_calibrated.json --partition _local/femnist_reconstructed/partition --output _local/femnist_reconstructed/calibrated-v1/runs/seed-45 --seed 45 --device cuda:1",
+      "seed": 45
+    }
+  ],
+  "parameters": {
+    "classifier": 550346,
+    "classifier_state_bytes": 2201384,
+    "client_pipeline_total": 667099,
+    "decoder_state_bytes": 179844,
+    "encoder_state_bytes_per_client": 287168,
+    "logical_private_encoder_bytes_all_clients": 43075200,
+    "private_encoder_per_client": 71792,
+    "shared_decoder": 44961
+  },
+  "partition_manifest_file_sha256": "c561e07852ff958b12180921454d73b01494c22e5f925d5e3157e4ea8e9da6dc",
+  "partition_sha256": "7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734",
+  "partition_statistics": {
+    "before_split": {
+      "max": 877,
+      "mean": 168.92666666666668,
+      "min": 97,
+      "per_class": [
+        2828,
+        2506,
+        2474,
+        2325,
+        2558,
+        2493,
+        2578,
+        2869,
+        2788,
+        1920
+      ],
+      "total": 25339
+    },
+    "clients_with_reduced_quotas": 105,
+    "original_requests": {
+      "max": 1050,
+      "mean": 179.78,
+      "min": 102,
+      "per_class": [
+        2828,
+        2506,
+        2474,
+        2325,
+        2558,
+        2555,
+        2578,
+        2869,
+        3078,
+        3196
+      ],
+      "total": 26967
+    },
+    "test": {
+      "max": 88,
+      "mean": 17.35333333333333,
+      "min": 10,
+      "per_class": [
+        285,
+        265,
+        253,
+        231,
+        258,
+        277,
+        252,
+        293,
+        295,
+        194
+      ],
+      "total": 2603
+    },
+    "train": {
+      "max": 789,
+      "mean": 151.57333333333332,
+      "min": 87,
+      "per_class": [
+        2543,
+        2241,
+        2221,
+        2094,
+        2300,
+        2216,
+        2326,
+        2576,
+        2493,
+        1726
+      ],
+      "total": 22736
+    }
+  },
+  "peak_cuda_allocated_mib_per_worker": 78.64404296875,
+  "peak_cuda_reserved_mib_per_worker": 96.0,
+  "peak_rss_mib_per_process": 1541.3671875,
+  "per_seed_devices": {
+    "41": "cuda:1",
+    "42": "cuda:0",
+    "43": "cuda:1",
+    "44": "cuda:0",
+    "45": "cuda:1"
+  },
+  "previous_ours": {
+    "all_manifest_file_hashes_verified": true,
+    "manifest_sha256": "f5fbe620f4d776bf47ab943c879660bbd261b07c700a5721a531a6bdcd5e7433",
+    "path": "artifacts/femnist_reconstructed",
+    "retained_unchanged": true,
+    "summary": {
+      "benchmark": "femnist_fedrep_capacity_aware_v1",
+      "partition_sha256": "7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734",
+      "result_origin": "ours",
+      "sample_weighted_accuracy_percent": {
+        "mean": 64.73684210526315,
+        "std": 10.631866815734885,
+        "values": [
+          79.527468305801,
+          62.74683058009988,
+          63.66500192086054,
+          67.8025355359201,
+          49.94237418363427
+        ]
+      },
+      "seeds": [
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "uncertainty": "sample standard deviation across five run means, ddof=1",
+      "uniform_client_accuracy_percent": {
+        "mean": 65.24045602163939,
+        "std": 11.474034017889112,
+        "values": [
+          80.72938387665705,
+          62.73142607305418,
+          63.229232738143615,
+          70.15349286439536,
+          49.358744555946735
+        ]
+      },
+      "unit": "percent"
+    },
+    "summary_sha256": "25242eec509bd8b5ec198e578f3c085c5b8dc0db6840285af578e3b1fcef6647"
+  },
+  "primary_metric": "sample_weighted_accuracy_percent",
+  "reference_csv_sha256": "088de22df17d3e3e1b3f878bb347ff9dc91bc3239525fd949a1f315001bd29cc",
+  "reported_reference": {
+    "method": "FedRep (Ours)",
+    "rerun_on_our_partition": false,
+    "result_origin": "reported",
+    "source": "docs/femnist_fedrep_reference.csv",
+    "uncertainty_type": "not_reported",
+    "value_percent": 78.56
+  },
+  "result_origin": "ours",
+  "runs": [
+    {
+      "compute_seconds": 2473.9457132790703,
+      "device": "cuda:1",
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1534.71875,
+      "process_wall_seconds": 2551.760470867157,
+      "raw_results_sha256": "9e1f1efc8a541c435365ebad18595332430d5a0e1937ac7756de69dee0613bb8",
+      "sample_weighted_accuracy_percent": 82.3396081444487,
+      "seed": 41,
+      "uniform_client_accuracy_percent": 84.38612044226207
+    },
+    {
+      "compute_seconds": 2567.548119535204,
+      "device": "cuda:0",
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1530.234375,
+      "process_wall_seconds": 2645.8024883391336,
+      "raw_results_sha256": "ca997bab2c1dc7de2cc42dcf7bd1c873366f54274927840adc9e79c55f6702b0",
+      "sample_weighted_accuracy_percent": 75.25931617364579,
+      "seed": 42,
+      "uniform_client_accuracy_percent": 77.77016908267022
+    },
+    {
+      "compute_seconds": 2493.1629946019966,
+      "device": "cuda:1",
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1541.3671875,
+      "process_wall_seconds": 2571.2174163060263,
+      "raw_results_sha256": "a5924c445f66704109614aaf1c6a9cb73308675d8a2fdc69d2aae6a8cf4ca131",
+      "sample_weighted_accuracy_percent": 77.70649250864388,
+      "seed": 43,
+      "uniform_client_accuracy_percent": 78.31455898323375
+    },
+    {
+      "compute_seconds": 2558.3928056024015,
+      "device": "cuda:0",
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1534.28515625,
+      "process_wall_seconds": 2635.7339387650136,
+      "raw_results_sha256": "49789b74df627e49611fd118bc66b03130ba0931ee8f1ab399570b34ee6ca3f6",
+      "sample_weighted_accuracy_percent": 80.20745293891665,
+      "seed": 44,
+      "uniform_client_accuracy_percent": 82.47171099250625
+    },
+    {
+      "compute_seconds": 2318.33150592912,
+      "device": "cuda:1",
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1535.89453125,
+      "process_wall_seconds": 2395.091966122156,
+      "raw_results_sha256": "f4437f4069782b4bef86c7b393ed0dfc6074354eaca5623bd2ca36df8cfba394",
+      "sample_weighted_accuracy_percent": 79.71571263926239,
+      "seed": 45,
+      "uniform_client_accuracy_percent": 81.5737184235779
+    }
+  ],
+  "runtime_common": {
+    "amp": false,
+    "cublas_workspace_config": ":4096:8",
+    "cuda": "12.4",
+    "cudnn": 90100,
+    "deterministic_algorithms": true,
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "gpu_total_bytes": 50865307648,
+    "numpy": "2.0.2",
+    "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.39",
+    "precision": "float32",
+    "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:27:36) [GCC 11.2.0]",
+    "tf32": false,
+    "torch": "2.5.1+cu124",
+    "torch_threads": 4
+  },
+  "schema": 1,
+  "secondary_metric": "uniform_client_accuracy_percent",
+  "seeds": [
+    41,
+    42,
+    43,
+    44,
+    45
+  ],
+  "selection": {
+    "calibration_code": {
+      "code_sha256": {
+        "calibrate_femnist_reconstructed.py": "8d5bc97d061ebb5facaff6d1cd6076638c872e83b3484f66bca9e4b482cbc069",
+        "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+        "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+        "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+        "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+      },
+      "commit": "641e117bd40f3620527a4452f91ee8ca461692aa",
+      "working_tree_clean": true
+    },
+    "frozen_utc": "2026-10-05T00:16:20Z",
+    "plan_sha256": "3885d92ff58985bffd9fdf51a603b958889833eccabae6a591d801e1651ab577",
+    "receipt_sha256": "27338a925f6f5a425b3cabad0118841652157f26a0c475c77568a6db62ac5268",
+    "selected_candidate": "03-classifier-2e-2",
+    "selected_validation_means": {
+      "sample_weighted_accuracy_percent": 88.76891334250344,
+      "uniform_client_accuracy_percent": 89.58338121620992
+    },
+    "selection_data": "training-derived validation only",
+    "tuning_seeds": [
+      141,
+      142
+    ],
+    "view_sha256": "23b0e2e40a822eed50c983b744fe5c1cf203d2f5db9f28ef57acc7dbaa5ad171"
+  },
+  "source_archive_sha256": "b387d65249b2d0ed429cf81967d4c40a9d01ca2f7bb3931c6a36d825bc22d411",
+  "status": "completed",
+  "summary_reconstructed": {
+    "sample_weighted_accuracy_percent": {
+      "ddof": 1,
+      "mean": 79.04571648098349,
+      "std": 2.6822843285127953,
+      "values": [
+        82.3396081444487,
+        75.25931617364579,
+        77.70649250864388,
+        80.20745293891665,
+        79.71571263926239
+      ]
+    },
+    "uniform_client_accuracy_percent": {
+      "ddof": 1,
+      "mean": 80.90325558485003,
+      "std": 2.8088031937231652,
+      "values": [
+        84.38612044226207,
+        77.77016908267022,
+        78.31455898323375,
+        82.47171099250625,
+        81.5737184235779
+      ]
+    }
+  },
+  "test_total": 2603,
+  "uncertainty": "sample standard deviation across five run means, ddof=1; fixed partition/configuration",
+  "unit": "percent",
+  "verification": {
+    "calibration_independent_audit_sha256": "f7cdb29958a6ca54e22924b25ef36a9b341c0842511444b3e14a54ac2b2f9ad4",
+    "final_independent_audit_sha256": "ce40727ad71006ddf20b43ca72db08882fd68a7d925e2b7969566b40d0a1086d",
+    "independent_count_crosscheck_sha256": "671c4491f2ddcc6e6ab93c7f30232458b0d1f57afbb69f813772f7ac9477357f",
+    "maximum_absolute_metric_difference": 1.4210854715202004e-14,
+    "native_campaign_sha256": "3fac01f22282aad4532c9eed8c68a201ae525be5da8f779365fd0d8ab95c5b76",
+    "native_summarize_cli_receipt_sha256": "55b594a1ab1ed1dc44696bf055f6e48bdf4c7d98c6118b50208e38e404246b67",
+    "native_summary_sha256": "0ca453854b2d472817703b15107b9cb94aa5aa8084523326be4123874f9fab68",
+    "optimizer_cost_totals_receipt_sha256": "c1f1ca0f969f3c591f4125052b62c16eb4384c6faad208b2de4c89a55d59b6a2",
+    "root_archive_integrity_receipt_sha256": "8649947332b4cb8ed26358b92bf57530dc78acf1a9a266c8d66814fe64afeb8e",
+    "root_controller_exit_receipt_sha256": "3b628d76a56cc4bb886b768188ad581918cb7ae851459c748b65a3d950462c35",
+    "tolerance_absolute": 1e-10
+  },
+  "verification_transition": {
+    "from_code_sha256": {
+      "calibrate_femnist_reconstructed.py": "8d5bc97d061ebb5facaff6d1cd6076638c872e83b3484f66bca9e4b482cbc069",
+      "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+      "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+      "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+      "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+    },
+    "only_two_verification_functions_changed": true,
+    "sha256": "d77238f6bb118178a004ba2942254b55ec67b46b8889211b0dc836d3c6eb76de",
+    "to_code_sha256": {
+      "calibrate_femnist_reconstructed.py": "d19792a92dd1a3cd9fa94afdc70e6337fab31d78556eb898b4550188e07a622c",
+      "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+      "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+      "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+      "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+    },
+    "unchanged_module_ast_sha256": "5b21d1d5308a4ece429f08f64e47fc3b3359cb5af2d4b025abd07813c3ff1b65"
+  }
+}

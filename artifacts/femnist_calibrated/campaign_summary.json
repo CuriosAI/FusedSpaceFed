@@ -1,0 +1,486 @@
+{
+  "attempts": [
+    {
+      "completed_round": 200,
+      "device": "cuda:1",
+      "end_utc": "2026-10-05T10:39:41.772812+00:00",
+      "exit_code": 0,
+      "number": 1,
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1534.71875,
+      "process_wall_seconds": 2551.760470867157,
+      "results_sha256": "9e1f1efc8a541c435365ebad18595332430d5a0e1937ac7756de69dee0613bb8",
+      "seed": 41,
+      "started_utc": "2026-10-05T09:57:10.010270+00:00",
+      "status": "completed"
+    },
+    {
+      "completed_round": 200,
+      "device": "cuda:0",
+      "end_utc": "2026-10-05T10:41:15.990654+00:00",
+      "exit_code": 0,
+      "number": 2,
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1530.234375,
+      "process_wall_seconds": 2645.8024883391336,
+      "results_sha256": "ca997bab2c1dc7de2cc42dcf7bd1c873366f54274927840adc9e79c55f6702b0",
+      "seed": 42,
+      "started_utc": "2026-10-05T09:57:10.185514+00:00",
+      "status": "completed"
+    },
+    {
+      "completed_round": 200,
+      "device": "cuda:1",
+      "end_utc": "2026-10-05T11:22:33.288197+00:00",
+      "exit_code": 0,
+      "number": 3,
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1541.3671875,
+      "process_wall_seconds": 2571.2174163060263,
+      "results_sha256": "a5924c445f66704109614aaf1c6a9cb73308675d8a2fdc69d2aae6a8cf4ca131",
+      "seed": 43,
+      "started_utc": "2026-10-05T10:39:42.068531+00:00",
+      "status": "completed"
+    },
+    {
+      "completed_round": 200,
+      "device": "cuda:0",
+      "end_utc": "2026-10-05T11:25:12.008438+00:00",
+      "exit_code": 0,
+      "number": 4,
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1534.28515625,
+      "process_wall_seconds": 2635.7339387650136,
+      "results_sha256": "49789b74df627e49611fd118bc66b03130ba0931ee8f1ab399570b34ee6ca3f6",
+      "seed": 44,
+      "started_utc": "2026-10-05T10:41:16.272306+00:00",
+      "status": "completed"
+    },
+    {
+      "completed_round": 200,
+      "device": "cuda:1",
+      "end_utc": "2026-10-05T12:02:28.675154+00:00",
+      "exit_code": 0,
+      "number": 5,
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1535.89453125,
+      "process_wall_seconds": 2395.091966122156,
+      "results_sha256": "f4437f4069782b4bef86c7b393ed0dfc6074354eaca5623bd2ca36df8cfba394",
+      "seed": 45,
+      "started_utc": "2026-10-05T11:22:33.580736+00:00",
+      "status": "completed"
+    }
+  ],
+  "automatic_controller_queue": {
+    "admission_mode": "per_gpu_memory_headroom",
+    "automatic_stop_count": 0,
+    "automatic_stops": [],
+    "controller_attempt_cost_note": "No additional controller subprocesses; scheduler session cost is recorded separately.",
+    "controller_attempts": [],
+    "controller_exit_codes": [],
+    "execution_policy": {
+      "authorization_sha256": "77536330c140e886666b9a1d2a25fbbb557a6595a538619f855e247bf57c78ac",
+      "coordinator_device": "cuda:1",
+      "external_process_actions": "none",
+      "maximum_ours_per_gpu": 1,
+      "maximum_ours_training_processes": 2,
+      "minimum_free_mib": 2048,
+      "mode": "one_run_per_gpu_parallel",
+      "policy_file_sha256": "e5449e560416ce32ded6df1af31ba423dcd734be5dd7a7cd1f52f33e47f537a9",
+      "policy_sha256": "7f1b7057933483e0b7863d3f329228aaee6e7108ddb4a8410e9eb51f3f9925c4",
+      "scheduler_sha256": "aed9fd2873d25cf455b208a8d8f8d9988df178c93bd24b16bd99e575f0a1badf",
+      "schema": 1,
+      "scientific_code_sha256": {
+        "calibrate_femnist_reconstructed.py": "d19792a92dd1a3cd9fa94afdc70e6337fab31d78556eb898b4550188e07a622c",
+        "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+        "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+        "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+        "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+      },
+      "seed_devices": {
+        "41": "cuda:1",
+        "42": "cuda:0",
+        "43": "cuda:1",
+        "44": "cuda:0",
+        "45": "cuda:1"
+      }
+    },
+    "gpu_admission_checks_count": 5,
+    "gpu_idle_checks_count": 0,
+    "minimum_free_mib": 2048,
+    "per_device_wait_wall_seconds": {
+      "cuda:0": 0.32538067596033216,
+      "cuda:1": 0.44122874923050404
+    },
+    "phase": "final",
+    "private_queue_sha256": "19c4277ab5af3ac9b5410455c28993ff5eada57f8e746ac07bd8c421435d87ab",
+    "queue_count": 1,
+    "queue_role": "dual",
+    "queue_summary_schema": 3,
+    "record_available": true,
+    "recorded_controller_wall_seconds": 0.0,
+    "recorded_scheduler_wall_seconds": 7519.118560438976,
+    "recorded_session_wall_seconds": 7519.118560438976,
+    "recorded_wait_calendar_seconds": 0.7668200000000001,
+    "recorded_wait_wall_seconds": 0.7668200000000001,
+    "scope": "The explicitly authorized final two-GPU scheduler only.",
+    "session_count": 1,
+    "sessions": [
+      {
+        "end_utc": "2026-10-05T12:02:29.007557+00:00",
+        "number": 1,
+        "start_utc": "2026-10-05T09:57:09.889024+00:00",
+        "status": "completed",
+        "wall_seconds": 7519.118560438976
+      }
+    ],
+    "time_accounting": {
+      "admission_note": "A free wait means at least 2048 MiB was available on its assigned GPU; idleness is not required.",
+      "native_process_wall_seconds": "Sum of native worker process costs across all attempts, including interruptions.",
+      "overlap_note": "Scheduler session, calendar wait and native worker process costs overlap and must not be added. Native worker sums are process-seconds, not elapsed campaign time.",
+      "scheduler_wall_seconds": "Measured scheduler sessions, including admission waits and overlapping workers.",
+      "scope": "The explicitly authorized final two-GPU scheduler only.",
+      "unfinished_intervals": "Open intervals are counted as unmeasured; no duration is inferred.",
+      "waits": "Wait durations are retained separately for each assigned GPU. The calendar wait total is the union of recorded UTC intervals; simultaneous waits on different GPUs are counted once."
+    },
+    "unmeasured_controller_intervals": 0,
+    "unmeasured_session_intervals": 0,
+    "unmeasured_wait_intervals": 0,
+    "wait_count": 5,
+    "waiting_intervals_count": 0,
+    "waits": [
+      {
+        "checks": 1,
+        "device": "cuda:1",
+        "free_utc": "2026-10-05T09:57:10.002066+00:00",
+        "number": 1,
+        "seed": 41,
+        "start_utc": "2026-10-05T09:57:09.898047+00:00",
+        "status": "free",
+        "wall_seconds": 0.10398532799445093
+      },
+      {
+        "checks": 1,
+        "device": "cuda:0",
+        "free_utc": "2026-10-05T09:57:10.176368+00:00",
+        "number": 2,
+        "seed": 42,
+        "start_utc": "2026-10-05T09:57:10.014834+00:00",
+        "status": "free",
+        "wall_seconds": 0.16150575201027095
+      },
+      {
+        "checks": 1,
+        "device": "cuda:1",
+        "free_utc": "2026-10-05T10:39:42.060262+00:00",
+        "number": 3,
+        "seed": 43,
+        "start_utc": "2026-10-05T10:39:41.891927+00:00",
+        "status": "free",
+        "wall_seconds": 0.168269565096125
+      },
+      {
+        "checks": 1,
+        "device": "cuda:0",
+        "free_utc": "2026-10-05T10:41:16.265075+00:00",
+        "number": 4,
+        "seed": 44,
+        "start_utc": "2026-10-05T10:41:16.101164+00:00",
+        "status": "free",
+        "wall_seconds": 0.1638749239500612
+      },
+      {
+        "checks": 1,
+        "device": "cuda:1",
+        "free_utc": "2026-10-05T11:22:33.572436+00:00",
+        "number": 5,
+        "seed": 45,
+        "start_utc": "2026-10-05T11:22:33.403415+00:00",
+        "status": "free",
+        "wall_seconds": 0.1689738561399281
+      }
+    ]
+  },
+  "costs_are_not_additive": true,
+  "elapsed_from_scheduler_session_utc_seconds": 7519.118533,
+  "execution_policy": {
+    "authorization_sha256": "77536330c140e886666b9a1d2a25fbbb557a6595a538619f855e247bf57c78ac",
+    "coordinator_device": "cuda:1",
+    "external_process_actions": "none",
+    "maximum_ours_per_gpu": 1,
+    "maximum_ours_training_processes": 2,
+    "minimum_free_mib": 2048,
+    "mode": "one_run_per_gpu_parallel",
+    "policy_file_sha256": "e5449e560416ce32ded6df1af31ba423dcd734be5dd7a7cd1f52f33e47f537a9",
+    "policy_sha256": "7f1b7057933483e0b7863d3f329228aaee6e7108ddb4a8410e9eb51f3f9925c4",
+    "scheduler_sha256": "aed9fd2873d25cf455b208a8d8f8d9988df178c93bd24b16bd99e575f0a1badf",
+    "schema": 1,
+    "scientific_code_sha256": {
+      "calibrate_femnist_reconstructed.py": "d19792a92dd1a3cd9fa94afdc70e6337fab31d78556eb898b4550188e07a622c",
+      "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+      "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+      "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+      "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+    },
+    "seed_devices": {
+      "41": "cuda:1",
+      "42": "cuda:0",
+      "43": "cuda:1",
+      "44": "cuda:0",
+      "45": "cuda:1"
+    }
+  },
+  "identity": {
+    "code_sha256": {
+      "calibrate_femnist_reconstructed.py": "d19792a92dd1a3cd9fa94afdc70e6337fab31d78556eb898b4550188e07a622c",
+      "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+      "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+      "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+      "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+    },
+    "config_sha256": "b8ed1193867310fc0f3b9102bf27a5600913696c04f4a412e87b9dd167f64e6b",
+    "device": "cuda:1",
+    "partition_sha256": "7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734",
+    "selection_sha256": "27338a925f6f5a425b3cabad0118841652157f26a0c475c77568a6db62ac5268"
+  },
+  "native_failed_attempt_count": 0,
+  "native_interrupted_attempt_count": 0,
+  "native_worker_calendar_seconds": 7518.664884,
+  "native_worker_process_wall_seconds": 12799.606280399486,
+  "observed_peak_native_workers": 2,
+  "per_seed_devices": {
+    "41": "cuda:1",
+    "42": "cuda:0",
+    "43": "cuda:1",
+    "44": "cuda:0",
+    "45": "cuda:1"
+  },
+  "process_wall_seconds": 12799.606280399486,
+  "runs": [
+    {
+      "device": "cuda:1",
+      "git": {
+        "code_sha256": {
+          "calibrate_femnist_reconstructed.py": "d19792a92dd1a3cd9fa94afdc70e6337fab31d78556eb898b4550188e07a622c",
+          "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+          "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+          "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+          "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+        },
+        "commit": "8e89ef477743fb9ed25a46036ae9cc87d78dd965",
+        "working_tree_clean": true
+      },
+      "identity": {
+        "benchmark": "femnist_fedrep_capacity_aware_v1",
+        "code_sha256": {
+          "calibrate_femnist_reconstructed.py": "d19792a92dd1a3cd9fa94afdc70e6337fab31d78556eb898b4550188e07a622c",
+          "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+          "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+          "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+          "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+        },
+        "config_sha256": "b8ed1193867310fc0f3b9102bf27a5600913696c04f4a412e87b9dd167f64e6b",
+        "device": "cuda:1",
+        "mode": "definitive",
+        "partition_sha256": "7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734",
+        "rounds": 200,
+        "seed": 41
+      },
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1534.71875,
+      "process_wall_seconds": 2551.760470867157,
+      "raw_results_sha256": "9e1f1efc8a541c435365ebad18595332430d5a0e1937ac7756de69dee0613bb8",
+      "seed": 41,
+      "summary": {
+        "sample_weighted_accuracy_percent": 82.3396081444487,
+        "uniform_client_accuracy_percent": 84.38612044226207
+      }
+    },
+    {
+      "device": "cuda:0",
+      "git": {
+        "code_sha256": {
+          "calibrate_femnist_reconstructed.py": "d19792a92dd1a3cd9fa94afdc70e6337fab31d78556eb898b4550188e07a622c",
+          "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+          "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+          "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+          "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+        },
+        "commit": "8e89ef477743fb9ed25a46036ae9cc87d78dd965",
+        "working_tree_clean": true
+      },
+      "identity": {
+        "benchmark": "femnist_fedrep_capacity_aware_v1",
+        "code_sha256": {
+          "calibrate_femnist_reconstructed.py": "d19792a92dd1a3cd9fa94afdc70e6337fab31d78556eb898b4550188e07a622c",
+          "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+          "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+          "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+          "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+        },
+        "config_sha256": "b8ed1193867310fc0f3b9102bf27a5600913696c04f4a412e87b9dd167f64e6b",
+        "device": "cuda:0",
+        "mode": "definitive",
+        "partition_sha256": "7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734",
+        "rounds": 200,
+        "seed": 42
+      },
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1530.234375,
+      "process_wall_seconds": 2645.8024883391336,
+      "raw_results_sha256": "ca997bab2c1dc7de2cc42dcf7bd1c873366f54274927840adc9e79c55f6702b0",
+      "seed": 42,
+      "summary": {
+        "sample_weighted_accuracy_percent": 75.2593161736458,
+        "uniform_client_accuracy_percent": 77.77016908267024
+      }
+    },
+    {
+      "device": "cuda:1",
+      "git": {
+        "code_sha256": {
+          "calibrate_femnist_reconstructed.py": "d19792a92dd1a3cd9fa94afdc70e6337fab31d78556eb898b4550188e07a622c",
+          "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+          "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+          "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+          "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+        },
+        "commit": "8e89ef477743fb9ed25a46036ae9cc87d78dd965",
+        "working_tree_clean": true
+      },
+      "identity": {
+        "benchmark": "femnist_fedrep_capacity_aware_v1",
+        "code_sha256": {
+          "calibrate_femnist_reconstructed.py": "d19792a92dd1a3cd9fa94afdc70e6337fab31d78556eb898b4550188e07a622c",
+          "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+          "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+          "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+          "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+        },
+        "config_sha256": "b8ed1193867310fc0f3b9102bf27a5600913696c04f4a412e87b9dd167f64e6b",
+        "device": "cuda:1",
+        "mode": "definitive",
+        "partition_sha256": "7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734",
+        "rounds": 200,
+        "seed": 43
+      },
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1541.3671875,
+      "process_wall_seconds": 2571.2174163060263,
+      "raw_results_sha256": "a5924c445f66704109614aaf1c6a9cb73308675d8a2fdc69d2aae6a8cf4ca131",
+      "seed": 43,
+      "summary": {
+        "sample_weighted_accuracy_percent": 77.70649250864388,
+        "uniform_client_accuracy_percent": 78.31455898323375
+      }
+    },
+    {
+      "device": "cuda:0",
+      "git": {
+        "code_sha256": {
+          "calibrate_femnist_reconstructed.py": "d19792a92dd1a3cd9fa94afdc70e6337fab31d78556eb898b4550188e07a622c",
+          "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+          "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+          "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+          "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+        },
+        "commit": "8e89ef477743fb9ed25a46036ae9cc87d78dd965",
+        "working_tree_clean": true
+      },
+      "identity": {
+        "benchmark": "femnist_fedrep_capacity_aware_v1",
+        "code_sha256": {
+          "calibrate_femnist_reconstructed.py": "d19792a92dd1a3cd9fa94afdc70e6337fab31d78556eb898b4550188e07a622c",
+          "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+          "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+          "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+          "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+        },
+        "config_sha256": "b8ed1193867310fc0f3b9102bf27a5600913696c04f4a412e87b9dd167f64e6b",
+        "device": "cuda:0",
+        "mode": "definitive",
+        "partition_sha256": "7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734",
+        "rounds": 200,
+        "seed": 44
+      },
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1534.28515625,
+      "process_wall_seconds": 2635.7339387650136,
+      "raw_results_sha256": "49789b74df627e49611fd118bc66b03130ba0931ee8f1ab399570b34ee6ca3f6",
+      "seed": 44,
+      "summary": {
+        "sample_weighted_accuracy_percent": 80.20745293891665,
+        "uniform_client_accuracy_percent": 82.47171099250625
+      }
+    },
+    {
+      "device": "cuda:1",
+      "git": {
+        "code_sha256": {
+          "calibrate_femnist_reconstructed.py": "d19792a92dd1a3cd9fa94afdc70e6337fab31d78556eb898b4550188e07a622c",
+          "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+          "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+          "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+          "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+        },
+        "commit": "8e89ef477743fb9ed25a46036ae9cc87d78dd965",
+        "working_tree_clean": true
+      },
+      "identity": {
+        "benchmark": "femnist_fedrep_capacity_aware_v1",
+        "code_sha256": {
+          "calibrate_femnist_reconstructed.py": "d19792a92dd1a3cd9fa94afdc70e6337fab31d78556eb898b4550188e07a622c",
+          "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+          "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+          "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+          "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+        },
+        "config_sha256": "b8ed1193867310fc0f3b9102bf27a5600913696c04f4a412e87b9dd167f64e6b",
+        "device": "cuda:1",
+        "mode": "definitive",
+        "partition_sha256": "7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734",
+        "rounds": 200,
+        "seed": 45
+      },
+      "peak_cuda_allocated_mib": 78.64404296875,
+      "peak_cuda_reserved_mib": 96.0,
+      "peak_rss_mib": 1535.89453125,
+      "process_wall_seconds": 2395.091966122156,
+      "raw_results_sha256": "f4437f4069782b4bef86c7b393ed0dfc6074354eaca5623bd2ca36df8cfba394",
+      "seed": 45,
+      "summary": {
+        "sample_weighted_accuracy_percent": 79.71571263926239,
+        "uniform_client_accuracy_percent": 81.5737184235779
+      }
+    }
+  ],
+  "scheduler_session_wall_seconds": 7519.118560438976,
+  "sessions": [
+    {
+      "end_utc": "2026-10-05T12:02:29.007557+00:00",
+      "number": 1,
+      "start_utc": "2026-10-05T09:57:09.889024+00:00",
+      "status": "completed",
+      "wall_seconds": 7519.118560438976
+    }
+  ],
+  "status": "completed",
+  "time_accounting": {
+    "admission_note": "A free wait means at least 2048 MiB was available on its assigned GPU; idleness is not required.",
+    "native_process_wall_seconds": "Sum of native worker process costs across all attempts, including interruptions.",
+    "overlap_note": "Scheduler session, calendar wait and native worker process costs overlap and must not be added. Native worker sums are process-seconds, not elapsed campaign time.",
+    "scheduler_wall_seconds": "Measured scheduler sessions, including admission waits and overlapping workers.",
+    "scope": "The explicitly authorized final two-GPU scheduler only.",
+    "unfinished_intervals": "Open intervals are counted as unmeasured; no duration is inferred.",
+    "waits": "Wait durations are retained separately for each assigned GPU. The calendar wait total is the union of recorded UTC intervals; simultaneous waits on different GPUs are counted once."
+  }
+}

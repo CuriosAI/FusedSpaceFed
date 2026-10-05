@@ -177,8 +177,9 @@ La mappa è fissata prima di ogni nuovo test: seed **41/43/45 su cuda:1**,
 seed **42/44 su cuda:0**. Entrambe sono RTX 6000 Ada con 49140 MiB.
 GPU 0 può ospitare altri lavori; il gate richiede 2048 MiB liberi e non
 modifica alcun processo esterno. Massimo due worker nostri, uno per GPU.
-La policy separata registra mappa, hardware, sorgenti e hash dello scheduler;
-il device nominale del coordinatore è cuda:1 e non descrive tutti i worker.
+La policy separata registra mappa, sorgenti e hash dello scheduler;
+l'hardware è registrato nei runtime dei worker e nei controlli preliminari.
+Il device nominale del coordinatore è cuda:1 e non descrive tutti i worker.
 Il supporto operativo supera 28 test sintetici; l'audit indipendente con
 dispositivi espliciti ne supera 21. Non sono prove di prestazione reali.
 
@@ -219,3 +220,59 @@ Il test originale era già stato usato nella precedente campagna: le nuove
 run non costituiscono un test su dati mai osservati nella storia del progetto.
 La selezione corrente usa soltanto validation derivata dal training; il suo
 vantaggio sulla validation non certifica un miglioramento sul test.
+
+## Cinque run definitive concluse
+
+Tutti i seed sono partiti da zero con la configurazione congelata e il codice
+del commit `8e89ef477743fb9ed25a46036ae9cc87d78dd965`. Nessuna ripresa, errore
+numerico, interruzione o modifica durante le run. Il controller è terminato
+con exit code 0. L'audit indipendente finale verifica per ogni seed 200 round,
+dieci valutazioni esattamente nei round 191–200, tutti i 150 client e 2603
+esempi per valutazione, valori finiti, hash e partecipazioni cumulative.
+Le due metriche sono ricostruite dai conteggi corretti/totali dei client.
+Il sottocomando `summarize` sulle cinque directory produce gli stessi byte
+del riepilogo nativo. Non viene eseguita alcuna nuova valutazione del modello.
+
+| Seed | GPU | Primaria pesata | Uniforme client | Processo, s | RSS massimo, MiB |
+|---|---|---:|---:|---:|---:|
+| 41 | cuda:1 | 82.33960814% | 84.38612044% | 2551.76 | 1534.72 |
+| 42 | cuda:0 | 75.25931617% | 77.77016908% | 2645.80 | 1530.23 |
+| 43 | cuda:1 | 77.70649251% | 78.31455898% | 2571.22 | 1541.37 |
+| 44 | cuda:0 | 80.20745294% | 82.47171099% | 2635.73 | 1534.29 |
+| 45 | cuda:1 | 79.71571264% | 81.57371842% | 2395.09 | 1535.89 |
+| Media | — | **79.04571648%** | **80.90325558%** | — | — |
+| SD campionaria, ddof=1 | — | **2.68228433** | **2.80880319** | — | — |
+
+Valori per seed: media dei dieci round; SD in punti percentuali, condizionata
+alla singola partizione e configurazione. I dieci round non sono repliche
+indipendenti. La primaria resta pesata per campioni.
+
+L'esecuzione finale va dal **2026-10-05 09:57:09.889 UTC** al
+**12:02:29.008 UTC**: **7519.12 s (2 h 05 min 19 s)** di calendario.
+Somma dei processi: **12799.61 s (3.56 h)**; compute dei round:
+**12411.38 s**. I processi si sovrappongono: questi tempi non si sommano.
+L'intervallo tra il congelamento e l'avvio effettivo non è tempo di training.
+I picchi Torch sono **78.6440 MiB allocati e 96 MiB riservati** per ciascuna
+run; RSS massimo per processo **1541.37 MiB**. Sono misure del processo e
+dell'allocator, non picchi NVML dell'intera GPU o dei lavori esterni.
+I costi delle fasi, passi optimizer, partecipazioni e comunicazione logica
+sono conservati nei risultati e nei timing. La comunicazione è simulata:
+**14287368000 byte per run**, senza misura di una rete distribuita reale.
+
+Il confronto descrittivo con le cinque run precedenti dello stesso benchmark
+passa da **64.73684211% (SD 10.63186682)** a **79.04571648% (SD 2.68228433)**,
+cioè **+14.30887438 punti percentuali** e minore dispersione fra i cinque seed.
+Questo confronto viene calcolato dopo il congelamento; non guida la ricerca.
+FedRep riporta **78.56%** nella colonna FEMNIST (150,3): la differenza numerica
+è **+0.48571648 punti**. I seed 42 e 43 sono inferiori a quel valore pubblicato.
+Non è una prova di superiorità in un confronto controllato: restano diverse
+costruzione dei client/quote, split e valutazione, capacità/costi, e mancano
+gli split, seed e varianze originali. La SD delle baseline non viene inventata.
+Anche il vantaggio numerico sul FedAvg pubblicato (51.64%) è descrittivo.
+
+Gli artefatti nuovi sono separati in `artifacts/femnist_calibrated/`:
+summary, cinque risultati compressi senza perdita, timing, costi, README e
+manifesto con hash e provenienza. Il CSV delle baseline, il manoscritto e i
+risultati precedenti sono invariati. Dataset, checkpoint, log e helper
+operativi restano sotto `_local/`. Il report tecnico autosufficiente è
+`_local/report_calibrazione_femnist.md`.

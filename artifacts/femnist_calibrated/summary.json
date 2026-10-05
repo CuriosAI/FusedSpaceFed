@@ -1,0 +1,36 @@
+{
+  "benchmark": "femnist_fedrep_capacity_aware_v1",
+  "partition_sha256": "7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734",
+  "result_origin": "ours",
+  "sample_weighted_accuracy_percent": {
+    "mean": 79.04571648098349,
+    "std": 2.6822843285127904,
+    "values": [
+      82.3396081444487,
+      75.2593161736458,
+      77.70649250864388,
+      80.20745293891665,
+      79.71571263926239
+    ]
+  },
+  "seeds": [
+    41,
+    42,
+    43,
+    44,
+    45
+  ],
+  "uncertainty": "sample standard deviation across five run means, ddof=1",
+  "uniform_client_accuracy_percent": {
+    "mean": 80.90325558485003,
+    "std": 2.8088031937231612,
+    "values": [
+      84.38612044226207,
+      77.77016908267024,
+      78.31455898323375,
+      82.47171099250625,
+      81.5737184235779
+    ]
+  },
+  "unit": "percent"
+}
