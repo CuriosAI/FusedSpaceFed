@@ -1,0 +1,93 @@
+{
+  "batches": {
+    "2": {
+      "batch_size": 2,
+      "parameters": {
+        "classifier": 14219210,
+        "decoder": 44995,
+        "encoder": 72080,
+        "fedavg": 14334589
+      },
+      "phases": {
+        "classification": {
+          "counted_total": 875735074,
+          "dense": 802765824,
+          "operators": {
+            "aten.addmm": 55595008,
+            "aten.convolution": 212445184,
+            "aten.convolution_backward": 423535616,
+            "aten.mm": 111190016
+          },
+          "update_and_clip": 72969250
+        },
+        "fedavg": {
+          "counted_total": 631214705,
+          "dense": 559541760,
+          "operators": {
+            "aten.addmm": 56056320,
+            "aten.convolution": 135475200,
+            "aten.convolution_backward": 255897600,
+            "aten.mm": 112112640
+          },
+          "update_and_clip": 71672945
+        },
+        "warmup": {
+          "counted_total": 183994624,
+          "dense": 182841344,
+          "operators": {
+            "aten.convolution": 76969984,
+            "aten.convolution_backward": 105871360
+          },
+          "update_and_clip": 1153280
+        }
+      }
+    },
+    "32": {
+      "batch_size": 32,
+      "parameters": {
+        "classifier": 14219210,
+        "decoder": 44995,
+        "encoder": 72080,
+        "fedavg": 14334589
+      },
+      "phases": {
+        "classification": {
+          "counted_total": 12917222434,
+          "dense": 12844253184,
+          "operators": {
+            "aten.addmm": 889520128,
+            "aten.convolution": 3399122944,
+            "aten.convolution_backward": 6776569856,
+            "aten.mm": 1779040256
+          },
+          "update_and_clip": 72969250
+        },
+        "fedavg": {
+          "counted_total": 9024341105,
+          "dense": 8952668160,
+          "operators": {
+            "aten.addmm": 896901120,
+            "aten.convolution": 2167603200,
+            "aten.convolution_backward": 4094361600,
+            "aten.mm": 1793802240
+          },
+          "update_and_clip": 71672945
+        },
+        "warmup": {
+          "counted_total": 2926614784,
+          "dense": 2925461504,
+          "operators": {
+            "aten.convolution": 1231519744,
+            "aten.convolution_backward": 1693941760
+          },
+          "update_and_clip": 1153280
+        }
+      }
+    }
+  },
+  "device": "cuda:1",
+  "input": "synthetic only",
+  "profile_sha256": "164f242a968689c6c1a819fd353317c0a858b8c316a80b8244da0ed8c53f6a12",
+  "status": "passed",
+  "wall_seconds": 1.554892014944926
+}

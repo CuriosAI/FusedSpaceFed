@@ -1,0 +1,223 @@
+{
+  "batches": {
+    "18": {
+      "batch_size": 18,
+      "parameters": {
+        "classifier": 14219210,
+        "decoder": 44995,
+        "encoder": 72080,
+        "fedavg": 14334589
+      },
+      "phases": {
+        "classification": {
+          "counted_total": 7297861666,
+          "dense": 7224892416,
+          "operators": {
+            "aten.addmm": 500355072,
+            "aten.convolution": 1912006656,
+            "aten.convolution_backward": 3811820544,
+            "aten.mm": 1000710144
+          },
+          "update_and_clip": 72969250
+        },
+        "fedavg": {
+          "counted_total": 5107548785,
+          "dense": 5035875840,
+          "operators": {
+            "aten.addmm": 504506880,
+            "aten.convolution": 1219276800,
+            "aten.convolution_backward": 2303078400,
+            "aten.mm": 1009013760
+          },
+          "update_and_clip": 71672945
+        },
+        "warmup": {
+          "counted_total": 1646725376,
+          "dense": 1645572096,
+          "operators": {
+            "aten.convolution": 692729856,
+            "aten.convolution_backward": 952842240
+          },
+          "update_and_clip": 1153280
+        }
+      }
+    },
+    "2": {
+      "batch_size": 2,
+      "parameters": {
+        "classifier": 14219210,
+        "decoder": 44995,
+        "encoder": 72080,
+        "fedavg": 14334589
+      },
+      "phases": {
+        "classification": {
+          "counted_total": 875735074,
+          "dense": 802765824,
+          "operators": {
+            "aten.addmm": 55595008,
+            "aten.convolution": 212445184,
+            "aten.convolution_backward": 423535616,
+            "aten.mm": 111190016
+          },
+          "update_and_clip": 72969250
+        },
+        "fedavg": {
+          "counted_total": 631214705,
+          "dense": 559541760,
+          "operators": {
+            "aten.addmm": 56056320,
+            "aten.convolution": 135475200,
+            "aten.convolution_backward": 255897600,
+            "aten.mm": 112112640
+          },
+          "update_and_clip": 71672945
+        },
+        "warmup": {
+          "counted_total": 183994624,
+          "dense": 182841344,
+          "operators": {
+            "aten.convolution": 76969984,
+            "aten.convolution_backward": 105871360
+          },
+          "update_and_clip": 1153280
+        }
+      }
+    },
+    "32": {
+      "batch_size": 32,
+      "parameters": {
+        "classifier": 14219210,
+        "decoder": 44995,
+        "encoder": 72080,
+        "fedavg": 14334589
+      },
+      "phases": {
+        "classification": {
+          "counted_total": 12917222434,
+          "dense": 12844253184,
+          "operators": {
+            "aten.addmm": 889520128,
+            "aten.convolution": 3399122944,
+            "aten.convolution_backward": 6776569856,
+            "aten.mm": 1779040256
+          },
+          "update_and_clip": 72969250
+        },
+        "fedavg": {
+          "counted_total": 9024341105,
+          "dense": 8952668160,
+          "operators": {
+            "aten.addmm": 896901120,
+            "aten.convolution": 2167603200,
+            "aten.convolution_backward": 4094361600,
+            "aten.mm": 1793802240
+          },
+          "update_and_clip": 71672945
+        },
+        "warmup": {
+          "counted_total": 2926614784,
+          "dense": 2925461504,
+          "operators": {
+            "aten.convolution": 1231519744,
+            "aten.convolution_backward": 1693941760
+          },
+          "update_and_clip": 1153280
+        }
+      }
+    },
+    "7": {
+      "batch_size": 7,
+      "parameters": {
+        "classifier": 14219210,
+        "decoder": 44995,
+        "encoder": 72080,
+        "fedavg": 14334589
+      },
+      "phases": {
+        "classification": {
+          "counted_total": 2882649634,
+          "dense": 2809680384,
+          "operators": {
+            "aten.addmm": 194582528,
+            "aten.convolution": 743558144,
+            "aten.convolution_backward": 1482374656,
+            "aten.mm": 389165056
+          },
+          "update_and_clip": 72969250
+        },
+        "fedavg": {
+          "counted_total": 2030069105,
+          "dense": 1958396160,
+          "operators": {
+            "aten.addmm": 196197120,
+            "aten.convolution": 474163200,
+            "aten.convolution_backward": 895641600,
+            "aten.mm": 392394240
+          },
+          "update_and_clip": 71672945
+        },
+        "warmup": {
+          "counted_total": 641097984,
+          "dense": 639944704,
+          "operators": {
+            "aten.convolution": 269394944,
+            "aten.convolution_backward": 370549760
+          },
+          "update_and_clip": 1153280
+        }
+      }
+    }
+  },
+  "device": "cpu",
+  "excluded": [
+    "BN",
+    "activation",
+    "pooling",
+    "loss",
+    "finite checks",
+    "copies",
+    "aggregation",
+    "kernel algorithm overhead"
+  ],
+  "flop_counter_source_sha256": "90d4affa208c1b355e04d4cdd2ba6e19b2f44c1e751df281ceee4d6dc8e7d49d",
+  "input": "synthetic only",
+  "metric": "measured dense forward/backward FMA=2 + semantic SGD/clip 5P, Adam/clip 16P",
+  "parameters": {
+    "classifier": 14219210,
+    "decoder": 44995,
+    "encoder": 72080,
+    "fedavg": 14334589
+  },
+  "profile_sha256": "164f242a968689c6c1a819fd353317c0a858b8c316a80b8244da0ed8c53f6a12",
+  "schema": 1,
+  "settings": {
+    "aggregation": "uniform",
+    "amp": false,
+    "autoencoder_betas": [
+      0.9,
+      0.999
+    ],
+    "autoencoder_eps": 1e-08,
+    "autoencoder_lr": 0.0003,
+    "autoencoder_weight_decay": 0.0,
+    "batch_size": 32,
+    "classification_epochs": 1,
+    "classifier_lr": 0.01,
+    "classifier_momentum": 0.0,
+    "classifier_weight_decay": 0.0,
+    "clients_per_round": 5,
+    "drop_last": false,
+    "dz": 64,
+    "gradient_clip_norm": 1.0,
+    "num_workers": 0,
+    "optimizer_reset": "each_participation; Adam continuous between phases",
+    "precision": "float32",
+    "rounds": 300,
+    "tf32": false,
+    "torch_threads": 4,
+    "warmup_epochs": 1
+  },
+  "source": "https://github.com/pytorch/pytorch/blob/v2.5.1/torch/utils/flop_counter.py",
+  "torch": "2.5.1+cu124"
+}

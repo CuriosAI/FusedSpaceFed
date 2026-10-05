@@ -1,0 +1,34 @@
+{
+  "jobs": [
+    {
+      "config": "research/capacity_compute_control/configs/validation/FusedSpaceFed-lr-0p005.json",
+      "name": "FusedSpaceFed-lr-0p005",
+      "output": "_local/capacity_compute_control/validation/FusedSpaceFed-lr-0p005"
+    },
+    {
+      "config": "research/capacity_compute_control/configs/validation/FedAvg-lr-0p005.json",
+      "name": "FedAvg-lr-0p005",
+      "output": "_local/capacity_compute_control/validation/FedAvg-lr-0p005"
+    },
+    {
+      "config": "research/capacity_compute_control/configs/validation/FusedSpaceFed-lr-0p01.json",
+      "name": "FusedSpaceFed-lr-0p01",
+      "output": "_local/capacity_compute_control/validation/FusedSpaceFed-lr-0p01"
+    },
+    {
+      "config": "research/capacity_compute_control/configs/validation/FedAvg-lr-0p01.json",
+      "name": "FedAvg-lr-0p01",
+      "output": "_local/capacity_compute_control/validation/FedAvg-lr-0p01"
+    },
+    {
+      "config": "research/capacity_compute_control/configs/validation/FusedSpaceFed-lr-0p02.json",
+      "name": "FusedSpaceFed-lr-0p02",
+      "output": "_local/capacity_compute_control/validation/FusedSpaceFed-lr-0p02"
+    },
+    {
+      "config": "research/capacity_compute_control/configs/validation/FedAvg-lr-0p02.json",
+      "name": "FedAvg-lr-0p02",
+      "output": "_local/capacity_compute_control/validation/FedAvg-lr-0p02"
+    }
+  ]
+}
