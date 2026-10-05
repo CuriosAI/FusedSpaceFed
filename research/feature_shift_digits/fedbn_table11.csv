@@ -1,0 +1,16 @@
+method,domain,mean_accuracy_percent,published_sd_percent,uncertainty_type,trials,result_origin,source_pdf,appendix_pdf_page,printed_page,table
+FedAvg,SVHN,70.59,0.51,published_standard_deviation_ddof_unspecified,5,reported,https://michaelkamp.org/wp-content/uploads/2021/05/FedBN_appendix.pdf,9,21,11
+FedAvg,USPS,96.91,0.11,published_standard_deviation_ddof_unspecified,5,reported,https://michaelkamp.org/wp-content/uploads/2021/05/FedBN_appendix.pdf,9,21,11
+FedAvg,SynthDigits,86.66,0.21,published_standard_deviation_ddof_unspecified,5,reported,https://michaelkamp.org/wp-content/uploads/2021/05/FedBN_appendix.pdf,9,21,11
+FedAvg,MNIST-M,82.44,0.41,published_standard_deviation_ddof_unspecified,5,reported,https://michaelkamp.org/wp-content/uploads/2021/05/FedBN_appendix.pdf,9,21,11
+FedAvg,MNIST,97.38,0.05,published_standard_deviation_ddof_unspecified,5,reported,https://michaelkamp.org/wp-content/uploads/2021/05/FedBN_appendix.pdf,9,21,11
+FedProx,SVHN,71.55,0.75,published_standard_deviation_ddof_unspecified,5,reported,https://michaelkamp.org/wp-content/uploads/2021/05/FedBN_appendix.pdf,9,21,11
+FedProx,USPS,96.98,0.19,published_standard_deviation_ddof_unspecified,5,reported,https://michaelkamp.org/wp-content/uploads/2021/05/FedBN_appendix.pdf,9,21,11
+FedProx,SynthDigits,86.60,0.18,published_standard_deviation_ddof_unspecified,5,reported,https://michaelkamp.org/wp-content/uploads/2021/05/FedBN_appendix.pdf,9,21,11
+FedProx,MNIST-M,82.67,0.75,published_standard_deviation_ddof_unspecified,5,reported,https://michaelkamp.org/wp-content/uploads/2021/05/FedBN_appendix.pdf,9,21,11
+FedProx,MNIST,97.30,0.17,published_standard_deviation_ddof_unspecified,5,reported,https://michaelkamp.org/wp-content/uploads/2021/05/FedBN_appendix.pdf,9,21,11
+FedBN,SVHN,76.93,0.25,published_standard_deviation_ddof_unspecified,5,reported,https://michaelkamp.org/wp-content/uploads/2021/05/FedBN_appendix.pdf,9,21,11
+FedBN,USPS,97.69,0.10,published_standard_deviation_ddof_unspecified,5,reported,https://michaelkamp.org/wp-content/uploads/2021/05/FedBN_appendix.pdf,9,21,11
+FedBN,SynthDigits,87.46,0.20,published_standard_deviation_ddof_unspecified,5,reported,https://michaelkamp.org/wp-content/uploads/2021/05/FedBN_appendix.pdf,9,21,11
+FedBN,MNIST-M,83.57,0.38,published_standard_deviation_ddof_unspecified,5,reported,https://michaelkamp.org/wp-content/uploads/2021/05/FedBN_appendix.pdf,9,21,11
+FedBN,MNIST,97.55,0.11,published_standard_deviation_ddof_unspecified,5,reported,https://michaelkamp.org/wp-content/uploads/2021/05/FedBN_appendix.pdf,9,21,11

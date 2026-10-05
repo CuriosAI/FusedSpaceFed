@@ -1,0 +1,9 @@
+{
+  "repository_and_new_tests": {"status": "passed", "count": 211, "wall_seconds": 16.03, "gpu_access": false},
+  "command": "env CUDA_VISIBLE_DEVICES= OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 /home/schroeder/miniconda3/envs/general_ml/bin/python -m pytest tests research/feature_shift_digits/tests -q --durations=5",
+  "new_tests": {"count": 15, "data": "synthetic only", "checkpoint_resume": "shared/private states and RNG exactly equal", "author_cnn_output_parity": "exact under common state", "author_preprocessing_parity": "exact for all five domains"},
+  "dataset_preparation": {"status": "passed", "training_examples_each": 743, "clients": 5, "partition_sha256": "7a762ffb10da74e3f0dee9a6f519e6c4057e2a5b47995a0546ee5a871eb47b58"},
+  "digits_hyperparameter_search": false,
+  "definitive_test_used_before_freeze": false,
+  "evaluation_policy": "fixed round300, no adaptation or checkpoint selection"
+}

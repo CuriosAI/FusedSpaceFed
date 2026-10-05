@@ -1,0 +1,10 @@
+........................................................................ [ 34%]
+........................................................................ [ 68%]
+...................................................................      [100%]
+============================= slowest 5 durations ==============================
+2.11s call     tests/test_femnist_calibration_runner.py::test_calibration_and_definitive_outputs_keep_distinct_metric_identity
+1.93s call     tests/test_femnist_calibration_runner.py::test_calibration_resume_matches_uninterrupted_training_and_preserves_private_encoders
+1.61s call     tests/test_femnist_reconstructed.py::test_checkpoint_resume_matches_uninterrupted_training
+1.12s call     research/feature_shift_digits/tests/test_digits.py::test_checkpoint_resume_exact_encoders_and_rng
+1.03s call     tests/test_femnist_calibration_runner.py::test_calibration_never_accesses_test_arrays_through_training_and_evaluation
+211 passed in 16.03s

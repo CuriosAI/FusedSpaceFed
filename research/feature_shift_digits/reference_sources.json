@@ -1,0 +1,78 @@
+{
+  "appendix": {
+    "references": [
+      "D.2, PDF page 5 / printed 17, Table 3: classifier, SGD/CE/batch/rounds",
+      "D.2, PDF page 6 / printed 18, Table 8: 743 per client, five clients, one local epoch",
+      "E.2, PDF page 9 / printed 21, Table 11: published per-domain mean/std"
+    ],
+    "sha256": "9bc1f6233c979cfca9e8eee4d9caf7d5c46d71d41e377fcb222aa944a2d286c1",
+    "table11_verified_by": "Local PDF page rendered and inspected, plus PDF text cross-check",
+    "url": "https://michaelkamp.org/wp-content/uploads/2021/05/FedBN_appendix.pdf"
+  },
+  "configuration_sha256": "702b7508b4e8bc0f4386846ab0a0691ad9313d86ca9c791fe162bd1251828347",
+  "dataset": {
+    "actual_download_sha256": "6c006e41ce16404aab520895a5c510166453c8b58ed2e7eb7e23e133e1fa4221",
+    "bytes": 278200677,
+    "provenance": "Third-party mirror linked by the official current README; 2021 table artifact provenance not certified",
+    "readme_discrepancy": "Digits dataset and model hyperlinks interchanged; actual digit_dataset.zip selected and validated",
+    "repository": "Jemary/FedBN_Dataset",
+    "revision": "0b6cd64d780662b683a373ddb23aa25d1d968cf8",
+    "sha256": "6c006e41ce16404aab520895a5c510166453c8b58ed2e7eb7e23e133e1fa4221",
+    "url": "https://huggingface.co/datasets/Jemary/FedBN_Dataset/resolve/0b6cd64d780662b683a373ddb23aa25d1d968cf8/digit_dataset.zip"
+  },
+  "official_repository": {
+    "commit": "2fa38adf627a8c8ba71c5fb515b1f2ba00aa8812",
+    "files": {
+      "README.md": {
+        "last_change_commit": "2fa38adf627a8c8ba71c5fb515b1f2ba00aa8812",
+        "sha256": "cd2e48d560532e151ec5aeb819ce3669cff4760cfd539fe9fb5742adb0a407eb"
+      },
+      "federated/fed_digits.py": {
+        "last_change_commit": "df4a9f9c4f35696393d775f26cd4763a8c80a6f6",
+        "sha256": "bb09767577636719c12147c710ed29c031a76144d8c67c05931b665af63de9ee"
+      },
+      "nets/models.py": {
+        "last_change_commit": "655f5f31e71d192792ad1b28c0c278d0b1fd29a4",
+        "sha256": "0b15453c20cee151a7f75576a5528d36b3cbd0a73f68d0d1778e7af9334f562e"
+      },
+      "utils/data_preprocess.py": {
+        "last_change_commit": "1caf83cf95e6859b712e1e80c8264009a5067162",
+        "sha256": "23a2ebc266344b2745864ec323b5661200d06838dc7cfe0556205c5ca61509c1"
+      },
+      "utils/data_utils.py": {
+        "last_change_commit": "655f5f31e71d192792ad1b28c0c278d0b1fd29a4",
+        "sha256": "5f6821b4a8791c890c658c2a2e9dbef6439664c2abf277a0667bcff5ee9ff9e9"
+      }
+    },
+    "provenance": "Linked author repository; README names the paper authors, not an inferred fork",
+    "url": "https://github.com/med-air/FedBN"
+  },
+  "paper": {
+    "references": [
+      "Section 5.1: balanced 7438 pool, 10% training, held-out test, five trials",
+      "Exact published seeds/statistic round not explicitly recovered"
+    ],
+    "sha256": "47c4cee6ede46d2e337c81a6596c5b85d675cf9b45a2337b0aa9ab48e40c5b9d",
+    "url": "https://arxiv.org/pdf/2102.07623"
+  },
+  "preexisting_fusedspacefed_settings": {
+    "benchmark_overrides": [
+      "FedBN CNN and SGD LR.01/no momentum/decay",
+      "1 CE epoch, batch32, 300rounds, 5 fully participating clients, normalized RGB input",
+      "Fixed final round300 test, separate private encoder per domain"
+    ],
+    "configuration": "configs/femnist_reconstructed_calibrated.json",
+    "reused": [
+      "UNetSmallAE dz64/base16, encoder persistence, additive fusion, two phases",
+      "Adam LR.0003 and betas/epsilon, clip1, optimizer reset, Float32/noAMP"
+    ],
+    "sha256": "a681b4453d924174b69aff76a7de6df151d1a33d77fa35be72215a68eeeb25a3"
+  },
+  "sampling": {
+    "raw_image_identifiers_available": false,
+    "source": "author train_part0.pkl, 743 rows each; no resampling",
+    "upstream_balancing": "split(part_len=743.8), first partition rows [0:743]",
+    "upstream_split": "utils/data_preprocess.py: combined original splits, StratifiedShuffleSplit test_size=.2 random_state=0"
+  },
+  "verified_utc": "2026-10-05T14:59:25.646053+00:00"
+}

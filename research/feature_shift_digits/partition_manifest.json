@@ -1,0 +1,438 @@
+{
+  "archive_sha256": "6c006e41ce16404aab520895a5c510166453c8b58ed2e7eb7e23e133e1fa4221",
+  "domains": {
+    "MNIST": {
+      "test": {
+        "count": 14000,
+        "labels": [
+          1380,
+          1575,
+          1398,
+          1428,
+          1365,
+          1263,
+          1375,
+          1459,
+          1365,
+          1392
+        ],
+        "origin_identifier": "domain + archive member + row; raw pre-resplit IDs not supplied",
+        "prepared_shape": [
+          14000,
+          3,
+          28,
+          28
+        ],
+        "source_member": "MNIST/test.pkl",
+        "source_member_sha256": "34b1c026c0bf71c43b523c7c8bf842f6d80b5b7bbb19fff35a3e67bb059d2740",
+        "source_shape": [
+          14000,
+          28,
+          28
+        ]
+      },
+      "train": {
+        "count": 743,
+        "labels": [
+          83,
+          96,
+          60,
+          78,
+          76,
+          54,
+          81,
+          72,
+          60,
+          83
+        ],
+        "origin_identifier": "domain + archive member + row; raw pre-resplit IDs not supplied",
+        "prepared_shape": [
+          743,
+          3,
+          28,
+          28
+        ],
+        "source_member": "MNIST/partitions/train_part0.pkl",
+        "source_member_sha256": "2a63580872065561ec2917648fa35924e32b4e8a45bed27a67923263fb23d8ab",
+        "source_shape": [
+          743,
+          28,
+          28
+        ]
+      }
+    },
+    "MNIST-M": {
+      "test": {
+        "count": 14000,
+        "labels": [
+          1380,
+          1575,
+          1398,
+          1428,
+          1365,
+          1263,
+          1375,
+          1459,
+          1365,
+          1392
+        ],
+        "origin_identifier": "domain + archive member + row; raw pre-resplit IDs not supplied",
+        "prepared_shape": [
+          14000,
+          3,
+          28,
+          28
+        ],
+        "source_member": "MNIST_M/test.pkl",
+        "source_member_sha256": "85d274bb8b047c3a9bef645571378f898287a0839fde2ac509abb96891d899f5",
+        "source_shape": [
+          14000,
+          28,
+          28,
+          3
+        ]
+      },
+      "train": {
+        "count": 743,
+        "labels": [
+          83,
+          96,
+          60,
+          78,
+          76,
+          54,
+          81,
+          72,
+          60,
+          83
+        ],
+        "origin_identifier": "domain + archive member + row; raw pre-resplit IDs not supplied",
+        "prepared_shape": [
+          743,
+          3,
+          28,
+          28
+        ],
+        "source_member": "MNIST_M/partitions/train_part0.pkl",
+        "source_member_sha256": "2b7f15883e7bf8f22ee98da5e387bcc12e703fa5fa929f2ea7a47693f93f6311",
+        "source_shape": [
+          743,
+          28,
+          28,
+          3
+        ]
+      }
+    },
+    "SVHN": {
+      "test": {
+        "count": 19858,
+        "labels": [
+          1338,
+          3792,
+          2947,
+          2276,
+          1996,
+          1853,
+          1541,
+          1523,
+          1341,
+          1251
+        ],
+        "origin_identifier": "domain + archive member + row; raw pre-resplit IDs not supplied",
+        "prepared_shape": [
+          19858,
+          3,
+          28,
+          28
+        ],
+        "source_member": "SVHN/test.pkl",
+        "source_member_sha256": "8f08eba9e74676c0edb1dde8157dba7a7bce7204975a5aba34e1184f7d62feb9",
+        "source_shape": [
+          19858,
+          32,
+          32,
+          3
+        ]
+      },
+      "train": {
+        "count": 743,
+        "labels": [
+          50,
+          169,
+          110,
+          83,
+          71,
+          60,
+          49,
+          60,
+          43,
+          48
+        ],
+        "origin_identifier": "domain + archive member + row; raw pre-resplit IDs not supplied",
+        "prepared_shape": [
+          743,
+          3,
+          28,
+          28
+        ],
+        "source_member": "SVHN/partitions/train_part0.pkl",
+        "source_member_sha256": "0d1702ffe9fdcd69cfd19bc40900612650b485b6b93891310418e5b38feeac91",
+        "source_shape": [
+          743,
+          32,
+          32,
+          3
+        ]
+      }
+    },
+    "SynthDigits": {
+      "test": {
+        "count": 97791,
+        "labels": [
+          9826,
+          9857,
+          9706,
+          9769,
+          9682,
+          9798,
+          9778,
+          9792,
+          9805,
+          9778
+        ],
+        "origin_identifier": "domain + archive member + row; raw pre-resplit IDs not supplied",
+        "prepared_shape": [
+          97791,
+          3,
+          28,
+          28
+        ],
+        "source_member": "SynthDigits/test.pkl",
+        "source_member_sha256": "b3b16b0c7441d994e46ebd2337744fce7050aac5a9f6aaca5ca79c6a62be0955",
+        "source_shape": [
+          97791,
+          32,
+          32,
+          3
+        ]
+      },
+      "train": {
+        "count": 743,
+        "labels": [
+          71,
+          71,
+          74,
+          68,
+          81,
+          78,
+          79,
+          81,
+          62,
+          78
+        ],
+        "origin_identifier": "domain + archive member + row; raw pre-resplit IDs not supplied",
+        "prepared_shape": [
+          743,
+          3,
+          28,
+          28
+        ],
+        "source_member": "SynthDigits/partitions/train_part0.pkl",
+        "source_member_sha256": "3a5a5d2e90ef51a34d76d073caf62203ac3cb58208397e3b483baeaac348a6c1",
+        "source_shape": [
+          743,
+          32,
+          32,
+          3
+        ]
+      }
+    },
+    "USPS": {
+      "test": {
+        "count": 1860,
+        "labels": [
+          311,
+          254,
+          186,
+          165,
+          170,
+          143,
+          167,
+          158,
+          142,
+          164
+        ],
+        "origin_identifier": "domain + archive member + row; raw pre-resplit IDs not supplied",
+        "prepared_shape": [
+          1860,
+          3,
+          28,
+          28
+        ],
+        "source_member": "USPS/test.pkl",
+        "source_member_sha256": "ffddb583a0efd3bb39e6fb167cf94ad529da1fba67071e958e13bc3ec521540d",
+        "source_shape": [
+          1860,
+          16,
+          16
+        ]
+      },
+      "train": {
+        "count": 743,
+        "labels": [
+          121,
+          94,
+          73,
+          64,
+          69,
+          75,
+          62,
+          63,
+          59,
+          63
+        ],
+        "origin_identifier": "domain + archive member + row; raw pre-resplit IDs not supplied",
+        "prepared_shape": [
+          743,
+          3,
+          28,
+          28
+        ],
+        "source_member": "USPS/partitions/train_part0.pkl",
+        "source_member_sha256": "db7af90772e81f7426b786d7ab29d53e4fe9354fdc86e523650d250b3b92fd78",
+        "source_shape": [
+          743,
+          16,
+          16
+        ]
+      }
+    }
+  },
+  "files": {
+    "MNIST-test-ids.json": {
+      "bytes": 436893,
+      "sha256": "d63fc6ca519c3e6ca086ec22f2981bba0f71cf240e0948b358f11564eb5e17bd"
+    },
+    "MNIST-test-images.npy": {
+      "bytes": 32928128,
+      "sha256": "ff6db918a81860677ce0461a50dace3c2f4b9309d3c070f349cc72c823ad24c1"
+    },
+    "MNIST-test-labels.npy": {
+      "bytes": 112128,
+      "sha256": "78ce4d6be797e24d34c454b760931f615d717c5c8faac9a11362fbd3bf2dd14f"
+    },
+    "MNIST-train-ids.json": {
+      "bytes": 35557,
+      "sha256": "53c68cf02600cbb21d81553c1a0f7b9ee44fd3b4ad3fe7f9288ff71546d58ffc"
+    },
+    "MNIST-train-images.npy": {
+      "bytes": 1747664,
+      "sha256": "32c6019f12ffd6b2c4331484717be6422dcd66b5110e70c37c918538c0bc143d"
+    },
+    "MNIST-train-labels.npy": {
+      "bytes": 6072,
+      "sha256": "897a1ac5c37724782b516e0be569f1378c8c59ef2e6ed20a100dbfe3dfa370ad"
+    },
+    "MNIST_M-test-ids.json": {
+      "bytes": 492893,
+      "sha256": "b49e3a7a5ed413e54f828b3e09b613f3e83066385526fb883d8886582cd56428"
+    },
+    "MNIST_M-test-images.npy": {
+      "bytes": 32928128,
+      "sha256": "eb89f9a08a736fad7e1cb4c3047706b601ecf696bfcbb8eecec27fac154ec82e"
+    },
+    "MNIST_M-test-labels.npy": {
+      "bytes": 112128,
+      "sha256": "78ce4d6be797e24d34c454b760931f615d717c5c8faac9a11362fbd3bf2dd14f"
+    },
+    "MNIST_M-train-ids.json": {
+      "bytes": 38529,
+      "sha256": "ee1564a0eeafea59d0fa50fc1131c01f08e074d2bad3459f5fdb8709d6873128"
+    },
+    "MNIST_M-train-images.npy": {
+      "bytes": 1747664,
+      "sha256": "04ffad32a1f0583224db8fcfbda88c33d55bc31b494f88cd2010086d61b1c69f"
+    },
+    "MNIST_M-train-labels.npy": {
+      "bytes": 6072,
+      "sha256": "897a1ac5c37724782b516e0be569f1378c8c59ef2e6ed20a100dbfe3dfa370ad"
+    },
+    "SVHN-test-ids.json": {
+      "bytes": 584633,
+      "sha256": "47eba5dd1c12de94a86acc20ec740d662cf6eb635d94b4c2422f4e2254d92962"
+    },
+    "SVHN-test-images.npy": {
+      "bytes": 46706144,
+      "sha256": "cadd3505d2261161b8f9e60c98ac658bdd6235f0f923058e04b7d6ca4c66a56a"
+    },
+    "SVHN-test-labels.npy": {
+      "bytes": 158992,
+      "sha256": "747577fcfb40b042228fd2f12c28e9991ec6a81bb11c92501408ed04f267dddf"
+    },
+    "SVHN-train-ids.json": {
+      "bytes": 34071,
+      "sha256": "0b5f76741a91815dbf109e4bbd9126be8b5cec4e165db1fafdfdb0dcdd3094cf"
+    },
+    "SVHN-train-images.npy": {
+      "bytes": 1747664,
+      "sha256": "514d133cf400ba64c57fd56ff78348ffbbf6063ae9993ee1aa276241faeba4b6"
+    },
+    "SVHN-train-labels.npy": {
+      "bytes": 6072,
+      "sha256": "acd9db7e056f908e3390e232182e1eb8302c07dad3c8232b03d406a6a9c3bde2"
+    },
+    "SynthDigits-test-ids.json": {
+      "bytes": 4291697,
+      "sha256": "b621e71d898caeaad8fc7ff9a587434329dba6bb0f52bd9cf2c07dea6d951325"
+    },
+    "SynthDigits-test-images.npy": {
+      "bytes": 230004560,
+      "sha256": "add230a0dd14a918cfca3b93aaac8d54e5bf262cdf12234277681ae44c1791dd"
+    },
+    "SynthDigits-test-labels.npy": {
+      "bytes": 782456,
+      "sha256": "db8c1f9a254d52c53cda64f8b0ffd5f8f621cb1ecaf532b16762f4407859c8c8"
+    },
+    "SynthDigits-train-ids.json": {
+      "bytes": 44473,
+      "sha256": "09d89cd664ac4ba033a111ec9bff90acb648b3cca90abd3f1aea4d7ed311aca2"
+    },
+    "SynthDigits-train-images.npy": {
+      "bytes": 1747664,
+      "sha256": "984a801dcf0e1493a15da31d104802008b287a59712d42bdbf6597f144309420"
+    },
+    "SynthDigits-train-labels.npy": {
+      "bytes": 6072,
+      "sha256": "a067272aa1ba18bcfe65a149a4e388400266bbdce261f04eed114134d4f0a0ed"
+    },
+    "USPS-test-ids.json": {
+      "bytes": 52833,
+      "sha256": "97db7aa14abd704dc2b53fd64515c79bee74c8c6a27e49af2126aa2078898d0d"
+    },
+    "USPS-test-images.npy": {
+      "bytes": 4374848,
+      "sha256": "271ea35a3794f0d8bd6d81b8bea430d90352898ca573fb8a3ac9e3c2cbab2103"
+    },
+    "USPS-test-labels.npy": {
+      "bytes": 15008,
+      "sha256": "5e30312593db11fb454f01e55714da614ac5b5cb982ecff8ed41eae30aecb40c"
+    },
+    "USPS-train-ids.json": {
+      "bytes": 34071,
+      "sha256": "55c75782bd104f762f11a2269b7904b679e87363b42c68d8f0ad2df492e2837b"
+    },
+    "USPS-train-images.npy": {
+      "bytes": 1747664,
+      "sha256": "e5419b6b5848333d75a2e2545b4f2cf5034d0fc06b2f6d887a1a9be47913d66c"
+    },
+    "USPS-train-labels.npy": {
+      "bytes": 6072,
+      "sha256": "dc37bd1546653db626334b6ed420897d855ca015adc168d8db4d898faadd1120"
+    }
+  },
+  "kind": "fedbn_balanced_digits_part0_v1",
+  "normalization": "Float32: ((uint8 / 255) - 0.5) / 0.5",
+  "partition_sha256": "7a762ffb10da74e3f0dee9a6f519e6c4057e2a5b47995a0546ee5a871eb47b58",
+  "sampling": "author train_part0 exactly; no resampling",
+  "schema": 1
+}

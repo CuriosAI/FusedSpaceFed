@@ -1,0 +1,43 @@
+{
+  "benchmark": "fedbn_digits_balanced_part0_fusedspacefed_v1",
+  "partition_sha256": "7a762ffb10da74e3f0dee9a6f519e6c4057e2a5b47995a0546ee5a871eb47b58",
+  "run_seeds": [42, 43],
+  "per_seed_device": {"42": "cuda:1", "43": "cuda:0"},
+  "clients": ["MNIST", "SVHN", "USPS", "SynthDigits", "MNIST-M"],
+  "train_samples_per_client": 743,
+  "model": {
+    "classifier": "FedBN DigitModel architecture, three conv plus three FC layers",
+    "classifier_batchnorm": "all parameters and running buffers shared",
+    "autoencoder": "UNetSmallAE, three input channels, base 16",
+    "private_component": "persistent encoder per domain",
+    "shared_components": ["decoder", "classifier"],
+    "fusion": "input + reconstruction"
+  },
+  "training": {
+    "rounds": 300,
+    "clients_per_round": 5,
+    "warmup_epochs": 1,
+    "classification_epochs": 1,
+    "batch_size": 32,
+    "drop_last": false,
+    "classifier_lr": 0.01,
+    "classifier_momentum": 0.0,
+    "classifier_weight_decay": 0.0,
+    "autoencoder_lr": 0.0003,
+    "autoencoder_betas": [0.9, 0.999],
+    "autoencoder_eps": 1e-8,
+    "autoencoder_weight_decay": 0.0,
+    "gradient_clip_norm": 1.0,
+    "dz": 64,
+    "aggregation": "uniform",
+    "optimizer_reset": "each_participation; Adam continuous between phases",
+    "precision": "float32",
+    "amp": false,
+    "tf32": false,
+    "torch_threads": 4,
+    "num_workers": 0
+  },
+  "evaluation": {"round": 300, "adaptation_epochs": 0, "checkpoint_selection": "fixed_final"},
+  "checkpoint_every": 10,
+  "hyperparameter_selection": "none on Digits; fixed exogenous settings before test"
+}
