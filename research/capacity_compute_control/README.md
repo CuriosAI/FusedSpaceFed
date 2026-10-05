@@ -28,6 +28,22 @@ FedAvg budget carry. Explicit --resume requires the same config/source/commit/
 device; no implicit restart or overwrite. Old experiments and the manuscript
 are never modified.
 
+Plan v2 completed all eighteen workers, with identity/count/compute audits passed.
+Validation selected C LR=.02 and clipping=2 for both; Fused AE LR=.0003.
+These alter the original updates, so all six final runs start from scratch:
+three paired seeds 42–44, full 743/client and 300 rounds. reuse_proof.json records
+why no previous Fused checkpoint/result is reused. The decision is frozen in
+selection.json; final configs/queue are committed before any final evaluation.
+
+```bash
+/home/schroeder/miniconda3/envs/general_ml/bin/python research/capacity_compute_control/controller.py --queue research/capacity_compute_control/final_queue.json --receipt _local/capacity_compute_control/final_campaign.json --logs _local/capacity_compute_control/logs/final
+```
+
+To reproduce selection from the private raw calibration results, run
+select_hyperparameters.py followed by freeze_final_configs.py in a fresh copy
+without existing selection/final registry. Both refuse overwrite. The archive
+will provide all numerical calibration results without checkpoints/images.
+
 ```bash
 env CUDA_VISIBLE_DEVICES= OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 /home/schroeder/miniconda3/envs/general_ml/bin/python -B -m pytest tests research/feature_shift_digits/tests research/capacity_compute_control/tests -q
 ```

@@ -1,0 +1,1 @@
+Synthetic two-round Fused driver parity: all shared weights, five persistent encoders, Torch and loader RNG states exactly equal to previous Digits driver; no evaluation performed.

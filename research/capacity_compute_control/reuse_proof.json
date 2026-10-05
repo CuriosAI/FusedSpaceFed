@@ -1,0 +1,19 @@
+{
+  "all_training_fields_identical": false,
+  "architecture_unchanged": true,
+  "decision_utc": "2026-10-05T18:22:01.374879+00:00",
+  "differences": {
+    "classifier_lr": {
+      "previous": 0.01,
+      "selected": 0.02
+    },
+    "gradient_clip_norm": {
+      "previous": 1.0,
+      "selected": 2.0
+    }
+  },
+  "partition_sha256": "7a762ffb10da74e3f0dee9a6f519e6c4057e2a5b47995a0546ee5a871eb47b58",
+  "reused_fused": false,
+  "rule": "reuse only exact full training settings + partition + source bytes; otherwise all three Fused fresh",
+  "selection_sha256": "bd633c79a2520d5aef79c201c9d934a9b39acfa4363f34281985ef70ce3b50d3"
+}

@@ -1,0 +1,205 @@
+{
+  "final_seeds": [
+    42,
+    43,
+    44
+  ],
+  "no_test_access_for_selection": true,
+  "rule": "maximum fixed round60 uniform-domain validation accuracy; ties lower classifier LR, clip, AE LR",
+  "scores": [
+    {
+      "autoencoder_lr": 0.0003,
+      "classifier_lr": 0.01,
+      "configuration_sha256": "6ecbee0d0bbefb32de6d69ae9e80aaa810a46c46e883e494b74b84a96b965fb2",
+      "directory": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-00",
+      "gradient_clip_norm": 1.0,
+      "method": "FusedSpaceFed",
+      "result_sha256": "f7427670ec793710ea06192c63829d48d15e0ad46d3571472f8c71ee85667069",
+      "uniform_validation_accuracy_percent": 71.9463087248322
+    },
+    {
+      "autoencoder_lr": 0.0003,
+      "classifier_lr": 0.01,
+      "configuration_sha256": "9584ae3686dc32ba1d92d455f655081f91908844d062ecacaf49d0cc4de2ca57",
+      "directory": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-00",
+      "gradient_clip_norm": 1.0,
+      "method": "FedAvg",
+      "result_sha256": "eac49f3a0172e22bf556fb086d4d0cba8eb25e22c36f3765531b240240beb06d",
+      "uniform_validation_accuracy_percent": 72.75167785234899
+    },
+    {
+      "autoencoder_lr": 0.0001,
+      "classifier_lr": 0.005,
+      "configuration_sha256": "2c0f48754768b91ab224535cf5b3407e888abe65e229744ca04ef31eab0a9850",
+      "directory": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-01",
+      "gradient_clip_norm": 2.0,
+      "method": "FusedSpaceFed",
+      "result_sha256": "e290cdcd9832f78c08ec6d845f283f8cfb0adf1b9e0a83fb6d2651c24dd101d8",
+      "uniform_validation_accuracy_percent": 70.06711409395973
+    },
+    {
+      "autoencoder_lr": 0.0003,
+      "classifier_lr": 0.005,
+      "configuration_sha256": "e329cefce9ca7d191a4120e8c72983d94f13b7c1590a1db937a7c2af48ddf391",
+      "directory": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-01",
+      "gradient_clip_norm": 2.0,
+      "method": "FedAvg",
+      "result_sha256": "b320b80ba91966478b01a177a86ff7dbed2e4e84c6d38ebcfcfa1bbc8e8f2067",
+      "uniform_validation_accuracy_percent": 72.75167785234899
+    },
+    {
+      "autoencoder_lr": 0.0003,
+      "classifier_lr": 0.005,
+      "configuration_sha256": "dd19cb0369d525df25d8d17773c7fc36ff103a6dd3a3d9f63501993bf7321ec4",
+      "directory": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-02",
+      "gradient_clip_norm": 0.5,
+      "method": "FusedSpaceFed",
+      "result_sha256": "b24bb3b89151c8d8eec5cff405c9a8dbbefd3d4c2103ea090379b310bab993bf",
+      "uniform_validation_accuracy_percent": 55.302013422818796
+    },
+    {
+      "autoencoder_lr": 0.0003,
+      "classifier_lr": 0.005,
+      "configuration_sha256": "1520c48c19b177ee0f7f1f46b0801ee88e3b774a56841c653d531f7ee33e3bba",
+      "directory": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-02",
+      "gradient_clip_norm": 0.5,
+      "method": "FedAvg",
+      "result_sha256": "4a96fa7f0496569bd2ba27567d31e984361d326a81d72bfee53af7f221faf0c9",
+      "uniform_validation_accuracy_percent": 60.40268456375839
+    },
+    {
+      "autoencoder_lr": 0.001,
+      "classifier_lr": 0.005,
+      "configuration_sha256": "001d2a29f5db0e2d111505b2c39971eda00ddd3405c9800bd428c3ec89277dd1",
+      "directory": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-03",
+      "gradient_clip_norm": 1.0,
+      "method": "FusedSpaceFed",
+      "result_sha256": "2484f00a6af07b0ee71ab5406b36a6664393da3ebc15aafea52502429d6aa122",
+      "uniform_validation_accuracy_percent": 63.758389261744966
+    },
+    {
+      "autoencoder_lr": 0.0003,
+      "classifier_lr": 0.005,
+      "configuration_sha256": "1671ee0da6c25a3d0e580b433ed72f764c119dc6f2de3d58c9fe50e82f60af6e",
+      "directory": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-03",
+      "gradient_clip_norm": 1.0,
+      "method": "FedAvg",
+      "result_sha256": "16ed2d2c892e04918429fd4470d6ab168b2a17591222afae03c9ae75aff76d19",
+      "uniform_validation_accuracy_percent": 68.18791946308725
+    },
+    {
+      "autoencoder_lr": 0.0001,
+      "classifier_lr": 0.01,
+      "configuration_sha256": "83ebddcf41ffe941e04280665eb92d3ae982a4a7c3d92a368cbc46ddd8493a2a",
+      "directory": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-04",
+      "gradient_clip_norm": 0.5,
+      "method": "FusedSpaceFed",
+      "result_sha256": "1068b4b1b327992cccc451090d04c24a859079ee8f37268ab92b7e23b9dfae29",
+      "uniform_validation_accuracy_percent": 62.14765100671141
+    },
+    {
+      "autoencoder_lr": 0.0003,
+      "classifier_lr": 0.01,
+      "configuration_sha256": "96a22e8f908fa3272222058224bbdc85983f30f80de274b950f30cb16571d1d0",
+      "directory": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-04",
+      "gradient_clip_norm": 0.5,
+      "method": "FedAvg",
+      "result_sha256": "e22a52da405e147cb13329a86618cdd0f986c0b43d505afb5a1a22bd943e0b6f",
+      "uniform_validation_accuracy_percent": 68.18791946308725
+    },
+    {
+      "autoencoder_lr": 0.001,
+      "classifier_lr": 0.01,
+      "configuration_sha256": "b0888b51cfb3f87c296b8054240c036bdb4956edbe5afa3d6822d47230155a77",
+      "directory": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-05",
+      "gradient_clip_norm": 2.0,
+      "method": "FusedSpaceFed",
+      "result_sha256": "c289aebf6ebcc0c92d61487a32f88ddf018c28e8bde43c676c7d86d2cad358f8",
+      "uniform_validation_accuracy_percent": 77.4496644295302
+    },
+    {
+      "autoencoder_lr": 0.0003,
+      "classifier_lr": 0.01,
+      "configuration_sha256": "2f0604c99dea6ff44a82fcd200eb7c3340b0fba9109d2926679bb7edd99b82e9",
+      "directory": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-05",
+      "gradient_clip_norm": 2.0,
+      "method": "FedAvg",
+      "result_sha256": "6dd107117b2dac22a13965e4ef658c8334cd0decf7f8ab7cb346c45ed9fdbd98",
+      "uniform_validation_accuracy_percent": 75.97315436241611
+    },
+    {
+      "autoencoder_lr": 0.0001,
+      "classifier_lr": 0.02,
+      "configuration_sha256": "17bff30caae2210110c442832b8313d7fb4fa8210c10182b02ec1f07d293fadd",
+      "directory": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-06",
+      "gradient_clip_norm": 1.0,
+      "method": "FusedSpaceFed",
+      "result_sha256": "4c496dacc5c069876bef7f1e45eebab2861da34b60ec0156022e95ad5007e285",
+      "uniform_validation_accuracy_percent": 76.10738255033557
+    },
+    {
+      "autoencoder_lr": 0.0003,
+      "classifier_lr": 0.02,
+      "configuration_sha256": "10d8a09ffc70ac1b89231d4b50fddf3f646c81d7d3c8a74c827b5fc3599de5e1",
+      "directory": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-06",
+      "gradient_clip_norm": 1.0,
+      "method": "FedAvg",
+      "result_sha256": "adcf32bce83a5022edfab4ea538ffd687b8c0b2ae3abdb3ceaf11a23a4f8744c",
+      "uniform_validation_accuracy_percent": 76.64429530201342
+    },
+    {
+      "autoencoder_lr": 0.0003,
+      "classifier_lr": 0.02,
+      "configuration_sha256": "3e07e4b011b1cc28151a26d55a0b79cd6cadbc5040bd79bca0318d7ff5a3fa79",
+      "directory": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-07",
+      "gradient_clip_norm": 2.0,
+      "method": "FusedSpaceFed",
+      "result_sha256": "e37a9c43f8b5e5a5588daf1536220cdd7adc1e3f923f96d0df09f59393b4c20a",
+      "uniform_validation_accuracy_percent": 78.38926174496645
+    },
+    {
+      "autoencoder_lr": 0.0003,
+      "classifier_lr": 0.02,
+      "configuration_sha256": "83bb4c7e91d03b7b83157dced24bcbd8b5419648c4fca393ea1ff32631f125e7",
+      "directory": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-07",
+      "gradient_clip_norm": 2.0,
+      "method": "FedAvg",
+      "result_sha256": "c16167c8825333aa9a35853b5932893f133664d5da16876065c2caa3242ee32a",
+      "uniform_validation_accuracy_percent": 78.12080536912751
+    },
+    {
+      "autoencoder_lr": 0.001,
+      "classifier_lr": 0.02,
+      "configuration_sha256": "db5a0e2d943b71f3339d88c432a61dad77953cf281e7b932b589f17db7521d69",
+      "directory": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-08",
+      "gradient_clip_norm": 0.5,
+      "method": "FusedSpaceFed",
+      "result_sha256": "681634124fd21ae8ab200e83e24081fbad7092980adc527f61e3ee788162ee2e",
+      "uniform_validation_accuracy_percent": 72.48322147651007
+    },
+    {
+      "autoencoder_lr": 0.0003,
+      "classifier_lr": 0.02,
+      "configuration_sha256": "353de2c56f59ee7eeec70782350a87dafd21a10fee1e7357b272632bedc63453",
+      "directory": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-08",
+      "gradient_clip_norm": 0.5,
+      "method": "FedAvg",
+      "result_sha256": "4fbafe0301b23359e7d978d17238f8da671cae8310fe5fc4a2ac92a751980b19",
+      "uniform_validation_accuracy_percent": 72.48322147651007
+    }
+  ],
+  "search_plan_sha256": "ab89d2c76434eca335e6d3eeb81385848302f5f48d5f886937a5de65560aa4e4",
+  "selected_training_settings": {
+    "FedAvg": {
+      "classifier_lr": 0.02,
+      "gradient_clip_norm": 2.0
+    },
+    "FusedSpaceFed": {
+      "autoencoder_lr": 0.0003,
+      "classifier_lr": 0.02,
+      "gradient_clip_norm": 2.0
+    }
+  },
+  "validation_campaign_sha256": "fc7de9024bed969945c04efb889a331a45c8cf17e6ed7e5e6d52451a641c95ef",
+  "validation_seed": 142
+}
