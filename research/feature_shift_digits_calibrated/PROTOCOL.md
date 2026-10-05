@@ -93,3 +93,11 @@ sono: il nuovo coordinatore adotta i PID e legge lo stato d'uscita Linux dei
 figli del vecchio coordinatore sospeso. Solo il vecchio coordinatore viene
 ritirato dopo l'uscita dei suoi figli; nessun segnale ai training o ai lavori
 esterni. Tempi e commit sono attribuiti separatamente ai singoli worker.
+
+Esito effettivo dell'adozione: i due training già attivi hanno concluso
+naturalmente durante la verifica e sostituzione del coordinatore. I quattro
+restanti sono quindi avviati tutti insieme,2 per GPU, entro il limite3+3.
+Non si ripetono conferme per riempire gli slot. Per i due worker adottati,
+la durata processo calcolata fino al rilevamento dell'uscita è un limite
+superiore (include circa100–110s di attesa del coordinatore); la loro durata
+sessione runner fino al checkpoint finale è registrata separatamente.

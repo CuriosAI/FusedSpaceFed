@@ -1,0 +1,89 @@
+{
+  "confirmation_campaign_sha256": "4466a1840654fd802ec31d65c84048c8cb22f5c7c8dee07a63e873cb2d591f7a",
+  "final_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "initialization": "fresh full-training runs",
+  "no_test_scores_used": true,
+  "plan_sha256": "ba564b57b239052ec1676827ac1c4ee43952449414eef63a5c19e26948319afc",
+  "rule": "top two screening candidates plus both references (deduplicated), fresh starts; greatest mean of two final validation accuracies",
+  "scores": [
+    {
+      "candidate_id": "pilot-reference",
+      "configuration_sha256": "c79c4044128f6b12d36e7a7bc14433a46eaeebb6b3805deb93bca22b2896d3ff",
+      "directory": "_local/feature_shift_digits_calibrated/confirmation/pilot-reference-seed-142",
+      "result_sha256": "c42c41e18b6b01b84eabcbe35a10da060394e0bccbe96499dc41243e1e456484",
+      "seed": 142,
+      "uniform_validation_accuracy_percent": 78.79194630872483
+    },
+    {
+      "candidate_id": "pilot-reference",
+      "configuration_sha256": "b7d8010147e7a9443a0b9dd87563fd2c52b86c0f17a78a5789b49f59460ab720",
+      "directory": "_local/feature_shift_digits_calibrated/confirmation/pilot-reference-seed-143",
+      "result_sha256": "5605ffbbd6b68fb2e01cf3b366adc2f0bbb2f740cb961d9bee8f376bb96f37dd",
+      "seed": 143,
+      "uniform_validation_accuracy_percent": 79.32885906040269
+    },
+    {
+      "candidate_id": "previous-selected-reference",
+      "configuration_sha256": "387ad4aac5b951adc74af239ae0cdc93748c9afbe7ce6ef89a7fc2de976f823b",
+      "directory": "_local/feature_shift_digits_calibrated/confirmation/previous-selected-reference-seed-142",
+      "result_sha256": "3d6031b8b86f6b1a8b331a0c3d321447ae2c1a6592fb35498ee68c5a59131ccb",
+      "seed": 142,
+      "uniform_validation_accuracy_percent": 78.52348993288591
+    },
+    {
+      "candidate_id": "previous-selected-reference",
+      "configuration_sha256": "546d042dd541c800c36f43e082a79b449f79838669ff14036e9dbe076f9ebf95",
+      "directory": "_local/feature_shift_digits_calibrated/confirmation/previous-selected-reference-seed-143",
+      "result_sha256": "e7862ef315dcb6da326b89fcda31398eb3feb36fc6c016717621e4af15ea27af",
+      "seed": 143,
+      "uniform_validation_accuracy_percent": 78.9261744966443
+    },
+    {
+      "candidate_id": "expanded-1-2",
+      "configuration_sha256": "1e99a70354ec2f142fee0bf66e850b7fc137cfa3238c790b84853bff3dc0b203",
+      "directory": "_local/feature_shift_digits_calibrated/confirmation/expanded-1-2-seed-142",
+      "result_sha256": "d3709cb1585c8b19c043d4b47b9cfc540e8fd933ba9cf7795a726b44a8287563",
+      "seed": 142,
+      "uniform_validation_accuracy_percent": 84.42953020134229
+    },
+    {
+      "candidate_id": "expanded-1-2",
+      "configuration_sha256": "1b9a2dcfc7f2451402a25824f2446b3f5f1d295a9f7f02f1c79118c9d010333a",
+      "directory": "_local/feature_shift_digits_calibrated/confirmation/expanded-1-2-seed-143",
+      "result_sha256": "c77dc7348a4ae90ef8778c458b9e14785ea7a016ebda86782294c42f09970fd3",
+      "seed": 143,
+      "uniform_validation_accuracy_percent": 83.75838926174497
+    },
+    {
+      "candidate_id": "expanded-2-1",
+      "configuration_sha256": "8e6daac8923c9a458da362ce1716b870bc7ac191710aef7bbc6db7f535c41797",
+      "directory": "_local/feature_shift_digits_calibrated/confirmation/expanded-2-1-seed-142",
+      "result_sha256": "107e9c62764f8a3a1fbfa42ca9f98111fd6e96a63b07852e766ef0aeff2b92d6",
+      "seed": 142,
+      "uniform_validation_accuracy_percent": 85.1006711409396
+    },
+    {
+      "candidate_id": "expanded-2-1",
+      "configuration_sha256": "00190bf517cc3cc0370439cb6f3032b88dadb49d3135a02792464ac13000c20f",
+      "directory": "_local/feature_shift_digits_calibrated/confirmation/expanded-2-1-seed-143",
+      "result_sha256": "103d5334341edaaa4ac8b192a01a0c111f187d9863fb7f35d50aa3e3f9a1d5f0",
+      "seed": 143,
+      "uniform_validation_accuracy_percent": 85.23489932885906
+    }
+  ],
+  "selected_candidate_id": "expanded-2-1",
+  "selected_training_settings": {
+    "autoencoder_lr": 0.0003,
+    "classifier_lr": 0.1,
+    "gradient_clip_norm": 10.0
+  },
+  "selection_sha256": "f43e6cb2034792de61a416901388df75a778610783c43891bf7bfc69c7c83edc",
+  "shortlist_sha256": "72ef3597d0945693d4176d5a32456e78a30196c8285046e10339def00aa8cb62",
+  "uniform_validation_accuracy_percent": 85.16778523489933
+}

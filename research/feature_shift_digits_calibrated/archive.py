@@ -81,6 +81,7 @@ def build():
             write_new(destination / relative / 'results.json.gz', gzip.compress(raw, compresslevel=9, mtime=0))
             write_new(destination / relative / 'timings.jsonl', (root / 'timings.jsonl').read_bytes())
             all_runs[str(relative)] = {'result': result, 'process_wall_seconds': execution['process_wall_seconds'],
+                                      'process_duration_is_upper_bound': 'adopted_start_ticks' in execution,
                                       'raw_result_sha256': file_hash(result_path), 'private_checkpoint_sha256': file_hash(root / 'checkpoint.pt')}
         write_new(destination / (phase + '_campaign.json'), (json.dumps(receipt, indent=2, sort_keys=True) + '\n').encode())
     final = sorted([value for key, value in all_runs.items() if key.startswith('final/')], key=lambda row: row['result']['identity']['seed'])
@@ -111,6 +112,7 @@ def build():
                  'phase': result['identity']['phase'], 'uniform_accuracy_percent': result['evaluations'][0]['uniform_domain_accuracy_percent'],
                  'per_domain_accuracy_percent': {domain: result['evaluations'][0]['domains'][domain]['accuracy_percent'] for domain in DOMAINS},
                  'process_wall_seconds': row['process_wall_seconds'], 'total_session_wall_seconds': result['total_session_wall_seconds'],
+                 'process_duration_is_upper_bound': row['process_duration_is_upper_bound'],
                  'peak_cuda_allocated_mib': result['peak_cuda_allocated_mib'], 'peak_cuda_reserved_mib': result['peak_cuda_reserved_mib'],
                  'peak_rss_mib': result['peak_rss_mib'], 'counted_training_flops': result['total_counted_training_flops'],
                  'dense_training_flops': result['total_dense_training_flops'],
@@ -123,6 +125,10 @@ def build():
         if entry['phase'] != 'final':
             attempts.append(entry)
     interval_seconds = (datetime.fromisoformat(campaigns['final']['ended_utc']) - datetime.fromisoformat(campaigns['screening']['started_utc'])).total_seconds()
+    estimate_path = PRIVATE / 'timing_estimates.jsonl'
+    estimates = [json.loads(line) for line in estimate_path.read_text().splitlines()] if estimate_path.exists() else []
+    if estimates:
+        write_new(destination / 'timing_estimates.jsonl', estimate_path.read_bytes())
     summary = {'method': 'FusedSpaceFed', 'seeds': [42, 43, 44, 45, 46], 'result_origin': 'ours',
                'evaluation': 'single fixed test at300, no adaptation, all five fresh seeds reported',
                'selected_configuration': selection, 'plan_sha256': plan['plan_sha256'],
@@ -131,9 +137,12 @@ def build():
                'prior_pilot_comparison': pilot_comparison, 'prior_pilot_summary_sha256': file_hash(pilot_path),
                'published_reference_csv_sha256': file_hash(REPO / 'research/feature_shift_digits/fedbn_table11.csv'),
                'calibration_attempts': attempts, 'all_run_costs': costs, 'campaigns': campaigns,
+               'timing_estimates_from_measured_rounds': estimates,
                'runtime_cost': {'campaign_interval_wall_seconds': interval_seconds,
                                 'phase_wall_seconds_sum': sum(row['wall_seconds'] for row in campaigns.values()),
                                 'worker_process_seconds_sum': sum(row['process_wall_seconds_sum'] for row in campaigns.values()),
+                                'worker_process_sum_is_upper_bound_for_two_adopted_workers': True,
+                                'actual_runner_session_seconds_sum': sum(row['total_session_wall_seconds'] for row in costs),
                                 'counted_training_flops_sum': sum(row['counted_training_flops'] for row in costs),
                                 'dense_training_flops_sum': sum(row['dense_training_flops'] for row in costs),
                                 'includes_warmup': True},
@@ -221,8 +230,8 @@ def make_report(summary, plan, shortlist):
     for phase, receipt in summary['campaigns'].items():
         rows.append(f"- {phase}: {len(receipt['runs'])} run; tempo controller {receipt['wall_seconds']/60:.3f} min; somma tempi processi {receipt['process_wall_seconds_sum']/60:.3f} min; exit code tutti0.")
     cost = summary['runtime_cost']
-    rows.extend(['', f"Intervallo reale dall'inizio dello screening alla conclusione dei cinque seed: {cost['campaign_interval_wall_seconds']/60:.3f} min, compresi intervalli per selezione/commit. Somma processi: {cost['worker_process_seconds_sum']/3600:.4f} ore. Somma FLOP convenzionali training: {cost['counted_training_flops_sum']/1e15:.6f} PFLOP. Per ogni finale: {final_costs[0]['counted_training_flops']/1e12:.6f} TFLOP (dense forward/backward più costo dichiarato optimizer/clipping). BN, attivazioni, pooling, loss, copie, controlli finiti, aggregazione e overhead kernel non sono compresi: non è energia misurata o conteggio di istruzioni GPU.", '',
-                 'Nessuna interruzione/ripresa o errore numerico nei training archiviati. I tempi processo includono import/startup; quelli del runner includono verifica dati, addestramento, checkpoint e valutazione. Lo screening usa una run per GPU. Su successiva richiesta dell’utente, le sei conferme rimaste sono eseguite insieme,3 per GPU, preservando le due run già attive; il solo vecchio coordinatore è sospeso e poi ritirato dopo l’uscita dei suoi figli. Le cinque finali usano3 processi su GPU1 e2 su GPU0. Nessun segnale ai processi di training o ai lavori esterni. GPU0 resta condivisa con `tesi_giovanni` per autorizzazione dell’utente. Nei due worker adottati il tempo processo è ricavato dall’intervallo UTC dell’intera run, non dalla sola sessione del nuovo coordinatore.', '',
+    rows.extend(['', f"Intervallo reale dall'inizio dello screening alla conclusione dei cinque seed: {cost['campaign_interval_wall_seconds']/60:.3f} min, compresi intervalli per selezione/commit. Somma tempi processi: {cost['worker_process_seconds_sum']/3600:.4f} ore, con limite superiore per i due worker adottati; somma delle durate effettive delle intere sessioni runner: {cost['actual_runner_session_seconds_sum']/3600:.4f} ore. Somma FLOP convenzionali training: {cost['counted_training_flops_sum']/1e15:.6f} PFLOP. Per ogni finale: {final_costs[0]['counted_training_flops']/1e12:.6f} TFLOP (dense forward/backward più costo dichiarato optimizer/clipping). BN, attivazioni, pooling, loss, copie, controlli finiti, aggregazione e overhead kernel non sono compresi: non è energia misurata o conteggio di istruzioni GPU.", '',
+                 'Nessuna interruzione/ripresa o errore numerico nei training archiviati. I tempi processo includono import/startup; quelli del runner includono verifica dati, addestramento, checkpoint e valutazione. Lo screening usa una run per GPU. Su successiva richiesta dell’utente è autorizzato un limite3+3 per le sei conferme rimaste. Durante la verifica e sostituzione del solo coordinatore, i due training già attivi raggiungono naturalmente300 round; i quattro restanti sono avviati insieme,2 per GPU, senza ripetere le conferme concluse. Le cinque finali usano3 processi su GPU1 e2 su GPU0. Nessun segnale ai training o ai lavori esterni. GPU0 resta condivisa con `tesi_giovanni`. Il vecchio coordinatore termina amministrativamente con codice143 dopo l’uscita dei suoi figli (codici0), non per un errore di training. Nei due worker adottati, l’intervallo UTC fino al rilevamento dell’uscita sovrastima la durata del processo di circa100–110 secondi; è marcato come limite superiore. La durata reale della loro intera sessione runner, fino al checkpoint finale, è salvata separatamente e usata per interpretare i costi. Nessuna durata dell’ultima sessione è spacciata per l’intera run.', '',
                  '## Riproduzione e artefatti', '',
                  'Piano, shortlist, selezione, configurazioni ed esatti comandi sono versionati. `artifacts/` contiene tutti i risultati JSON compressi senza perdita, i timings JSONL, i receipt dei controller, `summary.json` e `final_accuracy.csv`. `artifact_manifest.json` contiene hash/byte e commit di training. Dataset, checkpoint e log completi restano privati; SHA dei checkpoint sono registrati, i checkpoint non sono pubblicati.', '',
                  'Comandi eseguiti dalla radice, Python general_ml; per ogni fase:', '', '```bash',

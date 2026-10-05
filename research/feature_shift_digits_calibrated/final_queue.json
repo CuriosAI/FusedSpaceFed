@@ -1,0 +1,31 @@
+{
+  "jobs": [
+    {
+      "config": "research/feature_shift_digits_calibrated/configs/final/expanded-2-1-seed-42.json",
+      "name": "expanded-2-1-seed-42",
+      "output": "_local/feature_shift_digits_calibrated/final/expanded-2-1-seed-42"
+    },
+    {
+      "config": "research/feature_shift_digits_calibrated/configs/final/expanded-2-1-seed-43.json",
+      "name": "expanded-2-1-seed-43",
+      "output": "_local/feature_shift_digits_calibrated/final/expanded-2-1-seed-43"
+    },
+    {
+      "config": "research/feature_shift_digits_calibrated/configs/final/expanded-2-1-seed-44.json",
+      "name": "expanded-2-1-seed-44",
+      "output": "_local/feature_shift_digits_calibrated/final/expanded-2-1-seed-44"
+    },
+    {
+      "config": "research/feature_shift_digits_calibrated/configs/final/expanded-2-1-seed-45.json",
+      "name": "expanded-2-1-seed-45",
+      "output": "_local/feature_shift_digits_calibrated/final/expanded-2-1-seed-45"
+    },
+    {
+      "config": "research/feature_shift_digits_calibrated/configs/final/expanded-2-1-seed-46.json",
+      "name": "expanded-2-1-seed-46",
+      "output": "_local/feature_shift_digits_calibrated/final/expanded-2-1-seed-46"
+    }
+  ],
+  "phase": "final",
+  "plan_sha256": "ba564b57b239052ec1676827ac1c4ee43952449414eef63a5c19e26948319afc"
+}
