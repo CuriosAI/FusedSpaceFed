@@ -1,0 +1,171 @@
+{
+  "budget": {
+    "final_runs": 5,
+    "gpu_policy": "one own worker per GPU, cuda0 shared by user authorization",
+    "maximum_confirmation_runs": 8,
+    "maximum_training_rounds": 5100,
+    "screening_runs": 10
+  },
+  "candidates": [
+    {
+      "id": "pilot-reference",
+      "training": {
+        "autoencoder_lr": 0.0003,
+        "classifier_lr": 0.01,
+        "gradient_clip_norm": 1.0
+      }
+    },
+    {
+      "id": "expanded-0-0",
+      "training": {
+        "autoencoder_lr": 0.0001,
+        "classifier_lr": 0.02,
+        "gradient_clip_norm": 10.0
+      }
+    },
+    {
+      "id": "previous-selected-reference",
+      "training": {
+        "autoencoder_lr": 0.0003,
+        "classifier_lr": 0.02,
+        "gradient_clip_norm": 2.0
+      }
+    },
+    {
+      "id": "expanded-0-2",
+      "training": {
+        "autoencoder_lr": 0.001,
+        "classifier_lr": 0.02,
+        "gradient_clip_norm": 5.0
+      }
+    },
+    {
+      "id": "expanded-1-0",
+      "training": {
+        "autoencoder_lr": 0.0001,
+        "classifier_lr": 0.05,
+        "gradient_clip_norm": 2.0
+      }
+    },
+    {
+      "id": "expanded-1-1",
+      "training": {
+        "autoencoder_lr": 0.0003,
+        "classifier_lr": 0.05,
+        "gradient_clip_norm": 5.0
+      }
+    },
+    {
+      "id": "expanded-1-2",
+      "training": {
+        "autoencoder_lr": 0.001,
+        "classifier_lr": 0.05,
+        "gradient_clip_norm": 10.0
+      }
+    },
+    {
+      "id": "expanded-2-0",
+      "training": {
+        "autoencoder_lr": 0.0001,
+        "classifier_lr": 0.1,
+        "gradient_clip_norm": 5.0
+      }
+    },
+    {
+      "id": "expanded-2-1",
+      "training": {
+        "autoencoder_lr": 0.0003,
+        "classifier_lr": 0.1,
+        "gradient_clip_norm": 10.0
+      }
+    },
+    {
+      "id": "expanded-2-2",
+      "training": {
+        "autoencoder_lr": 0.001,
+        "classifier_lr": 0.1,
+        "gradient_clip_norm": 2.0
+      }
+    }
+  ],
+  "confirmation": {
+    "rounds": 300,
+    "seeds": [
+      142,
+      143
+    ],
+    "selection": "top two screening candidates plus both references (deduplicated), fresh starts; greatest mean of two final validation accuracies"
+  },
+  "created_for": "new five-seed Digits calibration request",
+  "final": {
+    "evaluation": "one test at round300, no adaptation, no checkpoint/seed selection",
+    "initialization": "fresh, full 743/domain",
+    "rounds": 300,
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ]
+  },
+  "fit_samples_per_client": 594,
+  "fixed_training": {
+    "aggregation": "uniform",
+    "amp": false,
+    "autoencoder_betas": [
+      0.9,
+      0.999
+    ],
+    "autoencoder_eps": 1e-08,
+    "autoencoder_lr": 0.0003,
+    "autoencoder_weight_decay": 0.0,
+    "batch_size": 32,
+    "classification_epochs": 1,
+    "classifier_lr": 0.01,
+    "classifier_momentum": 0.0,
+    "classifier_weight_decay": 0.0,
+    "clients_per_round": 5,
+    "drop_last": false,
+    "dz": 64,
+    "gradient_clip_norm": 1.0,
+    "num_workers": 0,
+    "optimizer_reset": "each_participation; Adam continuous between phases",
+    "precision": "float32",
+    "rounds": 300,
+    "tf32": false,
+    "torch_threads": 4,
+    "warmup_epochs": 1
+  },
+  "full_samples_per_client": 743,
+  "limitations": [
+    "Previous pilot and capacity-control tests have already been reported; this is a retrospective follow-up.",
+    "No previous or new test score enters candidate ranking, confirmation, tie rules, or freezing.",
+    "Screening uses an L9 design, not a full factorial; interactions may be missed.",
+    "Validation re-use and a small745-example validation pool can overfit; no claims of globally optimal hyperparameters.",
+    "All data, architecture, warmup, local epochs, optimizer types/resets, seeds42-46 and final evaluation are fixed."
+  ],
+  "mandatory_confirmation_references": [
+    "pilot-reference",
+    "previous-selected-reference"
+  ],
+  "method": "FusedSpaceFed",
+  "parent_partition_sha256": "7a762ffb10da74e3f0dee9a6f519e6c4057e2a5b47995a0546ee5a871eb47b58",
+  "plan_sha256": "ba564b57b239052ec1676827ac1c4ee43952449414eef63a5c19e26948319afc",
+  "profile_file": "research/capacity_compute_control/flop_profile.json",
+  "profile_sha256": "164f242a968689c6c1a819fd353317c0a858b8c316a80b8244da0ed8c53f6a12",
+  "rationale": "Previous training-validation search at60 rounds favored upper classifier LR/clip boundaries; expand these and AE LR, confirm at the final300 horizon.",
+  "schema": 1,
+  "screening": {
+    "rounds": 120,
+    "seeds": [
+      142
+    ],
+    "selection": "top two by final uniform-domain validation accuracy"
+  },
+  "tie_rule": "lower classifier LR, then clip, then AE LR, then candidate ID",
+  "validation_file": "research/capacity_compute_control/validation_split.json",
+  "validation_origin": "training only, frozen before this campaign",
+  "validation_samples_per_client": 149,
+  "validation_sha256": "3dfc26c3fda17f266fb2ffa9899f23b4a5b50cd006742bb84d5b215e412a6943"
+}
