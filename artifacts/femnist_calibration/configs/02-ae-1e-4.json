@@ -1,0 +1,81 @@
+{
+  "benchmark": "femnist_fedrep_capacity_aware_v1",
+  "calibration": {
+    "candidate_id": "02-ae-1e-4",
+    "confirmation": {
+      "first_round": 191,
+      "last_round": 200,
+      "rounds": 200
+    },
+    "plan_sha256": "3885d92ff58985bffd9fdf51a603b958889833eccabae6a591d801e1651ab577",
+    "screening": {
+      "first_round": 71,
+      "last_round": 80,
+      "promote_alternatives": 2,
+      "rounds": 80
+    }
+  },
+  "data": {
+    "allocation": "proportional_largest_remainder_v1",
+    "classes": "abcdefghij",
+    "classes_per_client": 3,
+    "count_offset": 100.0,
+    "lognormal_mean": 4.0,
+    "lognormal_sigma": 1.0,
+    "num_clients": 150,
+    "pool_per_class": 4000,
+    "seed": 20261003,
+    "source_bytes": 1031576378,
+    "source_url": "https://s3.amazonaws.com/nist-srd/SD19/by_class.zip",
+    "train_fraction": 0.9
+  },
+  "evaluation": {
+    "adaptation_epochs": 0,
+    "also_record": "uniform_client_accuracy_percent",
+    "first_round": 191,
+    "last_round": 200,
+    "primary": "sample_weighted_accuracy_percent"
+  },
+  "partition_sha256": "7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734",
+  "run_seeds": [
+    41,
+    42,
+    43,
+    44,
+    45
+  ],
+  "source_archive_sha256": "b387d65249b2d0ed429cf81967d4c40a9d01ca2f7bb3931c6a36d825bc22d411",
+  "training": {
+    "aggregation": "uniform",
+    "amp": false,
+    "autoencoder_betas": [
+      0.9,
+      0.999
+    ],
+    "autoencoder_eps": 1e-08,
+    "autoencoder_lr": 0.0001,
+    "autoencoder_weight_decay": 0.0,
+    "batch_size": 10,
+    "classification_epochs": 5,
+    "classifier_bias_decay": 0.0,
+    "classifier_dims": [
+      784,
+      512,
+      256,
+      64,
+      10
+    ],
+    "classifier_lr": 0.01,
+    "classifier_momentum": 0.5,
+    "classifier_weight_decay": 0.0001,
+    "clients_per_round": 15,
+    "dz": 64,
+    "gradient_clip_norm": 1.0,
+    "num_workers": 0,
+    "optimizer_reset": "each_participation",
+    "precision": "float32",
+    "rounds": 200,
+    "torch_threads": 4,
+    "warmup_epochs": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "extraction_note": "Required provenance fields copied unchanged; private process/log details omitted.",
+  "git": {
+    "code_sha256": {
+      "calibrate_femnist_reconstructed.py": "8d5bc97d061ebb5facaff6d1cd6076638c872e83b3484f66bca9e4b482cbc069",
+      "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+      "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+      "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+      "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+    },
+    "commit": "641e117bd40f3620527a4452f91ee8ca461692aa",
+    "working_tree_clean": true
+  },
+  "kind": "completed_calibration_provenance_extract",
+  "plan_sha256": "3885d92ff58985bffd9fdf51a603b958889833eccabae6a591d801e1651ab577",
+  "private_campaign_sha256": "ba72bde8db98a2fcbd7793fbc89866ab46903b1d995cd448464b448df9617b4b",
+  "selection_sha256": "27338a925f6f5a425b3cabad0118841652157f26a0c475c77568a6db62ac5268",
+  "status": "completed",
+  "view_sha256": "23b0e2e40a822eed50c983b744fe5c1cf203d2f5db9f28ef57acc7dbaa5ad171"
+}

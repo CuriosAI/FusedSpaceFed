@@ -1,0 +1,105 @@
+{
+  "calibration_code": {
+    "code_sha256": {
+      "calibrate_femnist_reconstructed.py": "8d5bc97d061ebb5facaff6d1cd6076638c872e83b3484f66bca9e4b482cbc069",
+      "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+      "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+      "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+      "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+    },
+    "commit": "641e117bd40f3620527a4452f91ee8ca461692aa",
+    "working_tree_clean": true
+  },
+  "frozen_utc": "2026-10-05T00:16:20Z",
+  "full_validation_scores": {
+    "00-reference": {
+      "141": {
+        "sample_weighted_accuracy_percent": 78.25080238422743,
+        "uniform_client_accuracy_percent": 79.81283104814716
+      },
+      "142": {
+        "sample_weighted_accuracy_percent": 61.033929390187986,
+        "uniform_client_accuracy_percent": 59.32520597441798
+      }
+    },
+    "03-classifier-2e-2": {
+      "141": {
+        "sample_weighted_accuracy_percent": 91.35259055479138,
+        "uniform_client_accuracy_percent": 91.86175588991034
+      },
+      "142": {
+        "sample_weighted_accuracy_percent": 86.1852361302155,
+        "uniform_client_accuracy_percent": 87.30500654250947
+      }
+    },
+    "05-clip-2": {
+      "141": {
+        "sample_weighted_accuracy_percent": 91.723979825768,
+        "uniform_client_accuracy_percent": 91.92812726976494
+      },
+      "142": {
+        "sample_weighted_accuracy_percent": 84.75469967904631,
+        "uniform_client_accuracy_percent": 85.8484130091775
+      }
+    }
+  },
+  "mean_validation_scores": {
+    "00-reference": {
+      "sample_weighted_accuracy_percent": 69.6423658872077,
+      "uniform_client_accuracy_percent": 69.56901851128256
+    },
+    "03-classifier-2e-2": {
+      "sample_weighted_accuracy_percent": 88.76891334250344,
+      "uniform_client_accuracy_percent": 89.58338121620992
+    },
+    "05-clip-2": {
+      "sample_weighted_accuracy_percent": 88.23933975240715,
+      "uniform_client_accuracy_percent": 88.88827013947122
+    }
+  },
+  "partition_sha256": "7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734",
+  "plan_sha256": "3885d92ff58985bffd9fdf51a603b958889833eccabae6a591d801e1651ab577",
+  "promoted": [
+    "00-reference",
+    "05-clip-2",
+    "03-classifier-2e-2"
+  ],
+  "reference_config_sha256": "d8684b56bb5d6066dbb2d1351aebd52d68344e787f668a16e5f907b8aed8b1d0",
+  "screen_scores": {
+    "00-reference": {
+      "sample_weighted_accuracy_percent": 61.91655204034846,
+      "uniform_client_accuracy_percent": 63.28740152909355
+    },
+    "01-ae-3e-4": {
+      "sample_weighted_accuracy_percent": 67.15038972948189,
+      "uniform_client_accuracy_percent": 68.36734993969328
+    },
+    "02-ae-1e-4": {
+      "sample_weighted_accuracy_percent": 47.74415405777167,
+      "uniform_client_accuracy_percent": 46.32903856578313
+    },
+    "03-classifier-2e-2": {
+      "sample_weighted_accuracy_percent": 72.72581384685924,
+      "uniform_client_accuracy_percent": 71.66487754651507
+    },
+    "04-classifier-5e-3": {
+      "sample_weighted_accuracy_percent": 28.26455754241174,
+      "uniform_client_accuracy_percent": 27.76266460549467
+    },
+    "05-clip-2": {
+      "sample_weighted_accuracy_percent": 74.98395231545162,
+      "uniform_client_accuracy_percent": 74.86948306015928
+    }
+  },
+  "selected_candidate": "03-classifier-2e-2",
+  "selected_config_sha256": "b8ed1193867310fc0f3b9102bf27a5600913696c04f4a412e87b9dd167f64e6b",
+  "selection_data": "training-derived validation only",
+  "selection_metric": "sample_weighted_accuracy_percent",
+  "status": "frozen",
+  "tie_break": "candidate identifier ascending",
+  "tuning_seeds": [
+    141,
+    142
+  ],
+  "view_sha256": "23b0e2e40a822eed50c983b744fe5c1cf203d2f5db9f28ef57acc7dbaa5ad171"
+}

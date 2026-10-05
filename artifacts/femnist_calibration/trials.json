@@ -1,0 +1,74 @@
+[
+  {
+    "candidate": "00-reference",
+    "raw_results_sha256": "8ab1866094bdf5c5f033deb8a67a9b8500d91322a3bf38e81951f60207333fc1",
+    "results": "trials/00-reference/seed-141/results.json.gz",
+    "rounds": 200,
+    "seed": 141,
+    "status": "completed"
+  },
+  {
+    "candidate": "00-reference",
+    "raw_results_sha256": "c2e1da0a68f2967c6e18cc1f1943bd26dfbe1dcd384744a9f709724462b4fc91",
+    "results": "trials/00-reference/seed-142/results.json.gz",
+    "rounds": 200,
+    "seed": 142,
+    "status": "completed"
+  },
+  {
+    "candidate": "01-ae-3e-4",
+    "raw_results_sha256": "5ee042590e07c9896c59bf1710fdd364417d256185204237b7327ff00c005b94",
+    "results": "trials/01-ae-3e-4/seed-141/results.json.gz",
+    "rounds": 80,
+    "seed": 141,
+    "status": "paused"
+  },
+  {
+    "candidate": "02-ae-1e-4",
+    "raw_results_sha256": "7b23c9563b83c66eda1bb641cd843caca9f8897742a26c24308b8a4a498c08a1",
+    "results": "trials/02-ae-1e-4/seed-141/results.json.gz",
+    "rounds": 80,
+    "seed": 141,
+    "status": "paused"
+  },
+  {
+    "candidate": "03-classifier-2e-2",
+    "raw_results_sha256": "a1aa850ff5f00b1fa52c5d97318ff3319b6d0d1b78e823d823cba3a193953520",
+    "results": "trials/03-classifier-2e-2/seed-141/results.json.gz",
+    "rounds": 200,
+    "seed": 141,
+    "status": "completed"
+  },
+  {
+    "candidate": "03-classifier-2e-2",
+    "raw_results_sha256": "41580d0c2304a56815f70500f5bd612c8ed20b6f4a4d4805c5c4888f4c8ea27a",
+    "results": "trials/03-classifier-2e-2/seed-142/results.json.gz",
+    "rounds": 200,
+    "seed": 142,
+    "status": "completed"
+  },
+  {
+    "candidate": "04-classifier-5e-3",
+    "raw_results_sha256": "d5812dad98c648aa1bf785ec7fe8180ab100bddacfda941733fd4576701fb48e",
+    "results": "trials/04-classifier-5e-3/seed-141/results.json.gz",
+    "rounds": 80,
+    "seed": 141,
+    "status": "paused"
+  },
+  {
+    "candidate": "05-clip-2",
+    "raw_results_sha256": "b799ce7ce9d0e35813e0ecb30dc7d41aa45d8262907331558e1f97fc4670fbfa",
+    "results": "trials/05-clip-2/seed-141/results.json.gz",
+    "rounds": 200,
+    "seed": 141,
+    "status": "completed"
+  },
+  {
+    "candidate": "05-clip-2",
+    "raw_results_sha256": "4d93d60b356a1760627527126c88d4d7baf29e9c824ba40abc1aabd9020f0fd5",
+    "results": "trials/05-clip-2/seed-142/results.json.gz",
+    "rounds": 200,
+    "seed": 142,
+    "status": "completed"
+  }
+]

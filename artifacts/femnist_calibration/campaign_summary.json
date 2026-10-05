@@ -1,0 +1,516 @@
+{
+  "automatic_controller_queue": {
+    "automatic_stop_count": 4,
+    "automatic_stops": [
+      {
+        "end_utc": "2026-10-04T20:12:59Z",
+        "exit_code": 1,
+        "number": 1,
+        "queue_role": "idle",
+        "start_utc": "2026-10-04T19:46:23Z",
+        "status": "stopped",
+        "wall_seconds": 1595.9761139871553
+      },
+      {
+        "end_utc": "2026-10-04T20:58:14Z",
+        "exit_code": 1,
+        "number": 2,
+        "queue_role": "idle",
+        "start_utc": "2026-10-04T20:18:08Z",
+        "status": "stopped",
+        "wall_seconds": 2406.1011475170963
+      },
+      {
+        "end_utc": "2026-10-04T21:32:42Z",
+        "exit_code": 1,
+        "number": 3,
+        "queue_role": "idle",
+        "start_utc": "2026-10-04T21:32:38Z",
+        "status": "stopped",
+        "wall_seconds": 3.9500906569883227
+      },
+      {
+        "end_utc": "2026-10-04T21:33:11Z",
+        "exit_code": 1,
+        "number": 4,
+        "queue_role": "idle",
+        "start_utc": "2026-10-04T21:33:07Z",
+        "status": "stopped",
+        "wall_seconds": 3.9130248529836535
+      }
+    ],
+    "controller_attempts": [
+      {
+        "end_utc": "2026-10-04T20:12:59Z",
+        "exit_code": 1,
+        "number": 1,
+        "queue_role": "idle",
+        "start_utc": "2026-10-04T19:46:23Z",
+        "status": "stopped",
+        "wall_seconds": 1595.9761139871553
+      },
+      {
+        "end_utc": "2026-10-04T20:58:14Z",
+        "exit_code": 1,
+        "number": 2,
+        "queue_role": "idle",
+        "start_utc": "2026-10-04T20:18:08Z",
+        "status": "stopped",
+        "wall_seconds": 2406.1011475170963
+      },
+      {
+        "end_utc": "2026-10-04T21:32:42Z",
+        "exit_code": 1,
+        "number": 3,
+        "queue_role": "idle",
+        "start_utc": "2026-10-04T21:32:38Z",
+        "status": "stopped",
+        "wall_seconds": 3.9500906569883227
+      },
+      {
+        "end_utc": "2026-10-04T21:33:11Z",
+        "exit_code": 1,
+        "number": 4,
+        "queue_role": "idle",
+        "start_utc": "2026-10-04T21:33:07Z",
+        "status": "stopped",
+        "wall_seconds": 3.9130248529836535
+      },
+      {
+        "end_utc": "2026-10-05T00:16:21.017156+00:00",
+        "exit_code": 0,
+        "number": 1,
+        "queue_role": "shared",
+        "start_utc": "2026-10-04T22:26:04.880832+00:00",
+        "status": "completed",
+        "wall_seconds": 6616.123231075006
+      }
+    ],
+    "controller_exit_codes": [
+      1,
+      1,
+      1,
+      1,
+      0
+    ],
+    "gpu_admission_checks_count": 2012,
+    "gpu_idle_checks_count": 2011,
+    "interrupted_controller_attempt_count": 0,
+    "legacy_authorized_stop": {
+      "controller_exit_code": 1,
+      "immutable_queue_rewritten": false,
+      "observed_stop_utc": "2026-10-04T22:09:10.909445+00:00",
+      "queue_sha256_at_stop": "273b8bc6a0b1a5f966ec4c7ad324ec299aa640db471189571f24d49d76d91c75",
+      "receipt_sha256": "b9a03b6fcf83e1c6f3553825c6b8d9e96478e3b4dd673c408aca517d9a8fe528",
+      "record_available": true,
+      "time_accounting": "A separate authorized-stop receipt can document termination of an immutable legacy queue whose last session/wait still appears open. The stop timestamp is chronology only and supplies no additional measured wall_seconds.",
+      "training_interrupted": false
+    },
+    "nonzero_controller_exit_count": 4,
+    "phase": "search",
+    "queue_count": 2,
+    "queue_summary_schema": 2,
+    "queues": [
+      {
+        "admission_mode": "gpu_idle",
+        "automatic_stop_count": 4,
+        "automatic_stops": [
+          {
+            "end_utc": "2026-10-04T20:12:59Z",
+            "exit_code": 1,
+            "number": 1,
+            "start_utc": "2026-10-04T19:46:23Z",
+            "status": "stopped",
+            "wall_seconds": 1595.9761139871553
+          },
+          {
+            "end_utc": "2026-10-04T20:58:14Z",
+            "exit_code": 1,
+            "number": 2,
+            "start_utc": "2026-10-04T20:18:08Z",
+            "status": "stopped",
+            "wall_seconds": 2406.1011475170963
+          },
+          {
+            "end_utc": "2026-10-04T21:32:42Z",
+            "exit_code": 1,
+            "number": 3,
+            "start_utc": "2026-10-04T21:32:38Z",
+            "status": "stopped",
+            "wall_seconds": 3.9500906569883227
+          },
+          {
+            "end_utc": "2026-10-04T21:33:11Z",
+            "exit_code": 1,
+            "number": 4,
+            "start_utc": "2026-10-04T21:33:07Z",
+            "status": "stopped",
+            "wall_seconds": 3.9130248529836535
+          }
+        ],
+        "controller_attempts": [
+          {
+            "end_utc": "2026-10-04T20:12:59Z",
+            "exit_code": 1,
+            "number": 1,
+            "start_utc": "2026-10-04T19:46:23Z",
+            "status": "stopped",
+            "wall_seconds": 1595.9761139871553
+          },
+          {
+            "end_utc": "2026-10-04T20:58:14Z",
+            "exit_code": 1,
+            "number": 2,
+            "start_utc": "2026-10-04T20:18:08Z",
+            "status": "stopped",
+            "wall_seconds": 2406.1011475170963
+          },
+          {
+            "end_utc": "2026-10-04T21:32:42Z",
+            "exit_code": 1,
+            "number": 3,
+            "start_utc": "2026-10-04T21:32:38Z",
+            "status": "stopped",
+            "wall_seconds": 3.9500906569883227
+          },
+          {
+            "end_utc": "2026-10-04T21:33:11Z",
+            "exit_code": 1,
+            "number": 4,
+            "start_utc": "2026-10-04T21:33:07Z",
+            "status": "stopped",
+            "wall_seconds": 3.9130248529836535
+          }
+        ],
+        "controller_exit_codes": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "gpu_admission_checks_count": 2011,
+        "gpu_idle_checks_count": 2011,
+        "interrupted_controller_attempt_count": 0,
+        "nonzero_controller_exit_count": 4,
+        "phase": "search",
+        "private_queue_sha256": "273b8bc6a0b1a5f966ec4c7ad324ec299aa640db471189571f24d49d76d91c75",
+        "queue_role": "idle",
+        "record_available": true,
+        "recorded_controller_wall_seconds": 4009.9403770142235,
+        "recorded_session_wall_seconds": 0,
+        "recorded_wait_wall_seconds": 8154.088962487644,
+        "scope": "Cover the distinct recorded idle-admission and shared-memory-headroom queue sessions, waits and controller subprocesses; earlier manually managed controller periods are excluded. Each queue interval is included once.",
+        "session_count": 1,
+        "sessions": [
+          {
+            "number": 1,
+            "start_utc": "2026-10-04T18:10:27Z",
+            "status": "running"
+          }
+        ],
+        "shared_memory_headroom_checks_count": 0,
+        "time_accounting": {
+          "admission_note": "A shared queue wait marked free means its memory-headroom gate passed; it does not establish GPU idleness.",
+          "authorized_legacy_stop": "A separate authorized-stop receipt can document termination of an immutable legacy queue whose last session/wait still appears open. The stop timestamp is chronology only and supplies no additional measured wall_seconds.",
+          "automatic_queue_times": "Cover the distinct recorded idle-admission and shared-memory-headroom queue sessions, waits and controller subprocesses; earlier manually managed controller periods are excluded. Each queue interval is included once.",
+          "native_process_wall_seconds": "Sum of native trial process_wall_seconds over the entire campaign, including trials before and during automatic queue management.",
+          "overlap_note": "Automatic session time includes its waits and controller execution; controller execution includes native trial time. These overlapping quantities must not be added.",
+          "unfinished_intervals": "Intervals without recorded wall_seconds are counted as unmeasured; no duration is inferred from publication time."
+        },
+        "unmeasured_controller_intervals": 0,
+        "unmeasured_session_intervals": 1,
+        "unmeasured_wait_intervals": 1,
+        "wait_count": 5,
+        "waiting_intervals_count": 1,
+        "waits": [
+          {
+            "checks": 1136,
+            "free_utc": "2026-10-04T19:46:23Z",
+            "number": 1,
+            "start_utc": "2026-10-04T18:10:27Z",
+            "status": "free",
+            "wall_seconds": 5755.575536068063
+          },
+          {
+            "checks": 62,
+            "free_utc": "2026-10-04T20:18:08Z",
+            "number": 2,
+            "start_utc": "2026-10-04T20:12:59Z",
+            "status": "free",
+            "wall_seconds": 309.5294007998891
+          },
+          {
+            "checks": 408,
+            "free_utc": "2026-10-04T21:32:38Z",
+            "number": 3,
+            "start_utc": "2026-10-04T20:58:14Z",
+            "status": "free",
+            "wall_seconds": 2063.5776089788415
+          },
+          {
+            "checks": 6,
+            "free_utc": "2026-10-04T21:33:07Z",
+            "number": 4,
+            "start_utc": "2026-10-04T21:32:42Z",
+            "status": "free",
+            "wall_seconds": 25.406416640849784
+          },
+          {
+            "checks": 399,
+            "number": 5,
+            "start_utc": "2026-10-04T21:33:11Z",
+            "status": "waiting"
+          }
+        ]
+      },
+      {
+        "admission_mode": "shared_memory_headroom",
+        "automatic_stop_count": 0,
+        "automatic_stops": [],
+        "controller_attempts": [
+          {
+            "end_utc": "2026-10-05T00:16:21.017156+00:00",
+            "exit_code": 0,
+            "number": 1,
+            "start_utc": "2026-10-04T22:26:04.880832+00:00",
+            "status": "completed",
+            "wall_seconds": 6616.123231075006
+          }
+        ],
+        "controller_exit_codes": [
+          0
+        ],
+        "gpu_admission_checks_count": 1,
+        "gpu_idle_checks_count": 0,
+        "interrupted_controller_attempt_count": 0,
+        "minimum_free_mib": 2048,
+        "nonzero_controller_exit_count": 0,
+        "phase": "search",
+        "private_queue_sha256": "edace348e9a68c3ac059e64721a6ec6e7d0581d082a217001748beb036bc7050",
+        "queue_role": "shared",
+        "record_available": true,
+        "recorded_controller_wall_seconds": 6616.123231075006,
+        "recorded_session_wall_seconds": 6616.271742905956,
+        "recorded_wait_wall_seconds": 0.10646382509730756,
+        "scope": "Cover the distinct recorded idle-admission and shared-memory-headroom queue sessions, waits and controller subprocesses; earlier manually managed controller periods are excluded. Each queue interval is included once.",
+        "session_count": 1,
+        "sessions": [
+          {
+            "end_utc": "2026-10-05T00:16:21.018581+00:00",
+            "number": 1,
+            "start_utc": "2026-10-04T22:26:04.746855+00:00",
+            "status": "completed",
+            "wall_seconds": 6616.271742905956
+          }
+        ],
+        "shared_memory_headroom_checks_count": 1,
+        "time_accounting": {
+          "admission_note": "A shared queue wait marked free means its memory-headroom gate passed; it does not establish GPU idleness.",
+          "authorized_legacy_stop": "A separate authorized-stop receipt can document termination of an immutable legacy queue whose last session/wait still appears open. The stop timestamp is chronology only and supplies no additional measured wall_seconds.",
+          "automatic_queue_times": "Cover the distinct recorded idle-admission and shared-memory-headroom queue sessions, waits and controller subprocesses; earlier manually managed controller periods are excluded. Each queue interval is included once.",
+          "native_process_wall_seconds": "Sum of native trial process_wall_seconds over the entire campaign, including trials before and during automatic queue management.",
+          "overlap_note": "Automatic session time includes its waits and controller execution; controller execution includes native trial time. These overlapping quantities must not be added.",
+          "unfinished_intervals": "Intervals without recorded wall_seconds are counted as unmeasured; no duration is inferred from publication time."
+        },
+        "unmeasured_controller_intervals": 0,
+        "unmeasured_session_intervals": 0,
+        "unmeasured_wait_intervals": 0,
+        "wait_count": 1,
+        "waiting_intervals_count": 0,
+        "waits": [
+          {
+            "checks": 1,
+            "free_utc": "2026-10-04T22:26:04.869362+00:00",
+            "number": 1,
+            "start_utc": "2026-10-04T22:26:04.762924+00:00",
+            "status": "free",
+            "wall_seconds": 0.10646382509730756
+          }
+        ]
+      }
+    ],
+    "record_available": true,
+    "recorded_controller_wall_seconds": 10626.06360808923,
+    "recorded_session_wall_seconds": 6616.271742905956,
+    "recorded_wait_wall_seconds": 8154.195426312741,
+    "scope": "Cover the distinct recorded idle-admission and shared-memory-headroom queue sessions, waits and controller subprocesses; earlier manually managed controller periods are excluded. Each queue interval is included once.",
+    "session_count": 2,
+    "sessions": [
+      {
+        "number": 1,
+        "queue_role": "idle",
+        "start_utc": "2026-10-04T18:10:27Z",
+        "status": "running"
+      },
+      {
+        "end_utc": "2026-10-05T00:16:21.018581+00:00",
+        "number": 1,
+        "queue_role": "shared",
+        "start_utc": "2026-10-04T22:26:04.746855+00:00",
+        "status": "completed",
+        "wall_seconds": 6616.271742905956
+      }
+    ],
+    "shared_memory_headroom_checks_count": 1,
+    "time_accounting": {
+      "admission_note": "A shared queue wait marked free means its memory-headroom gate passed; it does not establish GPU idleness.",
+      "authorized_legacy_stop": "A separate authorized-stop receipt can document termination of an immutable legacy queue whose last session/wait still appears open. The stop timestamp is chronology only and supplies no additional measured wall_seconds.",
+      "automatic_queue_times": "Cover the distinct recorded idle-admission and shared-memory-headroom queue sessions, waits and controller subprocesses; earlier manually managed controller periods are excluded. Each queue interval is included once.",
+      "native_process_wall_seconds": "Sum of native trial process_wall_seconds over the entire campaign, including trials before and during automatic queue management.",
+      "overlap_note": "Automatic session time includes its waits and controller execution; controller execution includes native trial time. These overlapping quantities must not be added.",
+      "unfinished_intervals": "Intervals without recorded wall_seconds are counted as unmeasured; no duration is inferred from publication time."
+    },
+    "unmeasured_controller_intervals": 0,
+    "unmeasured_session_intervals": 1,
+    "unmeasured_wait_intervals": 1,
+    "wait_count": 6,
+    "waiting_intervals_count": 1,
+    "waits": [
+      {
+        "checks": 1136,
+        "free_utc": "2026-10-04T19:46:23Z",
+        "number": 1,
+        "queue_role": "idle",
+        "start_utc": "2026-10-04T18:10:27Z",
+        "status": "free",
+        "wall_seconds": 5755.575536068063
+      },
+      {
+        "checks": 62,
+        "free_utc": "2026-10-04T20:18:08Z",
+        "number": 2,
+        "queue_role": "idle",
+        "start_utc": "2026-10-04T20:12:59Z",
+        "status": "free",
+        "wall_seconds": 309.5294007998891
+      },
+      {
+        "checks": 408,
+        "free_utc": "2026-10-04T21:32:38Z",
+        "number": 3,
+        "queue_role": "idle",
+        "start_utc": "2026-10-04T20:58:14Z",
+        "status": "free",
+        "wall_seconds": 2063.5776089788415
+      },
+      {
+        "checks": 6,
+        "free_utc": "2026-10-04T21:33:07Z",
+        "number": 4,
+        "queue_role": "idle",
+        "start_utc": "2026-10-04T21:32:42Z",
+        "status": "free",
+        "wall_seconds": 25.406416640849784
+      },
+      {
+        "checks": 399,
+        "number": 5,
+        "queue_role": "idle",
+        "start_utc": "2026-10-04T21:33:11Z",
+        "status": "waiting"
+      },
+      {
+        "checks": 1,
+        "free_utc": "2026-10-04T22:26:04.869362+00:00",
+        "number": 1,
+        "queue_role": "shared",
+        "start_utc": "2026-10-04T22:26:04.762924+00:00",
+        "status": "free",
+        "wall_seconds": 0.10646382509730756
+      }
+    ]
+  },
+  "device": "cuda:1",
+  "elapsed_to_freeze_seconds_from_utc": 32365.0,
+  "git": {
+    "code_sha256": {
+      "calibrate_femnist_reconstructed.py": "8d5bc97d061ebb5facaff6d1cd6076638c872e83b3484f66bca9e4b482cbc069",
+      "femnist_calibration_data.py": "dfe095b522ffd25f13dc540f823af3a7af1e9380003e8cd16f4b7bdcb47d2a2b",
+      "femnist_reconstructed_data.py": "044ff0c2cb2a987b48cd61211f108a081445b5a8398878582ce34a6c9b55ea69",
+      "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+      "train_femnist_reconstructed.py": "0bf3ff648ea59dddd2e38534bbcdb988fcc4fd75b0eb59b9a8c0259661bd371e"
+    },
+    "commit": "641e117bd40f3620527a4452f91ee8ca461692aa",
+    "working_tree_clean": true
+  },
+  "manual_controller_incidents": {
+    "cost_note": "Native trial process seconds recorded at an incident are chronological snapshots, not additional durations to sum across incidents.",
+    "count": 3,
+    "records": [
+      {
+        "controller_exit_code": 1,
+        "first_session_start_utc": "2026-10-04T15:16:55Z",
+        "native_trial_process_seconds_at_incident": 3368.2839116179384,
+        "number": 1,
+        "observed_utc": "2026-10-04T16:14:44+00:00"
+      },
+      {
+        "controller_exit_code": 1,
+        "free_resource_observed_utc": "2026-10-04T16:34:35Z",
+        "native_trial_process_seconds_at_incident": 4341.070649257861,
+        "number": 2,
+        "observed_utc": "2026-10-04T16:33:06+00:00",
+        "resume_requested_utc": "2026-10-04T16:35:01+00:00"
+      },
+      {
+        "controller_exit_code": 1,
+        "native_trial_process_seconds_at_incident": 5152.328706210828,
+        "number": 3,
+        "observed_utc": "2026-10-04T16:50:27+00:00"
+      }
+    ],
+    "scope": "Manually recorded controller incidents, distinct from automatic queue stops."
+  },
+  "peak_cuda_allocated_mib": 78.64404296875,
+  "peak_cuda_reserved_mib": 96.0,
+  "peak_rss_mib": 1563.13671875,
+  "plan_sha256": "3885d92ff58985bffd9fdf51a603b958889833eccabae6a591d801e1651ab577",
+  "process_wall_seconds": 15757.390896785422,
+  "sessions": [
+    {
+      "process_commit": "641e117bd40f3620527a4452f91ee8ca461692aa",
+      "start_utc": "2026-10-04T15:16:55Z"
+    },
+    {
+      "process_commit": "641e117bd40f3620527a4452f91ee8ca461692aa",
+      "start_utc": "2026-10-04T16:14:47Z"
+    },
+    {
+      "process_commit": "641e117bd40f3620527a4452f91ee8ca461692aa",
+      "start_utc": "2026-10-04T16:35:03Z"
+    },
+    {
+      "process_commit": "641e117bd40f3620527a4452f91ee8ca461692aa",
+      "start_utc": "2026-10-04T19:46:25Z"
+    },
+    {
+      "process_commit": "641e117bd40f3620527a4452f91ee8ca461692aa",
+      "start_utc": "2026-10-04T20:18:11Z"
+    },
+    {
+      "process_commit": "641e117bd40f3620527a4452f91ee8ca461692aa",
+      "start_utc": "2026-10-04T21:32:41Z"
+    },
+    {
+      "process_commit": "641e117bd40f3620527a4452f91ee8ca461692aa",
+      "start_utc": "2026-10-04T21:33:10Z"
+    },
+    {
+      "process_commit": "641e117bd40f3620527a4452f91ee8ca461692aa",
+      "start_utc": "2026-10-04T22:26:07Z",
+      "wall_seconds": 6612.620376868872
+    }
+  ],
+  "status": "completed",
+  "time_accounting": {
+    "admission_note": "A shared queue wait marked free means its memory-headroom gate passed; it does not establish GPU idleness.",
+    "authorized_legacy_stop": "A separate authorized-stop receipt can document termination of an immutable legacy queue whose last session/wait still appears open. The stop timestamp is chronology only and supplies no additional measured wall_seconds.",
+    "automatic_queue_times": "Cover the distinct recorded idle-admission and shared-memory-headroom queue sessions, waits and controller subprocesses; earlier manually managed controller periods are excluded. Each queue interval is included once.",
+    "native_process_wall_seconds": "Sum of native trial process_wall_seconds over the entire campaign, including trials before and during automatic queue management.",
+    "overlap_note": "Automatic session time includes its waits and controller execution; controller execution includes native trial time. These overlapping quantities must not be added.",
+    "unfinished_intervals": "Intervals without recorded wall_seconds are counted as unmeasured; no duration is inferred from publication time."
+  },
+  "unique_training_rounds": 1440,
+  "utc_precision_note": "UTC timestamps have one-second resolution; elapsed includes controller pauses",
+  "view_sha256": "23b0e2e40a822eed50c983b744fe5c1cf203d2f5db9f28ef57acc7dbaa5ad171"
+}

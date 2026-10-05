@@ -1,0 +1,77 @@
+{
+  "budget": {
+    "max_calibration_rounds": 1440,
+    "max_candidates": 6,
+    "new_definitive_rounds": 1000
+  },
+  "campaign": "femnist_calibration_v1",
+  "candidates": [
+    {
+      "id": "00-reference",
+      "overrides": {}
+    },
+    {
+      "id": "01-ae-3e-4",
+      "overrides": {
+        "autoencoder_lr": 0.0003
+      }
+    },
+    {
+      "id": "02-ae-1e-4",
+      "overrides": {
+        "autoencoder_lr": 0.0001
+      }
+    },
+    {
+      "id": "03-classifier-2e-2",
+      "overrides": {
+        "autoencoder_lr": 0.0003,
+        "classifier_lr": 0.02
+      }
+    },
+    {
+      "id": "04-classifier-5e-3",
+      "overrides": {
+        "autoencoder_lr": 0.0003,
+        "classifier_lr": 0.005
+      }
+    },
+    {
+      "id": "05-clip-2",
+      "overrides": {
+        "autoencoder_lr": 0.0003,
+        "gradient_clip_norm": 2.0
+      }
+    }
+  ],
+  "confirmation": {
+    "first_round": 191,
+    "last_round": 200,
+    "rounds": 200
+  },
+  "partition_sha256": "7a4c7614796a595d8a752aba5d7d275a18a2f6e542dfd338e8a381fcd5675734",
+  "reference_config": "configs/femnist_reconstructed.json",
+  "reference_config_sha256": "d8684b56bb5d6066dbb2d1351aebd52d68344e787f668a16e5f907b8aed8b1d0",
+  "schema": 1,
+  "screening": {
+    "first_round": 71,
+    "last_round": 80,
+    "promote_alternatives": 2,
+    "rounds": 80
+  },
+  "selection": {
+    "primary": "sample_weighted_accuracy_percent",
+    "reference_always_confirmed": true,
+    "rule": "mean of the two tuning-seed means over validation rounds 191--200",
+    "tie_break": "candidate identifier ascending"
+  },
+  "tuning_seeds": [
+    141,
+    142
+  ],
+  "validation": {
+    "denominator": 5,
+    "numerator": 1,
+    "seed": 20261004
+  }
+}

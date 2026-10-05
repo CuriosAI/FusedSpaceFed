@@ -1,0 +1,39 @@
+{
+  "metric": "sample_weighted_accuracy_percent",
+  "plan_sha256": "3885d92ff58985bffd9fdf51a603b958889833eccabae6a591d801e1651ab577",
+  "promoted": [
+    "00-reference",
+    "05-clip-2",
+    "03-classifier-2e-2"
+  ],
+  "scores": {
+    "00-reference": {
+      "sample_weighted_accuracy_percent": 61.91655204034846,
+      "uniform_client_accuracy_percent": 63.28740152909355
+    },
+    "01-ae-3e-4": {
+      "sample_weighted_accuracy_percent": 67.15038972948189,
+      "uniform_client_accuracy_percent": 68.36734993969328
+    },
+    "02-ae-1e-4": {
+      "sample_weighted_accuracy_percent": 47.74415405777167,
+      "uniform_client_accuracy_percent": 46.32903856578313
+    },
+    "03-classifier-2e-2": {
+      "sample_weighted_accuracy_percent": 72.72581384685924,
+      "uniform_client_accuracy_percent": 71.66487754651507
+    },
+    "04-classifier-5e-3": {
+      "sample_weighted_accuracy_percent": 28.26455754241174,
+      "uniform_client_accuracy_percent": 27.76266460549467
+    },
+    "05-clip-2": {
+      "sample_weighted_accuracy_percent": 74.98395231545162,
+      "uniform_client_accuracy_percent": 74.86948306015928
+    }
+  },
+  "window": [
+    71,
+    80
+  ]
+}
