@@ -1,0 +1,40 @@
+{
+  "phase": "validation",
+  "method": "FedAvg",
+  "seed": 142,
+  "parent_partition_sha256": "7a762ffb10da74e3f0dee9a6f519e6c4057e2a5b47995a0546ee5a871eb47b58",
+  "profile_file": "research/capacity_compute_control/flop_profile.json",
+  "profile_sha256": "164f242a968689c6c1a819fd353317c0a858b8c316a80b8244da0ed8c53f6a12",
+  "validation_file": "research/capacity_compute_control/validation_split.json",
+  "validation_sha256": "3dfc26c3fda17f266fb2ffa9899f23b4a5b50cd006742bb84d5b215e412a6943",
+  "training": {
+    "aggregation": "uniform",
+    "amp": false,
+    "autoencoder_betas": [
+      0.9,
+      0.999
+    ],
+    "autoencoder_eps": 1e-08,
+    "autoencoder_lr": 0.0003,
+    "autoencoder_weight_decay": 0.0,
+    "batch_size": 32,
+    "classification_epochs": 1,
+    "classifier_lr": 0.005,
+    "classifier_momentum": 0.0,
+    "classifier_weight_decay": 0.0,
+    "clients_per_round": 5,
+    "drop_last": false,
+    "dz": 64,
+    "gradient_clip_norm": 1.0,
+    "num_workers": 0,
+    "optimizer_reset": "each_participation; Adam continuous between phases",
+    "precision": "float32",
+    "rounds": 60,
+    "tf32": false,
+    "torch_threads": 4,
+    "warmup_epochs": 1
+  },
+  "evaluation": "fixed final validation, never test",
+  "candidate_index": 3,
+  "search_plan": "search_plan_v2.json"
+}

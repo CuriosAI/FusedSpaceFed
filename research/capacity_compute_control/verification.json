@@ -1,8 +1,10 @@
 {
   "cpu_command": "env CUDA_VISIBLE_DEVICES= OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 /home/schroeder/miniconda3/envs/general_ml/bin/python -B -m pytest tests research/feature_shift_digits/tests research/capacity_compute_control/tests -q",
-  "passed": 241,
-  "seconds": 23.92,
-  "targeted_passed": 8,
+  "passed": 245,
+  "seconds": 34.6,
+  "targeted_passed": 12,
   "gpu_signature_check": "verification_gpu_compute.json",
-  "cpu_and_gpu_test_inputs": "synthetic only"
+  "cpu_and_gpu_test_inputs": "synthetic only",
+  "search_plan": "search_plan_v2.json",
+  "direct_cli_regression": "controller/runner/selector --help subprocess checks passed"
 }

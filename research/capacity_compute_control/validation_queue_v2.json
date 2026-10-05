@@ -1,0 +1,94 @@
+{
+  "jobs": [
+    {
+      "name": "FusedSpaceFed-candidate-00",
+      "config": "research/capacity_compute_control/configs/validation_v2/FusedSpaceFed-candidate-00.json",
+      "output": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-00"
+    },
+    {
+      "name": "FedAvg-candidate-00",
+      "config": "research/capacity_compute_control/configs/validation_v2/FedAvg-candidate-00.json",
+      "output": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-00"
+    },
+    {
+      "name": "FusedSpaceFed-candidate-01",
+      "config": "research/capacity_compute_control/configs/validation_v2/FusedSpaceFed-candidate-01.json",
+      "output": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-01"
+    },
+    {
+      "name": "FedAvg-candidate-01",
+      "config": "research/capacity_compute_control/configs/validation_v2/FedAvg-candidate-01.json",
+      "output": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-01"
+    },
+    {
+      "name": "FusedSpaceFed-candidate-02",
+      "config": "research/capacity_compute_control/configs/validation_v2/FusedSpaceFed-candidate-02.json",
+      "output": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-02"
+    },
+    {
+      "name": "FedAvg-candidate-02",
+      "config": "research/capacity_compute_control/configs/validation_v2/FedAvg-candidate-02.json",
+      "output": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-02"
+    },
+    {
+      "name": "FusedSpaceFed-candidate-03",
+      "config": "research/capacity_compute_control/configs/validation_v2/FusedSpaceFed-candidate-03.json",
+      "output": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-03"
+    },
+    {
+      "name": "FedAvg-candidate-03",
+      "config": "research/capacity_compute_control/configs/validation_v2/FedAvg-candidate-03.json",
+      "output": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-03"
+    },
+    {
+      "name": "FusedSpaceFed-candidate-04",
+      "config": "research/capacity_compute_control/configs/validation_v2/FusedSpaceFed-candidate-04.json",
+      "output": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-04"
+    },
+    {
+      "name": "FedAvg-candidate-04",
+      "config": "research/capacity_compute_control/configs/validation_v2/FedAvg-candidate-04.json",
+      "output": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-04"
+    },
+    {
+      "name": "FusedSpaceFed-candidate-05",
+      "config": "research/capacity_compute_control/configs/validation_v2/FusedSpaceFed-candidate-05.json",
+      "output": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-05"
+    },
+    {
+      "name": "FedAvg-candidate-05",
+      "config": "research/capacity_compute_control/configs/validation_v2/FedAvg-candidate-05.json",
+      "output": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-05"
+    },
+    {
+      "name": "FusedSpaceFed-candidate-06",
+      "config": "research/capacity_compute_control/configs/validation_v2/FusedSpaceFed-candidate-06.json",
+      "output": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-06"
+    },
+    {
+      "name": "FedAvg-candidate-06",
+      "config": "research/capacity_compute_control/configs/validation_v2/FedAvg-candidate-06.json",
+      "output": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-06"
+    },
+    {
+      "name": "FusedSpaceFed-candidate-07",
+      "config": "research/capacity_compute_control/configs/validation_v2/FusedSpaceFed-candidate-07.json",
+      "output": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-07"
+    },
+    {
+      "name": "FedAvg-candidate-07",
+      "config": "research/capacity_compute_control/configs/validation_v2/FedAvg-candidate-07.json",
+      "output": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-07"
+    },
+    {
+      "name": "FusedSpaceFed-candidate-08",
+      "config": "research/capacity_compute_control/configs/validation_v2/FusedSpaceFed-candidate-08.json",
+      "output": "_local/capacity_compute_control/validation_v2/FusedSpaceFed-candidate-08"
+    },
+    {
+      "name": "FedAvg-candidate-08",
+      "config": "research/capacity_compute_control/configs/validation_v2/FedAvg-candidate-08.json",
+      "output": "_local/capacity_compute_control/validation_v2/FedAvg-candidate-08"
+    }
+  ]
+}

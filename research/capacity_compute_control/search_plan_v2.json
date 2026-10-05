@@ -1,0 +1,82 @@
+{
+  "schema": 2,
+  "scenario": "balanced FedBN Digits part0 (existing cost/reuse, not favorable test selection)",
+  "parent_partition_sha256": "7a762ffb10da74e3f0dee9a6f519e6c4057e2a5b47995a0546ee5a871eb47b58",
+  "training": {
+    "aggregation": "uniform",
+    "amp": false,
+    "autoencoder_betas": [
+      0.9,
+      0.999
+    ],
+    "autoencoder_eps": 1e-08,
+    "autoencoder_lr": 0.0003,
+    "autoencoder_weight_decay": 0.0,
+    "batch_size": 32,
+    "classification_epochs": 1,
+    "classifier_lr": 0.01,
+    "classifier_momentum": 0.0,
+    "classifier_weight_decay": 0.0,
+    "clients_per_round": 5,
+    "drop_last": false,
+    "dz": 64,
+    "gradient_clip_norm": 1.0,
+    "num_workers": 0,
+    "optimizer_reset": "each_participation; Adam continuous between phases",
+    "precision": "float32",
+    "rounds": 300,
+    "tf32": false,
+    "torch_threads": 4,
+    "warmup_epochs": 1
+  },
+  "validation": {
+    "per_client": 149,
+    "fit_per_client": 594,
+    "data_seed": 20261005,
+    "run_seed": 142,
+    "rounds": 60,
+    "evaluation_round": 60,
+    "metric": "uniform_domain_accuracy_percent",
+    "candidates_classifier_lr": [
+      0.005,
+      0.01,
+      0.02
+    ],
+    "tie_break": "lower classifier LR, then lower clip, then lower AE LR",
+    "same_candidates_rounds_seed_data_compute_for_both": "same nine projected classifierLR/clip candidates, rounds, seed, data and counted FLOPs; AE is method-specific",
+    "candidates_autoencoder_lr": [
+      0.0001,
+      0.0003,
+      0.001
+    ],
+    "candidates_clip_norm": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "design": "nine balanced L9 rows c=(a+b+2)%3 for Fused; corresponding exhaustive 3x3 classifierLR/clip FedAvg",
+    "candidates_per_method": 9
+  },
+  "final": {
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "rounds": 300,
+    "evaluation_round": 300,
+    "training_per_client": 743,
+    "adaptation_epochs": 0,
+    "reused_fused_allowed_only_if_exact_training_settings": true
+  },
+  "fedavg": {
+    "fc1_width": 2065,
+    "optimizer": "SGD",
+    "aggregation": "uniform; all BN shared",
+    "clip_norm": 1.0,
+    "budget": "per client cumulative matched counted FLOPs, including Fused warmup; carry sub-minibatch remainder"
+  },
+  "selection_scope": "classifier LR and common per-optimizer clipping for both methods; additionally AE LR for Fused; fixed nine trials each",
+  "known_prior_test": "five preceding Fused Digits tests are already observed; this is a retrospective control; tuning only on new training-derived validation",
+  "supersedes": "search_plan.json, unstarted CLI preflight failed; user extended search before any worker"
+}

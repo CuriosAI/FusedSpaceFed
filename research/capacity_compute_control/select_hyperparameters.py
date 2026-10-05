@@ -1,4 +1,4 @@
-"""Freeze per-method LR using only the six predetermined validation runs."""
+"""Freeze hyperparameters using only the eighteen validation runs of plan v2."""
 import argparse
 import json
 import math
@@ -14,11 +14,12 @@ def select(directory):
     destination=directory/'selection.json'
     if destination.exists():
         raise FileExistsError('Selection is already frozen')
-    queue=json.loads((directory/'validation_queue.json').read_text())
-    plan=json.loads((directory/'search_plan.json').read_text());scores=[]
-    receipt=json.loads(Path('_local/capacity_compute_control/validation_campaign.json').read_text())
-    if receipt['status']!='completed' or len(receipt['runs'])!=6 or any(row['exit_code']!=0 for row in receipt['runs']):
-        raise ValueError('All six calibration workers must have exited successfully')
+    queue=json.loads((directory/'validation_queue_v2.json').read_text())
+    plan=json.loads((directory/'search_plan_v2.json').read_text());scores=[]
+    receipt_path=Path('_local/capacity_compute_control/validation_v2_campaign.json')
+    receipt=json.loads(receipt_path.read_text())
+    if receipt['status']!='completed' or len(receipt['runs'])!=18 or any(row['exit_code']!=0 for row in receipt['runs']):
+        raise ValueError('All eighteen calibration workers must have exited successfully')
     for job in queue['jobs']:
         path=Path(job['output'])/'results.json';result=json.loads(path.read_text())
         config=json.loads(Path(job['config']).read_text())
@@ -43,17 +44,22 @@ def select(directory):
         if not math.isfinite(score) or not math.isclose(score,evaluation['uniform_domain_accuracy_percent'],abs_tol=1e-10):
             raise ValueError('Invalid validation mean')
         scores.append({'method':config['method'],'classifier_lr':config['training']['classifier_lr'],
+                       'gradient_clip_norm':config['training']['gradient_clip_norm'],
+                       'autoencoder_lr':config['training']['autoencoder_lr'],
                        'uniform_validation_accuracy_percent':score,'result_sha256':file_hash(path),
                        'configuration_sha256':canonical_hash(config),'directory':job['output']})
     chosen={}
     for method in ('FusedSpaceFed','FedAvg'):
         rows=[row for row in scores if row['method']==method]
-        if sorted(row['classifier_lr'] for row in rows)!=plan['validation']['candidates_classifier_lr']:
+        expected={(lr,clip) for lr in plan['validation']['candidates_classifier_lr'] for clip in plan['validation']['candidates_clip_norm']}
+        if len(rows)!=9 or {(row['classifier_lr'],row['gradient_clip_norm']) for row in rows}!=expected:
             raise ValueError('Candidate set differs from search plan')
-        chosen[method]=min(rows,key=lambda row:(-row['uniform_validation_accuracy_percent'],row['classifier_lr']))['classifier_lr']
-    selection={'rule':'maximum fixed round60 uniform-domain validation accuracy; ties lower LR',
-               'scores':scores,'selected_classifier_lr':chosen,'validation_seed':142,
-               'search_plan_sha256':canonical_hash(plan),'validation_campaign_sha256':file_hash(Path('_local/capacity_compute_control/validation_campaign.json')),
+        best=min(rows,key=lambda row:(-row['uniform_validation_accuracy_percent'],row['classifier_lr'],row['gradient_clip_norm'],row['autoencoder_lr']))
+        keys=('classifier_lr','gradient_clip_norm','autoencoder_lr') if method=='FusedSpaceFed' else ('classifier_lr','gradient_clip_norm')
+        chosen[method]={key:best[key] for key in keys}
+    selection={'rule':'maximum fixed round60 uniform-domain validation accuracy; ties lower classifier LR, clip, AE LR',
+               'scores':scores,'selected_training_settings':chosen,'validation_seed':142,
+               'search_plan_sha256':canonical_hash(plan),'validation_campaign_sha256':file_hash(receipt_path),
                'no_test_access_for_selection':True,'final_seeds':[42,43,44]}
     atomic_json(destination,selection)
     print(json.dumps(selection,indent=2))

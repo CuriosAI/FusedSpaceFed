@@ -38,11 +38,18 @@ control is not the standard one-epoch published FedAvg baseline.
 
 Training-only calibration: source-row ID SHA order within labels; proportional
 largest-remainder class quotas, 149 validation and 594 fit/client, frozen seed
-20261005 and manifest. Same split, seed 142, candidates SGD LR [.005,.01,.02],
+20261005 and manifest. Same split, seed 142, SGD LR [.005,.01,.02], clipping
+[.5,1,2], and Fused AE LR [.0001,.0003,.001]. Following the user's extension,
+plan v2 uses nine balanced L9 rows c=(a+b+2)%3 over these three factors for
+Fused, including the original [.01,.0003,1] first. Projected classifierLR/clip
+pairs cover all nine combinations once: FedAvg uses the same nine pairs.
+The initial three-candidate plan was never run and is retained as history.
 60 rounds, same training-FLOP target/round for each method. Only final round 60
-validation uniform-domain accuracy selects each LR; ties choose the lower LR.
-AE settings remain exogenous and fixed. Equal effort means three candidates,
-same seed, rounds and compute convention; no second search stage, test tuning,
+validation uniform-domain accuracy selects settings; ties choose lower classifier
+LR, then lower clipping, then lower AE LR. Other AE settings remain fixed.
+Equal effort means nine candidates each, same seed, rounds and compute convention.
+This is a balanced screening design, not exhaustive 27-combination Fused tuning;
+interactions/AE effects cannot be isolated. No second search stage, test tuning,
 intermediate checkpoint selection, early stop or seed selection.
 
 Freeze both selected configurations before final tests. Exactly three paired

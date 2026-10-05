@@ -103,7 +103,7 @@ def run(config,partition,output,device,*,resume=False,stop_after=None):
         raise ValueError('Changed profile/validation identity')
     if config['phase']=='final':
         selected=json.loads((REPO/config['selection_file']).read_text())
-        if canonical_hash(selected)!=config['selection_sha256'] or selected['selected_classifier_lr'][method]!=settings['classifier_lr']:
+        if canonical_hash(selected)!=config['selection_sha256'] or any(settings[key]!=value for key,value in selected['selected_training_settings'][method].items()):
             raise ValueError('Final configuration not frozen by validation selection')
         if settings['rounds']!=300 or seed not in (42,43,44):
             raise ValueError('Wrong definitive protocol')

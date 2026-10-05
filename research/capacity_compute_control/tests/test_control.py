@@ -1,6 +1,9 @@
 """Synthetic CPU checks of capacity, budgets, partition and exact resume."""
 import json
+import os
 from pathlib import Path
+import subprocess
+import sys
 import numpy as np
 import pytest
 import torch
@@ -21,6 +24,13 @@ def threads():
 
 def profile():
     return json.loads(Path('research/capacity_compute_control/flop_profile.json').read_text())
+
+
+@pytest.mark.parametrize('entry',['controller.py','runner.py','select_hyperparameters.py'])
+def test_direct_cli_imports_do_not_shadow_standard_library(entry):
+    result=subprocess.run([sys.executable,'-B',str(Path('research/capacity_compute_control')/entry),'--help'],
+                          capture_output=True,text=True,env={**os.environ,'CUDA_VISIBLE_DEVICES':''},timeout=30)
+    assert result.returncode==0,result.stderr
 
 
 def test_capacity_and_logits():
@@ -67,6 +77,21 @@ def test_budget_sampler_covers_original_epoch_and_rng_reproducible():
     assert batches==list(runner.BudgetSampler(743,plan,torch.Generator().manual_seed(43)))
     assert sorted(sum(batches[:24],[]))==list(range(743))
     assert [len(batch) for batch in batches]==plan
+
+
+def test_extended_design_balanced_reference_and_comparable_effort():
+    queue=json.loads(Path('research/capacity_compute_control/validation_queue_v2.json').read_text())
+    configs=[json.loads(Path(job['config']).read_text()) for job in queue['jobs']]
+    assert len(configs)==18
+    for method in ('FusedSpaceFed','FedAvg'):
+        rows=[config['training'] for config in configs if config['method']==method]
+        assert len(rows)==9
+        assert {(r['classifier_lr'],r['gradient_clip_norm']) for r in rows}=={(lr,clip) for lr in (.005,.01,.02) for clip in (.5,1,2)}
+        assert all(r['rounds']==60 for r in rows)
+    fused=[config['training'] for config in configs if config['method']=='FusedSpaceFed']
+    assert (fused[0]['classifier_lr'],fused[0]['autoencoder_lr'],fused[0]['gradient_clip_norm'])==(.01,.0003,1)
+    assert sorted(r['autoencoder_lr'] for r in fused)==[.0001]*3+[.0003]*3+[.001]*3
+    assert all(config['phase']=='validation' and config['seed']==142 for config in configs)
 
 
 class TinyCNN(nn.Module):
