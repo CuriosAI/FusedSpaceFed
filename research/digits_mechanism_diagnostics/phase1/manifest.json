@@ -1,0 +1,116 @@
+{
+  "checkpoint_policy": "full states retained only in _local, SHA256 in summary",
+  "files": {
+    "PHASE1_REPORT.md": {
+      "bytes": 7079,
+      "sha256": "65cd9c99a7f4c1d07c1901b6424deb4a64dc56ec265445e258c18b13fa5cca60"
+    },
+    "archive.py": {
+      "bytes": 13394,
+      "sha256": "dedaa43e278820fa220d6cf452e6b8ea88067b960a4ead38eecf4325df90c98f"
+    },
+    "artifacts/campaign.json": {
+      "bytes": 5183,
+      "sha256": "a2298cb43e11f631548bcd17f7374b6635b8a55ca87054d1d19e255d9b00ddba"
+    },
+    "artifacts/seed-42.json.gz": {
+      "bytes": 9815,
+      "sha256": "831c0ed0a677625404b09b7768a9d397e0fbbf6f6a0d04787050a0c9f22f979d"
+    },
+    "artifacts/seed-43.json.gz": {
+      "bytes": 9829,
+      "sha256": "a8c1c4d9c0fce50936996540b3ddc7b1bf3eaad7fc3839846c9589dd0e087a7a"
+    },
+    "artifacts/seed-44.json.gz": {
+      "bytes": 9727,
+      "sha256": "7222b42ed13f3dcc3a98c1051bebdf301b499e6827d256993acce401c71901a4"
+    },
+    "artifacts/seed-45.json.gz": {
+      "bytes": 9655,
+      "sha256": "441d398012a25fd43f7480341f1fe505c1ee5a9a7ddce3784c0c88146f6aeeb3"
+    },
+    "artifacts/seed-46.json.gz": {
+      "bytes": 9716,
+      "sha256": "617ad47ca7f2ae682e4974b973b86f3db17f29a6a7464a4cd265188eac65f9f4"
+    },
+    "artifacts/summary.json": {
+      "bytes": 118014,
+      "sha256": "cbd0ee4d376f41d2587dcbcc00ba222a6474173512e7ffbedc4ccb342c3b60fe"
+    },
+    "config.json": {
+      "bytes": 2805,
+      "sha256": "0c16d10111ccca184f2e65a72cd1036cb722e638f853cae45e3d45c5d3df8d21"
+    },
+    "diagnose.py": {
+      "bytes": 7938,
+      "sha256": "11a7730d7c00680387c99d2bd6b6471e77f504f7c255ca5f8eb7b039d6248070"
+    },
+    "figures/final-round300-MNIST-M.png": {
+      "bytes": 151660,
+      "sha256": "7f156c11d3aadeb6314408ece58f486f47d27ef477143c44060c8d92100a1c49"
+    },
+    "figures/final-round300-MNIST.png": {
+      "bytes": 137653,
+      "sha256": "3b77d3276183b6e3a56c131ad28f6b69ffeb790ed91b71f031b0f6669d0cda0e"
+    },
+    "figures/final-round300-SVHN.png": {
+      "bytes": 144151,
+      "sha256": "ff37ea6e8318a54d80e2d5ea5992d621ff3487c84b463976f3413cbf6d314833"
+    },
+    "figures/final-round300-SynthDigits.png": {
+      "bytes": 152854,
+      "sha256": "1edad7d8f584690d002d1f879359f034252f0b6e0e179dab4432804586fabfa1"
+    },
+    "figures/final-round300-USPS.png": {
+      "bytes": 142208,
+      "sha256": "28d4d7ec6bbdeac1b3c5fb92eda3bed71fc31ae948bfe69615d2dd9766d64bf0"
+    },
+    "figures/initialization-MNIST-M.png": {
+      "bytes": 106560,
+      "sha256": "9863e76365ff0509f276d1b2d483550ab19bae33fc611740cb290a8d8219ec93"
+    },
+    "figures/initialization-MNIST.png": {
+      "bytes": 80319,
+      "sha256": "a81b5cbe64ebeb050fae5b78a37e177978dd3f310ba1864876a8f4cf05bebef3"
+    },
+    "figures/initialization-SVHN.png": {
+      "bytes": 104473,
+      "sha256": "292b782faece5a3796dcfdce15bf6df61d99a0987953806b900bf8c934ec247b"
+    },
+    "figures/initialization-SynthDigits.png": {
+      "bytes": 100571,
+      "sha256": "d7cc4de51e2df8319e3e137c5d18583dfe2a78dc8ad7aa541d9636b6837d7fe0"
+    },
+    "figures/initialization-USPS.png": {
+      "bytes": 94680,
+      "sha256": "2778570d844ccf69b929887d8e62650b3e11bf791065fdbc88f78bcb49fd2cc2"
+    },
+    "queue.json": {
+      "bytes": 1971,
+      "sha256": "b6039f4fd7d9263372f3f329be249da96393950a297cb73d39fb8409a3a684d2"
+    },
+    "verification_tests.log": {
+      "bytes": 351,
+      "sha256": "4c28feec2610580006a8263e5046d0b5f9a00f7ab026ad6f8d535c0f2e560033"
+    }
+  },
+  "references": {
+    "research/digits_mechanism_diagnostics/common.py": {
+      "bytes": 5962,
+      "sha256": "3608f39262003e3c5dd9b4c71318f8272188d447b1aa4390fbcc2bbb1a294b6b"
+    },
+    "research/digits_mechanism_diagnostics/controller.py": {
+      "bytes": 4337,
+      "sha256": "6f58fa6e83f758862396648f2ee4fdbc5029230b194f66b6e5e1356753a6bc58"
+    },
+    "research/digits_mechanism_diagnostics/probe.json": {
+      "bytes": 57632,
+      "sha256": "9f436650fbc3adc372e8cec3c30fd0fd66c07716df2e9f5137318ca4500a18f8"
+    },
+    "research/digits_mechanism_diagnostics/tests/test_decoder_probe.py": {
+      "bytes": 3248,
+      "sha256": "8dbdeef2e232155ffae706ee135056ef128b98b380e44c385b5d574ca7e9b152"
+    }
+  },
+  "schema": 1
+}

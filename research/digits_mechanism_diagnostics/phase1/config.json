@@ -1,0 +1,75 @@
+{
+  "anchors": [
+    "initialization",
+    "final-round300"
+  ],
+  "checkpoints": {
+    "42": {
+      "code_commit": "e4dbfef42acf453eebeefbe487a726c48784e377",
+      "path": "_local/feature_shift_digits_calibrated/final/expanded-2-1-seed-42/checkpoint.pt",
+      "sha256": "814a903ca63aa4aef84199f406f679dd54a0d48714d04a1f8a0ed898bee2ad12"
+    },
+    "43": {
+      "code_commit": "e4dbfef42acf453eebeefbe487a726c48784e377",
+      "path": "_local/feature_shift_digits_calibrated/final/expanded-2-1-seed-43/checkpoint.pt",
+      "sha256": "c12cdfad1a5ab73b842f23ffbd0353d0880abdb086df0f98ee9ea206c462a63b"
+    },
+    "44": {
+      "code_commit": "e4dbfef42acf453eebeefbe487a726c48784e377",
+      "path": "_local/feature_shift_digits_calibrated/final/expanded-2-1-seed-44/checkpoint.pt",
+      "sha256": "453c914a23026ce3988aeda0f917f27c98ac518d65ded35340c7454e6ef7a79a"
+    },
+    "45": {
+      "code_commit": "e4dbfef42acf453eebeefbe487a726c48784e377",
+      "path": "_local/feature_shift_digits_calibrated/final/expanded-2-1-seed-45/checkpoint.pt",
+      "sha256": "ee0ac71925a121d9aa787d06844360db27af5208e5de9ed945a084da452eb43c"
+    },
+    "46": {
+      "code_commit": "e4dbfef42acf453eebeefbe487a726c48784e377",
+      "path": "_local/feature_shift_digits_calibrated/final/expanded-2-1-seed-46/checkpoint.pt",
+      "sha256": "8a3fdb5e465366fedfd9c16f3c008de86031dd8792590d9157b30c7f0fbdeb04"
+    }
+  },
+  "config_sha256": "e3c158d525cdbb3635fd9bd97913c4bf8577b5ff80f8eda8600044406b54750e",
+  "interpretation": "Independent local replay on copies, not recovered historical within-round states; training samples only; no hyperparameter selection",
+  "partition_sha256": "7a762ffb10da74e3f0dee9a6f519e6c4057e2a5b47995a0546ee5a871eb47b58",
+  "phase": 1,
+  "probe_file": "research/digits_mechanism_diagnostics/probe.json",
+  "probe_sha256": "de6ed50447653020c3f3a1edffe3a751d391af0a5c4fb8d3565eddb6e6000745",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "settings_origin": "previous train-only validation selection, unchanged",
+  "source_reference": "research/feature_shift_digits_calibrated/selection.json",
+  "training": {
+    "aggregation": "uniform",
+    "amp": false,
+    "autoencoder_betas": [
+      0.9,
+      0.999
+    ],
+    "autoencoder_eps": 1e-08,
+    "autoencoder_lr": 0.0003,
+    "autoencoder_weight_decay": 0.0,
+    "batch_size": 32,
+    "classification_epochs": 1,
+    "classifier_lr": 0.1,
+    "classifier_momentum": 0.0,
+    "classifier_weight_decay": 0.0,
+    "clients_per_round": 5,
+    "drop_last": false,
+    "dz": 64,
+    "gradient_clip_norm": 10.0,
+    "num_workers": 0,
+    "optimizer_reset": "each_participation; Adam continuous between phases",
+    "precision": "float32",
+    "rounds": 300,
+    "tf32": false,
+    "torch_threads": 4,
+    "warmup_epochs": 1
+  }
+}
