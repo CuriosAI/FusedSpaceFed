@@ -1,0 +1,81 @@
+{
+  "elapsed_wall_seconds": 2753.16597,
+  "ended_utc": "2026-10-05T15:47:34.656214+00:00",
+  "external_actions": "none",
+  "maximum_per_gpu": 1,
+  "maximum_training_processes": 2,
+  "partition_sha256": "7a762ffb10da74e3f0dee9a6f519e6c4057e2a5b47995a0546ee5a871eb47b58",
+  "process_wall_seconds_sum": 4560.997364585055,
+  "run_code_commits": {
+    "42": "732baa79743c26e2066ef18178cc71e2b1ab5c73",
+    "43": "732baa79743c26e2066ef18178cc71e2b1ab5c73",
+    "44": "b1429326664673c4b376867442c56ee70e860c02",
+    "45": "b1429326664673c4b376867442c56ee70e860c02",
+    "46": "b1429326664673c4b376867442c56ee70e860c02"
+  },
+  "runs": [
+    {
+      "device": "cuda:1",
+      "ended_utc": "2026-10-05T15:16:50.672479+00:00",
+      "exit_code": 0,
+      "process_wall_seconds": 909.1789758240338,
+      "seed": 42,
+      "started_utc": "2026-10-05T15:01:41.494179+00:00"
+    },
+    {
+      "device": "cuda:0",
+      "ended_utc": "2026-10-05T15:17:07.675504+00:00",
+      "exit_code": 0,
+      "process_wall_seconds": 926.1809655181132,
+      "seed": 43,
+      "started_utc": "2026-10-05T15:01:41.495012+00:00"
+    },
+    {
+      "device": "cuda:1",
+      "ended_utc": "2026-10-05T15:33:07.461481+00:00",
+      "exit_code": 0,
+      "process_wall_seconds": 935.2580763490405,
+      "seed": 44,
+      "started_utc": "2026-10-05T15:17:32.204099+00:00"
+    },
+    {
+      "device": "cuda:0",
+      "ended_utc": "2026-10-05T15:32:56.458896+00:00",
+      "exit_code": 0,
+      "process_wall_seconds": 924.2209478479344,
+      "seed": 45,
+      "started_utc": "2026-10-05T15:17:32.238570+00:00"
+    },
+    {
+      "device": "cuda:1",
+      "ended_utc": "2026-10-05T15:47:33.655387+00:00",
+      "exit_code": 0,
+      "process_wall_seconds": 866.158399045933,
+      "seed": 46,
+      "started_utc": "2026-10-05T15:33:07.497678+00:00"
+    }
+  ],
+  "scientific_config_sha256": "fc5ad9b0d7b506882106a3459818ac6c95b17216d860a177b5398fe61f80c943",
+  "stages": {
+    "extension_three": {
+      "code_commit": "b1429326664673c4b376867442c56ee70e860c02",
+      "config_sha256": "ab186f27a0311496de7be973fbe394f598a36e54549d63e6c451af6d45d16611",
+      "elapsed_wall_seconds": 1802.4882085381541,
+      "ended_utc": "2026-10-05T15:47:34.656214+00:00",
+      "process_wall_seconds_sum": 2725.637423242908,
+      "scheduler_sha256": "90474101521e921f5ab0282136641dbbfd3e96a7347cf02af5471e06047d7ee1",
+      "started_utc": "2026-10-05T15:17:32.167947+00:00"
+    },
+    "original_pair": {
+      "code_commit": "732baa79743c26e2066ef18178cc71e2b1ab5c73",
+      "config_sha256": "702b7508b4e8bc0f4386846ab0a0691ad9313d86ca9c791fe162bd1251828347",
+      "elapsed_wall_seconds": 927.1827778310981,
+      "ended_utc": "2026-10-05T15:17:08.676181+00:00",
+      "process_wall_seconds_sum": 1835.359941342147,
+      "scheduler_sha256": "2fb81d486526499bc58c4ae0013f9b703485cd25f1e26bf93ab251b78c6403dd",
+      "started_utc": "2026-10-05T15:01:41.490244+00:00"
+    }
+  },
+  "started_utc": "2026-10-05T15:01:41.490244+00:00",
+  "status": "completed"
+}

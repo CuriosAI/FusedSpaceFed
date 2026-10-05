@@ -86,10 +86,16 @@ model; testing frequency is a documented difference. Exact round used to
 form the published Table 11 statistics is not explicitly specified.
 Per-domain accuracy is correct/total. Also record uniform-domain and
 sample-weighted overall means. Domain accuracy is the primary comparison.
-For ours, mean and sample SD ddof=1 use exactly two run values, not rounds or
+For ours, mean and sample SD ddof=1 use exactly five run values, not rounds or
 domains. Published Table 11 SD remains the author's SD; its ddof is unknown.
 
-Fixed seeds 42/43 map to cuda:1/cuda:0. One process per GPU, two in parallel;
+Fixed seeds 42–46 map even seeds to cuda:1 and odd seeds to cuda:0. The user
+expanded the initial two-run campaign while it was in progress. The first
+two runs retain config.json and their original commit. config_five.json adds
+only the seed/device registry; all scientific fields and four training source
+files are identical. five_run_authorization.json records both full hashes and
+the common scientific hash. Additional seeds are consecutive, without result
+selection or restarting the original pair. One process per GPU, two in parallel;
 no external process actions. Outputs/checkpoints/logs/dataset are private in
 `_local/feature_shift_digits/`. Round checkpoints preserve all private
 encoders, shared states, loader generators and Python/NumPy/Torch/device RNGs;
@@ -99,5 +105,5 @@ Early timing estimates at round 5 exclude final test/IO and are preliminary.
 The comparison is ours versus published values, not common baseline reruns.
 Same CNN does not imply equal capacity or cost: E/D and warm-up add resources.
 Different BN policy, mirror provenance, unspecified published seeds/statistic
-round, modern runtime and two versus five trials limit controlled inference.
+round, modern runtime and additional resources limit controlled inference.
 No significance claim is justified by this descriptive comparison.

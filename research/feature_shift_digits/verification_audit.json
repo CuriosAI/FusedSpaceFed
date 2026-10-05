@@ -1,0 +1,7 @@
+{
+  "command": "/home/schroeder/miniconda3/envs/general_ml/bin/python -B -m pytest research/feature_shift_digits/tests/test_audit_independent.py -q",
+  "exit_code": 0,
+  "passed": 17,
+  "inputs": "synthetic records only; no model or dataset evaluation",
+  "log": "verification_audit.log"
+}
