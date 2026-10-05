@@ -56,8 +56,96 @@ def validate_selected_config(config: dict) -> None:
         raise ValueError("Definitive configuration differs from the validation-only frozen selection")
     if receipt["status"] != "frozen" or receipt["selection_data"] != "training-derived validation only":
         raise ValueError("Invalid selection receipt")
-    if receipt["calibration_code"]["code_sha256"] != git_metadata()["code_sha256"]:
-        raise ValueError("Training implementation differs from the frozen validation selection")
+    frozen_code = receipt["calibration_code"]["code_sha256"]
+    current_code = git_metadata()["code_sha256"]
+    if frozen_code == current_code:
+        return
+
+    # This exception can be published only after the immutable calibration ends.
+    # It changes verification, while preserving every training/selection AST node.
+    import ast
+    import hashlib
+
+    transition_path = FROZEN_RECEIPT.with_name("verification_transition.json")
+    if not transition_path.is_file():
+        raise ValueError("Training implementation differs from the frozen validation selection; "
+                         "an explicit post-calibration verification transition is required")
+    transition = json.loads(transition_path.read_text())
+    expected_keys = {
+        "schema", "kind", "status", "from_commit", "from_code_sha256", "to_code_sha256",
+        "selection_receipt_sha256", "selected_config_file_sha256", "selected_config_sha256",
+        "partition_sha256", "plan_sha256", "view_sha256", "unchanged_module_ast_sha256",
+        "calibration_campaign",
+    }
+    if (set(transition) != expected_keys or type(transition["schema"]) is not int
+            or transition["schema"] != 1 or transition["kind"] != "post_calibration_verification_only"
+            or transition["status"] != "approved"):
+        raise ValueError("Invalid verification-only transition schema")
+    code_files = {
+        "fusedspacefed_core.py", "femnist_reconstructed_data.py", "train_femnist_reconstructed.py",
+        "femnist_calibration_data.py", "calibrate_femnist_reconstructed.py",
+    }
+    for hashes in (frozen_code, current_code, transition["from_code_sha256"], transition["to_code_sha256"]):
+        if not isinstance(hashes, dict) or set(hashes) != code_files or any(
+                not isinstance(value, str) or len(value) != 64
+                or any(char not in "0123456789abcdef" for char in value) for value in hashes.values()):
+            raise ValueError("Verification transition requires all five exact SHA256 hashes")
+    if transition["from_code_sha256"] != frozen_code or transition["to_code_sha256"] != current_code:
+        raise ValueError("Verification transition from/to hashes do not match the frozen/current code")
+    changed = {name for name in code_files if frozen_code[name] != current_code[name]}
+    if changed != {"calibrate_femnist_reconstructed.py"}:
+        raise ValueError("Verification transition may change only calibrate_femnist_reconstructed.py")
+    if (transition["selection_receipt_sha256"] != file_hash(FROZEN_RECEIPT)
+            or transition["selected_config_file_sha256"] != file_hash(SELECTED)
+            or transition["selected_config_sha256"] != receipt["selected_config_sha256"]
+            or any(transition[name] != receipt[name] for name in
+                   ("partition_sha256", "plan_sha256", "view_sha256"))):
+        raise ValueError("Verification transition cannot change the frozen selection/configuration/data")
+
+    campaign_record = transition["calibration_campaign"]
+    if not isinstance(campaign_record, dict) or set(campaign_record) != {"path", "sha256"}:
+        raise ValueError("Verification transition requires a completed calibration campaign")
+    relative = Path(campaign_record["path"])
+    if (relative.is_absolute() or ".." in relative.parts or not relative.parts
+            or not (REPO / relative).resolve().is_relative_to(REPO.resolve())):
+        raise ValueError("Invalid completed calibration campaign path")
+    campaign_path = REPO / relative
+    if not campaign_path.is_file() or file_hash(campaign_path) != campaign_record["sha256"]:
+        raise ValueError("Completed calibration campaign checksum mismatch")
+    campaign = json.loads(campaign_path.read_text())
+    if (campaign["status"] != "completed" or campaign["selection_sha256"] != file_hash(FROZEN_RECEIPT)
+            or campaign["plan_sha256"] != receipt["plan_sha256"]
+            or campaign["view_sha256"] != receipt["view_sha256"]
+            or campaign["git"] != receipt["calibration_code"]):
+        raise ValueError("Verification transition requires the unchanged completed calibration")
+
+    frozen_commit = receipt["calibration_code"]["commit"]
+    if (not isinstance(frozen_commit, str) or len(frozen_commit) != 40
+            or any(char not in "0123456789abcdef" for char in frozen_commit)
+            or transition["from_commit"] != frozen_commit):
+        raise ValueError("Verification transition commit differs from the frozen calibration")
+    filename = "calibrate_femnist_reconstructed.py"
+    original_source = subprocess.check_output(["git", "show", f"{frozen_commit}:{filename}"], cwd=REPO)
+    current_source = (REPO / filename).read_bytes()
+    if (hashlib.sha256(original_source).hexdigest() != frozen_code[filename]
+            or hashlib.sha256(current_source).hexdigest() != current_code[filename]):
+        raise ValueError("Verification transition source hashes do not match from/to")
+
+    def protected_ast_digest(source: bytes) -> str:
+        tree = ast.parse(source)
+        exempt = {"validate_selected_config", "verify_definitive_result"}
+        definitions = [node.name for node in tree.body
+                       if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name in exempt]
+        if sorted(definitions) != sorted(exempt):
+            raise ValueError("Verification transition requires exactly the two permitted definitions")
+        tree.body = [node for node in tree.body
+                     if not (isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name in exempt)]
+        return hashlib.sha256(ast.dump(tree, include_attributes=False).encode()).hexdigest()
+
+    original_digest = protected_ast_digest(original_source)
+    if (protected_ast_digest(current_source) != original_digest
+            or transition["unchanged_module_ast_sha256"] != original_digest):
+        raise ValueError("Verification transition changed protected training/selection code")
 
 
 def validate_plan(plan: dict) -> dict:
@@ -390,25 +478,47 @@ def verify_definitive_result(result: dict, config: dict, seed: int, code_hashes:
     if result["status"] != "completed" or result["completed_round"] != 200:
         raise ValueError("Definitive run is incomplete")
     history = result["history"]
-    if [r["round"] for r in history] != list(range(1, 201)):
+    if (any(type(row["round"]) is not int for row in history)
+            or [row["round"] for row in history] != list(range(1, 201))):
         raise ValueError("Definitive round history is incomplete")
-    evaluated = [r for r in history if r["evaluation"] is not None]
-    if [r["round"] for r in evaluated] != list(range(191, 201)):
+    evaluated = [row for row in history if row["evaluation"] is not None]
+    if [row["round"] for row in evaluated] != list(range(191, 201)):
         raise ValueError("Definitive test must be restricted to rounds 191--200")
-    if any(type(n) is not int or n < 0 for n in result["participations"].values()) or sum(result["participations"].values()) != 3000:
+    if (len(test_counts) != 150 or any(type(n) is not int or n <= 0 for n in test_counts.values())
+            or sum(test_counts.values()) != 2603):
+        raise ValueError("Invalid original definitive client totals")
+    participations = result["participations"]
+    if (set(participations) != set(test_counts)
+            or any(type(n) is not int or n < 0 for n in participations.values())
+            or sum(participations.values()) != 3000):
         raise ValueError("Invalid definitive participation counts")
-    for row in evaluated:
+    cumulative = {client: 0 for client in test_counts}
+    for row in history:
+        active = row.get("active_clients")
+        if (not isinstance(active, list) or len(active) != 15
+                or any(type(client) is not str for client in active) or len(set(active)) != 15):
+            raise ValueError("Every definitive round requires 15 distinct active clients")
+        if not set(active) <= set(test_counts):
+            raise ValueError("Definitive round contains an unknown active client")
+        for client in active:
+            cumulative[client] += 1
         metric = row["evaluation"]
+        if metric is None:
+            continue
         if metric.get("split", "test") != "test":
             raise ValueError("Definitive run contains a different evaluation split")
         counts = metric["clients"]
-        if len(counts) != 150 or set(counts) != set(result["participations"]) or set(counts) != set(test_counts):
+        if len(counts) != 150 or set(counts) != set(test_counts):
             raise ValueError("Definitive evaluation must include all 150 clients")
-        if any(type(c[name]) is not int for c in counts.values() for name in ("correct", "total", "participations")):
+        if (any(type(c[name]) is not int for c in counts.values()
+                for name in ("correct", "total", "participations"))
+                or any(type(metric[name]) is not int for name in ("correct", "total"))):
             raise ValueError("Definitive counts and participations must be integers")
         if any(not 0 <= c["correct"] <= c["total"] or c["total"] != test_counts[client]
-               or c["participations"] != result["participations"][client] for client, c in counts.items()):
+               for client, c in counts.items()):
             raise ValueError("Invalid definitive counts")
+        if any(c["participations"] != cumulative[client] for client, c in counts.items()):
+            raise ValueError("Definitive evaluation differs from cumulative participation at its round")
         total, correct = sum(c["total"] for c in counts.values()), sum(c["correct"] for c in counts.values())
         if total != 2603 or metric["total"] != total or metric["correct"] != correct:
             raise ValueError("Definitive evaluation must contain 2603 original test examples")
@@ -416,7 +526,9 @@ def verify_definitive_result(result: dict, config: dict, seed: int, code_hashes:
                   SECONDARY: sum(100.0 * c["correct"] / c["total"] for c in counts.values()) / len(counts)}
         if any(abs(actual[name] - metric[name]) > 1e-10 for name in actual):
             raise ValueError("Definitive metrics cannot be reconstructed from client counts")
-    expected = {name: sum(r["evaluation"][name] for r in evaluated) / 10 for name in (PRIMARY, SECONDARY)}
+    if sum(cumulative.values()) != 3000 or cumulative != participations:
+        raise ValueError("Final definitive participation counts differ from the 200-round active-client history")
+    expected = {name: sum(row["evaluation"][name] for row in evaluated) / 10 for name in (PRIMARY, SECONDARY)}
     if any(abs(expected[name] - result["summary"][name]) > 1e-10 for name in expected):
         raise ValueError("Definitive summary differs from the fixed ten-round mean")
     return expected
