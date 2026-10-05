@@ -1,0 +1,22 @@
+{
+  "additional_seeds": [
+    44,
+    45,
+    46
+  ],
+  "authorized_utc": "2026-10-05T15:14:52.993326+00:00",
+  "changed_fields": [
+    "run_seeds",
+    "per_seed_device"
+  ],
+  "extended_config_sha256": "ab186f27a0311496de7be973fbe394f598a36e54549d63e6c451af6d45d16611",
+  "hyperparameters_changed": false,
+  "original_config_sha256": "702b7508b4e8bc0f4386846ab0a0691ad9313d86ca9c791fe162bd1251828347",
+  "original_runs_restarted": false,
+  "original_seeds": [
+    42,
+    43
+  ],
+  "request": "User expanded from two to five runs, without scientific changes",
+  "scientific_config_sha256": "fc5ad9b0d7b506882106a3459818ac6c95b17216d860a177b5398fe61f80c943"
+}
