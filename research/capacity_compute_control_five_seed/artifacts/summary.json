@@ -1,0 +1,373 @@
+{
+  "comparison_limit": "Matched parameters and counted training FLOPs; unequal tuning effort. Descriptive, not an equal-tuning causal control.",
+  "costs": {
+    "FedAvg": {
+      "42": {
+        "classification_samples": 1956535,
+        "classification_steps": 63000,
+        "code_commit": "325d614da052330312faa908e540dfc3a3713350",
+        "counted_training_flops": 551896914235800,
+        "dense_training_flops": 547381518700800,
+        "reused": false,
+        "seed": 42,
+        "target_flops": 551898005448000,
+        "warmup_steps": 0
+      },
+      "43": {
+        "classification_samples": 1956535,
+        "classification_steps": 63000,
+        "code_commit": "325d614da052330312faa908e540dfc3a3713350",
+        "counted_training_flops": 551896914235800,
+        "dense_training_flops": 547381518700800,
+        "reused": false,
+        "seed": 43,
+        "target_flops": 551898005448000,
+        "warmup_steps": 0
+      },
+      "44": {
+        "classification_samples": 1956535,
+        "classification_steps": 63000,
+        "code_commit": "325d614da052330312faa908e540dfc3a3713350",
+        "counted_training_flops": 551896914235800,
+        "dense_training_flops": 547381518700800,
+        "reused": false,
+        "seed": 44,
+        "target_flops": 551898005448000,
+        "warmup_steps": 0
+      },
+      "45": {
+        "classification_samples": 1956535,
+        "classification_steps": 63000,
+        "code_commit": "76a338ccd3115b57a084b830067d00c341b0a435",
+        "counted_training_flops": 551896914235800,
+        "dense_training_flops": 547381518700800,
+        "reused": false,
+        "seed": 45,
+        "target_flops": 551898005448000,
+        "warmup_steps": 0
+      },
+      "46": {
+        "classification_samples": 1956535,
+        "classification_steps": 63000,
+        "code_commit": "76a338ccd3115b57a084b830067d00c341b0a435",
+        "counted_training_flops": 551896914235800,
+        "dense_training_flops": 547381518700800,
+        "reused": false,
+        "seed": 46,
+        "target_flops": 551898005448000,
+        "warmup_steps": 0
+      }
+    },
+    "FusedSpaceFed": {
+      "42": {
+        "classification_samples": 1114500,
+        "classification_steps": 36000,
+        "code_commit": "e4dbfef42acf453eebeefbe487a726c48784e377",
+        "counted_training_flops": 551898005448000,
+        "dense_training_flops": 549229594368000,
+        "reused": true,
+        "seed": 42,
+        "target_flops": 551898005448000,
+        "warmup_steps": 36000
+      },
+      "43": {
+        "classification_samples": 1114500,
+        "classification_steps": 36000,
+        "code_commit": "e4dbfef42acf453eebeefbe487a726c48784e377",
+        "counted_training_flops": 551898005448000,
+        "dense_training_flops": 549229594368000,
+        "reused": true,
+        "seed": 43,
+        "target_flops": 551898005448000,
+        "warmup_steps": 36000
+      },
+      "44": {
+        "classification_samples": 1114500,
+        "classification_steps": 36000,
+        "code_commit": "e4dbfef42acf453eebeefbe487a726c48784e377",
+        "counted_training_flops": 551898005448000,
+        "dense_training_flops": 549229594368000,
+        "reused": true,
+        "seed": 44,
+        "target_flops": 551898005448000,
+        "warmup_steps": 36000
+      },
+      "45": {
+        "classification_samples": 1114500,
+        "classification_steps": 36000,
+        "code_commit": "e4dbfef42acf453eebeefbe487a726c48784e377",
+        "counted_training_flops": 551898005448000,
+        "dense_training_flops": 549229594368000,
+        "reused": true,
+        "seed": 45,
+        "target_flops": 551898005448000,
+        "warmup_steps": 36000
+      },
+      "46": {
+        "classification_samples": 1114500,
+        "classification_steps": 36000,
+        "code_commit": "e4dbfef42acf453eebeefbe487a726c48784e377",
+        "counted_training_flops": 551898005448000,
+        "dense_training_flops": 549229594368000,
+        "reused": true,
+        "seed": 46,
+        "target_flops": 551898005448000,
+        "warmup_steps": 36000
+      }
+    }
+  },
+  "ddof": 1,
+  "methods": {
+    "FedAvg": {
+      "domains": {
+        "MNIST": {
+          "mean": 95.93285714285715,
+          "sample_sd_ddof1": 0.23574675101100617,
+          "values": [
+            95.85,
+            95.95,
+            96.04285714285714,
+            96.22857142857143,
+            95.59285714285714
+          ]
+        },
+        "MNIST-M": {
+          "mean": 75.57857142857142,
+          "sample_sd_ddof1": 0.6401331175335833,
+          "values": [
+            75.29285714285714,
+            76.07142857142857,
+            74.96428571428571,
+            75.12857142857143,
+            76.43571428571428
+          ]
+        },
+        "SVHN": {
+          "mean": 61.56914090039279,
+          "sample_sd_ddof1": 1.4342026773541732,
+          "values": [
+            62.34263269211401,
+            60.89737133648907,
+            63.66703595528251,
+            60.046328935441636,
+            60.89233558263672
+          ]
+        },
+        "SynthDigits": {
+          "mean": 81.30891390823287,
+          "sample_sd_ddof1": 0.540151309740872,
+          "values": [
+            81.98914010491762,
+            81.69872483152847,
+            80.9655285251199,
+            81.23753719667454,
+            80.65363888292379
+          ]
+        },
+        "USPS": {
+          "mean": 95.93548387096774,
+          "sample_sd_ddof1": 0.2538864290993012,
+          "values": [
+            95.86021505376344,
+            96.12903225806451,
+            95.59139784946237,
+            96.23655913978494,
+            95.86021505376344
+          ]
+        }
+      },
+      "sample_weighted_accuracy_percent": {
+        "mean": 79.68001952423242,
+        "sample_sd_ddof1": 0.39197605936579694,
+        "values": [
+          80.19917428767059,
+          79.89885362927008,
+          79.68259563823224,
+          79.41684914140832,
+          79.20262492458087
+        ]
+      },
+      "uniform_domain_accuracy_percent": {
+        "mean": 82.0649934502044,
+        "sample_sd_ddof1": 0.2214973681303154,
+        "values": [
+          82.26696899873045,
+          82.14931139950212,
+          82.24622103740153,
+          81.7755136258088,
+          81.88695218957908
+        ]
+      }
+    },
+    "FusedSpaceFed": {
+      "domains": {
+        "MNIST": {
+          "mean": 96.94714285714285,
+          "sample_sd_ddof1": 0.2398234895135336,
+          "values": [
+            96.79285714285714,
+            96.99285714285715,
+            96.91428571428571,
+            97.32857142857142,
+            96.70714285714286
+          ]
+        },
+        "MNIST-M": {
+          "mean": 81.55428571428571,
+          "sample_sd_ddof1": 0.773321091270685,
+          "values": [
+            80.27857142857142,
+            81.67142857142858,
+            81.54285714285714,
+            81.95714285714286,
+            82.32142857142857
+          ]
+        },
+        "SVHN": {
+          "mean": 67.82757578809547,
+          "sample_sd_ddof1": 2.876877739474707,
+          "values": [
+            63.63178567831604,
+            69.11572162352704,
+            66.28059220465303,
+            70.92859301037365,
+            69.18118642360761
+          ]
+        },
+        "SynthDigits": {
+          "mean": 86.31612316061805,
+          "sample_sd_ddof1": 0.49639433642925923,
+          "values": [
+            85.97621458007383,
+            86.8566637011586,
+            85.69295742962031,
+            86.75133703510548,
+            86.30344305713204
+          ]
+        },
+        "USPS": {
+          "mean": 96.66666666666667,
+          "sample_sd_ddof1": 0.2819378624113287,
+          "values": [
+            96.66666666666667,
+            96.88172043010752,
+            96.18279569892474,
+            96.82795698924731,
+            96.7741935483871
+          ]
+        }
+      },
+      "sample_weighted_accuracy_percent": {
+        "mean": 84.51470757716478,
+        "sample_sd_ddof1": 0.7452734074883084,
+        "values": [
+          83.58879797164919,
+          85.06464012365348,
+          83.88301730741853,
+          85.29716830837441,
+          84.73991417472833
+        ]
+      },
+      "uniform_domain_accuracy_percent": {
+        "mean": 85.86235883736175,
+        "sample_sd_ddof1": 0.8469302172778916,
+        "values": [
+          84.66921909929702,
+          86.30367829381578,
+          85.32269763806819,
+          86.75872026408814,
+          86.25747889153963
+        ]
+      }
+    }
+  },
+  "paired_fused_minus_fedavg": {
+    "domains": {
+      "MNIST": {
+        "mean": 1.0142857142857138,
+        "sample_sd_ddof1": 0.10449099170234065,
+        "values": [
+          0.9428571428571502,
+          1.0428571428571445,
+          0.8714285714285666,
+          1.0999999999999943,
+          1.1142857142857139
+        ]
+      },
+      "MNIST-M": {
+        "mean": 5.975714285714287,
+        "sample_sd_ddof1": 0.7450106149086274,
+        "values": [
+          4.98571428571428,
+          5.6000000000000085,
+          6.578571428571436,
+          6.828571428571422,
+          5.885714285714286
+        ]
+      },
+      "SVHN": {
+        "mean": 6.258434887702686,
+        "sample_sd_ddof1": 4.102516196593971,
+        "values": [
+          1.2891529862020334,
+          8.218350287037964,
+          2.613556249370525,
+          10.88226407493201,
+          8.288850840970895
+        ]
+      },
+      "SynthDigits": {
+        "mean": 5.00720925238519,
+        "sample_sd_ddof1": 0.6729104100309959,
+        "values": [
+          3.9870744751562057,
+          5.157938869630129,
+          4.727428904500414,
+          5.513799838430941,
+          5.649804174208256
+        ]
+      },
+      "USPS": {
+        "mean": 0.7311827956989276,
+        "sample_sd_ddof1": 0.14019790118715567,
+        "values": [
+          0.8064516129032313,
+          0.7526881720430083,
+          0.5913978494623677,
+          0.5913978494623677,
+          0.9139784946236631
+        ]
+      }
+    },
+    "sample_weighted_accuracy_percent": {
+      "mean": 4.834688052932364,
+      "sample_sd_ddof1": 1.023123150317798,
+      "values": [
+        3.3896236839785985,
+        5.165786494383397,
+        4.200421669186284,
+        5.880319166966089,
+        5.537289250147452
+      ]
+    },
+    "uniform_domain_accuracy_percent": {
+      "mean": 3.7973653871573587,
+      "sample_sd_ddof1": 1.040217615108571,
+      "values": [
+        2.402250100566576,
+        4.154366894313654,
+        3.076476600666666,
+        4.983206638279341,
+        4.370526701960557
+      ]
+    }
+  },
+  "primary_metric": "uniform_domain_accuracy_percent",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ]
+}

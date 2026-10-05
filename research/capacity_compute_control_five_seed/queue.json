@@ -1,0 +1,31 @@
+{
+  "baseline_seeds_reused": [
+    42,
+    43,
+    44
+  ],
+  "jobs": [
+    {
+      "config": "research/capacity_compute_control_five_seed/configs/FedAvg-seed-45.json",
+      "config_sha256": "a10465a4dd3a283f9c4080d455b464fb9bd69660e60f92962ca0586becb787e3",
+      "device": "cuda:1",
+      "name": "FedAvg-seed-45",
+      "output": "_local/capacity_compute_control_five_seed/FedAvg-seed-45"
+    },
+    {
+      "config": "research/capacity_compute_control_five_seed/configs/FedAvg-seed-46.json",
+      "config_sha256": "a5cc54d34c03f3b0982c64cc5553f8a97aba9ff5ea85122ba67ed2de9872ec28",
+      "device": "cuda:0",
+      "name": "FedAvg-seed-46",
+      "output": "_local/capacity_compute_control_five_seed/FedAvg-seed-46"
+    }
+  ],
+  "new_seeds": [
+    45,
+    46
+  ],
+  "original_runner_sha256": "cd2319c112d44e53f9ddc1ad9c187c68f409ec632d08c9dfb74f912ad6fbefc3",
+  "reference_config": "research/capacity_compute_control/configs/final/FedAvg-seed-42.json",
+  "reference_config_sha256": "aa640fc7fcb72b5cd88a70db7de1942ff25823d59b61ecfde93f1817d294a8bf",
+  "training_source_commit": "76a338ccd3115b57a084b830067d00c341b0a435"
+}

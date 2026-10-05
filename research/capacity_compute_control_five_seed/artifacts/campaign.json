@@ -1,0 +1,65 @@
+{
+  "code_commit": "76a338ccd3115b57a084b830067d00c341b0a435",
+  "ended_utc": "2026-10-05T23:24:45.174746+00:00",
+  "external_actions": "none",
+  "local_launcher_sha256": "0c63effcbc77068aea7420ebe7f71640024b15ef2e7ad33c5f124796a949453e",
+  "max_per_gpu": 1,
+  "max_processes": 2,
+  "new_source_not_yet_committed": true,
+  "process_wall_seconds_sum": 1652.4560640831478,
+  "queue_sha256": "7ccc4bb530a4494a513a8ae5b4044cf46cb17f442bb42985c140ed167d6b1b53",
+  "runs": [
+    {
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "research/capacity_compute_control_five_seed/runner.py",
+        "--config",
+        "research/capacity_compute_control_five_seed/configs/FedAvg-seed-45.json",
+        "--partition",
+        "_local/feature_shift_digits/prepared",
+        "--output",
+        "_local/capacity_compute_control_five_seed/FedAvg-seed-45",
+        "--device",
+        "cuda:1"
+      ],
+      "config": "research/capacity_compute_control_five_seed/configs/FedAvg-seed-45.json",
+      "config_sha256": "a10465a4dd3a283f9c4080d455b464fb9bd69660e60f92962ca0586becb787e3",
+      "device": "cuda:1",
+      "ended_utc": "2026-10-05T23:24:44.173892+00:00",
+      "exit_code": 0,
+      "name": "FedAvg-seed-45",
+      "output": "_local/capacity_compute_control_five_seed/FedAvg-seed-45",
+      "pid": 1233765,
+      "process_wall_seconds": 839.2470810690429,
+      "started_utc": "2026-10-05T23:10:44.927467+00:00"
+    },
+    {
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "research/capacity_compute_control_five_seed/runner.py",
+        "--config",
+        "research/capacity_compute_control_five_seed/configs/FedAvg-seed-46.json",
+        "--partition",
+        "_local/feature_shift_digits/prepared",
+        "--output",
+        "_local/capacity_compute_control_five_seed/FedAvg-seed-46",
+        "--device",
+        "cuda:0"
+      ],
+      "config": "research/capacity_compute_control_five_seed/configs/FedAvg-seed-46.json",
+      "config_sha256": "a5cc54d34c03f3b0982c64cc5553f8a97aba9ff5ea85122ba67ed2de9872ec28",
+      "device": "cuda:0",
+      "ended_utc": "2026-10-05T23:24:18.169280+00:00",
+      "exit_code": 0,
+      "name": "FedAvg-seed-46",
+      "output": "_local/capacity_compute_control_five_seed/FedAvg-seed-46",
+      "pid": 1233768,
+      "process_wall_seconds": 813.2089830141049,
+      "started_utc": "2026-10-05T23:10:44.961004+00:00"
+    }
+  ],
+  "source_note": "Original tracked sources unchanged; isolated extension files are identified by SHA256 and archived in the final dedicated commit",
+  "started_utc": "2026-10-05T23:10:44.894306+00:00",
+  "status": "completed",
+  "wall_seconds": 840.2831557928585
+}
