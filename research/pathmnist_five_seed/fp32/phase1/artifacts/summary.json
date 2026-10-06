@@ -1,0 +1,967 @@
+{
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "ddof": 1,
+  "aggregation": "uniform clients within seed, then mean/sample SD over five seeds",
+  "anchors": {
+    "initialization": {
+      "before": {
+        "reconstruction_mse": {
+          "values": [
+            0.4163370870017008,
+            0.3959410642400016,
+            0.45857578580115,
+            0.43297106577790984,
+            0.3938030209562348
+          ],
+          "mean": 0.4195256047553994,
+          "sd_sample_ddof1": 0.027082030831839785,
+          "n": 5
+        },
+        "relative_reconstruction_mse": {
+          "values": [
+            0.8793043702336162,
+            0.8568465685455301,
+            0.9800911089247758,
+            0.9227757994645788,
+            0.8336297914387579
+          ],
+          "mean": 0.8945295277214518,
+          "sd_sample_ddof1": 0.058050031777521056,
+          "n": 5
+        },
+        "decoder_to_input_rms_ratio": {
+          "values": [
+            0.273361051184227,
+            0.2306554737079822,
+            0.2123401781588799,
+            0.25528244649799225,
+            0.21900428787744364
+          ],
+          "mean": 0.238128687485305,
+          "sd_sample_ddof1": 0.025603758014597754,
+          "n": 5
+        },
+        "decoder_max_abs": {
+          "values": [
+            0.24102379977703095,
+            0.2654440224170685,
+            0.18838760554790496,
+            0.2403538003563881,
+            0.2613826960325241
+          ],
+          "mean": 0.2393183848261833,
+          "sd_sample_ddof1": 0.030689198311083337,
+          "n": 5
+        },
+        "decoder_fraction_outside_input_range": {
+          "values": [
+            0.3333333333333333,
+            0.44541900634765624,
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "mean": 0.3557504679361979,
+          "sd_sample_ddof1": 0.05012623683276796,
+          "n": 5
+        },
+        "fused_to_input_rms_ratio": {
+          "values": [
+            1.1271561119217524,
+            1.1179431115690996,
+            1.053699895778598,
+            1.0990811753863912,
+            1.1236420913370089
+          ],
+          "mean": 1.10430447719857,
+          "sd_sample_ddof1": 0.03029133300175808,
+          "n": 5
+        },
+        "fused_cross_entropy": {
+          "values": [
+            2.193947081565857,
+            2.199735860824585,
+            2.190240545272827,
+            2.2054675912857054,
+            2.206427230834961
+          ],
+          "mean": 2.199163661956787,
+          "sd_sample_ddof1": 0.00706507416286068,
+          "n": 5
+        }
+      },
+      "after_warmup": {
+        "reconstruction_mse": {
+          "values": [
+            0.17021785650598542,
+            0.10176881446245209,
+            0.09137508119305576,
+            0.22423191070857662,
+            0.3548968102441581
+          ],
+          "mean": 0.18849809462284559,
+          "sd_sample_ddof1": 0.10753424228228833,
+          "n": 5
+        },
+        "relative_reconstruction_mse": {
+          "values": [
+            0.35521859689958757,
+            0.2216830709577267,
+            0.19197985385375269,
+            0.4764865547004692,
+            0.754427053587729
+          ],
+          "mean": 0.399959025999853,
+          "sd_sample_ddof1": 0.22833276342867342,
+          "n": 5
+        },
+        "decoder_to_input_rms_ratio": {
+          "values": [
+            0.790029685017557,
+            0.885892798457156,
+            0.8556682341620117,
+            0.797367954935895,
+            0.2028115505547325
+          ],
+          "mean": 0.7063540446254704,
+          "sd_sample_ddof1": 0.28432775072281796,
+          "n": 5
+        },
+        "decoder_max_abs": {
+          "values": [
+            1.3137407660484315,
+            1.3603000044822693,
+            1.439561402797699,
+            1.5469727039337158,
+            0.3119431734085083
+          ],
+          "mean": 1.1945036101341249,
+          "sd_sample_ddof1": 0.5012251619860423,
+          "n": 5
+        },
+        "decoder_fraction_outside_input_range": {
+          "values": [
+            0.10272903442382812,
+            0.04302739461263021,
+            0.06303899129231771,
+            0.22440653483072917,
+            0.14849634806315104
+          ],
+          "mean": 0.11633966064453125,
+          "sd_sample_ddof1": 0.07265225511358933,
+          "n": 5
+        },
+        "fused_to_input_rms_ratio": {
+          "values": [
+            1.7016794442113534,
+            1.8299766275192422,
+            1.8091662161073103,
+            1.6724952379703526,
+            1.1538662889964204
+          ],
+          "mean": 1.6334367629609359,
+          "sd_sample_ddof1": 0.27644132586164577,
+          "n": 5
+        },
+        "fused_cross_entropy": {
+          "values": [
+            2.1941218757629395,
+            2.2001584339141846,
+            2.190503659248352,
+            2.207390279769897,
+            2.2061718845367433
+          ],
+          "mean": 2.1996692266464235,
+          "sd_sample_ddof1": 0.007364089765170468,
+          "n": 5
+        }
+      },
+      "after_classification": {
+        "reconstruction_mse": {
+          "values": [
+            0.3839983390913224,
+            0.5244686433258413,
+            0.47336592004750216,
+            0.47198483672033625,
+            0.41956354048264094
+          ],
+          "mean": 0.4546762559335286,
+          "sd_sample_ddof1": 0.05419441522646514,
+          "n": 5
+        },
+        "relative_reconstruction_mse": {
+          "values": [
+            0.7971218411230906,
+            1.1356488552538473,
+            0.9941522343865681,
+            1.0186934115366417,
+            0.8811125950331503
+          ],
+          "mean": 0.9653457874666596,
+          "sd_sample_ddof1": 0.13045443850894234,
+          "n": 5
+        },
+        "decoder_to_input_rms_ratio": {
+          "values": [
+            0.796524952369091,
+            0.7852080164448129,
+            0.9361256789174911,
+            0.64951882650794,
+            0.2853948863290428
+          ],
+          "mean": 0.6905544721136756,
+          "sd_sample_ddof1": 0.24815945877325885,
+          "n": 5
+        },
+        "decoder_max_abs": {
+          "values": [
+            1.4080313861370086,
+            1.7491216897964477,
+            2.194868004322052,
+            1.3118652820587158,
+            0.5290068596601486
+          ],
+          "mean": 1.4385786443948745,
+          "sd_sample_ddof1": 0.6149635805788554,
+          "n": 5
+        },
+        "decoder_fraction_outside_input_range": {
+          "values": [
+            0.3632147216796875,
+            0.35776270548502603,
+            0.40213490804036456,
+            0.4344976298014323,
+            0.3381466166178385
+          ],
+          "mean": 0.37915131632486976,
+          "sd_sample_ddof1": 0.03867910619506813,
+          "n": 5
+        },
+        "fused_to_input_rms_ratio": {
+          "values": [
+            1.6463248556021384,
+            1.5000914984289966,
+            1.6974900597321032,
+            1.3791159661631531,
+            1.1301137615454568
+          ],
+          "mean": 1.4706272282943695,
+          "sd_sample_ddof1": 0.2277763573542602,
+          "n": 5
+        },
+        "fused_cross_entropy": {
+          "values": [
+            0.7055584585666657,
+            0.728945377394557,
+            0.7288893894851208,
+            1.1935767471790313,
+            0.900726182833314
+          ],
+          "mean": 0.8515392310917378,
+          "sd_sample_ddof1": 0.2066347267464163,
+          "n": 5
+        }
+      }
+    },
+    "final-round50": {
+      "before": {
+        "reconstruction_mse": {
+          "values": [
+            0.5469804127868324,
+            0.6196730044117925,
+            0.6676858968140584,
+            0.6384098946067632,
+            0.5786738025496243
+          ],
+          "mean": 0.6102846022338142,
+          "sd_sample_ddof1": 0.047908104335854934,
+          "n": 5
+        },
+        "relative_reconstruction_mse": {
+          "values": [
+            1.1613097984241922,
+            1.3464099710560162,
+            1.430200192914476,
+            1.3633124911777312,
+            1.227393697978252
+          ],
+          "mean": 1.3057252303101337,
+          "sd_sample_ddof1": 0.1089233709809429,
+          "n": 5
+        },
+        "decoder_to_input_rms_ratio": {
+          "values": [
+            0.27072435527684774,
+            0.1914400689065485,
+            0.2520726438590266,
+            0.21910408199396986,
+            0.2198636293303758
+          ],
+          "mean": 0.2306409558733537,
+          "sd_sample_ddof1": 0.031032063752521707,
+          "n": 5
+        },
+        "decoder_max_abs": {
+          "values": [
+            0.399317729473114,
+            0.3215156137943268,
+            0.46577034890651703,
+            0.2556638285517693,
+            0.2849934592843056
+          ],
+          "mean": 0.34545219600200655,
+          "sd_sample_ddof1": 0.0861221855231628,
+          "n": 5
+        },
+        "decoder_fraction_outside_input_range": {
+          "values": [
+            0.606126454671224,
+            0.9901508585611979,
+            0.8293389892578125,
+            0.6670880635579427,
+            0.6435985310872396
+          ],
+          "mean": 0.7472605794270833,
+          "sd_sample_ddof1": 0.1603315680048625,
+          "n": 5
+        },
+        "fused_to_input_rms_ratio": {
+          "values": [
+            0.9917707638081851,
+            0.8525412085831837,
+            0.8331875866892574,
+            0.8560847515476873,
+            0.932455352575464
+          ],
+          "mean": 0.8932079326407555,
+          "sd_sample_ddof1": 0.06687553103985702,
+          "n": 5
+        },
+        "fused_cross_entropy": {
+          "values": [
+            2.3391579222679137,
+            1.8052501678466797,
+            1.680261914730072,
+            1.6117971420288086,
+            1.7559091567993164
+          ],
+          "mean": 1.838475260734558,
+          "sd_sample_ddof1": 0.28940396862797646,
+          "n": 5
+        }
+      },
+      "after_warmup": {
+        "reconstruction_mse": {
+          "values": [
+            0.5465362558078126,
+            0.6148042509069788,
+            0.6626404279515804,
+            0.638214928895382,
+            0.576615562045604
+          ],
+          "mean": 0.6077622851214716,
+          "sd_sample_ddof1": 0.046656479666035054,
+          "n": 5
+        },
+        "relative_reconstruction_mse": {
+          "values": [
+            1.1604793924797538,
+            1.3344631771376552,
+            1.4189581352980438,
+            1.3628870409076532,
+            1.2228730992045667
+          ],
+          "mean": 1.2999321690055345,
+          "sd_sample_ddof1": 0.10572140770680988,
+          "n": 5
+        },
+        "decoder_to_input_rms_ratio": {
+          "values": [
+            0.2731754372277723,
+            0.1880863342611286,
+            0.25520735750211593,
+            0.21902267301835948,
+            0.2198589780006505
+          ],
+          "mean": 0.23107015600200537,
+          "sd_sample_ddof1": 0.03344361109849171,
+          "n": 5
+        },
+        "decoder_max_abs": {
+          "values": [
+            0.4053181201219559,
+            0.31923831552267073,
+            0.49256053268909455,
+            0.2562750965356827,
+            0.2777187556028366
+          ],
+          "mean": 0.3502221640944481,
+          "sd_sample_ddof1": 0.0979011876369256,
+          "n": 5
+        },
+        "decoder_fraction_outside_input_range": {
+          "values": [
+            0.6071738688151042,
+            0.9897916158040365,
+            0.8264750671386718,
+            0.666674550374349,
+            0.6425202433268229
+          ],
+          "mean": 0.7465270690917969,
+          "sd_sample_ddof1": 0.15982997298488524,
+          "n": 5
+        },
+        "fused_to_input_rms_ratio": {
+          "values": [
+            0.9936050471449704,
+            0.8579865233023052,
+            0.839900074359875,
+            0.8562952120225676,
+            0.9348820569922079
+          ],
+          "mean": 0.8965337827643852,
+          "sd_sample_ddof1": 0.06558549995945376,
+          "n": 5
+        },
+        "fused_cross_entropy": {
+          "values": [
+            2.399601647853851,
+            1.7826155376434327,
+            1.684818615913391,
+            1.6113714742660523,
+            1.756385862827301
+          ],
+          "mean": 1.8469586277008057,
+          "sd_sample_ddof1": 0.3160492275677773,
+          "n": 5
+        }
+      },
+      "after_classification": {
+        "reconstruction_mse": {
+          "values": [
+            0.5552842490376152,
+            0.6326950318065149,
+            0.6470401758801896,
+            0.6443665972467927,
+            0.5942491260087478
+          ],
+          "mean": 0.614727035995972,
+          "sd_sample_ddof1": 0.039364581772791965,
+          "n": 5
+        },
+        "relative_reconstruction_mse": {
+          "values": [
+            1.178101405955855,
+            1.375248082795285,
+            1.3811237723875898,
+            1.3757277580128213,
+            1.2571819552962498
+          ],
+          "mean": 1.3134765948895601,
+          "sd_sample_ddof1": 0.09187300049186511,
+          "n": 5
+        },
+        "decoder_to_input_rms_ratio": {
+          "values": [
+            0.26481172754622395,
+            0.20054794852672106,
+            0.2943518452856088,
+            0.22116718193215262,
+            0.22630814053700996
+          ],
+          "mean": 0.24143736876554328,
+          "sd_sample_ddof1": 0.03760990953963851,
+          "n": 5
+        },
+        "decoder_max_abs": {
+          "values": [
+            0.41597752273082733,
+            0.3202663481235504,
+            0.6344908758997917,
+            0.25772268176078794,
+            0.31116161644458773
+          ],
+          "mean": 0.38792380899190904,
+          "sd_sample_ddof1": 0.14916821803435673,
+          "n": 5
+        },
+        "decoder_fraction_outside_input_range": {
+          "values": [
+            0.6126485188802083,
+            0.9930454508463542,
+            0.7891393534342448,
+            0.6939302062988281,
+            0.5930245971679687
+          ],
+          "mean": 0.7363576253255208,
+          "sd_sample_ddof1": 0.16303599024167556,
+          "n": 5
+        },
+        "fused_to_input_rms_ratio": {
+          "values": [
+            0.980271301940849,
+            0.840048449860196,
+            0.8753256081945192,
+            0.8499189577830336,
+            0.9193823818952459
+          ],
+          "mean": 0.8929893399347687,
+          "sd_sample_ddof1": 0.057629282129691546,
+          "n": 5
+        },
+        "fused_cross_entropy": {
+          "values": [
+            1.117412293832749,
+            0.24606872449629008,
+            0.44695448615588246,
+            0.6210346852336079,
+            0.33556138784624634
+          ],
+          "mean": 0.5534063155129552,
+          "sd_sample_ddof1": 0.3449351893135321,
+          "n": 5
+        }
+      }
+    }
+  },
+  "private_checkpoints": {
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/initialization/client-0-phases.pt": {
+      "sha256": "24b9e22565ddb75e0ff58c23a0aee23408cc811956a29e0e86eb32cf01f6a8cf",
+      "bytes": 6047903
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/initialization/client-1-phases.pt": {
+      "sha256": "192678d1c538db3e06858a72ebd260a47ac77df00b29ad7130d97f19749d3968",
+      "bytes": 6047839
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/initialization/client-2-phases.pt": {
+      "sha256": "c09b7b0146d9281618d124423119397a2db6274ca3f802c8ae0f083cddb3015b",
+      "bytes": 6047839
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/initialization/client-3-phases.pt": {
+      "sha256": "24a2e0f08d6e2011b8e6b1530eddcea04aac0d84e6ede35ca872a14478415cc3",
+      "bytes": 6047839
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/initialization/client-4-phases.pt": {
+      "sha256": "06d250f904ecf6e9da79a185665816c246dc93c8f4dc86327bed6659672ff410",
+      "bytes": 6047903
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/initialization/client-5-phases.pt": {
+      "sha256": "4a787dbc94a70e0771747f3939cf4d93a9e1520ef27793d8e1e820c7fa7d5864",
+      "bytes": 6047903
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/initialization/client-6-phases.pt": {
+      "sha256": "c5e88126ce76f6538f95aa76ce4a298684709fb9ce022d3e2226244cab672bd9",
+      "bytes": 6047839
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/initialization/client-7-phases.pt": {
+      "sha256": "653c5141df1807388bfbfe20a8739e202d6457b5c88fe885aad500601e19b26f",
+      "bytes": 6047903
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/initialization/client-8-phases.pt": {
+      "sha256": "b652d18a479b0777980f331bf3d39b739f6e86e9674a98ba2c5d1e4b5cc4f581",
+      "bytes": 6047903
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/initialization/client-9-phases.pt": {
+      "sha256": "460c26a3ac1d799c15ae43a74ee61a8ac5428708a2fac6f53871a49688e5bba2",
+      "bytes": 6047903
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/final-round50/client-0-phases.pt": {
+      "sha256": "f9e4e51263d9e5e657929f4852c998076c1eab1eced49a70cea69deffeb7bc47",
+      "bytes": 6892055
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/final-round50/client-1-phases.pt": {
+      "sha256": "7e1457b37669072e2510c9d1c12c51d924b5d74a5170f497c4e2d70abee6af28",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/final-round50/client-2-phases.pt": {
+      "sha256": "5ad0200bb9c09b2670f21b03b62eedb511ec951bdf3fd0c1b6ed2e5fa57021af",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/final-round50/client-3-phases.pt": {
+      "sha256": "ce968e1e4f982f01a5615e6f29034795a974b4934c01a41144d0378b6197e4ab",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/final-round50/client-4-phases.pt": {
+      "sha256": "33fbe76febc90187ee93d4edc916fce9671fc68db0553bf3027a077984d32c22",
+      "bytes": 6892055
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/final-round50/client-5-phases.pt": {
+      "sha256": "e1cef78f008462f8b23dca027342665d37b68246491bf48707a2691af8d31375",
+      "bytes": 6892119
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/final-round50/client-6-phases.pt": {
+      "sha256": "e6a8ecfe8fb104f19f281d8097afeb40a51de386766bc59d0e8c7215cc1c480a",
+      "bytes": 6892055
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/final-round50/client-7-phases.pt": {
+      "sha256": "da85ccbe2b19e3ee523309efec371e787c545956b39c2b0aa691847465e53d78",
+      "bytes": 6892119
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/final-round50/client-8-phases.pt": {
+      "sha256": "77d8012f577f9980e7559884c1646f1f63fcba1aeb3edbebb3d6b9adab114750",
+      "bytes": 6892055
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-42/final-round50/client-9-phases.pt": {
+      "sha256": "1baffe86c37fdd9ebc5f674a0b0a426afbe97805613eee530c5754b8b32cec4d",
+      "bytes": 6892055
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/initialization/client-0-phases.pt": {
+      "sha256": "83a7f86c14ea3251f08c4acdb071829c9b74e24b30037127f01214067ab9e24b",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/initialization/client-1-phases.pt": {
+      "sha256": "72e05bdb0f7da6b28d8dfe087bdd07080c5f8977978e275a5b930f1fc9565e94",
+      "bytes": 6047839
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/initialization/client-2-phases.pt": {
+      "sha256": "5fdcd81c3ba5998180da02a1529c0539c051b7f223966d74257f99bd782c96b6",
+      "bytes": 6047839
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/initialization/client-3-phases.pt": {
+      "sha256": "0832da9c4461b6025db728ba9b1ac03eecbd2d643c892ea917121515fde9a9fa",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/initialization/client-4-phases.pt": {
+      "sha256": "cb8cbdcd5b717c3fd1b70057a89df82476944e8a22c92eb5f7946558b0d8e325",
+      "bytes": 6047839
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/initialization/client-5-phases.pt": {
+      "sha256": "984706c0f4d6c93d7a8e6a03467da06985c33715083b839a26ad7b35b3eb9211",
+      "bytes": 6047839
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/initialization/client-6-phases.pt": {
+      "sha256": "64d52b6c46fddbe73a4dfc880227789f62336cf1b5458eec128435385f29604d",
+      "bytes": 6047839
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/initialization/client-7-phases.pt": {
+      "sha256": "2715f8b4ce143a6e7e00c719029f0abfe25c7f5f95e0a2ce1f83059cbd45270d",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/initialization/client-8-phases.pt": {
+      "sha256": "094521168a974d5eb772d642022b71553901ead1a0f7d8669f753c713be17f35",
+      "bytes": 6047839
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/initialization/client-9-phases.pt": {
+      "sha256": "8f6d0958016e085b62d63cf9ae1371f85c2caa47f73261f2d3f994d3ecbc8dde",
+      "bytes": 6047839
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/final-round50/client-0-phases.pt": {
+      "sha256": "2d9a265ed77827c492d75fb89493084d79269459a65e7375f6d97361ec9a51eb",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/final-round50/client-1-phases.pt": {
+      "sha256": "09f424fee5fa2cbd193aa54b18f22234cb10aea68270f48bfd5d7f7dbff08c46",
+      "bytes": 6892055
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/final-round50/client-2-phases.pt": {
+      "sha256": "48857e54dcd206caef7ed252ad75cf3d0d24e5fec7e21fe48492c9b4f79917b0",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/final-round50/client-3-phases.pt": {
+      "sha256": "30b8a014bc3a39f5ab4867bd26b5d76f47cf8461aa54af913821c8462ea5af07",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/final-round50/client-4-phases.pt": {
+      "sha256": "be2fba3a83f2c1e8c1a57a8a52009671347a5f27fd2d327b625ac8ed54b8f416",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/final-round50/client-5-phases.pt": {
+      "sha256": "c199131e4e649523658a829e9683400e219b7e43ac665a2167ecd9d629463496",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/final-round50/client-6-phases.pt": {
+      "sha256": "94948b58d3a860ad020d1327603ae9a9de38640d4451337ffd7d932f3f034911",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/final-round50/client-7-phases.pt": {
+      "sha256": "71070ba08e10189d86f003fe680649c6232038058a9b55205425d14fb50d930a",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/final-round50/client-8-phases.pt": {
+      "sha256": "aa07ff6fc805081fa238fe879620dcebcf0e457bb7f9ffc53554f39c462b2fa4",
+      "bytes": 6892055
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-43/final-round50/client-9-phases.pt": {
+      "sha256": "bafc29d04e8be729ed7a313df42d4c9c1c6ac69bae508c2708254602e9e57adf",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/initialization/client-0-phases.pt": {
+      "sha256": "2524498aa6ab84932e4413da01cf479c62acc5408b79dd5a918d7d937c5ea347",
+      "bytes": 6047711
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/initialization/client-1-phases.pt": {
+      "sha256": "98f81639283838194f82ea0bcbece03c7a1b7d82146bfb36a28a8ae4edc1c999",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/initialization/client-2-phases.pt": {
+      "sha256": "18db4382e6f23d4dca9bda13adf17237e66c453253519fd5237bc6af3221d55b",
+      "bytes": 6047711
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/initialization/client-3-phases.pt": {
+      "sha256": "e249a2f37db57e8b0d5dd515500fcc688fc50b45981fc14d0945b4b275c06ba8",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/initialization/client-4-phases.pt": {
+      "sha256": "e42bc433d255c6dd97c4c93f2b047a0db5ae22379b28fe6e1ee492e1661167b7",
+      "bytes": 6047711
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/initialization/client-5-phases.pt": {
+      "sha256": "78ee1769d789ba110943cb05d39071ba847127f65f805b459c466469086c8b95",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/initialization/client-6-phases.pt": {
+      "sha256": "39ea0d90f6fe9d818499ff1a874d89457354c0b8349259f20ef8b07cd29048c9",
+      "bytes": 6047711
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/initialization/client-7-phases.pt": {
+      "sha256": "fdb0f6c7e923797382479fd315e853f329752e4d48c2bbadb25215b0e34cd867",
+      "bytes": 6047711
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/initialization/client-8-phases.pt": {
+      "sha256": "ea200da49c353566dc14a27cc4f1a4340d0ad94f1aa6df2d94e16ccb2b670eb6",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/initialization/client-9-phases.pt": {
+      "sha256": "46f84c652e9b7b9e8e5710df592c90e280b3409fd88ff2c736ce6173565b0d42",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/final-round50/client-0-phases.pt": {
+      "sha256": "c64ed7d280cbe74d68f6f0c87a711109a3ad3a4c56e58f2bdaf1f8a7194df423",
+      "bytes": 6891863
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/final-round50/client-1-phases.pt": {
+      "sha256": "4a67a4ba232c9e2c0d362a83b76079147e555d4d0247b82b9ad712ed7ded2a78",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/final-round50/client-2-phases.pt": {
+      "sha256": "99d656e9c5a1e9f82135433d9e98a04a6dc2e8811a51e8fdbf3a9c4f63d19e8d",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/final-round50/client-3-phases.pt": {
+      "sha256": "e11be33debfe0b15955fd972552f31fab1ded1c75003b58ff08cba23a80b8f13",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/final-round50/client-4-phases.pt": {
+      "sha256": "91e856a4aafd71d8c23c5acd4715ac0d6220a119c760d575160d831eef4abd9e",
+      "bytes": 6891863
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/final-round50/client-5-phases.pt": {
+      "sha256": "43bd0235daac5907e165d1a886e525c2d0f547d1e59ce78dc449bdee48b9b578",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/final-round50/client-6-phases.pt": {
+      "sha256": "c4dc31add2df86023e0f42ef600dab1f84d662ea1c07e6b1e290fae4bbcb7d5e",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/final-round50/client-7-phases.pt": {
+      "sha256": "5ac2189c7e9a5572aa5faee494fb38d691f00df02243fd893413a458200b1f8d",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/final-round50/client-8-phases.pt": {
+      "sha256": "76e961020404da4251b98b10fde6bfe8815be79a34ed67182f52bf04dac340cf",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-44/final-round50/client-9-phases.pt": {
+      "sha256": "8f873bbf9e7da3848339c62310cec79c6129e4a422e4ff090eab8c1e05007fcb",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/initialization/client-0-phases.pt": {
+      "sha256": "bc81400f673fba60b5c9cd47065789112aced22d7d79a5454e0390e75d5ab310",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/initialization/client-1-phases.pt": {
+      "sha256": "46268c37fa5c343898b22fdb6dc137e5f66ea2b6d7ddacff1444d7168e3d808e",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/initialization/client-2-phases.pt": {
+      "sha256": "4a4e80eb52231b1bda2274c99673ce3f588f3be69496ac4551aad2a1ffc981cf",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/initialization/client-3-phases.pt": {
+      "sha256": "4fe5f749794474018ce21d12a7d592711fbd315befe180bb78ca76f281925d05",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/initialization/client-4-phases.pt": {
+      "sha256": "26afffa573d27a962748d751612369157e9078aba4ea0cf55a2428d5bb38ff90",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/initialization/client-5-phases.pt": {
+      "sha256": "214a1ebd2a3c99b8344a486e49ed493ead3364407f60482e2ef9549639be1a36",
+      "bytes": 6047711
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/initialization/client-6-phases.pt": {
+      "sha256": "7bb2a9f28777c782836639bc3b56f40bb3eb59e6cffc5352f238ad15dcc1ec62",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/initialization/client-7-phases.pt": {
+      "sha256": "dc8368b26e374c39931509bb5741c5baf65508cc5f7da07ef56fb1f1a888d5ce",
+      "bytes": 6047711
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/initialization/client-8-phases.pt": {
+      "sha256": "16422e8ac04d947450ccafa7a83e0f4edccd2401077f499c2b1ceffb75161908",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/initialization/client-9-phases.pt": {
+      "sha256": "ac7e33c629438811b77402d03de744c859fa9711aa16fda8e09bf082bb5d312d",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/final-round50/client-0-phases.pt": {
+      "sha256": "951cf5c3cc4e8813d104a0ee8e6bf324a01d638fd72d9139b84e5373a60d4cdb",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/final-round50/client-1-phases.pt": {
+      "sha256": "6d7cc4455986cf401121f0595b485e4f207653e9f36dd00e92c6aaff024de2e0",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/final-round50/client-2-phases.pt": {
+      "sha256": "f941f8193f9059be720c6443d6c6a3e357a03bb43af2afa7624f5e5aac126edf",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/final-round50/client-3-phases.pt": {
+      "sha256": "c26c32bba9c41d227cb07f11fe1ed4da23a0cc7e04805f512e2c237fd67a5494",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/final-round50/client-4-phases.pt": {
+      "sha256": "11243c2ebe740f4dd51bd1c57888a5de1800c9374b433d200c8710c37b6de98b",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/final-round50/client-5-phases.pt": {
+      "sha256": "53e4065e8e66fc614388d9912ed2e6ce6c5fc2cd0ce0a835eabd2ca6b0ff7ab2",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/final-round50/client-6-phases.pt": {
+      "sha256": "0452e3be0489fb0ac99fffe683fda1734c67203a2e01a469f3848fea27975d49",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/final-round50/client-7-phases.pt": {
+      "sha256": "aac3f2b0f825bd7001528eefd212698037e11e6ccde30b47b67fbb922748182f",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/final-round50/client-8-phases.pt": {
+      "sha256": "92204c0a61a3651201e4eadbd5a50258bc4344ba264d35bab55d4d8d703be5b8",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-45/final-round50/client-9-phases.pt": {
+      "sha256": "dc49d6ebc0acd26fb7d4ba3149c8417870aa08d961eb1615bc90cdd6b29bfa46",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/initialization/client-0-phases.pt": {
+      "sha256": "285bf9fcad605b088f6fc9cbcfb704782dbd6d839ae51b0b3a58f0cc1e91c7e0",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/initialization/client-1-phases.pt": {
+      "sha256": "bcdd3cc381ecc62d734063d8650295d6fb45a5b656bc7ec9ffdfc975ee6459f4",
+      "bytes": 6047839
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/initialization/client-2-phases.pt": {
+      "sha256": "24ec020448de17326c9902bf83f55e577880d7aea52a20950128657f39e8ff4d",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/initialization/client-3-phases.pt": {
+      "sha256": "6e2003eb4b0cd4651035f67f7a58731425c42f80c5f985621ee0946c50a45204",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/initialization/client-4-phases.pt": {
+      "sha256": "046350ced67c1b30a980fefaece9b83407cdbc9ece8fa1e3c6ac677d548818e4",
+      "bytes": 6047839
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/initialization/client-5-phases.pt": {
+      "sha256": "b115941a40459df3d1c26f9c6f498ef47e95c2c7bdbd8e62dd1edc28529ade5e",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/initialization/client-6-phases.pt": {
+      "sha256": "e4f85a8b80b8549d8709f160fe1b2491b78fee7fbdd31b8b52f1aae7efa88913",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/initialization/client-7-phases.pt": {
+      "sha256": "4d1c0050ce955e2576da54888183d8675ed010e396e53c1516bd0253caffd0ec",
+      "bytes": 6047839
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/initialization/client-8-phases.pt": {
+      "sha256": "e75c7e253dae9ca0d405d023e501d797b121d26d0fa85d86e9f1270d7bd325b9",
+      "bytes": 6047839
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/initialization/client-9-phases.pt": {
+      "sha256": "175eddba29b4f553593ab82703f9eefa1ae9f16b8f7c08e410b8e614294acb8a",
+      "bytes": 6047775
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/final-round50/client-0-phases.pt": {
+      "sha256": "0d93c13c5d6d7475a39badeec1c059180a9e583f698736662afa48d7bcdede3a",
+      "bytes": 6891927
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/final-round50/client-1-phases.pt": {
+      "sha256": "799fb236f4fdcc9208f6ae025d5a6341801ffcf7227842b5bcc2df81d119beea",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/final-round50/client-2-phases.pt": {
+      "sha256": "db698a036437b9e5aad67cfa9d20fb45e742dddf315c9dc210b56971d7770aeb",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/final-round50/client-3-phases.pt": {
+      "sha256": "56676fa62f34432927704970c0c9a1e4c6840df495940e218a9da902e7161d15",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/final-round50/client-4-phases.pt": {
+      "sha256": "4c9cd0ffe63a5d11bd7931aecdce0a49c6cbd56093c423a4e42a3c2f3f470aa5",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/final-round50/client-5-phases.pt": {
+      "sha256": "d984c8bc00ccf007cf3afa810281e77f86b765be4f06eb4bff99ddb4251743a2",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/final-round50/client-6-phases.pt": {
+      "sha256": "3819dd072d31fd68c6eb5057dc02cccd29c3766bfad7244e3dfa0ffb6e9e98fd",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/final-round50/client-7-phases.pt": {
+      "sha256": "a3f88f26749a7d57507f1e317d811e56e62808feb5949a6739eb634f0ef65910",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/final-round50/client-8-phases.pt": {
+      "sha256": "a29240fd9f74ecc62b2a7fac221ea36a7124b02d20366e9aae89eaa501842b7a",
+      "bytes": 6891991
+    },
+    "_local/pathmnist_five_seed/fp32/phase1/seed-46/final-round50/client-9-phases.pt": {
+      "sha256": "97cabaa385c6e9e22ff10bfa934c6857917936d94863eaf2a8cabcdce8bfd23e",
+      "bytes": 6891991
+    }
+  },
+  "costs": [
+    {
+      "seed": 42,
+      "wall_seconds": 165.8312670858577,
+      "peak_cuda_allocated_bytes": 1519273472,
+      "peak_cuda_reserved_bytes": 1805647872
+    },
+    {
+      "seed": 43,
+      "wall_seconds": 118.07260479195975,
+      "peak_cuda_allocated_bytes": 1540854784,
+      "peak_cuda_reserved_bytes": 1816133632
+    },
+    {
+      "seed": 44,
+      "wall_seconds": 156.67911572102457,
+      "peak_cuda_allocated_bytes": 1540854784,
+      "peak_cuda_reserved_bytes": 1814036480
+    },
+    {
+      "seed": 45,
+      "wall_seconds": 117.60257462598383,
+      "peak_cuda_allocated_bytes": 1534332928,
+      "peak_cuda_reserved_bytes": 1803550720
+    },
+    {
+      "seed": 46,
+      "wall_seconds": 157.2330068978481,
+      "peak_cuda_allocated_bytes": 1540854784,
+      "peak_cuda_reserved_bytes": 1820327936
+    }
+  ]
+}

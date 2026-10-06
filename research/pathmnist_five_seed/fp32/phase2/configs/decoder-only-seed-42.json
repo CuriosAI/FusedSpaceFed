@@ -1,0 +1,16 @@
+{
+  "seed": 42,
+  "variant": "decoder-only",
+  "settings": {
+    "rounds": 50,
+    "warmup_epochs": 1,
+    "local_epochs": 3,
+    "batch_size": 128,
+    "classifier_lr": 0.01,
+    "autoencoder_lr": 0.001,
+    "use_amp": false
+  },
+  "partition_sha256": "b70fb78ad84a7d7041c5d98938d208f8b23455c3254b8b949e32c58509828a80",
+  "paired_initial_checkpoint": "_local/pathmnist_five_seed/fp32/full/seed-42/initial.pt",
+  "paired_initial_sha256": "d4663e3b8cfa917e69b8f2350ea8eb8206fca23c59b7b70dd05c85558e34d95d"
+}

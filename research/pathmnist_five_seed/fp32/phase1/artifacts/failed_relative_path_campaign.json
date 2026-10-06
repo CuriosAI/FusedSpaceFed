@@ -1,0 +1,166 @@
+{
+  "status": "completed_with_failed_candidates",
+  "queue_sha256": "e18ab720fce406aee7fd99d2416b2d723fa493faa1d6e17fea0035166208613d",
+  "frozen_files": {
+    "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+    "research/pathmnist_pathological/run.py": "d328605571295e86c62e577ddfc43a7e2c5a7594e934d99392e0a7d42e4fe88d",
+    "research/pathmnist_pathological/config.json": "f6d803ed0447163432b1f7ccf6316473a768b6d9032a7cada24fd3d232a5e7fd",
+    "research/pathmnist_five_seed/data.py": "242c6a1ac38f70f074e74c800eb6ffd6e717552790cec58240afcff2fa690a2b",
+    "research/pathmnist_five_seed/data_identity.json": "7aff459b27776d676804319f549c3bbf12c7d100be3298068b362681b4c930ba",
+    "research/pathmnist_five_seed/client.py": "4231bf9304c9d6a3d8389e38cbb0e69f77f07c2533d58b6e66555d05a7a343c6",
+    "research/pathmnist_five_seed/fp32/runner.py": "4aa1254f357004f34a0dbabb6b18ebc049c2e2351a7df19b3b9df86e252458bb",
+    "research/pathmnist_five_seed/fp32/precision.py": "3daba3b8903954c9a34798f481cca9ba6501bac2c89ca858ca6884603f846de5",
+    "research/pathmnist_five_seed/fp32/plan.json": "6e055f90c8c4790af4a1169c4033b6ddd4f61ca73b1e4d05415681826b2bc741",
+    "research/pathmnist_five_seed/fp32/initial_sources.json": "4b93dd06800415ffde07ab534da55695ec4c2ae3b60778bc262673eee3b9e7da",
+    "research/pathmnist_five_seed/diagnostic_common.py": "2a96224bfc94e8b4dcdbf8d61e8ef6d994da48a37ec6efbe796daa82c6bc2d27",
+    "research/pathmnist_five_seed/fp32/diagnostic_common.py": "cd13f6103e6c22c2a0fe9fd218b27f53e36289fa687a54ec3481e4bbb26c353f",
+    "research/pathmnist_five_seed/fp32/probe.json": "0c77b65c785ec42b4f439548630b1fb7af2fccfd4de103ce156cf26d004eeba9",
+    "research/pathmnist_five_seed/fp32/anchors.json": "f75c4e5c602e5762acc1f9b49db6f19432eb8b8873163cdedaa8f79432f1b2ab",
+    "research/pathmnist_calibrated/controller.py": "b23dd03bb4a7715eeb3913fa8093d96564bf2a6aa34ee2e466d7eb7f7a49e396",
+    "research/digits_mechanism_diagnostics/common.py": "3608f39262003e3c5dd9b4c71318f8272188d447b1aa4390fbcc2bbb1a294b6b",
+    "research/pathmnist_five_seed/fp32/phase1/diagnose.py": "19afeead3f835dff86b520fbee35eff447403c6f8ddb74dffdd41019b7b41e45"
+  },
+  "base_commit": "52ed56e8a359106d7a017df8076ef2d7691d772c",
+  "gpu_slots": {
+    "cuda:1": 3,
+    "cuda:0": 3
+  },
+  "started_utc": "2026-10-06T23:14:19.441788+00:00",
+  "runs": [
+    {
+      "name": "phase1-seed-42",
+      "script": "research/pathmnist_five_seed/fp32/phase1/diagnose.py",
+      "args": [
+        "--seed",
+        "42"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/phase1/seed-42",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_five_seed/fp32/phase1/diagnose.py",
+        "--seed",
+        "42",
+        "--output",
+        "_local/pathmnist_five_seed/fp32/phase1/seed-42",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1487104,
+      "started_utc": "2026-10-06T23:14:19.478107+00:00",
+      "exit_code": 1,
+      "ended_utc": "2026-10-06T23:14:32.620082+00:00",
+      "process_wall_seconds": 13.14277676306665
+    },
+    {
+      "name": "phase1-seed-43",
+      "script": "research/pathmnist_five_seed/fp32/phase1/diagnose.py",
+      "args": [
+        "--seed",
+        "43"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/phase1/seed-43",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_five_seed/fp32/phase1/diagnose.py",
+        "--seed",
+        "43",
+        "--output",
+        "_local/pathmnist_five_seed/fp32/phase1/seed-43",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1487107,
+      "started_utc": "2026-10-06T23:14:19.512102+00:00",
+      "exit_code": 1,
+      "ended_utc": "2026-10-06T23:14:31.619009+00:00",
+      "process_wall_seconds": 12.107629138976336
+    },
+    {
+      "name": "phase1-seed-44",
+      "script": "research/pathmnist_five_seed/fp32/phase1/diagnose.py",
+      "args": [
+        "--seed",
+        "44"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/phase1/seed-44",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_five_seed/fp32/phase1/diagnose.py",
+        "--seed",
+        "44",
+        "--output",
+        "_local/pathmnist_five_seed/fp32/phase1/seed-44",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1487121,
+      "started_utc": "2026-10-06T23:14:20.546797+00:00",
+      "exit_code": 1,
+      "ended_utc": "2026-10-06T23:14:32.620859+00:00",
+      "process_wall_seconds": 12.074814964085817
+    },
+    {
+      "name": "phase1-seed-45",
+      "script": "research/pathmnist_five_seed/fp32/phase1/diagnose.py",
+      "args": [
+        "--seed",
+        "45"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/phase1/seed-45",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_five_seed/fp32/phase1/diagnose.py",
+        "--seed",
+        "45",
+        "--output",
+        "_local/pathmnist_five_seed/fp32/phase1/seed-45",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1487124,
+      "started_utc": "2026-10-06T23:14:20.582016+00:00",
+      "exit_code": 1,
+      "ended_utc": "2026-10-06T23:14:32.621262+00:00",
+      "process_wall_seconds": 12.040076992008835
+    },
+    {
+      "name": "phase1-seed-46",
+      "script": "research/pathmnist_five_seed/fp32/phase1/diagnose.py",
+      "args": [
+        "--seed",
+        "46"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/phase1/seed-46",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_five_seed/fp32/phase1/diagnose.py",
+        "--seed",
+        "46",
+        "--output",
+        "_local/pathmnist_five_seed/fp32/phase1/seed-46",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1487140,
+      "started_utc": "2026-10-06T23:14:21.616505+00:00",
+      "exit_code": 1,
+      "ended_utc": "2026-10-06T23:14:33.622303+00:00",
+      "process_wall_seconds": 12.006663808133453
+    }
+  ],
+  "external_actions": "none",
+  "policy": "keep failures, continue other declared candidates; no process signals",
+  "ended_utc": "2026-10-06T23:14:34.623151+00:00",
+  "wall_seconds": 15.184627685928717,
+  "process_wall_seconds_sum": 61.37196166627109
+}

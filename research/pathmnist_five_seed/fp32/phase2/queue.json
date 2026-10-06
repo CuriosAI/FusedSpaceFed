@@ -1,0 +1,177 @@
+{
+  "gpu_slots": {
+    "cuda:1": 3,
+    "cuda:0": 3
+  },
+  "minimum_free_mib": 8192,
+  "frozen_files": {
+    "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+    "research/pathmnist_pathological/run.py": "d328605571295e86c62e577ddfc43a7e2c5a7594e934d99392e0a7d42e4fe88d",
+    "research/pathmnist_pathological/config.json": "f6d803ed0447163432b1f7ccf6316473a768b6d9032a7cada24fd3d232a5e7fd",
+    "research/pathmnist_five_seed/data.py": "242c6a1ac38f70f074e74c800eb6ffd6e717552790cec58240afcff2fa690a2b",
+    "research/pathmnist_five_seed/data_identity.json": "7aff459b27776d676804319f549c3bbf12c7d100be3298068b362681b4c930ba",
+    "research/pathmnist_five_seed/client.py": "4231bf9304c9d6a3d8389e38cbb0e69f77f07c2533d58b6e66555d05a7a343c6",
+    "research/pathmnist_five_seed/fp32/runner.py": "4aa1254f357004f34a0dbabb6b18ebc049c2e2351a7df19b3b9df86e252458bb",
+    "research/pathmnist_five_seed/fp32/precision.py": "3daba3b8903954c9a34798f481cca9ba6501bac2c89ca858ca6884603f846de5",
+    "research/pathmnist_five_seed/fp32/plan.json": "6e055f90c8c4790af4a1169c4033b6ddd4f61ca73b1e4d05415681826b2bc741",
+    "research/pathmnist_five_seed/fp32/initial_sources.json": "4b93dd06800415ffde07ab534da55695ec4c2ae3b60778bc262673eee3b9e7da",
+    "research/pathmnist_five_seed/diagnostic_common.py": "2a96224bfc94e8b4dcdbf8d61e8ef6d994da48a37ec6efbe796daa82c6bc2d27",
+    "research/pathmnist_five_seed/fp32/diagnostic_common.py": "cd13f6103e6c22c2a0fe9fd218b27f53e36289fa687a54ec3481e4bbb26c353f",
+    "research/pathmnist_five_seed/fp32/probe.json": "0c77b65c785ec42b4f439548630b1fb7af2fccfd4de103ce156cf26d004eeba9",
+    "research/pathmnist_five_seed/fp32/anchors.json": "f75c4e5c602e5762acc1f9b49db6f19432eb8b8873163cdedaa8f79432f1b2ab",
+    "research/pathmnist_calibrated/controller.py": "b23dd03bb4a7715eeb3913fa8093d96564bf2a6aa34ee2e466d7eb7f7a49e396",
+    "research/digits_mechanism_diagnostics/common.py": "3608f39262003e3c5dd9b4c71318f8272188d447b1aa4390fbcc2bbb1a294b6b",
+    "research/pathmnist_five_seed/fp32/phase2/configs/no-warmup-seed-42.json": "aeb389a2f291284dda63b0d94c42264d018a95898553987b3fee26a4f1bdcf2c",
+    "research/pathmnist_five_seed/fp32/phase2/configs/shared-encoder-seed-42.json": "eb6b7dd2c55e46a8e525e603881d20d57764e9f0570d86995a90f68021d45db7",
+    "research/pathmnist_five_seed/fp32/phase2/configs/decoder-only-seed-42.json": "5ea81033f528d561050424258ba0e3daf659923ba533fb480139c2a7975eb071",
+    "research/pathmnist_five_seed/fp32/phase2/configs/no-warmup-seed-43.json": "2b84391d3e9d41c37d8158862c1c0776426201b2df9a7a9ea5ca2089217efec8",
+    "research/pathmnist_five_seed/fp32/phase2/configs/shared-encoder-seed-43.json": "f9a17c4182b66a6584a11627095a4b5a73c47fdfb9d246f649c6b58275345589",
+    "research/pathmnist_five_seed/fp32/phase2/configs/decoder-only-seed-43.json": "50c8e6bf07767753c244f0e22e01ce026f5bca1585b064b26bc50525cbe67065",
+    "research/pathmnist_five_seed/fp32/phase2/configs/no-warmup-seed-44.json": "3a4ad2016fcb85d6bb44e2ec8e82500cb6c95294b48e28a2ca89a7dbf0b2899e",
+    "research/pathmnist_five_seed/fp32/phase2/configs/shared-encoder-seed-44.json": "17f1f811f421851689ad65be94bdf5db19390a7c6b92609a84063fef91768e61",
+    "research/pathmnist_five_seed/fp32/phase2/configs/decoder-only-seed-44.json": "45a82b17a6d748364d82933dcb1c1cce0e044229917bff1ac149fb84d667f4e1",
+    "research/pathmnist_five_seed/fp32/phase2/configs/no-warmup-seed-45.json": "1e0963810e38f571765c5faf0b10462b0e81504e49203b8ee14c292f85c08f06",
+    "research/pathmnist_five_seed/fp32/phase2/configs/shared-encoder-seed-45.json": "7cf38321795eaec7aee7301d1bd67fde69e5298227dd9e45adf58a93d12caed4",
+    "research/pathmnist_five_seed/fp32/phase2/configs/decoder-only-seed-45.json": "6d4e812ab47eb90f62eceb044e578f5ff6ee383431c019f45923bbdf2cd6d177",
+    "research/pathmnist_five_seed/fp32/phase2/configs/no-warmup-seed-46.json": "c056a92b914b3536c2965783df0c0aba4a8d547c1a2adb4e03d6cce4e843df09",
+    "research/pathmnist_five_seed/fp32/phase2/configs/shared-encoder-seed-46.json": "d94431425a03cb255c574816acf49fed0465e9866084415ef8a57fdbad8f1943",
+    "research/pathmnist_five_seed/fp32/phase2/configs/decoder-only-seed-46.json": "04337391aaed4a8954e384f6187de853d5c7e5d2524a1e2a48b704293a5333d7"
+  },
+  "jobs": [
+    {
+      "name": "no-warmup-seed-42",
+      "script": "research/pathmnist_five_seed/fp32/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/fp32/phase2/configs/no-warmup-seed-42.json"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/no-warmup/seed-42"
+    },
+    {
+      "name": "shared-encoder-seed-42",
+      "script": "research/pathmnist_five_seed/fp32/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/fp32/phase2/configs/shared-encoder-seed-42.json"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/shared-encoder/seed-42"
+    },
+    {
+      "name": "decoder-only-seed-42",
+      "script": "research/pathmnist_five_seed/fp32/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/fp32/phase2/configs/decoder-only-seed-42.json"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/decoder-only/seed-42"
+    },
+    {
+      "name": "no-warmup-seed-43",
+      "script": "research/pathmnist_five_seed/fp32/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/fp32/phase2/configs/no-warmup-seed-43.json"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/no-warmup/seed-43"
+    },
+    {
+      "name": "shared-encoder-seed-43",
+      "script": "research/pathmnist_five_seed/fp32/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/fp32/phase2/configs/shared-encoder-seed-43.json"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/shared-encoder/seed-43"
+    },
+    {
+      "name": "decoder-only-seed-43",
+      "script": "research/pathmnist_five_seed/fp32/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/fp32/phase2/configs/decoder-only-seed-43.json"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/decoder-only/seed-43"
+    },
+    {
+      "name": "no-warmup-seed-44",
+      "script": "research/pathmnist_five_seed/fp32/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/fp32/phase2/configs/no-warmup-seed-44.json"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/no-warmup/seed-44"
+    },
+    {
+      "name": "shared-encoder-seed-44",
+      "script": "research/pathmnist_five_seed/fp32/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/fp32/phase2/configs/shared-encoder-seed-44.json"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/shared-encoder/seed-44"
+    },
+    {
+      "name": "decoder-only-seed-44",
+      "script": "research/pathmnist_five_seed/fp32/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/fp32/phase2/configs/decoder-only-seed-44.json"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/decoder-only/seed-44"
+    },
+    {
+      "name": "no-warmup-seed-45",
+      "script": "research/pathmnist_five_seed/fp32/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/fp32/phase2/configs/no-warmup-seed-45.json"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/no-warmup/seed-45"
+    },
+    {
+      "name": "shared-encoder-seed-45",
+      "script": "research/pathmnist_five_seed/fp32/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/fp32/phase2/configs/shared-encoder-seed-45.json"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/shared-encoder/seed-45"
+    },
+    {
+      "name": "decoder-only-seed-45",
+      "script": "research/pathmnist_five_seed/fp32/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/fp32/phase2/configs/decoder-only-seed-45.json"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/decoder-only/seed-45"
+    },
+    {
+      "name": "no-warmup-seed-46",
+      "script": "research/pathmnist_five_seed/fp32/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/fp32/phase2/configs/no-warmup-seed-46.json"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/no-warmup/seed-46"
+    },
+    {
+      "name": "shared-encoder-seed-46",
+      "script": "research/pathmnist_five_seed/fp32/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/fp32/phase2/configs/shared-encoder-seed-46.json"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/shared-encoder/seed-46"
+    },
+    {
+      "name": "decoder-only-seed-46",
+      "script": "research/pathmnist_five_seed/fp32/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/fp32/phase2/configs/decoder-only-seed-46.json"
+      ],
+      "output": "_local/pathmnist_five_seed/fp32/decoder-only/seed-46"
+    }
+  ]
+}
