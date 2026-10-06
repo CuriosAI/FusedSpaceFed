@@ -1,0 +1,14 @@
+{
+  "seed": 44,
+  "variant": "full",
+  "settings": {
+    "rounds": 50,
+    "warmup_epochs": 1,
+    "local_epochs": 3,
+    "batch_size": 128,
+    "classifier_lr": 0.01,
+    "autoencoder_lr": 0.001,
+    "use_amp": true
+  },
+  "partition_sha256": "194f3e10fb14610a838fd384e0d6ed5f788214a64b3c8b282ed5883c3ae9b102"
+}

@@ -1,0 +1,23 @@
+{
+  "seeds": [42, 43, 44, 45, 46],
+  "variants": ["full", "no-warmup", "shared-encoder", "decoder-only"],
+  "settings": {
+    "rounds": 50,
+    "warmup_epochs": 1,
+    "local_epochs": 3,
+    "batch_size": 128,
+    "classifier_lr": 0.01,
+    "autoencoder_lr": 0.001,
+    "use_amp": true
+  },
+  "selection": "none; fixed paper hyperparameters; no validation or test tuning",
+  "classifier": "ResNet20V2 RGB 9 classes",
+  "autoencoder": "UNetSmallAE RGB dz=16",
+  "aggregation": "uniform classifier and decoder; encoder additionally averaged only in shared-encoder ablation",
+  "optimizers": "SGD without momentum for classifier; Adam defaults for encoder/decoder; persistent local states",
+  "test": "one final Float32 evaluation at round 50; native BN; uniform mean over 10 private pipelines, each on all 7180 test examples",
+  "partition": "original pathological_partition(labels, 10, 2, run_seed); frozen per seed, paired across variants",
+  "reference_seed42": "_local/pathmnist_pathological/seed-42; original 39.61977715877437%; read only",
+  "diagnostics": "training-only fixed 640 examples/client; checkpoints at 0 and 50; replay warmup 1/classification 3 with saved persistent optimizers; native-eval and batch-stateless Float32 gradient probes",
+  "exclusions": ["tuning", "BN recalibration", "head refit", "baseline training", "manuscript changes"]
+}

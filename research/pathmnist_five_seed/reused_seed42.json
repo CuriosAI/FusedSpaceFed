@@ -1,0 +1,11 @@
+{
+  "path": "_local/pathmnist_pathological/seed-42",
+  "files_sha256": {
+    "initial.pt": "2e068afbd9caee88b7f41d7032f054f4918b28dea46b73d17f8701faabcc4a40",
+    "final.pt": "fa56da01091debe9031a9acb2e3de0f34ce0f751d2c95d2d0d54c05f15697d1e",
+    "results.json": "1794afa40434eb47049d041040044049f7c0358d8e9f2c2ce76ff75176c11cdc"
+  },
+  "accuracy_percent": 39.61977715877437,
+  "round": 50,
+  "read_only": true
+}

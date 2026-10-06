@@ -1,0 +1,60 @@
+{
+  "gpu_slots": {
+    "cuda:1": 2,
+    "cuda:0": 2
+  },
+  "minimum_free_mib": 4096,
+  "frozen_files": {
+    "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+    "research/pathmnist_pathological/run.py": "d328605571295e86c62e577ddfc43a7e2c5a7594e934d99392e0a7d42e4fe88d",
+    "research/pathmnist_pathological/config.json": "f6d803ed0447163432b1f7ccf6316473a768b6d9032a7cada24fd3d232a5e7fd",
+    "research/pathmnist_five_seed/data.py": "242c6a1ac38f70f074e74c800eb6ffd6e717552790cec58240afcff2fa690a2b",
+    "research/pathmnist_five_seed/data_identity.json": "7aff459b27776d676804319f549c3bbf12c7d100be3298068b362681b4c930ba",
+    "research/pathmnist_five_seed/client.py": "4231bf9304c9d6a3d8389e38cbb0e69f77f07c2533d58b6e66555d05a7a343c6",
+    "research/pathmnist_five_seed/runner.py": "ff327a9d393c52c7bb077d127692cd5f14a937082d6c264163c2d4abd8d5be9e",
+    "research/pathmnist_five_seed/plan.json": "60d8e8badf1131d98535fb8f5197d9663e648446680d3b77025c769605adb336",
+    "research/pathmnist_calibrated/controller.py": "b23dd03bb4a7715eeb3913fa8093d96564bf2a6aa34ee2e466d7eb7f7a49e396",
+    "research/pathmnist_five_seed/configs/full-seed-45.json": "0db3d94343e0670ede99c692c5e09c93352984c11b0eacb6c1fb1fa02d7bf821",
+    "research/pathmnist_five_seed/configs/full-seed-46.json": "16d8b90a590c450e64465262e24d1e7f03860da17c352c3193e695f5d6ba4799",
+    "research/pathmnist_five_seed/configs/full-seed-44.json": "a6b30d958e290046cfe1252ffe8e82f36bc6202a6a7e9c48ac6512beb96bfaf8",
+    "research/pathmnist_five_seed/configs/full-seed-43.json": "83ea721a5a9e3ec26f42d5619e2d4929ecbd06a722162cc70e788e800e984ce9"
+  },
+  "jobs": [
+    {
+      "name": "full-seed-43",
+      "script": "research/pathmnist_five_seed/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/configs/full-seed-43.json"
+      ],
+      "output": "_local/pathmnist_five_seed/full/seed-43"
+    },
+    {
+      "name": "full-seed-44",
+      "script": "research/pathmnist_five_seed/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/configs/full-seed-44.json"
+      ],
+      "output": "_local/pathmnist_five_seed/full/seed-44"
+    },
+    {
+      "name": "full-seed-45",
+      "script": "research/pathmnist_five_seed/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/configs/full-seed-45.json"
+      ],
+      "output": "_local/pathmnist_five_seed/full/seed-45"
+    },
+    {
+      "name": "full-seed-46",
+      "script": "research/pathmnist_five_seed/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/configs/full-seed-46.json"
+      ],
+      "output": "_local/pathmnist_five_seed/full/seed-46"
+    }
+  ]
+}
