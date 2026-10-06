@@ -1,0 +1,35 @@
+{
+  "tracked_suite": {
+    "command": "/home/schroeder/miniconda3/envs/general_ml/bin/python -m pytest -q tests research",
+    "passed": 331,
+    "failed": 0,
+    "seconds": 78.69,
+    "exit_code": 0,
+    "log_sha256": "35a1bcd2d442270206b0663363a30f6375b962ae5c52c53f81f6845a56d268c1"
+  },
+  "isolation_check": {
+    "command": "/home/schroeder/miniconda3/envs/general_ml/bin/python -m unittest discover -s _local/femnist_reconstructed/calibration-preparation/archive_queue_tests -v",
+    "passed": 38,
+    "failed": 0,
+    "seconds": 0.157,
+    "exit_code": 0,
+    "log_sha256": "2c01181811dae21c5fb7af45437a1b08d483f1923fcbfb2d04a387b3bf085753"
+  },
+  "unscoped_pytest_attempt": {
+    "command": "/home/schroeder/miniconda3/envs/general_ml/bin/python -m pytest -q",
+    "passed": 413,
+    "failed": 1,
+    "seconds": 82.23,
+    "exit_code": 1,
+    "failure": "ignored private archive-queue test requires no torch/numpy/training modules loaded in interpreter; violates that isolation when collected with scientific pytest suite",
+    "local_log": "_local/pathmnist_recovery/logs/repository-final-tests.log",
+    "log_sha256": "e9953a202286ecba8b9883db5273a2931557ded5406294495171dc7cc6ff0e3c",
+    "resolution": "run all versioned tests via tests research; independently run all 38 private archive-queue tests in a clean interpreter; no scientific code changed for this unrelated isolation constraint"
+  },
+  "audit": {
+    "command": "/home/schroeder/miniconda3/envs/general_ml/bin/python research/pathmnist_recovery/verification.py",
+    "passed": true,
+    "no_training_or_test_evaluation": true
+  },
+  "no_packages_installed": true
+}

@@ -1,0 +1,268 @@
+{
+  "status": "success; search stopped",
+  "accuracy_percent": 75.23398328690807,
+  "seed": 42,
+  "round": 50,
+  "paper_reference_mean_percent": 50.94,
+  "descriptive_delta_pp": 24.293983286908073,
+  "sample_sd_between_seeds": null,
+  "metric": "uniform mean of all 10 private-encoder pipeline accuracies",
+  "unique_test_images": 7180,
+  "prediction_counts": {
+    "pipeline_metrics": [
+      {
+        "client_id": 0,
+        "correct": 5395,
+        "total": 7180,
+        "accuracy_percent": 75.13927576601671
+      },
+      {
+        "client_id": 1,
+        "correct": 5426,
+        "total": 7180,
+        "accuracy_percent": 75.57103064066852
+      },
+      {
+        "client_id": 2,
+        "correct": 5426,
+        "total": 7180,
+        "accuracy_percent": 75.57103064066852
+      },
+      {
+        "client_id": 3,
+        "correct": 5361,
+        "total": 7180,
+        "accuracy_percent": 74.66573816155989
+      },
+      {
+        "client_id": 4,
+        "correct": 5401,
+        "total": 7180,
+        "accuracy_percent": 75.22284122562674
+      },
+      {
+        "client_id": 5,
+        "correct": 5412,
+        "total": 7180,
+        "accuracy_percent": 75.37604456824512
+      },
+      {
+        "client_id": 6,
+        "correct": 5416,
+        "total": 7180,
+        "accuracy_percent": 75.43175487465182
+      },
+      {
+        "client_id": 7,
+        "correct": 5410,
+        "total": 7180,
+        "accuracy_percent": 75.34818941504179
+      },
+      {
+        "client_id": 8,
+        "correct": 5381,
+        "total": 7180,
+        "accuracy_percent": 74.94428969359332
+      },
+      {
+        "client_id": 9,
+        "correct": 5390,
+        "total": 7180,
+        "accuracy_percent": 75.06963788300835
+      }
+    ],
+    "uniform_pipeline_accuracy_percent": 75.23398328690807,
+    "correct_total": 54018,
+    "predictions_total": 71800
+  },
+  "validation_selection": {
+    "profile": "previous-g0.1",
+    "candidate_id": "grid-c0.1-ae0.0001",
+    "gain": 0.1,
+    "mode": "train-recalibrated",
+    "penalty": 0.0,
+    "max_iter": 100,
+    "correct_total": 72137,
+    "predictions_total": 89940,
+    "accuracy_percent": 80.20569268401158,
+    "profile_order": 5,
+    "penalty_order": 1,
+    "results_file": "_local/pathmnist_recovery/head_validation/previous-g0.1/results.json",
+    "results_sha256": "872d7dc8b77c11a557a7e9168ac766c1be706706492d0ba9ea397de7406b7f39",
+    "source_fit_checkpoint_sha256": "ebb2f99a3feb51d552231d18d3cd4a727c92fc3f76b2111a51bb730e74089a37"
+  },
+  "final_configuration": {
+    "attempt": 5,
+    "checkpoint": "_local/pathmnist_calibrated/final/seed-42/native-final.pt",
+    "checkpoint_sha256": "9b0b95d636f1b667c506dc358c65064d4eef71803ba493788ad9f5d382b7d9eb",
+    "initial_checkpoint": "_local/pathmnist_calibrated/final/seed-42/initial.pt",
+    "initial_checkpoint_sha256": "ba103a227f6f4b65c09ef31e301e6e545e4950371c85f9273442263bd8969e72",
+    "partition_sha256": "13d5cc86d039a8bf75b97ee6f6f94c6f177f52dd10829c66fd01150db7ceeb47",
+    "training_settings": {
+      "classifier_lr": 0.1,
+      "autoencoder_lr": 0.0001,
+      "warmup_lr": 0.0001,
+      "gradient_clip_norm": 5.0,
+      "precision": "bf16",
+      "schedule": "constant",
+      "schedule_horizon": 100,
+      "batch_size": 128,
+      "warmup_epochs": 1,
+      "local_epochs": 3,
+      "aggregation": "uniform",
+      "optimizer_reset": false,
+      "classifier": "ResNet20V2",
+      "autoencoder": "UNetSmallAE",
+      "dz": 16,
+      "classifier_optimizer": "SGD(momentum=0,weight_decay=0)",
+      "autoencoder_optimizer": "Adam(betas=(0.9,0.999),eps=1e-8,weight_decay=0)"
+    },
+    "training_seed": 42,
+    "training_rounds": 50,
+    "fusion_gain": 0.1,
+    "normalization": "train-recalibrated",
+    "head_penalty": 0.0,
+    "head_max_iter": 100,
+    "head_selection_file": "research/pathmnist_recovery/head_selection.json",
+    "head_selection_sha256": "2b6c342de8f50a33d451dd0bbbd02fb94571a58b51fb7e4ad45d8d8065c88a3f",
+    "head_objective": "mean local-client CE (uniform client weight) + 0.5 penalty ||fc.weight||^2; bias unpenalized; frozen C body/private E/shared D",
+    "formula": "shared C with refitted fc on x + fusion_gain * D(E_i(x)); training-only shared BN",
+    "test_access": "one frozen candidate; known benchmark; exploratory threshold stop",
+    "validation_basis": {
+      "profile": "previous-g0.1",
+      "candidate_id": "grid-c0.1-ae0.0001",
+      "gain": 0.1,
+      "mode": "train-recalibrated",
+      "penalty": 0.0,
+      "max_iter": 100,
+      "correct_total": 72137,
+      "predictions_total": 89940,
+      "accuracy_percent": 80.20569268401158,
+      "profile_order": 5,
+      "penalty_order": 1,
+      "results_file": "_local/pathmnist_recovery/head_validation/previous-g0.1/results.json",
+      "results_sha256": "872d7dc8b77c11a557a7e9168ac766c1be706706492d0ba9ea397de7406b7f39",
+      "source_fit_checkpoint_sha256": "ebb2f99a3feb51d552231d18d3cd4a727c92fc3f76b2111a51bb730e74089a37"
+    },
+    "training_compatibility": "same registered hyperparameters, architecture and round50 as fit seed142; full seed42 native-final reused; extra head refit uses all original training indices only",
+    "variant": "positive fusion gain plus fit-only BN buffer calibration and extra shared fc optimization after unchanged two-phase training; not original paper protocol; no test adaptation"
+  },
+  "final_code": {
+    "base_commit": "704f285bf41ac7ca5a5bbbd07f8beb52b331d654",
+    "source_sha256": {
+      "research/pathmnist_recovery/head_final.py": "699f4f75a8f5e2647ebd9fb93afd4929987dc78e2fc87ffb1c4e13dd5890818f",
+      "research/pathmnist_recovery/head_calibration.py": "7ae454213426250ff7ee04fb85078496a9a503f83f6448a5d9a8b4861ef1f945",
+      "research/pathmnist_recovery/inference.py": "71612c912b484d3785fa42fde6f1245ee3a7a4ffa73f703353e5600ac3510235",
+      "research/pathmnist_recovery/fusion_probe.py": "ce8b7386877d1bc2ea21bf158945db366ad1dc271e33f7cfcfb75a6186e53b9c",
+      "research/pathmnist_recovery/training.py": "32f63d780838d6f7965a97ffd318488858714c3bc3972f3522af2c71dd2d3897",
+      "research/pathmnist_recovery/method.py": "208720041c665dfd92bcc8eaa3411ea1bc50081226f35546ea7e341117b344b2",
+      "research/pathmnist_calibrated/runner.py": "4e2128c400cc462fc8cb5de79edd11175394e6425325a5a5d75b8336b54d0fcb",
+      "research/pathmnist_calibrated/data.py": "e2ba5a50da93ed4db801edfc512a0b01380b3c0d1cc2b001e6e8c36d13ddb0f1",
+      "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970"
+    },
+    "config_sha256": "283b1a0d9c082156f62c3462216545c46b72a709fc26726a59b16e0285adaa27"
+  },
+  "checkpoints": {
+    "initial.pt": {
+      "sha256": "ba103a227f6f4b65c09ef31e301e6e545e4950371c85f9273442263bd8969e72",
+      "bytes": 19475374,
+      "seed": 42,
+      "round": 0,
+      "clients": 10,
+      "bn_buffers": 57,
+      "optimizer_dictionaries": 20,
+      "classifier_parameters": 272217
+    },
+    "precalibration.pt": {
+      "sha256": "9b0b95d636f1b667c506dc358c65064d4eef71803ba493788ad9f5d382b7d9eb",
+      "bytes": 24805042,
+      "seed": 42,
+      "round": 50,
+      "clients": 10,
+      "bn_buffers": 57,
+      "optimizer_dictionaries": 20,
+      "classifier_parameters": 272217
+    },
+    "final.pt": {
+      "sha256": "a9d055734f1272a2039bf3a545c480ec1a391b24de7df9c910ce3bd066528bcb",
+      "bytes": 24891278,
+      "seed": 42,
+      "round": 50,
+      "clients": 10,
+      "bn_buffers": 57,
+      "optimizer_dictionaries": 20,
+      "classifier_parameters": 272217
+    }
+  },
+  "quality_checks": {
+    "tracked_suite": {
+      "command": "/home/schroeder/miniconda3/envs/general_ml/bin/python -m pytest -q tests research",
+      "passed": 331,
+      "failed": 0,
+      "seconds": 78.69,
+      "exit_code": 0,
+      "log_sha256": "35a1bcd2d442270206b0663363a30f6375b962ae5c52c53f81f6845a56d268c1"
+    },
+    "isolation_check": {
+      "command": "/home/schroeder/miniconda3/envs/general_ml/bin/python -m unittest discover -s _local/femnist_reconstructed/calibration-preparation/archive_queue_tests -v",
+      "passed": 38,
+      "failed": 0,
+      "seconds": 0.157,
+      "exit_code": 0,
+      "log_sha256": "2c01181811dae21c5fb7af45437a1b08d483f1923fcbfb2d04a387b3bf085753"
+    },
+    "unscoped_pytest_attempt": {
+      "command": "/home/schroeder/miniconda3/envs/general_ml/bin/python -m pytest -q",
+      "passed": 413,
+      "failed": 1,
+      "seconds": 82.23,
+      "exit_code": 1,
+      "failure": "ignored private archive-queue test requires no torch/numpy/training modules loaded in interpreter; violates that isolation when collected with scientific pytest suite",
+      "local_log": "_local/pathmnist_recovery/logs/repository-final-tests.log",
+      "log_sha256": "e9953a202286ecba8b9883db5273a2931557ded5406294495171dc7cc6ff0e3c",
+      "resolution": "run all versioned tests via tests research; independently run all 38 private archive-queue tests in a clean interpreter; no scientific code changed for this unrelated isolation constraint"
+    },
+    "audit": {
+      "command": "/home/schroeder/miniconda3/envs/general_ml/bin/python research/pathmnist_recovery/verification.py",
+      "passed": true,
+      "no_training_or_test_evaluation": true
+    },
+    "no_packages_installed": true
+  },
+  "parameters_active_per_client": 334668,
+  "parameters_total_persistent": 547068,
+  "costs": {
+    "campaign_wall_seconds_sum": 3182.6228888002224,
+    "campaign_interval_union_seconds": 2763.7470280000002,
+    "worker_wall_seconds_sum": 7682.374517665012,
+    "elapsed_first_campaign_to_success_seconds": 5525.184537,
+    "reused_full_training_seconds": 1804.2153666438535,
+    "final_extra_phase_session_seconds": 6.473119703121483
+  },
+  "attempt_scores_percent": [
+    43.938718662952645,
+    44.29944289693593,
+    25.023676880222844,
+    43.16852367688023,
+    75.23398328690807
+  ],
+  "limitations": [
+    "one final seed, no seed SD",
+    "known test with adaptive threshold stop",
+    "positive-gain BN and extra-head phase variant, not original paper protocol",
+    "validation reused for many candidates",
+    "no controlled baseline or component-attribution test"
+  ],
+  "search_commits": [
+    "912fabd101284431ec302cee01b4d137c21ec53d",
+    "8d045d0ea7c350b59b573457966a60704b0c5ab6",
+    "b23f961e6cae86fbd618a7565432e218b451dede",
+    "cef54869721bf3b1b38295c1305a3cfc06cdf25a",
+    "da4bbc4b60e062b72e5b2ca7ef3cbf7d75d1c505",
+    "7c50c0bb3ae4f8f80278ad4e5a25fb20ba7a39c9",
+    "efd547273e43262e8861dede6b2b85157b9f6d2c",
+    "e2190f723c0883ec7d02d3ee56cb0547fa06e310",
+    "9e6c0bc87e10c63be45bae367982cd4579057139",
+    "704f285bf41ac7ca5a5bbbd07f8beb52b331d654"
+  ]
+}

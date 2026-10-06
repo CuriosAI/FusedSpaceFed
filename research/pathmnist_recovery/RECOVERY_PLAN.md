@@ -223,3 +223,14 @@ quello effettivo con optimizer L-BFGS separato, RNG e coefficiente registrati.
 È una variante FusedSpaceFed con fase aggiuntiva, non una replica degli
 iperparametri/protocollo del paper. Il test già noto e lo stop adattivo
 limitano l'interpretazione del futuro risultato a un singolo esito esplorativo.
+
+## Esito e stop della ricerca
+
+Il tentativo 5 ha ottenuto **75,233983% sul test seed42**,54.018/71.800
+predizioni sulle dieci pipeline di7.180 immagini, superando il50,94%.
+La ricerca è fermata: nessun altro candidato, training o test viene avviato.
+Sono completate soltanto verifiche di conteggi, caricamento/hash/stati,
+archiviazione e report. Tutti i tentativi restano disponibili, inclusi i
+quattro test negativi. Suite versionata:331 test passati. Risultato,
+configurazione, costi e limiti dettagliati in `RECOVERY_REPORT.md` e negli
+artefatti numerici; una singola variante/seed non certifica la media del paper.

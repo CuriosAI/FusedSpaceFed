@@ -1,0 +1,8 @@
+{
+  "files_sha256": {
+    "data_and_cost_identity.json": "6e39c53bd239e12e199549486db62105192830d2f3d557f67c4b5036d4e42d59",
+    "quality_checks.json": "d2e4443596f20002d252165643af20ee4147179b06ae4577b1ea7b52f0931973",
+    "repository_tests.log": "35a1bcd2d442270206b0663363a30f6375b962ae5c52c53f81f6845a56d268c1",
+    "summary.json": "3a03f8007c589a76e3d33bce7e2f09fa0506bc3477fb9b1abd6d1c917dc1c292"
+  }
+}

@@ -19,6 +19,10 @@ def verify():
     for directory in sorted(PUBLIC.iterdir()):
         if not directory.is_dir(): continue
         info = json.loads((directory/'manifest.json').read_text())
+        actual={str(p.relative_to(directory)) for p in directory.rglob('*')
+                if p.is_file() and p.name!='manifest.json'}
+        if actual!=set(info['files_sha256']):
+            raise ValueError('Missing/unlisted file in numeric archive '+str(directory))
         for name, digest in info['files_sha256'].items():
             if file_hash(directory/name) != digest:
                 raise ValueError('Changed numeric archive '+str(directory/name))
@@ -56,7 +60,7 @@ def numeric_archive(name, receipt_name, input_root, patterns):
 def archive():
     for attempt in range(3,10):
         numeric_archive('attempt-'+f'{attempt:02}', 'attempt-'+f'{attempt:02}'+'-campaign.json',
-                        PRIVATE/('attempt-'+f'{attempt:02}'), ['results.json'])
+                        PRIVATE/('attempt-'+f'{attempt:02}'), ['results.json','verification.json'])
     for name, receipt, directory, patterns in (
         ('continuation-validation','continuation_campaign.json','continuation_validation',
          ['*/results*.json','*/timings.jsonl','*/continuation_origin.json']),

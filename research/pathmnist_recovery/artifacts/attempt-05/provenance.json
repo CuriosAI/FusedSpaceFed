@@ -1,0 +1,28 @@
+{
+  "source_files": {
+    "_local/pathmnist_recovery/attempt-05/results.json": {
+      "sha256": "880dc3e776a66b8854320780640f835f2ab51129208b3826dc068c1904d92c42",
+      "archived_as": "results.json.gz",
+      "bytes": 9581
+    },
+    "_local/pathmnist_recovery/attempt-05/verification.json": {
+      "sha256": "a473238c59952cad0e1fcc4955dcda0cadb20ce619fc4fc6d0b51b39a0bccf27",
+      "archived_as": "verification.json.gz",
+      "bytes": 1636
+    }
+  },
+  "private_checkpoints": {
+    "_local/pathmnist_recovery/attempt-05/final.pt": {
+      "sha256": "a9d055734f1272a2039bf3a545c480ec1a391b24de7df9c910ce3bd066528bcb",
+      "bytes": 24891278
+    },
+    "_local/pathmnist_recovery/attempt-05/initial.pt": {
+      "sha256": "ba103a227f6f4b65c09ef31e301e6e545e4950371c85f9273442263bd8969e72",
+      "bytes": 19475374
+    },
+    "_local/pathmnist_recovery/attempt-05/precalibration.pt": {
+      "sha256": "9b0b95d636f1b667c506dc358c65064d4eef71803ba493788ad9f5d382b7d9eb",
+      "bytes": 24805042
+    }
+  }
+}

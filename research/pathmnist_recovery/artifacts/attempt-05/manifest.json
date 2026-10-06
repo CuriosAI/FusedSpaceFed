@@ -1,0 +1,8 @@
+{
+  "files_sha256": {
+    "campaign.json": "bfa8b5d722dc7ac21a5e9dca84980ff39811303a11b01afeeb579707d5b8b4b6",
+    "provenance.json": "dc0b2f40b402a8ac346169cc31dbf8f2e80b6d86bfc9478b2bf3d31196e45f56",
+    "results.json.gz": "45a218d023ef927a97ee6409959ef0f71c3c33ff9e3664be05cc28707b61fad5",
+    "verification.json.gz": "413723321546b625fd783d4836aab113734c44f77b1cd19d4d8bcaffff245ed3"
+  }
+}
