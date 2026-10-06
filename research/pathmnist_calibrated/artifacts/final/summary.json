@@ -1,0 +1,1259 @@
+{
+  "seed": 42,
+  "rounds": 50,
+  "seed_count": 1,
+  "accuracy_percent": 35.2799442896936,
+  "pipeline_metrics": [
+    {
+      "client_id": 0,
+      "correct": 2435,
+      "total": 7180,
+      "accuracy_percent": 33.91364902506964
+    },
+    {
+      "client_id": 1,
+      "correct": 2650,
+      "total": 7180,
+      "accuracy_percent": 36.90807799442897
+    },
+    {
+      "client_id": 2,
+      "correct": 2493,
+      "total": 7180,
+      "accuracy_percent": 34.721448467966574
+    },
+    {
+      "client_id": 3,
+      "correct": 2526,
+      "total": 7180,
+      "accuracy_percent": 35.18105849582173
+    },
+    {
+      "client_id": 4,
+      "correct": 2555,
+      "total": 7180,
+      "accuracy_percent": 35.58495821727019
+    },
+    {
+      "client_id": 5,
+      "correct": 2488,
+      "total": 7180,
+      "accuracy_percent": 34.65181058495822
+    },
+    {
+      "client_id": 6,
+      "correct": 2622,
+      "total": 7180,
+      "accuracy_percent": 36.51810584958217
+    },
+    {
+      "client_id": 7,
+      "correct": 2513,
+      "total": 7180,
+      "accuracy_percent": 35.0
+    },
+    {
+      "client_id": 8,
+      "correct": 2567,
+      "total": 7180,
+      "accuracy_percent": 35.75208913649025
+    },
+    {
+      "client_id": 9,
+      "correct": 2482,
+      "total": 7180,
+      "accuracy_percent": 34.56824512534819
+    }
+  ],
+  "selection": {
+    "selected_candidate_id": "grid-c0.1-ae0.0001",
+    "bn_mode": "train-recalibrated",
+    "rounds": 50,
+    "screening_seed": 142,
+    "selection_round": 20,
+    "validation_accuracy_percent": 48.77140315766066,
+    "correct_total": 43865,
+    "predictions_total": 89940,
+    "training_settings": {
+      "classifier_lr": 0.1,
+      "autoencoder_lr": 0.0001,
+      "warmup_lr": 0.0001,
+      "gradient_clip_norm": 5.0,
+      "precision": "bf16",
+      "schedule": "constant",
+      "schedule_horizon": 100,
+      "batch_size": 128,
+      "warmup_epochs": 1,
+      "local_epochs": 3,
+      "aggregation": "uniform",
+      "optimizer_reset": false,
+      "classifier": "ResNet20V2",
+      "autoencoder": "UNetSmallAE",
+      "dz": 16,
+      "classifier_optimizer": "SGD(momentum=0,weight_decay=0)",
+      "autoencoder_optimizer": "Adam(betas=(0.9,0.999),eps=1e-8,weight_decay=0)"
+    },
+    "final_seeds": [
+      42
+    ],
+    "ranking": [
+      {
+        "candidate_id": "grid-c0.1-ae0.0001",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 48.77140315766066,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.0001-seed-142/results-round-020.json",
+        "correct_total": 43865,
+        "predictions_total": 89940,
+        "result_sha256": "3a06d02b588d565ffc728d221839f2c803598dc80c1c820e91fa2d9b0a424154",
+        "checkpoint_sha256": "9733c2623518c9844dd7a78fb3b0a68c66277732b57ce9206e9c3ab3e47606ec"
+      },
+      {
+        "candidate_id": "grid-c0.1-ae0.001",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 47.379364020458084,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.001-seed-142/results-round-020.json",
+        "correct_total": 42613,
+        "predictions_total": 89940,
+        "result_sha256": "eacf23f019a670b370d86baaf9e3f901ef4751430240467766be455b5240a597",
+        "checkpoint_sha256": "5141e49179a4d4947dbe4951943bfb481c53f83ff52ae5c4fd63e947703c75ad"
+      },
+      {
+        "candidate_id": "grid-c0.03-ae0.001",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 47.29263953746943,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.001-seed-142/results-round-020.json",
+        "correct_total": 42535,
+        "predictions_total": 89940,
+        "result_sha256": "82797a6fe91ecf3c32316bbe06a80b2a749f4be0cd8d9e4b942d68880605ff37",
+        "checkpoint_sha256": "ebc772e64d2f2a21889c547b03e3fcc682f7cd8637256f8f6a25fe9824f47340"
+      },
+      {
+        "candidate_id": "clip-10",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 46.849010451412056,
+        "result_path": "_local/pathmnist_calibrated/screening/clip-10-seed-142/results-round-020.json",
+        "correct_total": 42136,
+        "predictions_total": 89940,
+        "result_sha256": "e19d51911af8dd4e79f2c6bb799bcb19b755f5d8d63f0ebb9edca247ad6ea2d8",
+        "checkpoint_sha256": "4ba74f40aeae6dc6d62f83d24205b846971bb17bb2af39d4e5b2692627945f21"
+      },
+      {
+        "candidate_id": "grid-c0.1-ae0.0003",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 44.747609517456084,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.0003-seed-142/results-round-020.json",
+        "correct_total": 40246,
+        "predictions_total": 89940,
+        "result_sha256": "954feed38c9a3407d8577f7643e3ca1bc47de41603b694f65170b0bbd758a105",
+        "checkpoint_sha256": "2cb4b036bc5c0fc145aa9e5ac1be7b80287cc84de22c2513a62397456f8c95af"
+      },
+      {
+        "candidate_id": "cosine-c0.1",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 44.7231487658439,
+        "result_path": "_local/pathmnist_calibrated/screening/cosine-c0.1-seed-142/results-round-020.json",
+        "correct_total": 40224,
+        "predictions_total": 89940,
+        "result_sha256": "de216b30c8549dc469393539ca84778b4f246797245a5b047b7eee5c3dd5b721",
+        "checkpoint_sha256": "83b769a3196f8c37ac4ceae647d0b1f53a8110e885417893a8be14ee1edc99ac"
+      },
+      {
+        "candidate_id": "grid-c0.03-ae0.0001",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 44.38625750500334,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.0001-seed-142/results-round-020.json",
+        "correct_total": 39921,
+        "predictions_total": 89940,
+        "result_sha256": "f8d6ed32c67cb49363a87e381876d006e2976324b0d84a3701807522739786c4",
+        "checkpoint_sha256": "7f484f7d6389eaf5f8d2eb4f3d309e46edebc9797b0a1ba3bcaae5db032fe07b"
+      },
+      {
+        "candidate_id": "local1-c0.3",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 44.36624416277519,
+        "result_path": "_local/pathmnist_calibrated/screening/local1-c0.3-seed-142/results-round-020.json",
+        "correct_total": 39903,
+        "predictions_total": 89940,
+        "result_sha256": "58c2b16cbb400d0c94597490a2a707590b9d800fd0ac9cd6ce2ce14644bef1c1",
+        "checkpoint_sha256": "918edbce5ba57127818abc2625d06ae64cef1234e3fa8f3df5e9618bde2acae0"
+      },
+      {
+        "candidate_id": "cosine-c0.03",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 43.70246831220815,
+        "result_path": "_local/pathmnist_calibrated/screening/cosine-c0.03-seed-142/results-round-020.json",
+        "correct_total": 39306,
+        "predictions_total": 89940,
+        "result_sha256": "a2d1ca9cc7c71233c880022eabebe28da8ea943cee2ca014cde5cb09cefeb45b",
+        "checkpoint_sha256": "60d555cc32076987798d0b82e6bc0e22c72ae1a2a8fdea0fe4a2b020857b1121"
+      },
+      {
+        "candidate_id": "grid-c0.03-ae0.0003",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 43.331109628641315,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.0003-seed-142/results-round-020.json",
+        "correct_total": 38972,
+        "predictions_total": 89940,
+        "result_sha256": "c149dbf2d639c308b76e78a46af292db2b454779c1d9ec88f031b2a3046ffa58",
+        "checkpoint_sha256": "c034dc2539cb4bcaf1f57402fcf28078c23e45284e75b109b6e8d18f4886d9ed"
+      },
+      {
+        "candidate_id": "local1-c0.03",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 43.01423171002891,
+        "result_path": "_local/pathmnist_calibrated/screening/local1-c0.03-seed-142/results-round-020.json",
+        "correct_total": 38687,
+        "predictions_total": 89940,
+        "result_sha256": "70a42ee90c5f74bec259103c7acdbbb308065e306be89f6084e9594cac99059e",
+        "checkpoint_sha256": "309d4b83867772527d8936bb7fffb8a37457d6ddb3c2a9b06a7473cf8e75f0b0"
+      },
+      {
+        "candidate_id": "grid-c0.1-ae0.0003",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 42.65176784523015,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.0003-seed-142/results-round-020.json",
+        "correct_total": 38361,
+        "predictions_total": 89940,
+        "result_sha256": "954feed38c9a3407d8577f7643e3ca1bc47de41603b694f65170b0bbd758a105",
+        "checkpoint_sha256": "2cb4b036bc5c0fc145aa9e5ac1be7b80287cc84de22c2513a62397456f8c95af"
+      },
+      {
+        "candidate_id": "grid-c0.1-ae0.0001",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 41.72003557927508,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.0001-seed-142/results-round-020.json",
+        "correct_total": 37523,
+        "predictions_total": 89940,
+        "result_sha256": "3a06d02b588d565ffc728d221839f2c803598dc80c1c820e91fa2d9b0a424154",
+        "checkpoint_sha256": "9733c2623518c9844dd7a78fb3b0a68c66277732b57ce9206e9c3ab3e47606ec"
+      },
+      {
+        "candidate_id": "local1-c0.1",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 41.3019790971759,
+        "result_path": "_local/pathmnist_calibrated/screening/local1-c0.1-seed-142/results-round-020.json",
+        "correct_total": 37147,
+        "predictions_total": 89940,
+        "result_sha256": "794e75b0ef3f1e7b69d9f76898985d03c251e86aa4c07a72a8bd457558f7e040",
+        "checkpoint_sha256": "2fc601d982b3141799c5ccfdd033822d981ab665d2b4ed8cefc909234b60342a"
+      },
+      {
+        "candidate_id": "cosine-c0.1",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 40.60151211919057,
+        "result_path": "_local/pathmnist_calibrated/screening/cosine-c0.1-seed-142/results-round-020.json",
+        "correct_total": 36517,
+        "predictions_total": 89940,
+        "result_sha256": "de216b30c8549dc469393539ca84778b4f246797245a5b047b7eee5c3dd5b721",
+        "checkpoint_sha256": "83b769a3196f8c37ac4ceae647d0b1f53a8110e885417893a8be14ee1edc99ac"
+      },
+      {
+        "candidate_id": "fp32-clip5",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 39.55637091394262,
+        "result_path": "_local/pathmnist_calibrated/screening/fp32-clip5-seed-142/results-round-020.json",
+        "correct_total": 35577,
+        "predictions_total": 89940,
+        "result_sha256": "1c5079e638e7c137ee0908218436be6658eb977a7aeb0568adc8c403c3645801",
+        "checkpoint_sha256": "101692fd7fc9ebef93106db79b8b0f4663f41ee5f537d09a49773ee372c72c64"
+      },
+      {
+        "candidate_id": "bf16-no-clip",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 38.263286635534804,
+        "result_path": "_local/pathmnist_calibrated/screening/bf16-no-clip-seed-142/results-round-020.json",
+        "correct_total": 34414,
+        "predictions_total": 89940,
+        "result_sha256": "57a497e83dc1c400b6e9520dd585f48926f85c3108b2958ce00554380746d844",
+        "checkpoint_sha256": "19a55062daf98344813815705bd01f72e0e65cb2aa7f2d711b60917efaed4a22"
+      },
+      {
+        "candidate_id": "grid-c0.03-ae0.001",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 36.941294196130755,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.001-seed-142/results-round-020.json",
+        "correct_total": 33225,
+        "predictions_total": 89940,
+        "result_sha256": "82797a6fe91ecf3c32316bbe06a80b2a749f4be0cd8d9e4b942d68880605ff37",
+        "checkpoint_sha256": "ebc772e64d2f2a21889c547b03e3fcc682f7cd8637256f8f6a25fe9824f47340"
+      },
+      {
+        "candidate_id": "clip-1",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 36.62552812986435,
+        "result_path": "_local/pathmnist_calibrated/screening/clip-1-seed-142/results-round-020.json",
+        "correct_total": 32941,
+        "predictions_total": 89940,
+        "result_sha256": "3fce752326e0ae2929be12650f5a8cff06f4984caf4c4adb6ae7841bf462427e",
+        "checkpoint_sha256": "b63059eef4424ed379530e5f1aad235d6235024b32ca8b62d8c4ec8313431c6d"
+      },
+      {
+        "candidate_id": "grid-c0.01-ae0.0003",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 35.992884144985545,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.01-ae0.0003-seed-142/results-round-020.json",
+        "correct_total": 32372,
+        "predictions_total": 89940,
+        "result_sha256": "ba9af0e45a4c63a8dc0d4a575396497f9aeaeda90231b1c86cb1f6147b206f2b",
+        "checkpoint_sha256": "ef305b8caf19ee608d5a338cecdaad420777bb281095b5b3b2d05a0c5db5e675"
+      },
+      {
+        "candidate_id": "local1-c0.1",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 35.57260395819436,
+        "result_path": "_local/pathmnist_calibrated/screening/local1-c0.1-seed-142/results-round-020.json",
+        "correct_total": 31994,
+        "predictions_total": 89940,
+        "result_sha256": "794e75b0ef3f1e7b69d9f76898985d03c251e86aa4c07a72a8bd457558f7e040",
+        "checkpoint_sha256": "2fc601d982b3141799c5ccfdd033822d981ab665d2b4ed8cefc909234b60342a"
+      },
+      {
+        "candidate_id": "warm-lr-1e-4",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 35.324660885034476,
+        "result_path": "_local/pathmnist_calibrated/screening/warm-lr-1e-4-seed-142/results-round-020.json",
+        "correct_total": 31771,
+        "predictions_total": 89940,
+        "result_sha256": "bea9cb847bcfb21251d1d8094e543af406d89ce87f0946c75aae6023e49d0070",
+        "checkpoint_sha256": "1766b937016b5a838644b34673d6f2486c7141c2053c5706fbf0738a3e3a2383"
+      },
+      {
+        "candidate_id": "fp32-matched-reference",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 34.392928619079385,
+        "result_path": "_local/pathmnist_calibrated/screening/fp32-matched-reference-seed-142/results-round-020.json",
+        "correct_total": 30933,
+        "predictions_total": 89940,
+        "result_sha256": "c43d5388a22e8c05a0dbb4fcb64b50efadeaa01bacb07d4e3f9c92fa160c7bc0",
+        "checkpoint_sha256": "f3bbd5044ab5de311e2ad4541e9918e8c06e5ad6626868cdd3a3d8a771fb387b"
+      },
+      {
+        "candidate_id": "cosine-c0.03",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 33.46342005781632,
+        "result_path": "_local/pathmnist_calibrated/screening/cosine-c0.03-seed-142/results-round-020.json",
+        "correct_total": 30097,
+        "predictions_total": 89940,
+        "result_sha256": "a2d1ca9cc7c71233c880022eabebe28da8ea943cee2ca014cde5cb09cefeb45b",
+        "checkpoint_sha256": "60d555cc32076987798d0b82e6bc0e22c72ae1a2a8fdea0fe4a2b020857b1121"
+      },
+      {
+        "candidate_id": "local1-c0.3",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 33.3288859239493,
+        "result_path": "_local/pathmnist_calibrated/screening/local1-c0.3-seed-142/results-round-020.json",
+        "correct_total": 29976,
+        "predictions_total": 89940,
+        "result_sha256": "58c2b16cbb400d0c94597490a2a707590b9d800fd0ac9cd6ce2ce14644bef1c1",
+        "checkpoint_sha256": "918edbce5ba57127818abc2625d06ae64cef1234e3fa8f3df5e9618bde2acae0"
+      },
+      {
+        "candidate_id": "clip-10",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 33.00756059595285,
+        "result_path": "_local/pathmnist_calibrated/screening/clip-10-seed-142/results-round-020.json",
+        "correct_total": 29687,
+        "predictions_total": 89940,
+        "result_sha256": "e19d51911af8dd4e79f2c6bb799bcb19b755f5d8d63f0ebb9edca247ad6ea2d8",
+        "checkpoint_sha256": "4ba74f40aeae6dc6d62f83d24205b846971bb17bb2af39d4e5b2692627945f21"
+      },
+      {
+        "candidate_id": "fp32-clip5",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 32.562819657549475,
+        "result_path": "_local/pathmnist_calibrated/screening/fp32-clip5-seed-142/results-round-020.json",
+        "correct_total": 29287,
+        "predictions_total": 89940,
+        "result_sha256": "1c5079e638e7c137ee0908218436be6658eb977a7aeb0568adc8c403c3645801",
+        "checkpoint_sha256": "101692fd7fc9ebef93106db79b8b0f4663f41ee5f537d09a49773ee372c72c64"
+      },
+      {
+        "candidate_id": "grid-c0.03-ae0.0001",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 32.53279964420725,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.0001-seed-142/results-round-020.json",
+        "correct_total": 29260,
+        "predictions_total": 89940,
+        "result_sha256": "f8d6ed32c67cb49363a87e381876d006e2976324b0d84a3701807522739786c4",
+        "checkpoint_sha256": "7f484f7d6389eaf5f8d2eb4f3d309e46edebc9797b0a1ba3bcaae5db032fe07b"
+      },
+      {
+        "candidate_id": "grid-c0.03-ae0.0003",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 32.03691349788748,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.0003-seed-142/results-round-020.json",
+        "correct_total": 28814,
+        "predictions_total": 89940,
+        "result_sha256": "c149dbf2d639c308b76e78a46af292db2b454779c1d9ec88f031b2a3046ffa58",
+        "checkpoint_sha256": "c034dc2539cb4bcaf1f57402fcf28078c23e45284e75b109b6e8d18f4886d9ed"
+      },
+      {
+        "candidate_id": "grid-c0.1-ae0.001",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 31.316433177674003,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.001-seed-142/results-round-020.json",
+        "correct_total": 28166,
+        "predictions_total": 89940,
+        "result_sha256": "eacf23f019a670b370d86baaf9e3f901ef4751430240467766be455b5240a597",
+        "checkpoint_sha256": "5141e49179a4d4947dbe4951943bfb481c53f83ff52ae5c4fd63e947703c75ad"
+      },
+      {
+        "candidate_id": "warm-lr-1e-4",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 30.91283077607294,
+        "result_path": "_local/pathmnist_calibrated/screening/warm-lr-1e-4-seed-142/results-round-020.json",
+        "correct_total": 27803,
+        "predictions_total": 89940,
+        "result_sha256": "bea9cb847bcfb21251d1d8094e543af406d89ce87f0946c75aae6023e49d0070",
+        "checkpoint_sha256": "1766b937016b5a838644b34673d6f2486c7141c2053c5706fbf0738a3e3a2383"
+      },
+      {
+        "candidate_id": "grid-c0.01-ae0.0001",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 30.47920836112964,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.01-ae0.0001-seed-142/results-round-020.json",
+        "correct_total": 27413,
+        "predictions_total": 89940,
+        "result_sha256": "8c98e9322b46284ccb3066ec745d6aa11e9d521e6f6958bd20eb5ff47fa19727",
+        "checkpoint_sha256": "20a3b64aa76d6a7557c85913ba40d74c0e4c3cb22253ef9211676e786d12662e"
+      },
+      {
+        "candidate_id": "local1-c0.03",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 29.14276184122749,
+        "result_path": "_local/pathmnist_calibrated/screening/local1-c0.03-seed-142/results-round-020.json",
+        "correct_total": 26211,
+        "predictions_total": 89940,
+        "result_sha256": "70a42ee90c5f74bec259103c7acdbbb308065e306be89f6084e9594cac99059e",
+        "checkpoint_sha256": "309d4b83867772527d8936bb7fffb8a37457d6ddb3c2a9b06a7473cf8e75f0b0"
+      },
+      {
+        "candidate_id": "grid-c0.01-ae0.001",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 26.007338225483657,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.01-ae0.001-seed-142/results-round-020.json",
+        "correct_total": 23391,
+        "predictions_total": 89940,
+        "result_sha256": "2690d120e9b4dfd087c9159da72fc175244ded6813518c99731a02f1d40cdbc9",
+        "checkpoint_sha256": "10bed2d10cb2165fec282364ecce97c96eacb68e985d127c15705d44232c4f2d"
+      },
+      {
+        "candidate_id": "grid-c0.01-ae0.0003",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 25.683789192795196,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.01-ae0.0003-seed-142/results-round-020.json",
+        "correct_total": 23100,
+        "predictions_total": 89940,
+        "result_sha256": "ba9af0e45a4c63a8dc0d4a575396497f9aeaeda90231b1c86cb1f6147b206f2b",
+        "checkpoint_sha256": "ef305b8caf19ee608d5a338cecdaad420777bb281095b5b3b2d05a0c5db5e675"
+      },
+      {
+        "candidate_id": "bf16-no-clip",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 25.220146764509675,
+        "result_path": "_local/pathmnist_calibrated/screening/bf16-no-clip-seed-142/results-round-020.json",
+        "correct_total": 22683,
+        "predictions_total": 89940,
+        "result_sha256": "57a497e83dc1c400b6e9520dd585f48926f85c3108b2958ce00554380746d844",
+        "checkpoint_sha256": "19a55062daf98344813815705bd01f72e0e65cb2aa7f2d711b60917efaed4a22"
+      },
+      {
+        "candidate_id": "fp32-matched-reference",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 24.838781409828776,
+        "result_path": "_local/pathmnist_calibrated/screening/fp32-matched-reference-seed-142/results-round-020.json",
+        "correct_total": 22340,
+        "predictions_total": 89940,
+        "result_sha256": "c43d5388a22e8c05a0dbb4fcb64b50efadeaa01bacb07d4e3f9c92fa160c7bc0",
+        "checkpoint_sha256": "f3bbd5044ab5de311e2ad4541e9918e8c06e5ad6626868cdd3a3d8a771fb387b"
+      },
+      {
+        "candidate_id": "grid-c0.01-ae0.0001",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 24.12497220369135,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.01-ae0.0001-seed-142/results-round-020.json",
+        "correct_total": 21698,
+        "predictions_total": 89940,
+        "result_sha256": "8c98e9322b46284ccb3066ec745d6aa11e9d521e6f6958bd20eb5ff47fa19727",
+        "checkpoint_sha256": "20a3b64aa76d6a7557c85913ba40d74c0e4c3cb22253ef9211676e786d12662e"
+      },
+      {
+        "candidate_id": "clip-1",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 23.668000889481874,
+        "result_path": "_local/pathmnist_calibrated/screening/clip-1-seed-142/results-round-020.json",
+        "correct_total": 21287,
+        "predictions_total": 89940,
+        "result_sha256": "3fce752326e0ae2929be12650f5a8cff06f4984caf4c4adb6ae7841bf462427e",
+        "checkpoint_sha256": "b63059eef4424ed379530e5f1aad235d6235024b32ca8b62d8c4ec8313431c6d"
+      },
+      {
+        "candidate_id": "grid-c0.003-ae0.0001",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 19.20280186791194,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.003-ae0.0001-seed-142/results-round-020.json",
+        "correct_total": 17271,
+        "predictions_total": 89940,
+        "result_sha256": "4f549978550fd02112e6c89d9c570b3479d630cbab9b3629769c7e79ff71d593",
+        "checkpoint_sha256": "d518b83896a40223bd12bb4c5fd4b648a7396273b76bfa0e3eb125cddf2340e1"
+      },
+      {
+        "candidate_id": "grid-c0.003-ae0.001",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 18.413386702245937,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.003-ae0.001-seed-142/results-round-020.json",
+        "correct_total": 16561,
+        "predictions_total": 89940,
+        "result_sha256": "cbfdaa2a3a6e87963c787a346dd0a45fe713ec3aba0278984ddf62cca7326bc6",
+        "checkpoint_sha256": "5760a44985a8a0655240310ac8f886acb4d9f0784006b5e4ff15fa637d443a1c"
+      },
+      {
+        "candidate_id": "grid-c0.003-ae0.0001",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 17.917500555926175,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.003-ae0.0001-seed-142/results-round-020.json",
+        "correct_total": 16115,
+        "predictions_total": 89940,
+        "result_sha256": "4f549978550fd02112e6c89d9c570b3479d630cbab9b3629769c7e79ff71d593",
+        "checkpoint_sha256": "d518b83896a40223bd12bb4c5fd4b648a7396273b76bfa0e3eb125cddf2340e1"
+      },
+      {
+        "candidate_id": "grid-c0.003-ae0.0003",
+        "mode": "train-recalibrated",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 17.816321992439406,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.003-ae0.0003-seed-142/results-round-020.json",
+        "correct_total": 16024,
+        "predictions_total": 89940,
+        "result_sha256": "41c67799295b45826ec81a4d667a107fa6c162de769612b6b35bf99cde04b0e6",
+        "checkpoint_sha256": "03e8938cb1fc7c141516cc7d769e9b09e2ed213c27636ff537ccae1b803d22b8"
+      },
+      {
+        "candidate_id": "grid-c0.003-ae0.0003",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 16.746720035579276,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.003-ae0.0003-seed-142/results-round-020.json",
+        "correct_total": 15062,
+        "predictions_total": 89940,
+        "result_sha256": "41c67799295b45826ec81a4d667a107fa6c162de769612b6b35bf99cde04b0e6",
+        "checkpoint_sha256": "03e8938cb1fc7c141516cc7d769e9b09e2ed213c27636ff537ccae1b803d22b8"
+      },
+      {
+        "candidate_id": "grid-c0.01-ae0.001",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 15.770513675783855,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.01-ae0.001-seed-142/results-round-020.json",
+        "correct_total": 14184,
+        "predictions_total": 89940,
+        "result_sha256": "2690d120e9b4dfd087c9159da72fc175244ded6813518c99731a02f1d40cdbc9",
+        "checkpoint_sha256": "10bed2d10cb2165fec282364ecce97c96eacb68e985d127c15705d44232c4f2d"
+      },
+      {
+        "candidate_id": "grid-c0.003-ae0.001",
+        "mode": "native",
+        "seed": 142,
+        "rounds": 20,
+        "accuracy_percent": 11.517678452301533,
+        "result_path": "_local/pathmnist_calibrated/screening/grid-c0.003-ae0.001-seed-142/results-round-020.json",
+        "correct_total": 10359,
+        "predictions_total": 89940,
+        "result_sha256": "cbfdaa2a3a6e87963c787a346dd0a45fe713ec3aba0278984ddf62cca7326bc6",
+        "checkpoint_sha256": "5760a44985a8a0655240310ac8f886acb4d9f0784006b5e4ff15fa637d443a1c"
+      }
+    ],
+    "no_new_test_access_before_selection": true,
+    "partition_sha256": "13d5cc86d039a8bf75b97ee6f6f94c6f177f52dd10829c66fd01150db7ceeb47",
+    "budget_reduction_sha256": "99f4d5939d933eaa12611f637d45da9dc4563eb2db8cfcab6458b72094921d65",
+    "original_search_plan_sha256": "fb2dcd7ee4103b56bb4631e434b302f6b755d8f4c396cebb34d458bb050c83cf",
+    "original_campaign_sha256": "6ff8e390397e7a8257ec0d19972db192ed431ce24b20fb126fc21f4232b170c8",
+    "retry_campaign_sha256": "8b7d358d7d0cc8f84032fbedd11fb60fd7466d03003584c9625d4cefda504104",
+    "rule": "greatest screening validation accuracy at seed142 round20; exact correct-count ties prefer native BN then original candidate insertion order",
+    "confirmations": false,
+    "extension": false,
+    "failed_screening": [
+      {
+        "name": "paper-reference-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/paper-reference-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/paper-reference-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/paper-reference-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/paper-reference-seed-142",
+          "--device",
+          "cuda:1"
+        ],
+        "device": "cuda:1",
+        "pid": 1352867,
+        "started_utc": "2026-10-06T11:41:36.328550+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:42.377150+00:00",
+        "process_wall_seconds": 726.0494443438947
+      },
+      {
+        "name": "grid-c0.01-ae0.0003-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/grid-c0.01-ae0.0003-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/grid-c0.01-ae0.0003-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/grid-c0.01-ae0.0003-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/grid-c0.01-ae0.0003-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354824,
+        "started_utc": "2026-10-06T11:53:06.688072+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:07.689118+00:00",
+        "process_wall_seconds": 1.001936251996085
+      },
+      {
+        "name": "grid-c0.01-ae0.001-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/grid-c0.01-ae0.001-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/grid-c0.01-ae0.001-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/grid-c0.01-ae0.001-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/grid-c0.01-ae0.001-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354828,
+        "started_utc": "2026-10-06T11:53:07.724358+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:08.725633+00:00",
+        "process_wall_seconds": 1.0020052918698639
+      },
+      {
+        "name": "grid-c0.03-ae0.0001-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/grid-c0.03-ae0.0001-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.0001-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/grid-c0.03-ae0.0001-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.0001-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354832,
+        "started_utc": "2026-10-06T11:53:08.762464+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:09.764113+00:00",
+        "process_wall_seconds": 1.002435325877741
+      },
+      {
+        "name": "grid-c0.03-ae0.0003-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/grid-c0.03-ae0.0003-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.0003-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/grid-c0.03-ae0.0003-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.0003-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354838,
+        "started_utc": "2026-10-06T11:53:09.798216+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:10.799056+00:00",
+        "process_wall_seconds": 1.0017045941203833
+      },
+      {
+        "name": "grid-c0.03-ae0.001-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/grid-c0.03-ae0.001-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.001-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/grid-c0.03-ae0.001-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.001-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354842,
+        "started_utc": "2026-10-06T11:53:10.834201+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:11.835214+00:00",
+        "process_wall_seconds": 1.0018150040414184
+      },
+      {
+        "name": "grid-c0.1-ae0.0001-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/grid-c0.1-ae0.0001-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.0001-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/grid-c0.1-ae0.0001-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.0001-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354847,
+        "started_utc": "2026-10-06T11:53:11.878893+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:12.883015+00:00",
+        "process_wall_seconds": 1.0049843818414956
+      },
+      {
+        "name": "grid-c0.1-ae0.0003-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/grid-c0.1-ae0.0003-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.0003-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/grid-c0.1-ae0.0003-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.0003-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354852,
+        "started_utc": "2026-10-06T11:53:12.919153+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:13.920102+00:00",
+        "process_wall_seconds": 1.0035725771449506
+      },
+      {
+        "name": "grid-c0.1-ae0.001-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/grid-c0.1-ae0.001-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.001-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/grid-c0.1-ae0.001-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.001-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354857,
+        "started_utc": "2026-10-06T11:53:13.958108+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:14.960661+00:00",
+        "process_wall_seconds": 1.003363783005625
+      },
+      {
+        "name": "clip-1-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/clip-1-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/clip-1-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/clip-1-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/clip-1-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354862,
+        "started_utc": "2026-10-06T11:53:15.002058+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:16.003130+00:00",
+        "process_wall_seconds": 1.0028172021266073
+      },
+      {
+        "name": "clip-10-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/clip-10-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/clip-10-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/clip-10-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/clip-10-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354866,
+        "started_utc": "2026-10-06T11:53:16.041711+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:17.042958+00:00",
+        "process_wall_seconds": 1.0020673288963735
+      },
+      {
+        "name": "cosine-c0.03-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/cosine-c0.03-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/cosine-c0.03-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/cosine-c0.03-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/cosine-c0.03-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354871,
+        "started_utc": "2026-10-06T11:53:17.081167+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:18.082107+00:00",
+        "process_wall_seconds": 1.0017714940477163
+      },
+      {
+        "name": "local1-c0.03-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/local1-c0.03-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/local1-c0.03-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/local1-c0.03-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/local1-c0.03-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354882,
+        "started_utc": "2026-10-06T11:53:18.126064+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:19.127703+00:00",
+        "process_wall_seconds": 1.0024142020847648
+      },
+      {
+        "name": "cosine-c0.1-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/cosine-c0.1-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/cosine-c0.1-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/cosine-c0.1-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/cosine-c0.1-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354886,
+        "started_utc": "2026-10-06T11:53:19.167142+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:20.184090+00:00",
+        "process_wall_seconds": 1.0178183789830655
+      },
+      {
+        "name": "local1-c0.1-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/local1-c0.1-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/local1-c0.1-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/local1-c0.1-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/local1-c0.1-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354891,
+        "started_utc": "2026-10-06T11:53:20.224252+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:21.225693+00:00",
+        "process_wall_seconds": 1.002319767139852
+      },
+      {
+        "name": "warm-lr-1e-4-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/warm-lr-1e-4-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/warm-lr-1e-4-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/warm-lr-1e-4-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/warm-lr-1e-4-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354895,
+        "started_utc": "2026-10-06T11:53:21.259676+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:22.261028+00:00",
+        "process_wall_seconds": 1.0021260119974613
+      },
+      {
+        "name": "bf16-no-clip-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/bf16-no-clip-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/bf16-no-clip-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/bf16-no-clip-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/bf16-no-clip-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354900,
+        "started_utc": "2026-10-06T11:53:22.295890+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:23.296868+00:00",
+        "process_wall_seconds": 1.001689972821623
+      },
+      {
+        "name": "fp32-clip5-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/fp32-clip5-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/fp32-clip5-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/fp32-clip5-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/fp32-clip5-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354914,
+        "started_utc": "2026-10-06T11:53:23.329586+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:24.330581+00:00",
+        "process_wall_seconds": 1.001717222854495
+      },
+      {
+        "name": "local1-c0.3-seed-142-r20",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/local1-c0.3-seed-142-r20.json"
+        ],
+        "output": "_local/pathmnist_calibrated/screening/local1-c0.3-seed-142",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/screening/local1-c0.3-seed-142-r20.json",
+          "--output",
+          "_local/pathmnist_calibrated/screening/local1-c0.3-seed-142",
+          "--device",
+          "cuda:0"
+        ],
+        "device": "cuda:0",
+        "pid": 1354924,
+        "started_utc": "2026-10-06T11:53:24.367205+00:00",
+        "exit_code": 1,
+        "ended_utc": "2026-10-06T11:53:25.369110+00:00",
+        "process_wall_seconds": 1.0027714970055968
+      }
+    ]
+  },
+  "checkpoint_verification": {
+    "status": "passed",
+    "seeds": {
+      "42": {
+        "initial.pt": {
+          "round": 0,
+          "sha256": "ba103a227f6f4b65c09ef31e301e6e545e4950371c85f9273442263bd8969e72",
+          "bytes": 19475374,
+          "ten_encoders_strictly_loaded": true,
+          "optimizer_moments_loaded_shapes_valid": true,
+          "batchnorm_buffers": 57,
+          "rng_loader_and_device_mapping_valid": true,
+          "initialization_exact_original_seed_recipe": true
+        },
+        "native-final.pt": {
+          "round": 50,
+          "sha256": "9b0b95d636f1b667c506dc358c65064d4eef71803ba493788ad9f5d382b7d9eb",
+          "bytes": 24805042,
+          "ten_encoders_strictly_loaded": true,
+          "optimizer_moments_loaded_shapes_valid": true,
+          "batchnorm_buffers": 57,
+          "rng_loader_and_device_mapping_valid": true,
+          "initialization_exact_original_seed_recipe": null
+        },
+        "final.pt": {
+          "round": 50,
+          "sha256": "887c9cf7ceb5424efa57a4a132f1b321ecd678fdf73407860e557dd821346c08",
+          "bytes": 24785742,
+          "ten_encoders_strictly_loaded": true,
+          "optimizer_moments_loaded_shapes_valid": true,
+          "batchnorm_buffers": 57,
+          "rng_loader_and_device_mapping_valid": true,
+          "initialization_exact_original_seed_recipe": null
+        }
+      }
+    }
+  },
+  "training_seconds": 1804.2153666438535,
+  "session_seconds": 1808.7746665419545,
+  "peak_cuda_allocated_bytes": 1322517504,
+  "peak_cuda_reserved_bytes": 1520435200,
+  "peak_rss_kib": 1963908,
+  "campaign": {
+    "status": "completed",
+    "queue_sha256": "46997f93c594a6264e73d6eb568132fb7327618341256082b7bd710c6982e5bf",
+    "frozen_files": {
+      "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+      "research/pathmnist_pathological/run.py": "d328605571295e86c62e577ddfc43a7e2c5a7594e934d99392e0a7d42e4fe88d",
+      "research/pathmnist_calibrated/data.py": "e2ba5a50da93ed4db801edfc512a0b01380b3c0d1cc2b001e6e8c36d13ddb0f1",
+      "research/pathmnist_calibrated/client.py": "bd74e1a17f99b2517302eadbe5487518ce96769cae2e69e3e7c5d235b70d0473",
+      "research/pathmnist_calibrated/runner.py": "4e2128c400cc462fc8cb5de79edd11175394e6425325a5a5d75b8336b54d0fcb",
+      "research/pathmnist_calibrated/search_plan.json": "fb2dcd7ee4103b56bb4631e434b302f6b755d8f4c396cebb34d458bb050c83cf",
+      "research/pathmnist_calibrated/partition.json.gz": "068b38d458f41d3a99ddb51c04869d416752bf06c50f0cb9455c1747714d334c",
+      "research/pathmnist_calibrated/configs/final/seed-42.json": "a8235ad36d867667ab8d69f38cf45e085279e8206e70a2183196e1f360e4ee82"
+    },
+    "base_commit": "3b9af9af88b74e50a2871eb6b1b96b18a245b424",
+    "gpu_slots": {
+      "cuda:1": 1,
+      "cuda:0": 0
+    },
+    "started_utc": "2026-10-06T12:48:34.391189+00:00",
+    "runs": [
+      {
+        "name": "final-seed-42",
+        "script": "research/pathmnist_calibrated/runner.py",
+        "args": [
+          "--config",
+          "research/pathmnist_calibrated/configs/final/seed-42.json"
+        ],
+        "output": "_local/pathmnist_calibrated/final/seed-42",
+        "command": [
+          "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+          "-u",
+          "research/pathmnist_calibrated/runner.py",
+          "--config",
+          "research/pathmnist_calibrated/configs/final/seed-42.json",
+          "--output",
+          "_local/pathmnist_calibrated/final/seed-42",
+          "--device",
+          "cuda:1"
+        ],
+        "device": "cuda:1",
+        "pid": 1363867,
+        "started_utc": "2026-10-06T12:48:34.421942+00:00",
+        "exit_code": 0,
+        "ended_utc": "2026-10-06T13:18:48.741831+00:00",
+        "process_wall_seconds": 1814.3206147621386
+      }
+    ],
+    "external_actions": "none",
+    "policy": "keep failures, continue other declared candidates; no process signals",
+    "ended_utc": "2026-10-06T13:18:49.742579+00:00",
+    "wall_seconds": 1815.3542482899502,
+    "process_wall_seconds_sum": 1814.3206147621386
+  },
+  "previous_single_seed42_accuracy_percent": 39.61977715877437,
+  "paper_table4_mean_accuracy_percent": 50.94,
+  "performance_target_accuracy_percent": 50.94,
+  "above_performance_target": false,
+  "statistical_note": "one final seed; no between-seed SD; selection used one screening seed at20 rounds; no confirmations or100-round extension"
+}

@@ -100,7 +100,7 @@ def final():
              'training_seconds':r['training_seconds'],'session_seconds':r['session_seconds'],
              'peak_cuda_allocated_bytes':r['peak_cuda_allocated_bytes'],'peak_cuda_reserved_bytes':r['peak_cuda_reserved_bytes'],
              'peak_rss_kib':r['peak_rss_kib'],'campaign':campaign,
-             'previous_single_seed 42_accuracy_percent':39.61977715877437,'paper_table4_mean_accuracy_percent':50.94,
+             'previous_single_seed42_accuracy_percent':39.61977715877437,'paper_table4_mean_accuracy_percent':50.94,
              'performance_target_accuracy_percent':50.94,
              'above_performance_target':metric['uniform_pipeline_accuracy_percent']>50.94,
              'statistical_note':'one final seed; no between-seed SD; selection used one screening seed at20 rounds; no confirmations or100-round extension'}

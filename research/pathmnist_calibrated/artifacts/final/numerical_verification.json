@@ -1,0 +1,81 @@
+{
+  "status": "passed",
+  "seed": 42,
+  "rounds": 50,
+  "evaluation_count": 1,
+  "correct_total": 25331,
+  "predictions_total": 71800,
+  "accuracy_percent": 35.2799442896936,
+  "warmup_optimizer_steps": 35400,
+  "classification_steps_each_optimizer": 106200,
+  "autoencoder_optimizer_steps": 141600,
+  "classifier_optimizer_steps": 106200,
+  "training_seconds": 1804.2153666438535,
+  "session_seconds": 1808.7746665419545,
+  "peak_cuda_allocated_mib": 1261.2509765625,
+  "peak_cuda_reserved_mib": 1450.0,
+  "peak_rss_mib": 1917.87890625,
+  "above_target": false,
+  "pipeline_metrics": [
+    {
+      "client_id": 0,
+      "correct": 2435,
+      "total": 7180,
+      "accuracy_percent": 33.91364902506964
+    },
+    {
+      "client_id": 1,
+      "correct": 2650,
+      "total": 7180,
+      "accuracy_percent": 36.90807799442897
+    },
+    {
+      "client_id": 2,
+      "correct": 2493,
+      "total": 7180,
+      "accuracy_percent": 34.721448467966574
+    },
+    {
+      "client_id": 3,
+      "correct": 2526,
+      "total": 7180,
+      "accuracy_percent": 35.18105849582173
+    },
+    {
+      "client_id": 4,
+      "correct": 2555,
+      "total": 7180,
+      "accuracy_percent": 35.58495821727019
+    },
+    {
+      "client_id": 5,
+      "correct": 2488,
+      "total": 7180,
+      "accuracy_percent": 34.65181058495822
+    },
+    {
+      "client_id": 6,
+      "correct": 2622,
+      "total": 7180,
+      "accuracy_percent": 36.51810584958217
+    },
+    {
+      "client_id": 7,
+      "correct": 2513,
+      "total": 7180,
+      "accuracy_percent": 35.0
+    },
+    {
+      "client_id": 8,
+      "correct": 2567,
+      "total": 7180,
+      "accuracy_percent": 35.75208913649025
+    },
+    {
+      "client_id": 9,
+      "correct": 2482,
+      "total": 7180,
+      "accuracy_percent": 34.56824512534819
+    }
+  ]
+}

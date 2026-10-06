@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "seeds": {
+    "42": {
+      "initial.pt": {
+        "round": 0,
+        "sha256": "ba103a227f6f4b65c09ef31e301e6e545e4950371c85f9273442263bd8969e72",
+        "bytes": 19475374,
+        "ten_encoders_strictly_loaded": true,
+        "optimizer_moments_loaded_shapes_valid": true,
+        "batchnorm_buffers": 57,
+        "rng_loader_and_device_mapping_valid": true,
+        "initialization_exact_original_seed_recipe": true
+      },
+      "native-final.pt": {
+        "round": 50,
+        "sha256": "9b0b95d636f1b667c506dc358c65064d4eef71803ba493788ad9f5d382b7d9eb",
+        "bytes": 24805042,
+        "ten_encoders_strictly_loaded": true,
+        "optimizer_moments_loaded_shapes_valid": true,
+        "batchnorm_buffers": 57,
+        "rng_loader_and_device_mapping_valid": true,
+        "initialization_exact_original_seed_recipe": null
+      },
+      "final.pt": {
+        "round": 50,
+        "sha256": "887c9cf7ceb5424efa57a4a132f1b321ecd678fdf73407860e557dd821346c08",
+        "bytes": 24785742,
+        "ten_encoders_strictly_loaded": true,
+        "optimizer_moments_loaded_shapes_valid": true,
+        "batchnorm_buffers": 57,
+        "rng_loader_and_device_mapping_valid": true,
+        "initialization_exact_original_seed_recipe": null
+      }
+    }
+  }
+}
