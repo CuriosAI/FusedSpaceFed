@@ -109,3 +109,26 @@ ricalibrazione o adattamento al test. La successiva prova usa seed 42 e
 training completo: riutilizza pesi finali compatibili se già disponibili,
 altrimenti parte da zero. Il confronto con il valore pubblicato rimane
 esplorativo e ogni modifica al protocollo viene identificata.
+
+Per non aspettare inutilmente le prove GN più lunghe, la selezione è organizzata
+in due onde prima di leggere i risultati a 50 round: prima il massimo di
+validation dei quattro profili esistenti completati; poi, se il suo test non
+supera la soglia, il massimo dei due profili GN. Dentro ciascuna onda vale il
+massimo dei conteggi corretti al round 50, con parità a favore di native e poi
+dell’ordine dichiarato. Un training finale dell’onda 1 può sovrapporsi alle
+validation GN. Le valutazioni test restano sequenziali, con configurazione
+congelata per ciascun tentativo. Se un tentativo supera il 50,94%, non si
+avviano altri candidati; eventuali lavori nostri ancora attivi vengono
+chiusi conservando l’ultimo checkpoint completo e indicando lo stop richiesto
+dall’utente. I processi di altri utenti non vengono interrotti.
+
+Le quattro continuazioni hanno ottenuto un massimo di validation 48,475650%,
+inferiore alla soglia cercata; il nuovo budget prioritizza quindi i profili
+GN prima di investire in un ulteriore training finale simile ai precedenti.
+È congelato anche un controllo diagnostico quasi gratuito dell’inferenza
+nativa sui pesi della run completa c0.1/ae0.0001 seed 42: erano stati testati
+soltanto con BN ricalibrata (35,279944%). Questo controllo mantiene tutti i
+pesi e gli iperparametri e ripristina l’inferenza del paper. **La modalità
+nativa non è quella preferita dalla validation**: il suo test è una diagnosi
+esplorativa del protocollo d’inferenza sul benchmark già noto, e non verrà
+presentato come una modalità selezionata su validation indipendente.

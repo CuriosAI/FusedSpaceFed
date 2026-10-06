@@ -1,0 +1,18 @@
+{
+  "attempt": 3,
+  "checkpoint": "_local/pathmnist_calibrated/final/seed-42/native-final.pt",
+  "checkpoint_sha256": "9b0b95d636f1b667c506dc358c65064d4eef71803ba493788ad9f5d382b7d9eb",
+  "partition_sha256": "13d5cc86d039a8bf75b97ee6f6f94c6f177f52dd10829c66fd01150db7ceeb47",
+  "normalization": "native",
+  "training_seed": 42,
+  "training_rounds": 50,
+  "test_access": "one frozen candidate; known benchmark; exploratory threshold stop",
+  "validation_basis": {
+    "kind": "diagnostic of original native inference protocol; not the validation-preferred normalization",
+    "training_hyperparameter_selection": "prior seed142 round20 validation selected c0.1/ae0.0001",
+    "native_validation50_percent": 33.43117633978208,
+    "source": "_local/pathmnist_recovery/continuation_validation/grid-c0.1-ae0.0001/results.json",
+    "source_sha256": "27a95045c1c73b8266563821b4e4d88b87e34d64df4d2f75c13727d9d4062fd2",
+    "exposure": "training hyperparameters fixed; native diagnostic predeclared before its test; known benchmark exploratory stop"
+  }
+}

@@ -5,6 +5,7 @@ from research.pathmnist_calibrated.prepare_plan import base
 from research.pathmnist_recovery.method import build_classifier,augment_images,RecoveryClient
 from research.pathmnist_recovery.training import adapted
 from research.pathmnist_calibrated import runner
+from research.pathmnist_pathological.run import client_snapshot,restore_client,rng_state,restore_rng
 
 
 def test_gn_keeps_parameter_count_logits_and_sample_independent_normalization():
@@ -53,3 +54,22 @@ def test_runner_adapter_restores_original_globals_after_error():
             raise RuntimeError('test')
     except RuntimeError:pass
     assert all(getattr(runner,k) is v for k,v in before.items())
+
+
+def test_augmented_gn_resume_restores_optimizer_loader_and_global_rng():
+    torch.set_num_threads(1);torch.manual_seed(17)
+    settings=base(local_epochs=1,classifier_normalization='groupnorm8',augmentation='flip-rot90')
+    data=TensorDataset(torch.rand(4,3,32,32),torch.tensor([0,1,0,1]))
+    def make():
+        loader=DataLoader(data,batch_size=2,shuffle=True,generator=torch.Generator().manual_seed(19))
+        return RecoveryClient(0,loader,settings,torch.device('cpu'))
+    a=make();a.train_round_at(1);checkpoint=client_snapshot(a);random_state=rng_state(False)
+    a.train_round_at(2);expected=client_snapshot(a)
+    b=make();restore_client(b,checkpoint);restore_rng(random_state);b.train_round_at(2)
+    actual=client_snapshot(b)
+    for component in ('classifier','autoencoder'):
+        assert all(torch.equal(v,actual[component][k]) for k,v in expected[component].items())
+    assert torch.equal(expected['loader_generator'],actual['loader_generator'])
+    for param_id,state in expected['ae_optimizer']['state'].items():
+        assert all(torch.equal(value,actual['ae_optimizer']['state'][param_id][key])
+                   for key,value in state.items())
