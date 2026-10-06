@@ -1,0 +1,92 @@
+{
+  "anchors": [
+    "initialization",
+    "final-round300"
+  ],
+  "batch_norm_modes": [
+    "eval",
+    "batch-stateless"
+  ],
+  "batch_size": 32,
+  "batches_per_client": 5,
+  "checkpoint_hashes": {
+    "42": {
+      "final-round300": {
+        "bytes": 58587340,
+        "path": "_local/digits_mechanism_diagnostics/phase1/seed-42/final-round300/anchor.pt",
+        "sha256": "2a37cf1ff61d6181babe130d7cd00373737011d58ff55ba7c004a3269a3bdf57"
+      },
+      "initialization": {
+        "bytes": 58587340,
+        "path": "_local/digits_mechanism_diagnostics/phase1/seed-42/initialization/anchor.pt",
+        "sha256": "4da7d900a8398a591ff02fe8ca3d7e3b035269e504ffcf5b4ae596e12d94eb44"
+      }
+    },
+    "43": {
+      "final-round300": {
+        "bytes": 58587340,
+        "path": "_local/digits_mechanism_diagnostics/phase1/seed-43/final-round300/anchor.pt",
+        "sha256": "d661f34ab41b2cd3bad95d008e8b487c3172181d22cb0d1465c02aad234a7503"
+      },
+      "initialization": {
+        "bytes": 58587340,
+        "path": "_local/digits_mechanism_diagnostics/phase1/seed-43/initialization/anchor.pt",
+        "sha256": "6dc95a0d81efc8f4d689bc92a5e0d171b27ee41515595e6bd34fcff5fc937d42"
+      }
+    },
+    "44": {
+      "final-round300": {
+        "bytes": 58587340,
+        "path": "_local/digits_mechanism_diagnostics/phase1/seed-44/final-round300/anchor.pt",
+        "sha256": "01fd5635fc9be02898a5e1a75664ead01296e80bbe2a3ac8c828409f0028133b"
+      },
+      "initialization": {
+        "bytes": 58587340,
+        "path": "_local/digits_mechanism_diagnostics/phase1/seed-44/initialization/anchor.pt",
+        "sha256": "0b571988cc130e7ae158b6310a628768999b4615268333bb3f40e07c355ee73b"
+      }
+    },
+    "45": {
+      "final-round300": {
+        "bytes": 58587340,
+        "path": "_local/digits_mechanism_diagnostics/phase1/seed-45/final-round300/anchor.pt",
+        "sha256": "deec02f37b7874195803a2ccf17ef9339305a13942c14710518994823ab2566a"
+      },
+      "initialization": {
+        "bytes": 58587340,
+        "path": "_local/digits_mechanism_diagnostics/phase1/seed-45/initialization/anchor.pt",
+        "sha256": "33f200a35df635181d4762f03cc8709a4a263df0390ecd0d757654217ab3f50d"
+      }
+    },
+    "46": {
+      "final-round300": {
+        "bytes": 58587340,
+        "path": "_local/digits_mechanism_diagnostics/phase1/seed-46/final-round300/anchor.pt",
+        "sha256": "2f24a06babe1fb2f3ea49ba341714c65b4643082dea7439e9a4911de2d41f35f"
+      },
+      "initialization": {
+        "bytes": 58587340,
+        "path": "_local/digits_mechanism_diagnostics/phase1/seed-46/initialization/anchor.pt",
+        "sha256": "3995d7789715d69fc5d164ba948402e792a8f5b7ad11336874c56550673f94de"
+      }
+    }
+  },
+  "checkpoint_source": "phase1 anchors (same complete calibrated FusedSpaceFed states)",
+  "client_weighting": "uniform, dispersion divisor m=5",
+  "clipping": "raw gradients, no optimizer steps",
+  "config_sha256": "dfbd03cb3092d19efd9f2f51dc2909c7afed1b4fddd26d60c057ce63bbbd7a29",
+  "gradient_precision": "native Float32; mean and dispersion reduction CPU Float64",
+  "model_state": "same classifier/decoder/private encoders for original vs fused; BN buffers unchanged/reset before every branch",
+  "phase": 3,
+  "probe_file": "research/digits_mechanism_diagnostics/probe.json",
+  "probe_sha256": "de6ed50447653020c3f3a1edffe3a751d391af0a5c4fb8d3565eddb6e6000745",
+  "samples_per_client": 160,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "test_access": "none, training probe only"
+}
