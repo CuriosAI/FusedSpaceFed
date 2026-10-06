@@ -1,0 +1,62 @@
+{
+  "checkpoint": "_local/pathmnist_pathological/seed-42/final.pt",
+  "checkpoint_sha256": "fa56da01091debe9031a9acb2e3de0f34ce0f751d2c95d2d0d54c05f15697d1e",
+  "source_partition_sha256": "b70fb78ad84a7d7041c5d98938d208f8b23455c3254b8b949e32c58509828a80",
+  "seed": 42,
+  "source_round": 50,
+  "fusion_gain": 1.0,
+  "bn_mode": "original-frozen",
+  "head_penalty": 0.0,
+  "head_max_iter": 100,
+  "lbfgs": {
+    "lr": 1.0,
+    "history_size": 20,
+    "line_search_fn": "strong_wolfe",
+    "tolerance_grad": 1e-07,
+    "tolerance_change": 1e-10
+  },
+  "objective": "uniform mean of ten local-client full-batch cross-entropies",
+  "training_split": "all 89996 original training images; each uses its owner encoder",
+  "trainable_parameters": [
+    "fc.weight",
+    "fc.bias"
+  ],
+  "precision_refit_features_and_test": "float32; no AMP",
+  "evaluation": "uniform mean of all ten pipeline accuracies on the same complete 7180-image test",
+  "test_access": "one predetermined before/after diagnostic; no tuning, checkpoint selection or threshold stop",
+  "centralized_checkpoint": "_local/pathmnist_head_only/seed-42/final.pt",
+  "centralized_checkpoint_sha256": "31019b0e1ef8594de1f7da196a6ce4b7e84afdc58fb4ba3d42fcf14b7fd9d4b8",
+  "centralized_results": "_local/pathmnist_head_only/seed-42/results.json",
+  "centralized_results_sha256": "52d2d7b73929080fcb248573dd504fecbba940a6a49c4b11a15b0fd23b258700",
+  "client_count": 10,
+  "head_parameters": 585,
+  "simulation": "ten spawned client processes; server receives only local loss and head gradient on optimizer channel",
+  "aggregation_precision": "float32 mean in increasing client ID order",
+  "implicit_lbfgs_max_eval": 125,
+  "tolerances": {
+    "same_point_loss": {
+      "atol": 2e-06,
+      "rtol": 2e-06
+    },
+    "stored_gradient_anchor": {
+      "atol": 1e-05,
+      "rtol": 0.0001
+    },
+    "final_loss": {
+      "atol": 0.0002,
+      "rtol": 0.0001
+    },
+    "final_gradient": {
+      "atol": 0.0002,
+      "rtol": 0.01
+    },
+    "final_logits": {
+      "atol": 0.02,
+      "rtol": 0.002
+    },
+    "accuracy_percentage_points_atol": 0.05,
+    "test_prediction_disagreement_fraction_max": 0.001
+  },
+  "communication": "count application bytes, opcodes and 4-byte Unix Pipe framing separately; exclude preinstalled model/data, OS process startup and disk archives",
+  "comparison": "initial loss, centralized final loss, stored pre-last-step central gradient/loss, final objectives/gradients, train/test logits and same official test accuracy; no raw feature/label/logit transfer"
+}
