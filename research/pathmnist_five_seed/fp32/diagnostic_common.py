@@ -2,7 +2,7 @@
 import json
 import subprocess
 import torch
-from research.pathmnist_five_seed.fp32.profile import ROOT, PUBLIC, PRIVATE
+from research.pathmnist_five_seed.fp32.precision import ROOT, PUBLIC, PRIVATE
 from research.pathmnist_five_seed.data import partition
 from research.pathmnist_five_seed.diagnostic_common import (
     ANCHORS, STAGES, tensor_metrics, measure, component_states, deltas, stats,

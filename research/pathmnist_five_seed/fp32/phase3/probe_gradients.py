@@ -8,7 +8,7 @@ import sys
 import time
 ROOT=Path(__file__).resolve().parents[4];sys.path.insert(0,str(ROOT))
 import torch
-from research.pathmnist_five_seed.fp32.profile import PUBLIC,force_fp32
+from research.pathmnist_five_seed.fp32.precision import PUBLIC,force_fp32
 from fusedspacefed_core import ResNet20V2,UNetSmallAE,seed_everything
 from research.pathmnist_five_seed.data import cache,verify_cache
 from research.pathmnist_five_seed.fp32.diagnostic_common import ANCHORS,probe,load_anchor,source_identity,state_hash

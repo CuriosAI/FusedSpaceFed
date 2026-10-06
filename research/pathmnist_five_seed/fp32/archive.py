@@ -8,7 +8,7 @@ import shutil
 import statistics
 import torch
 from research.pathmnist_five_seed.data import partition
-from research.pathmnist_five_seed.fp32.profile import ROOT,PUBLIC,PRIVATE
+from research.pathmnist_five_seed.fp32.precision import ROOT,PUBLIC,PRIVATE
 from research.pathmnist_five_seed.fp32.diagnostic_common import (run_path,stats,ANCHORS,STAGES,state_hash)
 from research.pathmnist_pathological.run import assert_finite,file_hash,write_json,json_hash
 

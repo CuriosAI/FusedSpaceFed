@@ -1,7 +1,7 @@
 """Register exact original initial states and the separate five-run FP32 queue."""
 import json
 import torch
-from research.pathmnist_five_seed.fp32.profile import ROOT, PUBLIC, PRIVATE
+from research.pathmnist_five_seed.fp32.precision import ROOT, PUBLIC, PRIVATE
 from research.pathmnist_five_seed.fp32.runner import SOURCES
 from research.pathmnist_five_seed.data import partition, verify_cache
 from research.pathmnist_pathological.run import file_hash, write_json, assert_finite

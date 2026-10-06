@@ -18,13 +18,13 @@ from fusedspacefed_core import ResNet20V2,UNetSmallAE,clone_state_dict,seed_ever
 from research.pathmnist_pathological.run import (file_hash,json_hash,write_json,atomic_save,assert_finite,
     client_snapshot,restore_client,rng_state,restore_rng,resident_loader)
 from research.pathmnist_five_seed.data import DATA,partition,cache,loaders,verify_cache
-from research.pathmnist_five_seed.fp32.profile import PUBLIC,force_fp32,check_client_precision
+from research.pathmnist_five_seed.fp32.precision import PUBLIC,force_fp32,check_client_precision
 from research.pathmnist_five_seed.client import PathClient
 
 SOURCES=('fusedspacefed_core.py','research/pathmnist_pathological/run.py','research/pathmnist_pathological/config.json',
          'research/pathmnist_five_seed/data.py','research/pathmnist_five_seed/data_identity.json',
          'research/pathmnist_five_seed/client.py','research/pathmnist_five_seed/fp32/runner.py',
-         'research/pathmnist_five_seed/fp32/profile.py','research/pathmnist_five_seed/fp32/plan.json',
+         'research/pathmnist_five_seed/fp32/precision.py','research/pathmnist_five_seed/fp32/plan.json',
          'research/pathmnist_five_seed/fp32/initial_sources.json')
 
 

@@ -9,7 +9,7 @@ import sys
 import time
 ROOT=Path(__file__).resolve().parents[4];sys.path.insert(0,str(ROOT))
 import torch
-from research.pathmnist_five_seed.fp32.profile import PUBLIC,force_fp32,check_client_precision
+from research.pathmnist_five_seed.fp32.precision import PUBLIC,force_fp32,check_client_precision
 from fusedspacefed_core import seed_everything
 from research.pathmnist_pathological.run import (restore_client,client_snapshot,restore_rng,rng_state,
                                                  file_hash,write_json,atomic_save,assert_finite)

@@ -2,7 +2,7 @@
 import argparse
 import json
 from research.pathmnist_five_seed.data import partition
-from research.pathmnist_five_seed.fp32.profile import ROOT,PUBLIC,PRIVATE
+from research.pathmnist_five_seed.fp32.precision import ROOT,PUBLIC,PRIVATE
 from research.pathmnist_five_seed.fp32.diagnostic_common import prepare_probes,freeze_anchors,load_anchor
 from research.pathmnist_five_seed.fp32.runner import SOURCES
 from research.pathmnist_pathological.run import file_hash,write_json

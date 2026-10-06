@@ -1,8 +1,10 @@
 import json
 from pathlib import Path
+import subprocess
+import sys
 import pytest
 import torch
-from research.pathmnist_five_seed.fp32.profile import PUBLIC, ROOT, force_fp32, check_client_precision
+from research.pathmnist_five_seed.fp32.precision import PUBLIC, ROOT, force_fp32, check_client_precision
 from research.pathmnist_five_seed.fp32.runner import train, validate
 from research.pathmnist_five_seed.data import partition
 from research.pathmnist_five_seed.fp32.diagnostic_common import probe
@@ -10,6 +12,13 @@ from research.pathmnist_five_seed.tests.test_native_runner import (
     client, settings, tensors, assert_tree, threads,
 )
 from research.pathmnist_pathological.run import file_hash, restore_client, client_snapshot
+
+
+@pytest.mark.parametrize('entrypoint',['runner.py','phase1/diagnose.py','phase3/probe_gradients.py'])
+def test_direct_cli_imports_do_not_shadow_python_standard_library(entrypoint):
+    result=subprocess.run([sys.executable,str(PUBLIC/entrypoint),'--help'],cwd=ROOT,capture_output=True,text=True)
+    assert result.returncode==0,result.stderr
+    assert '--device' in result.stdout
 
 
 def test_precision_only_profile_and_same_fixed_training_probes():
