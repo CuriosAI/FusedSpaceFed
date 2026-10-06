@@ -1,0 +1,14 @@
+{
+  "screening_candidates": 24,
+  "screening_rounds": 20,
+  "screening_seed": 142,
+  "confirmations": false,
+  "extension": false,
+  "selection": "highest validation accuracy over all completed registered candidates and two declared inference modes; ties native BN, then original candidate insertion order",
+  "final_seeds": [
+    42
+  ],
+  "final_rounds": 50,
+  "schedule_horizon": "preserve selected candidate settings",
+  "reference": "BUDGET_REDUCTION.md"
+}

@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/mnt/data/codex/FusedSpaceFed/research/pathmnist_calibrated/runner.py", line 9, in <module>
+    import subprocess
+  File "/home/schroeder/miniconda3/envs/general_ml/lib/python3.12/subprocess.py", line 118, in <module>
+    import select
+  File "/mnt/data/codex/FusedSpaceFed/research/pathmnist_calibrated/select.py", line 10, in <module>
+    from research.pathmnist_calibrated.data import PUBLIC,PRIVATE,verify
+  File "/mnt/data/codex/FusedSpaceFed/research/pathmnist_calibrated/data.py", line 7, in <module>
+    import torch
+  File "/home/schroeder/miniconda3/envs/general_ml/lib/python3.12/site-packages/torch/__init__.py", line 56, in <module>
+    from torch._utils_internal import (
+  File "/home/schroeder/miniconda3/envs/general_ml/lib/python3.12/site-packages/torch/_utils_internal.py", line 10, in <module>
+    from torch._strobelight.compile_time_profiler import StrobelightCompileTimeProfiler
+  File "/home/schroeder/miniconda3/envs/general_ml/lib/python3.12/site-packages/torch/_strobelight/compile_time_profiler.py", line 6, in <module>
+    from socket import gethostname
+  File "/home/schroeder/miniconda3/envs/general_ml/lib/python3.12/socket.py", line 55, in <module>
+    import os, sys, io, selectors
+  File "/home/schroeder/miniconda3/envs/general_ml/lib/python3.12/selectors.py", line 290, in <module>
+    class SelectSelector(_BaseSelectorImpl):
+  File "/home/schroeder/miniconda3/envs/general_ml/lib/python3.12/selectors.py", line 317, in SelectSelector
+    _select = select.select
+              ^^^^^^^^^^^^^
+AttributeError: partially initialized module 'select' has no attribute 'select' (most likely due to a circular import)

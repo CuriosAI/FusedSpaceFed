@@ -1,0 +1,28 @@
+{
+  "gpu_slots": {
+    "cuda:1": 1,
+    "cuda:0": 0
+  },
+  "minimum_free_mib": 8192,
+  "frozen_files": {
+    "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+    "research/pathmnist_pathological/run.py": "d328605571295e86c62e577ddfc43a7e2c5a7594e934d99392e0a7d42e4fe88d",
+    "research/pathmnist_calibrated/data.py": "e2ba5a50da93ed4db801edfc512a0b01380b3c0d1cc2b001e6e8c36d13ddb0f1",
+    "research/pathmnist_calibrated/client.py": "bd74e1a17f99b2517302eadbe5487518ce96769cae2e69e3e7c5d235b70d0473",
+    "research/pathmnist_calibrated/runner.py": "4e2128c400cc462fc8cb5de79edd11175394e6425325a5a5d75b8336b54d0fcb",
+    "research/pathmnist_calibrated/search_plan.json": "fb2dcd7ee4103b56bb4631e434b302f6b755d8f4c396cebb34d458bb050c83cf",
+    "research/pathmnist_calibrated/partition.json.gz": "068b38d458f41d3a99ddb51c04869d416752bf06c50f0cb9455c1747714d334c",
+    "research/pathmnist_calibrated/configs/final/seed-42.json": "a8235ad36d867667ab8d69f38cf45e085279e8206e70a2183196e1f360e4ee82"
+  },
+  "jobs": [
+    {
+      "name": "final-seed-42",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/final/seed-42.json"
+      ],
+      "output": "_local/pathmnist_calibrated/final/seed-42"
+    }
+  ]
+}

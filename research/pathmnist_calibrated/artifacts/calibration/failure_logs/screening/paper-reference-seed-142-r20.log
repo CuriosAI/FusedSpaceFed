@@ -1,0 +1,27 @@
+{"round": 1, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.4999710545718801, "seconds": 38.889367283089086}
+{"round": 2, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.41596081830242915, "seconds": 38.30651527410373}
+{"round": 3, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.35221832997150015, "seconds": 37.734037281014025}
+{"round": 4, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.31609717126325193, "seconds": 36.71066431584768}
+{"round": 5, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.28898978548207976, "seconds": 36.21227095997892}
+{"round": 6, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.2599329089452949, "seconds": 39.654050695942715}
+{"round": 7, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.24785338392682527, "seconds": 40.16297933179885}
+{"round": 8, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.23107761577352198, "seconds": 39.362694883020595}
+{"round": 9, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.21487140425964002, "seconds": 39.44891800917685}
+{"round": 10, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.2004119440011396, "seconds": 40.67083975300193}
+{"round": 11, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.18851876542540016, "seconds": 38.8976559501607}
+{"round": 12, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.1733206533792003, "seconds": 40.297826207010075}
+{"round": 13, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.1667073135619907, "seconds": 40.89754616608843}
+{"round": 14, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.15917448633270195, "seconds": 39.65646235900931}
+{"round": 15, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.14600715489398247, "seconds": 40.036477512912825}
+{"round": 16, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.1383946862565952, "seconds": 40.30934936297126}
+{"round": 17, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.1349359924922148, "seconds": 38.05017650080845}
+{"round": 18, "candidate": "paper-reference", "seed": 142, "classification_loss": 0.13801947128062725, "seconds": 39.500804900890216}
+Traceback (most recent call last):
+  File "/mnt/data/codex/FusedSpaceFed/research/pathmnist_calibrated/runner.py", line 243, in <module>
+    run(json.loads(args.config.read_text()), args.output, args.device, args.resume)
+  File "/mnt/data/codex/FusedSpaceFed/research/pathmnist_calibrated/runner.py", line 168, in run
+    record = client.train_round_at(round_index)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/codex/FusedSpaceFed/research/pathmnist_calibrated/client.py", line 101, in train_round_at
+    raise FloatingPointError('Non-finite phase loss')
+FloatingPointError: Non-finite phase loss

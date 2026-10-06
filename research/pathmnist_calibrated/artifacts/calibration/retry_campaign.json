@@ -1,0 +1,512 @@
+{
+  "status": "completed",
+  "queue_sha256": "dc25999267ef49af7dfc0785f5a0e427a0952207b1afa92752340f8c461ed42f",
+  "frozen_files": {
+    "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+    "research/pathmnist_pathological/run.py": "d328605571295e86c62e577ddfc43a7e2c5a7594e934d99392e0a7d42e4fe88d",
+    "research/pathmnist_calibrated/data.py": "e2ba5a50da93ed4db801edfc512a0b01380b3c0d1cc2b001e6e8c36d13ddb0f1",
+    "research/pathmnist_calibrated/client.py": "bd74e1a17f99b2517302eadbe5487518ce96769cae2e69e3e7c5d235b70d0473",
+    "research/pathmnist_calibrated/runner.py": "4e2128c400cc462fc8cb5de79edd11175394e6425325a5a5d75b8336b54d0fcb",
+    "research/pathmnist_calibrated/search_plan.json": "fb2dcd7ee4103b56bb4631e434b302f6b755d8f4c396cebb34d458bb050c83cf",
+    "research/pathmnist_calibrated/partition.json.gz": "068b38d458f41d3a99ddb51c04869d416752bf06c50f0cb9455c1747714d334c",
+    "research/pathmnist_calibrated/configs/screening/grid-c0.01-ae0.0003-seed-142-r20.json": "85730307bc9129cee0a64a2c89d42956e7447ab1aa3c4e786e907e253dc7bd86",
+    "research/pathmnist_calibrated/configs/screening/grid-c0.01-ae0.001-seed-142-r20.json": "09e3afc9852340f8eed3783f004085364ef1dedc46fd87124d98b09c4184507c",
+    "research/pathmnist_calibrated/configs/screening/grid-c0.03-ae0.0001-seed-142-r20.json": "062351be2b40624ddcc9f05f8176178ef7d40840c1d26e0fc6531706d57f7e3b",
+    "research/pathmnist_calibrated/configs/screening/grid-c0.03-ae0.0003-seed-142-r20.json": "5ca82d56784e490d50418ebb7868326847d6d717b879fc0ba27f69a4c2caac23",
+    "research/pathmnist_calibrated/configs/screening/grid-c0.03-ae0.001-seed-142-r20.json": "444541b938931160a2e1794d78265e7e8139c9df469f106d23db58d61f0d40ba",
+    "research/pathmnist_calibrated/configs/screening/grid-c0.1-ae0.0001-seed-142-r20.json": "d60707617b1bf8729a1c5ba1b2c20111f593b450b22a74a7b2135f97f5ca6d19",
+    "research/pathmnist_calibrated/configs/screening/grid-c0.1-ae0.0003-seed-142-r20.json": "9401a52a29dac5abe80e00bc6961d7f3d0226173549a8af2dcb2066b7f1201bb",
+    "research/pathmnist_calibrated/configs/screening/grid-c0.1-ae0.001-seed-142-r20.json": "cb293f5489ed3e31f454d1f67154010f98f991e264c554e14413c22bd2e76a3a",
+    "research/pathmnist_calibrated/configs/screening/clip-1-seed-142-r20.json": "ec6abdb546daee8b671d5857a615b6b70ec0add6308401d75e064198adf3cfed",
+    "research/pathmnist_calibrated/configs/screening/clip-10-seed-142-r20.json": "a2dcfdb778a3b8cdb03cb21157139416ce2b1b1ce3bcbf572ec9cd414f62bbe5",
+    "research/pathmnist_calibrated/configs/screening/cosine-c0.03-seed-142-r20.json": "0819e0976339ee45e41a7ff9d04125e7d6253a693d267b5b61c5b71ea79e0832",
+    "research/pathmnist_calibrated/configs/screening/local1-c0.03-seed-142-r20.json": "ab27f29886599a6f507cb4c4540eadf219e6abcf49f4ceed4087ffc2cd3367f7",
+    "research/pathmnist_calibrated/configs/screening/cosine-c0.1-seed-142-r20.json": "954278a04c97deacdc11a5960effd02103277bce72ec069c5a1ecb86c86b731c",
+    "research/pathmnist_calibrated/configs/screening/local1-c0.1-seed-142-r20.json": "d1619192198129ea6023a07599ae9a03735680d8e33c746ef44aeb71ecf9df31",
+    "research/pathmnist_calibrated/configs/screening/warm-lr-1e-4-seed-142-r20.json": "0e6ec337299af9d6a613bb2e350a7f316656358857fb0cb7cbaf7c2118eadcfa",
+    "research/pathmnist_calibrated/configs/screening/bf16-no-clip-seed-142-r20.json": "97154c28084522a351735d283d3d26f91be7318623b8c897b6de743d77935617",
+    "research/pathmnist_calibrated/configs/screening/fp32-clip5-seed-142-r20.json": "1aee6f9fb5207e3132ce71cd3ea3f3e54a5e83ee53e75bb775970f0071f4bfc1",
+    "research/pathmnist_calibrated/configs/screening/local1-c0.3-seed-142-r20.json": "e613033da3396eab68acbd9808cb553cece867c63d1db3e11d1d63f1f2a46dc5"
+  },
+  "base_commit": "d13c1a0c3131ba81adbeb911a50aa3f92d5aafe9",
+  "gpu_slots": {
+    "cuda:1": 3,
+    "cuda:0": 3
+  },
+  "started_utc": "2026-10-06T12:00:58.343109+00:00",
+  "runs": [
+    {
+      "name": "grid-c0.01-ae0.0003-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/grid-c0.01-ae0.0003-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/grid-c0.01-ae0.0003-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/grid-c0.01-ae0.0003-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/grid-c0.01-ae0.0003-seed-142",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1356054,
+      "started_utc": "2026-10-06T12:00:58.378074+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:15:53.790683+00:00",
+      "process_wall_seconds": 895.4133912269026
+    },
+    {
+      "name": "grid-c0.01-ae0.001-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/grid-c0.01-ae0.001-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/grid-c0.01-ae0.001-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/grid-c0.01-ae0.001-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/grid-c0.01-ae0.001-seed-142",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1356057,
+      "started_utc": "2026-10-06T12:00:58.415633+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:16:02.897321+00:00",
+      "process_wall_seconds": 904.4824489790481
+    },
+    {
+      "name": "grid-c0.03-ae0.0001-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/grid-c0.03-ae0.0001-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.0001-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/grid-c0.03-ae0.0001-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.0001-seed-142",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1356064,
+      "started_utc": "2026-10-06T12:00:59.447511+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:15:47.751208+00:00",
+      "process_wall_seconds": 888.3044935441576
+    },
+    {
+      "name": "grid-c0.03-ae0.0003-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/grid-c0.03-ae0.0003-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.0003-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/grid-c0.03-ae0.0003-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.0003-seed-142",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1356067,
+      "started_utc": "2026-10-06T12:00:59.478390+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:16:04.931335+00:00",
+      "process_wall_seconds": 905.4536769860424
+    },
+    {
+      "name": "grid-c0.03-ae0.001-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/grid-c0.03-ae0.001-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.001-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/grid-c0.03-ae0.001-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.001-seed-142",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1356076,
+      "started_utc": "2026-10-06T12:01:00.511363+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:15:54.824833+00:00",
+      "process_wall_seconds": 894.3141970268916
+    },
+    {
+      "name": "grid-c0.1-ae0.0001-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/grid-c0.1-ae0.0001-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.0001-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/grid-c0.1-ae0.0001-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.0001-seed-142",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1356079,
+      "started_utc": "2026-10-06T12:01:00.543503+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:15:59.860578+00:00",
+      "process_wall_seconds": 899.3178868019022
+    },
+    {
+      "name": "grid-c0.1-ae0.0003-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/grid-c0.1-ae0.0003-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.0003-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/grid-c0.1-ae0.0003-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.0003-seed-142",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1358486,
+      "started_utc": "2026-10-06T12:15:47.787516+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:30:32.270127+00:00",
+      "process_wall_seconds": 884.483512179926
+    },
+    {
+      "name": "grid-c0.1-ae0.001-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/grid-c0.1-ae0.001-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.001-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/grid-c0.1-ae0.001-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.001-seed-142",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1358581,
+      "started_utc": "2026-10-06T12:15:53.823863+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:30:35.309023+00:00",
+      "process_wall_seconds": 881.4859234001487
+    },
+    {
+      "name": "clip-1-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/clip-1-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/clip-1-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/clip-1-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/clip-1-seed-142",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1358585,
+      "started_utc": "2026-10-06T12:15:54.859183+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:30:36.345548+00:00",
+      "process_wall_seconds": 881.4870452680625
+    },
+    {
+      "name": "clip-10-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/clip-10-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/clip-10-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/clip-10-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/clip-10-seed-142",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1358735,
+      "started_utc": "2026-10-06T12:15:59.896239+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:30:30.235152+00:00",
+      "process_wall_seconds": 870.3396587220486
+    },
+    {
+      "name": "cosine-c0.03-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/cosine-c0.03-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/cosine-c0.03-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/cosine-c0.03-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/cosine-c0.03-seed-142",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1358743,
+      "started_utc": "2026-10-06T12:16:02.930228+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:30:24.197724+00:00",
+      "process_wall_seconds": 861.2682121859398
+    },
+    {
+      "name": "local1-c0.03-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/local1-c0.03-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/local1-c0.03-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/local1-c0.03-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/local1-c0.03-seed-142",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1358820,
+      "started_utc": "2026-10-06T12:16:04.965051+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:22:35.064512+00:00",
+      "process_wall_seconds": 390.1002341050189
+    },
+    {
+      "name": "cosine-c0.1-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/cosine-c0.1-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/cosine-c0.1-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/cosine-c0.1-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/cosine-c0.1-seed-142",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1359726,
+      "started_utc": "2026-10-06T12:22:35.099836+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:37:29.532155+00:00",
+      "process_wall_seconds": 894.4329783672001
+    },
+    {
+      "name": "local1-c0.1-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/local1-c0.1-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/local1-c0.1-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/local1-c0.1-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/local1-c0.1-seed-142",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1361202,
+      "started_utc": "2026-10-06T12:30:24.232559+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:36:53.520711+00:00",
+      "process_wall_seconds": 389.2890487979166
+    },
+    {
+      "name": "warm-lr-1e-4-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/warm-lr-1e-4-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/warm-lr-1e-4-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/warm-lr-1e-4-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/warm-lr-1e-4-seed-142",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1361282,
+      "started_utc": "2026-10-06T12:30:30.268586+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:42:57.603879+00:00",
+      "process_wall_seconds": 747.336095687002
+    },
+    {
+      "name": "bf16-no-clip-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/bf16-no-clip-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/bf16-no-clip-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/bf16-no-clip-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/bf16-no-clip-seed-142",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1361289,
+      "started_utc": "2026-10-06T12:30:32.307048+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:43:10.607204+00:00",
+      "process_wall_seconds": 758.3019521399401
+    },
+    {
+      "name": "fp32-clip5-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/fp32-clip5-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/fp32-clip5-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/fp32-clip5-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/fp32-clip5-seed-142",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1361368,
+      "started_utc": "2026-10-06T12:30:35.344477+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:43:13.608886+00:00",
+      "process_wall_seconds": 758.2651575461496
+    },
+    {
+      "name": "local1-c0.3-seed-142-r20",
+      "script": "research/pathmnist_calibrated/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/local1-c0.3-seed-142-r20.json"
+      ],
+      "output": "_local/pathmnist_calibrated/screening/local1-c0.3-seed-142",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_calibrated/runner.py",
+        "--config",
+        "research/pathmnist_calibrated/configs/screening/local1-c0.3-seed-142-r20.json",
+        "--output",
+        "_local/pathmnist_calibrated/screening/local1-c0.3-seed-142",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1361439,
+      "started_utc": "2026-10-06T12:30:36.398426+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T12:37:25.529544+00:00",
+      "process_wall_seconds": 409.13195675308816
+    }
+  ],
+  "external_actions": "none",
+  "policy": "keep failures, continue other declared candidates; no process signals",
+  "ended_utc": "2026-10-06T12:43:14.610194+00:00",
+  "wall_seconds": 2536.270056860056,
+  "process_wall_seconds_sum": 14113.207869717386
+}

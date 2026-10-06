@@ -1,0 +1,26 @@
+{
+  "candidate_id": "grid-c0.003-ae0.001",
+  "seed": 142,
+  "stage": "screening",
+  "settings": {
+    "classifier_lr": 0.003,
+    "autoencoder_lr": 0.001,
+    "warmup_lr": 0.001,
+    "gradient_clip_norm": 5.0,
+    "precision": "bf16",
+    "schedule": "constant",
+    "schedule_horizon": 100,
+    "batch_size": 128,
+    "warmup_epochs": 1,
+    "local_epochs": 3,
+    "aggregation": "uniform",
+    "optimizer_reset": false,
+    "classifier": "ResNet20V2",
+    "autoencoder": "UNetSmallAE",
+    "dz": 16,
+    "classifier_optimizer": "SGD(momentum=0,weight_decay=0)",
+    "autoencoder_optimizer": "Adam(betas=(0.9,0.999),eps=1e-8,weight_decay=0)"
+  },
+  "rounds": 20,
+  "partition_sha256": "13d5cc86d039a8bf75b97ee6f6f94c6f177f52dd10829c66fd01150db7ceeb47"
+}

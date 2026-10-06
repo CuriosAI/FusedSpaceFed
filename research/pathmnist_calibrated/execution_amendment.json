@@ -1,0 +1,9 @@
+{
+  "reason": "Native FP16 paper reference has non-finite phase loss on tuning seed142 after last complete round18; matched FP32 run is stable and preserves both LRs, epochs, architecture and persistent optimizers.",
+  "mandatory_confirmation_reference": "fp32-matched-reference",
+  "decision_basis": "training numerical failure, not validation or test accuracy",
+  "mechanical_retry": "Helper select.py shadowed stdlib select on later process starts. Renamed selection_tools.py; repeat affected attempts with exactly unchanged scientific sources and configurations; no model updates occurred in these startup failures.",
+  "original_fp16_failure_preserved": "_local/pathmnist_calibrated/screening/paper-reference-seed-142/latest.pt",
+  "initial_campaign_preserved": "_local/pathmnist_calibrated/screening_campaign.json",
+  "confirmation_reference_rule_superseded_by": "budget_reduction.json: no confirmations or extension; one final seed42,50 rounds"
+}
