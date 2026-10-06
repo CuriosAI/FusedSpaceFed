@@ -1,0 +1,186 @@
+{
+  "status": "completed",
+  "queue_sha256": "31f934e9a92afe8adc7134247bb9fc7d188329663b3a9b76b6bf0a5a7e39a7b9",
+  "frozen_files": {
+    "research/pathmnist_recovery/validation.py": "91d60cefb8fde49e1c19ea54c51c17e198b203cb430a0be767476ace6095dcd8",
+    "research/pathmnist_recovery/normalization.py": "9c2e81db3fc7ed0899002851d3b95394cc59d13fcb2c33197f7ea2ed5e3a1c11",
+    "research/pathmnist_calibrated/runner.py": "4e2128c400cc462fc8cb5de79edd11175394e6425325a5a5d75b8336b54d0fcb",
+    "research/pathmnist_calibrated/data.py": "e2ba5a50da93ed4db801edfc512a0b01380b3c0d1cc2b001e6e8c36d13ddb0f1",
+    "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+    "research/pathmnist_recovery/configs/normalization/fp32-matched-reference.json": "225d3d2a39efa65312303f0d4773bec42e53bad4a6b34aa2586cb9c8616c8bc1",
+    "research/pathmnist_recovery/configs/normalization/grid-c0.1-ae0.0001.json": "16a862c87d5017be32e32b95dce9ccd1519cd5f6f6de05b76c52da8c3b639b8a",
+    "research/pathmnist_recovery/configs/normalization/grid-c0.1-ae0.001.json": "ef815f38dae4f068628f1efa44f49ec459ce2ade5fd021b726d5d626e27362af",
+    "research/pathmnist_recovery/configs/normalization/grid-c0.03-ae0.001.json": "cbaa13547a47fa79bac4d1a32b411337a7a7dc05b9c0dedb77015de14232f4ec",
+    "research/pathmnist_recovery/configs/normalization/grid-c0.01-ae0.0003.json": "1787f9119c18fc850619ae988bae9d79790c5d3accb08be8d5b7fdb1ba869dde",
+    "research/pathmnist_recovery/configs/normalization/paper-reference.json": "8d2f9bf1ac2e28a580232abefa807a8c0ce62124052888f9ddff046a5ea23ac6"
+  },
+  "base_commit": "8d045d0ea7c350b59b573457966a60704b0c5ab6",
+  "gpu_slots": {
+    "cuda:1": 3,
+    "cuda:0": 3
+  },
+  "started_utc": "2026-10-06T14:00:06.296138+00:00",
+  "runs": [
+    {
+      "name": "fp32-matched-reference",
+      "script": "research/pathmnist_recovery/validation.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/normalization/fp32-matched-reference.json"
+      ],
+      "output": "_local/pathmnist_recovery/normalization_validation/fp32-matched-reference",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_recovery/validation.py",
+        "--config",
+        "research/pathmnist_recovery/configs/normalization/fp32-matched-reference.json",
+        "--output",
+        "_local/pathmnist_recovery/normalization_validation/fp32-matched-reference",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1372137,
+      "started_utc": "2026-10-06T14:00:06.326619+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T14:00:32.494067+00:00",
+      "process_wall_seconds": 26.16825819015503
+    },
+    {
+      "name": "grid-c0.1-ae0.0001",
+      "script": "research/pathmnist_recovery/validation.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/normalization/grid-c0.1-ae0.0001.json"
+      ],
+      "output": "_local/pathmnist_recovery/normalization_validation/grid-c0.1-ae0.0001",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_recovery/validation.py",
+        "--config",
+        "research/pathmnist_recovery/configs/normalization/grid-c0.1-ae0.0001.json",
+        "--output",
+        "_local/pathmnist_recovery/normalization_validation/grid-c0.1-ae0.0001",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1372140,
+      "started_utc": "2026-10-06T14:00:06.355767+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T14:00:33.495034+00:00",
+      "process_wall_seconds": 27.139868122059852
+    },
+    {
+      "name": "grid-c0.1-ae0.001",
+      "script": "research/pathmnist_recovery/validation.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/normalization/grid-c0.1-ae0.001.json"
+      ],
+      "output": "_local/pathmnist_recovery/normalization_validation/grid-c0.1-ae0.001",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_recovery/validation.py",
+        "--config",
+        "research/pathmnist_recovery/configs/normalization/grid-c0.1-ae0.001.json",
+        "--output",
+        "_local/pathmnist_recovery/normalization_validation/grid-c0.1-ae0.001",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1372145,
+      "started_utc": "2026-10-06T14:00:07.388597+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T14:00:34.496056+00:00",
+      "process_wall_seconds": 27.10832093306817
+    },
+    {
+      "name": "grid-c0.03-ae0.001",
+      "script": "research/pathmnist_recovery/validation.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/normalization/grid-c0.03-ae0.001.json"
+      ],
+      "output": "_local/pathmnist_recovery/normalization_validation/grid-c0.03-ae0.001",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_recovery/validation.py",
+        "--config",
+        "research/pathmnist_recovery/configs/normalization/grid-c0.03-ae0.001.json",
+        "--output",
+        "_local/pathmnist_recovery/normalization_validation/grid-c0.03-ae0.001",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1372148,
+      "started_utc": "2026-10-06T14:00:07.420602+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T14:00:35.497115+00:00",
+      "process_wall_seconds": 28.0774348359555
+    },
+    {
+      "name": "grid-c0.01-ae0.0003",
+      "script": "research/pathmnist_recovery/validation.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/normalization/grid-c0.01-ae0.0003.json"
+      ],
+      "output": "_local/pathmnist_recovery/normalization_validation/grid-c0.01-ae0.0003",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_recovery/validation.py",
+        "--config",
+        "research/pathmnist_recovery/configs/normalization/grid-c0.01-ae0.0003.json",
+        "--output",
+        "_local/pathmnist_recovery/normalization_validation/grid-c0.01-ae0.0003",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1372157,
+      "started_utc": "2026-10-06T14:00:08.456419+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T14:00:37.498825+00:00",
+      "process_wall_seconds": 29.04324219096452
+    },
+    {
+      "name": "paper-reference",
+      "script": "research/pathmnist_recovery/validation.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/normalization/paper-reference.json"
+      ],
+      "output": "_local/pathmnist_recovery/normalization_validation/paper-reference",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_recovery/validation.py",
+        "--config",
+        "research/pathmnist_recovery/configs/normalization/paper-reference.json",
+        "--output",
+        "_local/pathmnist_recovery/normalization_validation/paper-reference",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1372160,
+      "started_utc": "2026-10-06T14:00:08.488516+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T14:00:37.500250+00:00",
+      "process_wall_seconds": 29.012522102100775
+    }
+  ],
+  "external_actions": "none",
+  "policy": "keep failures, continue other declared candidates; no process signals",
+  "ended_utc": "2026-10-06T14:00:38.500838+00:00",
+  "wall_seconds": 32.20763322617859,
+  "process_wall_seconds_sum": 166.54964637430385
+}

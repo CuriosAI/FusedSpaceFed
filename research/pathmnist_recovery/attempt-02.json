@@ -1,0 +1,21 @@
+{
+  "attempt": 2,
+  "checkpoint": "_local/pathmnist_pathological/seed-42/final.pt",
+  "checkpoint_sha256": "fa56da01091debe9031a9acb2e3de0f34ce0f751d2c95d2d0d54c05f15697d1e",
+  "partition_sha256": "13d5cc86d039a8bf75b97ee6f6f94c6f177f52dd10829c66fd01150db7ceeb47",
+  "normalization": "cross-layerwise",
+  "training_seed": 42,
+  "training_rounds": 50,
+  "test_access": "one frozen candidate; known benchmark; exploratory threshold stop",
+  "validation_basis": {
+    "source": "_local/pathmnist_recovery/normalization_validation/fp32-matched-reference/results.json",
+    "sha256": "7b299bf508b60434a1389d45e75049a90582c56b5f1e4220b0da23b17c62aa70",
+    "seed": 142,
+    "rounds": 20,
+    "fit_validation_disjoint": true,
+    "selected_mode": "cross-layerwise",
+    "validation_accuracy_percent": 35.04558594618634,
+    "rule": "max exact correct_total, native tie preference then predefined mode order on matched original-hyperparameter FP32 control",
+    "limitations": "FP32 control20 vs original FP16 checkpoint50; known benchmark; inference-only variant"
+  }
+}

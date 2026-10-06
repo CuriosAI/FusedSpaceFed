@@ -19,6 +19,7 @@ from fusedspacefed_core import seed_everything
 from research.pathmnist_pathological.run import file_hash, write_json, atomic_save, assert_finite
 from research.pathmnist_calibrated.data import verify, cache, DATA
 from research.pathmnist_calibrated.runner import evaluate, recalibrate_bn
+from research.pathmnist_recovery.normalization import calibrate
 
 
 def substitute_shared_bn(checkpoint, classifier):
@@ -51,7 +52,8 @@ def main(config_path, output, physical_device):
     partition = verify()
     if partition['partition_sha256'] != config['partition_sha256']:
         raise ValueError('Partition changed')
-    if config['normalization'] != 'owner-cumulative-shared-bn':
+    if config['normalization'] not in ('owner-cumulative-shared-bn','native',
+            'owner-cumulative','owner-layerwise','cross-cumulative','cross-layerwise'):
         raise ValueError('Unregistered inference mode')
     if config['test_access'] != 'one frozen candidate; known benchmark; exploratory threshold stop':
         raise ValueError('Undeclared test access')
@@ -66,12 +68,18 @@ def main(config_path, output, physical_device):
     shutil.copyfile(source, output / 'precalibration.pt')
     images, labels = cache(device)
     before = time.perf_counter()
-    classifier = recalibrate_bn(checkpoint['classifier'], checkpoint['decoder'],
-                                checkpoint['encoders'], images, partition, device)
+    if config['normalization']=='owner-cumulative-shared-bn':
+        classifier = recalibrate_bn(checkpoint['classifier'], checkpoint['decoder'],
+                                    checkpoint['encoders'], images, partition, device)
+    else:
+        classifier = calibrate(checkpoint['classifier'], checkpoint['decoder'],
+                               checkpoint['encoders'], images, partition, device,
+                               config['normalization'])
     calibrated = substitute_shared_bn(checkpoint, classifier)
     code = {'base_commit': subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
             'source_sha256': {name: file_hash(ROOT/name) for name in
-                ('research/pathmnist_recovery/inference.py', 'research/pathmnist_calibrated/runner.py',
+                ('research/pathmnist_recovery/inference.py', 'research/pathmnist_recovery/normalization.py',
+                 'research/pathmnist_calibrated/runner.py',
                  'research/pathmnist_calibrated/data.py', 'fusedspacefed_core.py')},
             'config_sha256': file_hash(config_path)}
     calibrated['recovery'] = {'config': config, 'code': code,

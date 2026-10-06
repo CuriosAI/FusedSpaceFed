@@ -1,0 +1,27 @@
+{
+  "gpu_slots": {
+    "cuda:1": 1,
+    "cuda:0": 0
+  },
+  "minimum_free_mib": 8192,
+  "frozen_files": {
+    "research/pathmnist_recovery/inference.py": "c0ac0076695fea4fa5234153a3c7af321a4eb63412ae9e612f3b7c6e97164572",
+    "research/pathmnist_recovery/normalization.py": "9c2e81db3fc7ed0899002851d3b95394cc59d13fcb2c33197f7ea2ed5e3a1c11",
+    "research/pathmnist_recovery/attempt-02.json": "942c418ff858f3e8a7b210c9baa6533e175d55f397ef40af4e2835102ed1648e",
+    "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+    "research/pathmnist_calibrated/runner.py": "4e2128c400cc462fc8cb5de79edd11175394e6425325a5a5d75b8336b54d0fcb",
+    "research/pathmnist_calibrated/data.py": "e2ba5a50da93ed4db801edfc512a0b01380b3c0d1cc2b001e6e8c36d13ddb0f1",
+    "research/pathmnist_calibrated/partition.json.gz": "068b38d458f41d3a99ddb51c04869d416752bf06c50f0cb9455c1747714d334c"
+  },
+  "jobs": [
+    {
+      "name": "attempt-02",
+      "script": "research/pathmnist_recovery/inference.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/attempt-02.json"
+      ],
+      "output": "_local/pathmnist_recovery/attempt-02"
+    }
+  ]
+}

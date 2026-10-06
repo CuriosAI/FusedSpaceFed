@@ -1,0 +1,11 @@
+{
+  "files_sha256": {
+    "campaign.json": "69be10df21db9c4519b96c0b40c95995705aaf04464cdde55e4dddd27c1efcbd",
+    "fp32-matched-reference.json.gz": "4122734bf54f3c71c54ef580f4e67b529ffb8695c5ff464a5a96f558de497fd3",
+    "grid-c0.01-ae0.0003.json.gz": "ddf133dfae6423d96cf464fa3744923b606e4c5140bf660dc7f0a3bb8ab535a6",
+    "grid-c0.03-ae0.001.json.gz": "68b7de63cda5682c280341d69a13e47f67f7e048811c2059c83a72e0334b090d",
+    "grid-c0.1-ae0.0001.json.gz": "afb4c50618e61381eb71c67193f4a49a44243876c0326af2738992fed81e1648",
+    "grid-c0.1-ae0.001.json.gz": "e9942eb815ee6dcf77c9ffddc1e6a9b52df0177b44c154a37e4770e04e34afea",
+    "paper-reference.json.gz": "0064f3f01f3b029d17223e990d6826f1aef9a969fff4eee712d2b56b1d307b7d"
+  }
+}
