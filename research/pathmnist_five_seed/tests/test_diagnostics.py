@@ -4,6 +4,7 @@ import pytest
 import torch
 from fusedspacefed_core import ResNet20V2,UNetSmallAE
 from research.pathmnist_five_seed.diagnostic_common import tensor_metrics,state_hash,measure,probe,deltas
+from research.pathmnist_five_seed.diagnostic_common import stats
 from research.pathmnist_five_seed.phase3.probe_gradients import measure_state
 from research.pathmnist_five_seed.tests.test_native_runner import client
 
@@ -61,3 +62,9 @@ def test_state_changes_separate_bn_buffers_from_weights():
     a={'classifier':{'weight':torch.ones(2),'bn.running_mean':torch.zeros(2),'bn.num_batches_tracked':torch.tensor(0)}}
     b={'classifier':{'weight':torch.ones(2),'bn.running_mean':torch.ones(2),'bn.num_batches_tracked':torch.tensor(5)}}
     value=deltas(a,b)['classifier'];assert value['parameter_l2']==0 and value['bn_buffer_l2']>0
+
+
+def test_five_seed_summary_rejects_missing_seed_and_uses_sample_sd():
+    with pytest.raises(ValueError):stats([1.,2.,3.,4.])
+    result=stats([1.,2.,3.,4.,5.])
+    assert result['mean']==3 and result['sd_sample_ddof1']==pytest.approx(2.5**.5)

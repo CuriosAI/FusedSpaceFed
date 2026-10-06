@@ -1,0 +1,136 @@
+{
+  "status": "completed_with_failed_candidates",
+  "queue_sha256": "ae3c3c2f186173baa3908923f41739c95edf05963386fa82bcfc34d0db01ddcc",
+  "frozen_files": {
+    "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+    "research/pathmnist_pathological/run.py": "d328605571295e86c62e577ddfc43a7e2c5a7594e934d99392e0a7d42e4fe88d",
+    "research/pathmnist_pathological/config.json": "f6d803ed0447163432b1f7ccf6316473a768b6d9032a7cada24fd3d232a5e7fd",
+    "research/pathmnist_five_seed/data.py": "242c6a1ac38f70f074e74c800eb6ffd6e717552790cec58240afcff2fa690a2b",
+    "research/pathmnist_five_seed/data_identity.json": "7aff459b27776d676804319f549c3bbf12c7d100be3298068b362681b4c930ba",
+    "research/pathmnist_five_seed/client.py": "4231bf9304c9d6a3d8389e38cbb0e69f77f07c2533d58b6e66555d05a7a343c6",
+    "research/pathmnist_five_seed/runner.py": "ff327a9d393c52c7bb077d127692cd5f14a937082d6c264163c2d4abd8d5be9e",
+    "research/pathmnist_five_seed/plan.json": "60d8e8badf1131d98535fb8f5197d9663e648446680d3b77025c769605adb336",
+    "research/pathmnist_calibrated/controller.py": "b23dd03bb4a7715eeb3913fa8093d96564bf2a6aa34ee2e466d7eb7f7a49e396",
+    "research/pathmnist_five_seed/configs/full-seed-45.json": "0db3d94343e0670ede99c692c5e09c93352984c11b0eacb6c1fb1fa02d7bf821",
+    "research/pathmnist_five_seed/configs/full-seed-46.json": "16d8b90a590c450e64465262e24d1e7f03860da17c352c3193e695f5d6ba4799",
+    "research/pathmnist_five_seed/configs/full-seed-44.json": "a6b30d958e290046cfe1252ffe8e82f36bc6202a6a7e9c48ac6512beb96bfaf8",
+    "research/pathmnist_five_seed/configs/full-seed-43.json": "83ea721a5a9e3ec26f42d5619e2d4929ecbd06a722162cc70e788e800e984ce9"
+  },
+  "base_commit": "3521cafb65bbd2614c755910a7c0c5916142ed11",
+  "gpu_slots": {
+    "cuda:1": 2,
+    "cuda:0": 2
+  },
+  "started_utc": "2026-10-06T17:10:59.052193+00:00",
+  "runs": [
+    {
+      "name": "full-seed-43",
+      "script": "research/pathmnist_five_seed/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/configs/full-seed-43.json"
+      ],
+      "output": "_local/pathmnist_five_seed/full/seed-43",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_five_seed/runner.py",
+        "--config",
+        "research/pathmnist_five_seed/configs/full-seed-43.json",
+        "--output",
+        "_local/pathmnist_five_seed/full/seed-43",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1423563,
+      "started_utc": "2026-10-06T17:10:59.083176+00:00",
+      "exit_code": 1,
+      "ended_utc": "2026-10-06T17:23:31.460371+00:00",
+      "process_wall_seconds": 752.3778927070089
+    },
+    {
+      "name": "full-seed-44",
+      "script": "research/pathmnist_five_seed/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/configs/full-seed-44.json"
+      ],
+      "output": "_local/pathmnist_five_seed/full/seed-44",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_five_seed/runner.py",
+        "--config",
+        "research/pathmnist_five_seed/configs/full-seed-44.json",
+        "--output",
+        "_local/pathmnist_five_seed/full/seed-44",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1423566,
+      "started_utc": "2026-10-06T17:10:59.114745+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T17:42:09.725130+00:00",
+      "process_wall_seconds": 1870.6111222261097
+    },
+    {
+      "name": "full-seed-45",
+      "script": "research/pathmnist_five_seed/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/configs/full-seed-45.json"
+      ],
+      "output": "_local/pathmnist_five_seed/full/seed-45",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_five_seed/runner.py",
+        "--config",
+        "research/pathmnist_five_seed/configs/full-seed-45.json",
+        "--output",
+        "_local/pathmnist_five_seed/full/seed-45",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1423579,
+      "started_utc": "2026-10-06T17:11:00.157086+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T17:41:21.716267+00:00",
+      "process_wall_seconds": 1821.561647090828
+    },
+    {
+      "name": "full-seed-46",
+      "script": "research/pathmnist_five_seed/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/configs/full-seed-46.json"
+      ],
+      "output": "_local/pathmnist_five_seed/full/seed-46",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_five_seed/runner.py",
+        "--config",
+        "research/pathmnist_five_seed/configs/full-seed-46.json",
+        "--output",
+        "_local/pathmnist_five_seed/full/seed-46",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1423582,
+      "started_utc": "2026-10-06T17:11:00.191215+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T17:41:43.720134+00:00",
+      "process_wall_seconds": 1843.5297345300205
+    }
+  ],
+  "external_actions": "none",
+  "policy": "keep failures, continue other declared candidates; no process signals",
+  "ended_utc": "2026-10-06T17:42:10.725955+00:00",
+  "wall_seconds": 1871.6762952979188,
+  "process_wall_seconds_sum": 6288.080396553967
+}

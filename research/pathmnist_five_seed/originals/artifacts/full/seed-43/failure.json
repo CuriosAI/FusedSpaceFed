@@ -1,0 +1,129 @@
+{
+  "seed": 43,
+  "status": "failed_numerical",
+  "failed_round": 20,
+  "last_completed_round": 19,
+  "test_evaluations": 0,
+  "accuracy_percent": null,
+  "checkpoint_training_seconds": 710.7983764258679,
+  "attempts": [
+    {
+      "name": "full-seed-43",
+      "script": "research/pathmnist_five_seed/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/configs/full-seed-43.json"
+      ],
+      "output": "_local/pathmnist_five_seed/full/seed-43",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_five_seed/runner.py",
+        "--config",
+        "research/pathmnist_five_seed/configs/full-seed-43.json",
+        "--output",
+        "_local/pathmnist_five_seed/full/seed-43",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1423563,
+      "started_utc": "2026-10-06T17:10:59.083176+00:00",
+      "exit_code": 1,
+      "ended_utc": "2026-10-06T17:23:31.460371+00:00",
+      "process_wall_seconds": 752.3778927070089
+    },
+    {
+      "name": "full-seed-43-resume",
+      "script": "research/pathmnist_five_seed/runner.py",
+      "args": [
+        "--config",
+        "research/pathmnist_five_seed/configs/full-seed-43.json",
+        "--resume"
+      ],
+      "output": "_local/pathmnist_five_seed/full/seed-43",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_five_seed/runner.py",
+        "--config",
+        "research/pathmnist_five_seed/configs/full-seed-43.json",
+        "--resume",
+        "--output",
+        "_local/pathmnist_five_seed/full/seed-43",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1432936,
+      "started_utc": "2026-10-06T17:26:00.389401+00:00",
+      "exit_code": 1,
+      "ended_utc": "2026-10-06T17:26:42.403246+00:00",
+      "process_wall_seconds": 42.014660847140476
+    }
+  ],
+  "private_checkpoints": {
+    "_local/pathmnist_five_seed/full/seed-43/latest.pt": {
+      "sha256": "0a8211021003bb66064c58715e6512f3575e29c1fee4ca6e1f9768cedbc7c598",
+      "bytes": 24369354
+    },
+    "_local/pathmnist_five_seed/full/seed-43/initial.pt": {
+      "sha256": "52d01c194d256e2004431342d094dc66b1a55646edf51105787e5ca92c863f8d",
+      "bytes": 19135470
+    }
+  },
+  "diagnosis": {
+    "checkpoint": "_local/pathmnist_five_seed/full/seed-43/latest.pt",
+    "checkpoint_sha256": "0a8211021003bb66064c58715e6512f3575e29c1fee4ca6e1f9768cedbc7c598",
+    "round_completed": 19,
+    "settings": {
+      "rounds": 50,
+      "warmup_epochs": 1,
+      "local_epochs": 3,
+      "batch_size": 128,
+      "classifier_lr": 0.01,
+      "autoencoder_lr": 0.001,
+      "use_amp": true
+    },
+    "test_access": "none",
+    "phase": "warmup",
+    "client": 8,
+    "batch": 38,
+    "status": "nonfinite_forward",
+    "first_nonfinite_module": "autoencoder.bott.2",
+    "dtype": "torch.float16",
+    "shape": [
+      128,
+      16,
+      8,
+      8
+    ],
+    "nan": 0,
+    "inf": 1,
+    "max_finite_abs": 64064.0,
+    "seconds": 70.24393617385067,
+    "same_layer_float32": {
+      "finite": true,
+      "max_abs": 65608.0234375,
+      "float16_max": 65504.0,
+      "count_above_float16_max": 1,
+      "input_finite": true
+    },
+    "sources_sha256": {
+      "_local/pathmnist_five_seed/replay_failure43.py": "d81171949f0dc5a56b305a18dcda904772f761a30bf31c2e9216a2659aa69bd8",
+      "_local/pathmnist_five_seed/check_overflow43.py": "1709ffb4d60193f14c78adb8c4ba524a059f783ddd5d1adb334eab2571e2edc1",
+      "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+      "research/pathmnist_five_seed/client.py": "4231bf9304c9d6a3d8389e38cbb0e69f77f07c2533d58b6e66555d05a7a343c6",
+      "research/pathmnist_five_seed/runner.py": "ff327a9d393c52c7bb077d127692cd5f14a937082d6c264163c2d4abd8d5be9e"
+    },
+    "failed_forward_checkpoint": {
+      "path": "_local/pathmnist_five_seed/failure43_forward.pt",
+      "sha256": "9c99d4d658dae5aa9395398281fdfb17fcdbc356d0e45de33a26d3b4287b6391"
+    },
+    "published_harness_sha256": {
+      "research/pathmnist_five_seed/replay_failure.py": "11ab79b94c89d30603494bfe193e7cdf9694d3a53dd8b3add52458c78a4fab28",
+      "research/pathmnist_five_seed/check_overflow.py": "a0627a425f224d241cbc8bf8886ecf97a62a70ddba854054a7ae8d034d6e867d"
+    },
+    "harness_note": "Published wrappers have main/overwrite guards; exact executed script versions retained privately. Numerical body unchanged."
+  }
+}

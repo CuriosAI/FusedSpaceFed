@@ -1,5 +1,9 @@
 # Original PathMNIST campaign and paired mechanism diagnostics
 
+Current outcome: [numerical block at seed 43](originals/ORIGINALS_REPORT.md).
+Four original seeds are complete; no five-seed mean/SD and no mechanism phase
+are claimed complete. The fixed-protocol seed43 retry reproduced FP16 overflow.
+
 This campaign implements the user request of 6 October 2026, without changing the
 manuscript, previous experiments, or any recovered/tuned/head-refitted checkpoint.
 Only FusedSpaceFed and its three component ablations are trained. No baselines.

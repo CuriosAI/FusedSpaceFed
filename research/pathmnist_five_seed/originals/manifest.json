@@ -1,0 +1,61 @@
+{
+  "files": {
+    "ORIGINALS_REPORT.md": {
+      "sha256": "3dcb931d1190ee19aa86de56ec3b534dc4e5be27d3311ed5744497adeabb9ff3",
+      "bytes": 6297
+    },
+    "artifacts/campaign.json": {
+      "sha256": "165049ce906d3ede9d849d118bff981c14ad53e973d764d382e9c79632f9339e",
+      "bytes": 5551
+    },
+    "artifacts/summary.json": {
+      "sha256": "a91a41dd805377a17f36409c7b077cd8b674b6d2ef4dff724bac84ee995e827d",
+      "bytes": 23129
+    },
+    "artifacts/retry_campaign.json": {
+      "sha256": "c211635d1f2ecea5ff3b73dde62d7395f583f0a20e8a3a3ee516e36a2a460859",
+      "bytes": 3044
+    },
+    "artifacts/full/seed-45/timings.jsonl": {
+      "sha256": "dca4d4c193f4f3517a187a27c1d7242261cc019de3292bf41d60ad15bb539375",
+      "bytes": 191051
+    },
+    "artifacts/full/seed-45/results.json.gz": {
+      "sha256": "5ed4646b86ad063619f1e53af9c68bd30cb3f88797153bd5fc3821c08f6783b7",
+      "bytes": 28172
+    },
+    "artifacts/full/seed-43/timings.jsonl": {
+      "sha256": "b0fa58274846340b6caf6269c930f881315ca8f98e9f931da68e979dcca83cc6",
+      "bytes": 72589
+    },
+    "artifacts/full/seed-43/failure.json": {
+      "sha256": "d448e56c8b86be14832edc9a03000b04cf628330f94e61c6c567d16a239627ab",
+      "bytes": 4541
+    },
+    "artifacts/full/seed-44/timings.jsonl": {
+      "sha256": "8edd6b75c67cd4291ba70b3a2598d472aa32eeaffcfdf44a03b294cba1a530ab",
+      "bytes": 191117
+    },
+    "artifacts/full/seed-44/results.json.gz": {
+      "sha256": "d1bdfbacf7d0c0e20dbf161d8e7d93baeb85911b54129850c544b475a9d5ae87",
+      "bytes": 28388
+    },
+    "artifacts/full/seed-42/timings.jsonl": {
+      "sha256": "cd9a133b4282cd5a837c09ae7a1ec7e0535e3b1704e7d59203c1de5caee6b62c",
+      "bytes": 110966
+    },
+    "artifacts/full/seed-42/results.json.gz": {
+      "sha256": "0545d5849c9528047fe1df7d1cd0c061c1d650b4f3437303147630fd7d379b5b",
+      "bytes": 4092
+    },
+    "artifacts/full/seed-46/timings.jsonl": {
+      "sha256": "625b893fd138a1e6a33f95fe7638c812e04a54949ba5d15fe20f83390063deb0",
+      "bytes": 191090
+    },
+    "artifacts/full/seed-46/results.json.gz": {
+      "sha256": "e3c544b4ad805784487124f25bce7b1204d21df4ceb74125bd541948bdaf4640",
+      "bytes": 28374
+    }
+  },
+  "checkpoint_policy": "private thanos _local only; no dataset or checkpoint uploaded"
+}
