@@ -1,0 +1,481 @@
+{
+  "status": "completed",
+  "accuracy_percent": {
+    "original": 39.619777158774376,
+    "centralized": 75.33147632311977,
+    "federated": 75.46239554317549
+  },
+  "correct_counts": {
+    "original": 28447,
+    "centralized": 54088,
+    "federated": 54182
+  },
+  "comparisons": {
+    "initial_loss": {
+      "actual": 1.7837562561035156,
+      "reference": 1.7837562561035156,
+      "abs_error": 0.0,
+      "allowed_error": 5.567512512207031e-06,
+      "within_tolerance": true
+    },
+    "central_final_loss_same_head": {
+      "actual": 0.5971454977989197,
+      "reference": 0.5971454977989197,
+      "abs_error": 0.0,
+      "allowed_error": 3.194290995597839e-06,
+      "within_tolerance": true
+    },
+    "central_pre_last_loss": {
+      "actual": 0.5983133316040039,
+      "reference": 0.5983133316040039,
+      "abs_error": 0.0,
+      "allowed_error": 3.1966266632080074e-06,
+      "within_tolerance": true
+    },
+    "central_pre_last_gradient": {
+      "max_abs_error": 1.1263182386755943e-08,
+      "l2_error": 5.237660855865167e-08,
+      "reference_l2_norm": 0.008613733984810787,
+      "actual_l2_norm": 0.008613734451308594,
+      "relative_l2_error": 6.080592766274311e-06,
+      "entries_outside_tolerance": 0,
+      "within_tolerance": true
+    },
+    "final_optimized_loss": {
+      "actual": 0.5959758162498474,
+      "reference": 0.5971454977989197,
+      "abs_error": 0.0011696815490722656,
+      "allowed_error": 0.000259714549779892,
+      "within_tolerance": false
+    },
+    "final_optimized_gradient": {
+      "max_abs_error": 0.0030322194506879896,
+      "l2_error": 0.01674123423689198,
+      "reference_l2_norm": 0.01568172909410079,
+      "actual_l2_norm": 0.009241770045817808,
+      "relative_l2_error": 1.0675630306092811,
+      "entries_outside_tolerance": 376,
+      "within_tolerance": false
+    },
+    "final_test_accuracy": {
+      "actual_percent": 75.46239554317549,
+      "reference_percent": 75.33147632311977,
+      "abs_error_percentage_points": 0.13091922005571632,
+      "within_tolerance": false
+    },
+    "final_train_logits": {
+      "within_tolerance": false,
+      "entries": 809964,
+      "max_abs": 1.5190048217773438,
+      "rms": 0.33500340311270677,
+      "mean_abs": 0.2611056429462844,
+      "squared_error_sum": 90900.05669656323,
+      "sum_abs": 211486.17098334432,
+      "entries_outside_tolerance": 763912,
+      "prediction_disagreements": 2060,
+      "samples": 89996
+    },
+    "final_test_logits": {
+      "within_tolerance": false,
+      "entries": 646200,
+      "max_abs": 1.483591079711914,
+      "rms": 0.3472659480305942,
+      "mean_abs": 0.26160259542550923,
+      "squared_error_sum": 77927.60930311774,
+      "sum_abs": 169047.59716396406,
+      "entries_outside_tolerance": 606859,
+      "prediction_disagreements": 1697,
+      "samples": 71800
+    },
+    "test_predictions": {
+      "disagreement_fraction": 0.023635097493036213,
+      "within_tolerance": false
+    }
+  },
+  "all_declared_tolerances_met": false,
+  "aggregations": {
+    "optimization": 107,
+    "verification": 3
+  },
+  "communication": {
+    "categories": {
+      "control": {
+        "messages_down": 0,
+        "messages_up": 10,
+        "payload_down": 0,
+        "payload_up": 10,
+        "payload_total": 10,
+        "pipe_framing_bytes": 40,
+        "with_pipe_framing_bytes": 50
+      },
+      "optimization": {
+        "messages_down": 1070,
+        "messages_up": 1070,
+        "payload_down": 2504870,
+        "payload_up": 2509150,
+        "payload_total": 5014020,
+        "pipe_framing_bytes": 8560,
+        "with_pipe_framing_bytes": 5022580
+      },
+      "verification": {
+        "messages_down": 30,
+        "messages_up": 30,
+        "payload_down": 70230,
+        "payload_up": 70350,
+        "payload_total": 140580,
+        "pipe_framing_bytes": 240,
+        "with_pipe_framing_bytes": 140820
+      },
+      "inference_audit": {
+        "messages_down": 10,
+        "messages_up": 10,
+        "payload_down": 46810,
+        "payload_up": 10,
+        "payload_total": 46820,
+        "pipe_framing_bytes": 80,
+        "with_pipe_framing_bytes": 46900
+      }
+    },
+    "payload_total_bytes": 5201430,
+    "with_pipe_framing_total_bytes": 5210350,
+    "frame_bytes_per_message": 4,
+    "head_bytes": 2340,
+    "gradient_and_loss_bytes": 2344,
+    "per_10_client_gradient_aggregation_payload_bytes": 46860
+  },
+  "head_statistics": {
+    "actual_iterations": 100,
+    "function_evaluations": 107,
+    "closure_evaluations": 107,
+    "objective_history": [
+      1.7837562561035156,
+      1.7523517608642578,
+      1.5555740594863892,
+      1.442264437675476,
+      1.349787950515747,
+      1.1335433721542358,
+      1.0473109483718872,
+      0.9657670855522156,
+      0.9335184097290039,
+      0.9143118262290955,
+      0.8998573422431946,
+      0.8849503397941589,
+      0.8621742129325867,
+      0.8445043563842773,
+      0.832371175289154,
+      0.822166383266449,
+      0.8131317496299744,
+      0.7961419820785522,
+      0.7723739743232727,
+      0.7622782588005066,
+      0.7502476572990417,
+      0.7480658888816833,
+      0.7450775504112244,
+      0.7395988702774048,
+      0.7304108142852783,
+      0.7466053366661072,
+      0.7276531457901001,
+      0.7215344309806824,
+      0.7177912592887878,
+      0.7133687138557434,
+      0.7100340723991394,
+      0.7075089812278748,
+      0.7044464945793152,
+      0.7033456563949585,
+      0.7022485136985779,
+      0.6997614502906799,
+      0.6958665251731873,
+      0.692220151424408,
+      0.6892803311347961,
+      0.6875596642494202,
+      0.6864871978759766,
+      0.6824178695678711,
+      0.6800937056541443,
+      0.6777950525283813,
+      0.6761766672134399,
+      0.6742682456970215,
+      0.6697691679000854,
+      0.6675605177879333,
+      0.6641397476196289,
+      0.6622681021690369,
+      0.6593796014785767,
+      0.655486524105072,
+      0.6537333726882935,
+      0.6498969793319702,
+      0.6491875052452087,
+      0.6484575867652893,
+      0.6460970044136047,
+      0.6426600813865662,
+      0.6417481303215027,
+      0.6379678845405579,
+      0.6369977593421936,
+      0.6362611651420593,
+      0.6353998184204102,
+      0.6338656544685364,
+      0.6338987350463867,
+      0.6329686641693115,
+      0.631634533405304,
+      0.6301277279853821,
+      0.6290208697319031,
+      0.6284908652305603,
+      0.6252464652061462,
+      0.6238271594047546,
+      0.6229206919670105,
+      0.6221396327018738,
+      0.62382972240448,
+      0.6210452318191528,
+      0.6184781193733215,
+      0.6167163252830505,
+      0.615582287311554,
+      0.6148382425308228,
+      0.6140263676643372,
+      0.6132770776748657,
+      0.6119374632835388,
+      0.6115913987159729,
+      0.6101424098014832,
+      0.6096003651618958,
+      0.608729898929596,
+      0.6077389717102051,
+      0.6066083312034607,
+      0.6055036783218384,
+      0.6054306030273438,
+      0.6050190925598145,
+      0.6047505736351013,
+      0.6040791869163513,
+      0.6031760573387146,
+      0.6020554900169373,
+      0.6032268404960632,
+      0.601651668548584,
+      0.6012026071548462,
+      0.600884735584259,
+      0.6004745364189148,
+      0.5996429324150085,
+      0.5983768701553345,
+      0.6052960753440857,
+      0.5980176329612732,
+      0.5968270301818848,
+      0.5959758162498474
+    ],
+    "final_uniform_client_training_ce": 0.5959758162498474,
+    "final_gradient_l2_norm": 0.009241770021617413,
+    "penalty": 0.0,
+    "max_iter": 100
+  },
+  "code": {
+    "base_commit": "8f1030c87d136f7c0cb2b60508b3ae3296ba1842",
+    "source_sha256": {
+      "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+      "research/pathmnist_pathological/run.py": "d328605571295e86c62e577ddfc43a7e2c5a7594e934d99392e0a7d42e4fe88d",
+      "research/pathmnist_head_only/run.py": "c8ec7616e58fcdf7a057afc290bae1bba029765da39108721b9d5b914225455b",
+      "research/pathmnist_head_only/config.json": "48b71d1cd3cddcdb3f091024cf8c1bf122caa9154da36ba3640bafa2ac5b3e19",
+      "research/digits_mechanism_diagnostics/common.py": "3608f39262003e3c5dd9b4c71318f8272188d447b1aa4390fbcc2bbb1a294b6b",
+      "research/pathmnist_federated_head/protocol.py": "098f8b775ac71d06d505b7e15bec3b0245888db88ef4a5f3b81b71886e3856a0",
+      "research/pathmnist_federated_head/client.py": "6d1419d447730940101a945dcd4339c3f47079b58d459332948d19cde4f06c68",
+      "research/pathmnist_federated_head/run.py": "0964d79aa649320fd960f59e7dcdc2a200d6851875e134e333d9b87cba8bd67d",
+      "research/pathmnist_federated_head/config.json": "4b4c74a87a82b88503446fa409fca20d3b1530096c02af6f33d57a9c1293d499"
+    },
+    "config_sha256": "4b4c74a87a82b88503446fa409fca20d3b1530096c02af6f33d57a9c1293d499"
+  },
+  "configuration": {
+    "checkpoint": "_local/pathmnist_pathological/seed-42/final.pt",
+    "checkpoint_sha256": "fa56da01091debe9031a9acb2e3de0f34ce0f751d2c95d2d0d54c05f15697d1e",
+    "source_partition_sha256": "b70fb78ad84a7d7041c5d98938d208f8b23455c3254b8b949e32c58509828a80",
+    "seed": 42,
+    "source_round": 50,
+    "fusion_gain": 1.0,
+    "bn_mode": "original-frozen",
+    "head_penalty": 0.0,
+    "head_max_iter": 100,
+    "lbfgs": {
+      "lr": 1.0,
+      "history_size": 20,
+      "line_search_fn": "strong_wolfe",
+      "tolerance_grad": 1e-07,
+      "tolerance_change": 1e-10
+    },
+    "objective": "uniform mean of ten local-client full-batch cross-entropies",
+    "training_split": "all 89996 original training images; each uses its owner encoder",
+    "trainable_parameters": [
+      "fc.weight",
+      "fc.bias"
+    ],
+    "precision_refit_features_and_test": "float32; no AMP",
+    "evaluation": "uniform mean of all ten pipeline accuracies on the same complete 7180-image test",
+    "test_access": "one predetermined before/after diagnostic; no tuning, checkpoint selection or threshold stop",
+    "centralized_checkpoint": "_local/pathmnist_head_only/seed-42/final.pt",
+    "centralized_checkpoint_sha256": "31019b0e1ef8594de1f7da196a6ce4b7e84afdc58fb4ba3d42fcf14b7fd9d4b8",
+    "centralized_results": "_local/pathmnist_head_only/seed-42/results.json",
+    "centralized_results_sha256": "52d2d7b73929080fcb248573dd504fecbba940a6a49c4b11a15b0fd23b258700",
+    "client_count": 10,
+    "head_parameters": 585,
+    "simulation": "ten spawned client processes; server receives only local loss and head gradient on optimizer channel",
+    "aggregation_precision": "float32 mean in increasing client ID order",
+    "implicit_lbfgs_max_eval": 125,
+    "tolerances": {
+      "same_point_loss": {
+        "atol": 2e-06,
+        "rtol": 2e-06
+      },
+      "stored_gradient_anchor": {
+        "atol": 1e-05,
+        "rtol": 0.0001
+      },
+      "final_loss": {
+        "atol": 0.0002,
+        "rtol": 0.0001
+      },
+      "final_gradient": {
+        "atol": 0.0002,
+        "rtol": 0.01
+      },
+      "final_logits": {
+        "atol": 0.02,
+        "rtol": 0.002
+      },
+      "accuracy_percentage_points_atol": 0.05,
+      "test_prediction_disagreement_fraction_max": 0.001
+    },
+    "communication": "count application bytes, opcodes and 4-byte Unix Pipe framing separately; exclude preinstalled model/data, OS process startup and disk archives",
+    "comparison": "initial loss, centralized final loss, stored pre-last-step central gradient/loss, final objectives/gradients, train/test logits and same official test accuracy; no raw feature/label/logit transfer"
+  },
+  "private_artifacts": {
+    "_local/pathmnist_federated_head/seed-42/training-initial.pt": {
+      "sha256": "2e068afbd9caee88b7f41d7032f054f4918b28dea46b73d17f8701faabcc4a40",
+      "bytes": 18182596
+    },
+    "_local/pathmnist_federated_head/seed-42/gradient_audit.pt": {
+      "sha256": "e9af77f58f194cd8a0142a3b55e35b46bbc66d161b6b610ea26fe20847736c50",
+      "bytes": 13926
+    },
+    "_local/pathmnist_federated_head/seed-42/closure_trace.pt": {
+      "sha256": "fcaaebc661bd094e273d98309fd99c532f008cd3a294c08e81f92355dd62650c",
+      "bytes": 553968
+    },
+    "_local/pathmnist_federated_head/seed-42/before.pt": {
+      "sha256": "fa56da01091debe9031a9acb2e3de0f34ce0f751d2c95d2d0d54c05f15697d1e",
+      "bytes": 23390414
+    },
+    "_local/pathmnist_federated_head/seed-42/final.pt": {
+      "sha256": "2f704047f68034421f3d87e4d96d0d3b1450e790f02f64b7ece63ee168aa66d4",
+      "bytes": 23630862
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-0/private_features.pt": {
+      "sha256": "330d963ce6286a08162b8cf9678813b9431815c9972ab44c5e3bdc4074887b09",
+      "bytes": 1764320
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-0/final.pt": {
+      "sha256": "4f42194167ed9a35bcba96fe48f36371bed360c849589405085df44afc324d68",
+      "bytes": 2213307
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-1/private_features.pt": {
+      "sha256": "aaea5102b1bdc9720f0c0a0c24807e4ab34492f57ccfe120ca0d4001c26506f2",
+      "bytes": 2645344
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-1/final.pt": {
+      "sha256": "36df0da153a502970401c32a2487adf7d8954a773b69b2febcc7f8b56bbd61d4",
+      "bytes": 2225211
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-2/private_features.pt": {
+      "sha256": "cbd6a98b092e39979a3dcc9c1cd3f00a3b017aed8e0dcd8dfbb45e4e76c4900f",
+      "bytes": 2127392
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-2/final.pt": {
+      "sha256": "ba1de4e83ac8a113c6d822aae1930cdd6f1b6e6fd0ba8b326491b48d64d69d5a",
+      "bytes": 2218107
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-3/private_features.pt": {
+      "sha256": "6d88960d03189c9c21a116b049a556bc496908b992610f9db40d11b756a71d77",
+      "bytes": 2903072
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-3/final.pt": {
+      "sha256": "644563e877865962b2109d92b5f1e92ebd9e14b66d7df58deda121df51cd7d8e",
+      "bytes": 2228283
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-4/private_features.pt": {
+      "sha256": "e4c016b8059f89eed57bb163ae4820f9bcf1e5e8e40ff8d0934fc8ba70dc1cd9",
+      "bytes": 2652960
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-4/final.pt": {
+      "sha256": "2e4e5f8b0082bcbb3c1f5fbd34c9a4a4edcf5040082d0c001fbf1845daa2b5ed",
+      "bytes": 2225211
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-5/private_features.pt": {
+      "sha256": "4b194dd4b0e134dac9a82a80ba0e6e8e8981a593b265c41ef78646b992f6ead7",
+      "bytes": 2094368
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-5/final.pt": {
+      "sha256": "ae9b3d8332343d234fe558ff4d49b5503cebd768b455e2e090ec7f0e5a1581d6",
+      "bytes": 2217851
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-6/private_features.pt": {
+      "sha256": "cbe1bb2b1a3d92970812adb4516002d991637bb708e0e10a1dd61f0059132b3c",
+      "bytes": 2458272
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-6/final.pt": {
+      "sha256": "f72580d9e4716fd0318b37c1413bbabebc753f5fc4017674bf5f1a31e8bbc837",
+      "bytes": 2222459
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-7/private_features.pt": {
+      "sha256": "c1d3235b9be410309e6781bf145dce9d9360e17537db9069bcc57a2328847e55",
+      "bytes": 2328480
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-7/final.pt": {
+      "sha256": "c220ff71ec27cbf5684939a4ea3c5acda20a263a39e749dc7233eb1291291a05",
+      "bytes": 2220987
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-8/private_features.pt": {
+      "sha256": "67f70a1c449f6b6fb94e18f06fcee771e12dc014220ad41feabad79665eba609",
+      "bytes": 3354656
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-8/final.pt": {
+      "sha256": "7f985e82301b961f58e9a48a735ce93f438fa723733220c88979f676db5453a2",
+      "bytes": 2234491
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-9/private_features.pt": {
+      "sha256": "5df4b02198fb5e59777eae46e54817906732369fe3e637de31b03d9b30196837",
+      "bytes": 1764448
+    },
+    "_local/pathmnist_federated_head/seed-42/clients/client-9/final.pt": {
+      "sha256": "c2a290f1fbcd57e33678c4531ba671799da14dac73ee3f68760f7d203ac6635a",
+      "bytes": 2213499
+    }
+  },
+  "execution": {
+    "command": [
+      "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+      "-u",
+      "research/pathmnist_federated_head/run.py",
+      "--config",
+      "research/pathmnist_federated_head/config.json",
+      "--output",
+      "_local/pathmnist_federated_head/seed-42",
+      "--device",
+      "cuda:1"
+    ],
+    "pid": 1458459,
+    "exit_code": 0,
+    "started_utc": "2026-10-06T19:54:32.808054+00:00",
+    "ended_utc": "2026-10-06T19:54:51.773364+00:00",
+    "process_wall_seconds": 18.965342725161463,
+    "gpu_memory_peak_mib": {
+      "0": 451,
+      "1": 9077
+    }
+  },
+  "verification": {
+    "status": "passed_protocol_and_checkpoint_checks",
+    "terminal_numerical_equivalence": "not established under declared tolerances",
+    "source_fields_unchanged_except_fc": true,
+    "original_BN_buffers_bit_identical": true,
+    "all_ten_complete_client_states_optimizer_scaler_rng_indices_preserved": true,
+    "separate_client_processes": 10,
+    "no_private_features_labels_or_logits_in_head_protocol": true,
+    "samples_and_counts_verified": true,
+    "all_bytes_reconstructed_from_messages": true,
+    "prior_campaign_unchanged_files": 22,
+    "tests": {
+      "passed": 360,
+      "seconds": 87.53
+    }
+  }
+}

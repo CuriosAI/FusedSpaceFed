@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+    "-u",
+    "research/pathmnist_federated_head/run.py",
+    "--config",
+    "research/pathmnist_federated_head/config.json",
+    "--output",
+    "_local/pathmnist_federated_head/seed-42",
+    "--device",
+    "cuda:1"
+  ],
+  "pid": 1458459,
+  "exit_code": 0,
+  "started_utc": "2026-10-06T19:54:32.808054+00:00",
+  "ended_utc": "2026-10-06T19:54:51.773364+00:00",
+  "process_wall_seconds": 18.965342725161463,
+  "gpu_memory_peak_mib": {
+    "0": 451,
+    "1": 9077
+  }
+}

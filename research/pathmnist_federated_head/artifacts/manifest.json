@@ -1,0 +1,65 @@
+{
+  "files": {
+    "archive.py": {
+      "sha256": "1eee207e4b71f924c01253a3860f550486734867cef06b7373aeef5772f3fab8",
+      "bytes": 20425
+    },
+    "config.json": {
+      "sha256": "4b4c74a87a82b88503446fa409fca20d3b1530096c02af6f33d57a9c1293d499",
+      "bytes": 2547
+    },
+    "client.py": {
+      "sha256": "6d1419d447730940101a945dcd4339c3f47079b58d459332948d19cde4f06c68",
+      "bytes": 8974
+    },
+    "protocol.py": {
+      "sha256": "098f8b775ac71d06d505b7e15bec3b0245888db88ef4a5f3b81b71886e3856a0",
+      "bytes": 5436
+    },
+    "PROTOCOL.md": {
+      "sha256": "c71a7c3315147294d48f04ca7bca6336687b6f22b51f3524a02cfae53826537c",
+      "bytes": 5823
+    },
+    "FEDERATED_HEAD_REPORT.md": {
+      "sha256": "4ba3a51e296ea4acb98ce258a6962e9cc5dc834f6ddd199554101ee4904602c9",
+      "bytes": 9227
+    },
+    "run.py": {
+      "sha256": "0964d79aa649320fd960f59e7dcdc2a200d6851875e134e333d9b87cba8bd67d",
+      "bytes": 14731
+    },
+    "artifacts/summary.json": {
+      "sha256": "40888ba537c7d60e1666e931bfc4bb39dc76824029e94ac60f26b8ba4fada18b",
+      "bytes": 17458
+    },
+    "artifacts/tests.log": {
+      "sha256": "8c8faf9cea394562c6df85c56e7d44d0dc955cbb09c23d00796acec590e03426",
+      "bytes": 431
+    },
+    "artifacts/results.json.gz": {
+      "sha256": "082488e1c4f630fbfad31c9d7144dd0a9ad56b9b636813d3bfe389efaa09b9ad",
+      "bytes": 8878
+    },
+    "artifacts/closure_trace.json.gz": {
+      "sha256": "5f6a9ee44e674b7f8b684e9051ac12c879b5dc359e48c28b31210b924e5f6a42",
+      "bytes": 3725
+    },
+    "artifacts/execution.json": {
+      "sha256": "e1a3ce0cdde99cb466ab1a2abf8e42e96cbab417b7e06f9389e47852231d130b",
+      "bytes": 549
+    },
+    "artifacts/verification.json": {
+      "sha256": "c868c0c8b7fbb6f3e3a358193cffbe8f07d9312d4d519284c8be3d2436a18dc4",
+      "bytes": 594
+    },
+    "artifacts/aggregate_gradient_audit.json.gz": {
+      "sha256": "50e4d27684f928539361023082daf2522e68bcb0b50ead291552a8eacca6a867",
+      "bytes": 28813
+    },
+    "tests/test_federated_head.py": {
+      "sha256": "d9ee5dddbdc37099c4cb250c74c678d2d7ee9356f3859f90a10022b78cb82f85",
+      "bytes": 5732
+    }
+  },
+  "checkpoint_policy": "complete checkpoints/features/labels/logs only in private _local on thanos"
+}

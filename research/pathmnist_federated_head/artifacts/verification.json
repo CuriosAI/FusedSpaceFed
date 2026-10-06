@@ -1,0 +1,16 @@
+{
+  "status": "passed_protocol_and_checkpoint_checks",
+  "terminal_numerical_equivalence": "not established under declared tolerances",
+  "source_fields_unchanged_except_fc": true,
+  "original_BN_buffers_bit_identical": true,
+  "all_ten_complete_client_states_optimizer_scaler_rng_indices_preserved": true,
+  "separate_client_processes": 10,
+  "no_private_features_labels_or_logits_in_head_protocol": true,
+  "samples_and_counts_verified": true,
+  "all_bytes_reconstructed_from_messages": true,
+  "prior_campaign_unchanged_files": 22,
+  "tests": {
+    "passed": 360,
+    "seconds": 87.53
+  }
+}
