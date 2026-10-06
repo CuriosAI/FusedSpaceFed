@@ -1,0 +1,168 @@
+{
+  "frozen_files": {
+    "research/capacity_compute_control/audit_results.py": "2b202b64ed1a7fe2cb9455ec2d0d0e894e5b882cbd5246d3be403dd917d28b45",
+    "research/capacity_compute_control/flop_profile.json": "25c8407d39217830f16c1936e07642bfd3c6faa60aaa89ceb64ef18eb6883e65",
+    "research/capacity_compute_control/runner.py": "cd2319c112d44e53f9ddc1ad9c187c68f409ec632d08c9dfb74f912ad6fbefc3",
+    "research/digits_mechanism_diagnostics/common.py": "3608f39262003e3c5dd9b4c71318f8272188d447b1aa4390fbcc2bbb1a294b6b",
+    "research/digits_mechanism_diagnostics/controller.py": "6f58fa6e83f758862396648f2ee4fdbc5029230b194f66b6e5e1356753a6bc58",
+    "research/digits_mechanism_diagnostics/phase2/client.py": "1f0c976afb8975e7d5a04a36f001155918fa29412e36a5c5c80cbdc9d93c7000",
+    "research/digits_mechanism_diagnostics/phase2/configs/decoder-only-seed-42.json": "f45178c3354b7cf9c7f2163cc7332dcabcb3d177ec3b50ab4dcef15e48e6074d",
+    "research/digits_mechanism_diagnostics/phase2/configs/decoder-only-seed-43.json": "0cd4b355a393b878e6a56ec5de713e6a49c9a5b47cc70d9b84d7db1ffc48c0b7",
+    "research/digits_mechanism_diagnostics/phase2/configs/decoder-only-seed-44.json": "2a3fb64941e3587892152114f1014663f9195f9ac33c925ebad5ab33c1d2a554",
+    "research/digits_mechanism_diagnostics/phase2/configs/decoder-only-seed-45.json": "1486d45e3fdc0cd5c711465a0294aab04905f1b38ad97a750959291276818705",
+    "research/digits_mechanism_diagnostics/phase2/configs/decoder-only-seed-46.json": "6e62200d1b5164cfb62518fa25a1b53d928d65d4d36755c67bc10480936809ff",
+    "research/digits_mechanism_diagnostics/phase2/configs/no-warmup-seed-42.json": "e4afb888e93457c3f928b3e1e8045c542aa5f66bde42c49ef44b93c5c0d34f90",
+    "research/digits_mechanism_diagnostics/phase2/configs/no-warmup-seed-43.json": "9ac10ee4124d4016b55e405f31fa473bdefd9baaeace2a71b5337f5db0c855db",
+    "research/digits_mechanism_diagnostics/phase2/configs/no-warmup-seed-44.json": "9f4dc09f803ffcff33d08ecf4d7b736fbe2c38ba107bc5aa4b84fdcfa62b8f84",
+    "research/digits_mechanism_diagnostics/phase2/configs/no-warmup-seed-45.json": "1cd5c7b3107b9104a9413df07188966bfb9cb4280bb63c3337bcee4a684c99e9",
+    "research/digits_mechanism_diagnostics/phase2/configs/no-warmup-seed-46.json": "686efccdd2e7018db74a9b0eb7aa770d76f3d23e80499fd1ec79945c813fdf24",
+    "research/digits_mechanism_diagnostics/phase2/configs/shared-encoder-seed-42.json": "663e9010507b58da1682b9586110f4aeca751c4a9d96df82ab88c0f06d093907",
+    "research/digits_mechanism_diagnostics/phase2/configs/shared-encoder-seed-43.json": "de295f8c821bb6f8ab5a964b98260dd6d30db85827007b379d4af3f4d1e91619",
+    "research/digits_mechanism_diagnostics/phase2/configs/shared-encoder-seed-44.json": "65b9d63df23133a33767175ac6b8b31cc95840689e82ceddd7b351f573fcd9b6",
+    "research/digits_mechanism_diagnostics/phase2/configs/shared-encoder-seed-45.json": "c23731a4bdde7828ec0fcf3e742b9d5d8234d09e12c2aebfebcdf714e189ad3d",
+    "research/digits_mechanism_diagnostics/phase2/configs/shared-encoder-seed-46.json": "3c4e9db58a5c78862af4ebbb3cbc758492e0f63ab88b05d463eadfb45038f109",
+    "research/digits_mechanism_diagnostics/phase2/plan.json": "0e538f38a43f55b0c4f0085c01c3c0c610ca2c307ff7b66ee89b18f1489ed162",
+    "research/digits_mechanism_diagnostics/phase2/runner.py": "9cc7288bab1c26d8cac840acc79e83a7dd37a37189309f85527e826e4950e463"
+  },
+  "gpu_slots": {
+    "cuda:0": 3,
+    "cuda:1": 3
+  },
+  "jobs": [
+    {
+      "args": [
+        "--config",
+        "research/digits_mechanism_diagnostics/phase2/configs/shared-encoder-seed-42.json"
+      ],
+      "name": "shared-encoder-seed-42",
+      "output": "_local/digits_mechanism_diagnostics/phase2/shared-encoder-seed-42",
+      "script": "research/digits_mechanism_diagnostics/phase2/runner.py"
+    },
+    {
+      "args": [
+        "--config",
+        "research/digits_mechanism_diagnostics/phase2/configs/decoder-only-seed-42.json"
+      ],
+      "name": "decoder-only-seed-42",
+      "output": "_local/digits_mechanism_diagnostics/phase2/decoder-only-seed-42",
+      "script": "research/digits_mechanism_diagnostics/phase2/runner.py"
+    },
+    {
+      "args": [
+        "--config",
+        "research/digits_mechanism_diagnostics/phase2/configs/no-warmup-seed-42.json"
+      ],
+      "name": "no-warmup-seed-42",
+      "output": "_local/digits_mechanism_diagnostics/phase2/no-warmup-seed-42",
+      "script": "research/digits_mechanism_diagnostics/phase2/runner.py"
+    },
+    {
+      "args": [
+        "--config",
+        "research/digits_mechanism_diagnostics/phase2/configs/shared-encoder-seed-43.json"
+      ],
+      "name": "shared-encoder-seed-43",
+      "output": "_local/digits_mechanism_diagnostics/phase2/shared-encoder-seed-43",
+      "script": "research/digits_mechanism_diagnostics/phase2/runner.py"
+    },
+    {
+      "args": [
+        "--config",
+        "research/digits_mechanism_diagnostics/phase2/configs/decoder-only-seed-43.json"
+      ],
+      "name": "decoder-only-seed-43",
+      "output": "_local/digits_mechanism_diagnostics/phase2/decoder-only-seed-43",
+      "script": "research/digits_mechanism_diagnostics/phase2/runner.py"
+    },
+    {
+      "args": [
+        "--config",
+        "research/digits_mechanism_diagnostics/phase2/configs/no-warmup-seed-43.json"
+      ],
+      "name": "no-warmup-seed-43",
+      "output": "_local/digits_mechanism_diagnostics/phase2/no-warmup-seed-43",
+      "script": "research/digits_mechanism_diagnostics/phase2/runner.py"
+    },
+    {
+      "args": [
+        "--config",
+        "research/digits_mechanism_diagnostics/phase2/configs/shared-encoder-seed-44.json"
+      ],
+      "name": "shared-encoder-seed-44",
+      "output": "_local/digits_mechanism_diagnostics/phase2/shared-encoder-seed-44",
+      "script": "research/digits_mechanism_diagnostics/phase2/runner.py"
+    },
+    {
+      "args": [
+        "--config",
+        "research/digits_mechanism_diagnostics/phase2/configs/decoder-only-seed-44.json"
+      ],
+      "name": "decoder-only-seed-44",
+      "output": "_local/digits_mechanism_diagnostics/phase2/decoder-only-seed-44",
+      "script": "research/digits_mechanism_diagnostics/phase2/runner.py"
+    },
+    {
+      "args": [
+        "--config",
+        "research/digits_mechanism_diagnostics/phase2/configs/no-warmup-seed-44.json"
+      ],
+      "name": "no-warmup-seed-44",
+      "output": "_local/digits_mechanism_diagnostics/phase2/no-warmup-seed-44",
+      "script": "research/digits_mechanism_diagnostics/phase2/runner.py"
+    },
+    {
+      "args": [
+        "--config",
+        "research/digits_mechanism_diagnostics/phase2/configs/shared-encoder-seed-45.json"
+      ],
+      "name": "shared-encoder-seed-45",
+      "output": "_local/digits_mechanism_diagnostics/phase2/shared-encoder-seed-45",
+      "script": "research/digits_mechanism_diagnostics/phase2/runner.py"
+    },
+    {
+      "args": [
+        "--config",
+        "research/digits_mechanism_diagnostics/phase2/configs/decoder-only-seed-45.json"
+      ],
+      "name": "decoder-only-seed-45",
+      "output": "_local/digits_mechanism_diagnostics/phase2/decoder-only-seed-45",
+      "script": "research/digits_mechanism_diagnostics/phase2/runner.py"
+    },
+    {
+      "args": [
+        "--config",
+        "research/digits_mechanism_diagnostics/phase2/configs/no-warmup-seed-45.json"
+      ],
+      "name": "no-warmup-seed-45",
+      "output": "_local/digits_mechanism_diagnostics/phase2/no-warmup-seed-45",
+      "script": "research/digits_mechanism_diagnostics/phase2/runner.py"
+    },
+    {
+      "args": [
+        "--config",
+        "research/digits_mechanism_diagnostics/phase2/configs/shared-encoder-seed-46.json"
+      ],
+      "name": "shared-encoder-seed-46",
+      "output": "_local/digits_mechanism_diagnostics/phase2/shared-encoder-seed-46",
+      "script": "research/digits_mechanism_diagnostics/phase2/runner.py"
+    },
+    {
+      "args": [
+        "--config",
+        "research/digits_mechanism_diagnostics/phase2/configs/decoder-only-seed-46.json"
+      ],
+      "name": "decoder-only-seed-46",
+      "output": "_local/digits_mechanism_diagnostics/phase2/decoder-only-seed-46",
+      "script": "research/digits_mechanism_diagnostics/phase2/runner.py"
+    },
+    {
+      "args": [
+        "--config",
+        "research/digits_mechanism_diagnostics/phase2/configs/no-warmup-seed-46.json"
+      ],
+      "name": "no-warmup-seed-46",
+      "output": "_local/digits_mechanism_diagnostics/phase2/no-warmup-seed-46",
+      "script": "research/digits_mechanism_diagnostics/phase2/runner.py"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "plan_file": "research/digits_mechanism_diagnostics/phase2/plan.json",
+  "plan_sha256": "972c4e5fd357d1473053c3b68a7acb18c22c666ba34f7332f7c9397d1b28e5d0",
+  "seed": 42,
+  "training": {
+    "aggregation": "uniform",
+    "amp": false,
+    "autoencoder_betas": [
+      0.9,
+      0.999
+    ],
+    "autoencoder_eps": 1e-08,
+    "autoencoder_lr": 0.0003,
+    "autoencoder_weight_decay": 0.0,
+    "batch_size": 32,
+    "classification_epochs": 1,
+    "classifier_lr": 0.1,
+    "classifier_momentum": 0.0,
+    "classifier_weight_decay": 0.0,
+    "clients_per_round": 5,
+    "drop_last": false,
+    "dz": 64,
+    "gradient_clip_norm": 10.0,
+    "num_workers": 0,
+    "optimizer_reset": "each_participation; Adam continuous between phases",
+    "precision": "float32",
+    "rounds": 300,
+    "tf32": false,
+    "torch_threads": 4,
+    "warmup_epochs": 1
+  },
+  "variant": "no-warmup"
+}

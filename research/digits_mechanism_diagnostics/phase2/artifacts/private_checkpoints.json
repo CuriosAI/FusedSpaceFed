@@ -1,0 +1,92 @@
+{
+  "decoder-only-seed-42": {
+    "bytes": 59100194,
+    "path": "_local/digits_mechanism_diagnostics/phase2/decoder-only-seed-42/checkpoint.pt",
+    "raw_result_sha256": "483a8683f5b48bd8878f55d8ab97ef997e8922981426a4f5ab1c83a2f943330b",
+    "sha256": "fdb7501de69a093909f6bbd88b2daa698d602b39abded2de3a5e26e6506f0381"
+  },
+  "decoder-only-seed-43": {
+    "bytes": 59100130,
+    "path": "_local/digits_mechanism_diagnostics/phase2/decoder-only-seed-43/checkpoint.pt",
+    "raw_result_sha256": "5c0ec05619ccedbb425d438e5bc57d8fc6c607246cbd1183f64fdf4c8c0c6b07",
+    "sha256": "ad75955735be82ec6f07ef843e6df2f44b0747aeef5a91b216f2d50947cf3968"
+  },
+  "decoder-only-seed-44": {
+    "bytes": 59100130,
+    "path": "_local/digits_mechanism_diagnostics/phase2/decoder-only-seed-44/checkpoint.pt",
+    "raw_result_sha256": "d232eb3bc5d4dbcd56cb6d9f80289407e9ccbe142816bf957ca324f335c7a638",
+    "sha256": "45c267c4d811cb1dd0668f6f5b5ff818173139f3303d5d8ae0a688cc553dcf9f"
+  },
+  "decoder-only-seed-45": {
+    "bytes": 59100194,
+    "path": "_local/digits_mechanism_diagnostics/phase2/decoder-only-seed-45/checkpoint.pt",
+    "raw_result_sha256": "fb73f43f1b8faf2309d85f747aeae1c529e173311e0247c823135b0f2dfba5c9",
+    "sha256": "dcbe34af0736df2e322eb3746f1effc0375d4979d0a3b583ba0632bf26ce24af"
+  },
+  "decoder-only-seed-46": {
+    "bytes": 59100194,
+    "path": "_local/digits_mechanism_diagnostics/phase2/decoder-only-seed-46/checkpoint.pt",
+    "raw_result_sha256": "8f83a12a63f156bb7719fac10141d6f8f0651daf9cae4d344df14efedb798885",
+    "sha256": "761653ac51e2b149c669b73497a3f98687d699f709519f6da75dc0f723d89d35"
+  },
+  "no-warmup-seed-42": {
+    "bytes": 58987682,
+    "path": "_local/digits_mechanism_diagnostics/phase2/no-warmup-seed-42/checkpoint.pt",
+    "raw_result_sha256": "a7017ee6e4b003d5f324f47ba2b638def35d72d504d65c01878821b048277d43",
+    "sha256": "2dc6b49dcb763b816d2924ae75deeb3b1c3299a4f578991f47744037ac6fe73e"
+  },
+  "no-warmup-seed-43": {
+    "bytes": 58987618,
+    "path": "_local/digits_mechanism_diagnostics/phase2/no-warmup-seed-43/checkpoint.pt",
+    "raw_result_sha256": "679603049b3cb8cc394a9a2a96070d43dc0c1206ccb811795ce3a9086d2ec5ff",
+    "sha256": "b9fc9e00ff1fd8c05cc8a83ebd3957f280fcbf15d924f84f20991f62965010c2"
+  },
+  "no-warmup-seed-44": {
+    "bytes": 58987682,
+    "path": "_local/digits_mechanism_diagnostics/phase2/no-warmup-seed-44/checkpoint.pt",
+    "raw_result_sha256": "c23fb9cbd9ce0faa53b251b362ea24736934522de90985d414ba7c0852e503d8",
+    "sha256": "bb06a5d204a01124c86d910c29f5842f8b7a642f7f0970c74be3a4ea3c83eb2a"
+  },
+  "no-warmup-seed-45": {
+    "bytes": 58987682,
+    "path": "_local/digits_mechanism_diagnostics/phase2/no-warmup-seed-45/checkpoint.pt",
+    "raw_result_sha256": "0f367a997eaeca25a684255cd762ae3c0dcf855270db3410e62097712940afbc",
+    "sha256": "8a09299a5bf92ec542040151016fb5bf109f8c869ec71a04d5684ff7ebabb85b"
+  },
+  "no-warmup-seed-46": {
+    "bytes": 58987682,
+    "path": "_local/digits_mechanism_diagnostics/phase2/no-warmup-seed-46/checkpoint.pt",
+    "raw_result_sha256": "5d90a3cd26e067345e42337590ee1efc0e8baec86751d90d59c3bb7263f5248a",
+    "sha256": "66fbb1f1335b0a21dfd89302b77267a5edf96b5fc4dedd47a722d148b67d8e97"
+  },
+  "shared-encoder-seed-42": {
+    "bytes": 59099362,
+    "path": "_local/digits_mechanism_diagnostics/phase2/shared-encoder-seed-42/checkpoint.pt",
+    "raw_result_sha256": "4cc4931fcf7bcd00a03275330d9d24be674f08bf4a7252ab3bf90f52a77f66d1",
+    "sha256": "1f389ae7696cb8541c0819db399d5c6918fe649246e6ca72933433032cb484c1"
+  },
+  "shared-encoder-seed-43": {
+    "bytes": 59099362,
+    "path": "_local/digits_mechanism_diagnostics/phase2/shared-encoder-seed-43/checkpoint.pt",
+    "raw_result_sha256": "5b0e426cacc75f98921b9684772f41a11e42e342bf96077339a6811bc6e129e3",
+    "sha256": "66bfbb4f0f756b8af358f311bf13b2780bfeacf0b39bc1b2354fb5501ad1e99c"
+  },
+  "shared-encoder-seed-44": {
+    "bytes": 59099362,
+    "path": "_local/digits_mechanism_diagnostics/phase2/shared-encoder-seed-44/checkpoint.pt",
+    "raw_result_sha256": "1bb3c8183d8799cf3187ab1ae6a2ca43964f45d5410af284393fb87776576f97",
+    "sha256": "a1af8e6f2ef8f4da0aef596d5ea9774e377d37963e099c5b4e0e10cf91548d76"
+  },
+  "shared-encoder-seed-45": {
+    "bytes": 59099426,
+    "path": "_local/digits_mechanism_diagnostics/phase2/shared-encoder-seed-45/checkpoint.pt",
+    "raw_result_sha256": "5d78608d18431b26c62273c504df55fe487b9aea6230b346ec89f87e84afe3cb",
+    "sha256": "9715e0d7a45eaf68f5866a2a552d4149aa9faacda1f469c142bb85c05a7d73c7"
+  },
+  "shared-encoder-seed-46": {
+    "bytes": 59099362,
+    "path": "_local/digits_mechanism_diagnostics/phase2/shared-encoder-seed-46/checkpoint.pt",
+    "raw_result_sha256": "c6bf17571a0d40e7d49d0c0b9d746eb1f041ec1f4645058ed4e20ca7564cae4f",
+    "sha256": "810db1061fef1ea361c3b59bad6d26694a275aa628b9d284826be6611175e9e9"
+  }
+}
