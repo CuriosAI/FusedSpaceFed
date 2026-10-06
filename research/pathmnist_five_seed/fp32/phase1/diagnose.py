@@ -45,6 +45,9 @@ def figure(path,cid,anchor,stages,labels):
 
 
 def run(seed,physical_device,output):
+    # The controller passes repository-relative destinations; checkpoint
+    # metadata below is serialized relative to the absolute repository root.
+    output=output.resolve()
     force_fp32();os.environ['CUDA_VISIBLE_DEVICES']=physical_device.split(':')[-1];device=torch.device('cuda:0')
     torch.cuda.set_device(device);torch.set_num_threads(2);seed_everything(seed)
     verify_cache();parts,_=partition(seed);spec=probe(seed);settings=json.loads((PUBLIC/'plan.json').read_text())['settings']

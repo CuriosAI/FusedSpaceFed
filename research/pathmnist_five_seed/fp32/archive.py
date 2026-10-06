@@ -174,6 +174,8 @@ def phase1():
              'costs':[{'seed':r['seed'],'wall_seconds':r['wall_seconds'],'peak_cuda_allocated_bytes':r['peak_cuda_allocated_bytes'],
                        'peak_cuda_reserved_bytes':r['peak_cuda_reserved_bytes']} for r in records]}
     write_json(dest/'summary.json',summary);shutil.copyfile(PRIVATE/'phase1/campaign.json',dest/'campaign.json')
+    failed=PRIVATE/'phase1_failed_relative_path/campaign.json'
+    if failed.exists():shutil.copyfile(failed,dest/'failed_relative_path_campaign.json')
     figures=folder/'figures';figures.mkdir()
     for p in (PRIVATE/'phase1/seed-42').glob('*.png'):shutil.copyfile(p,figures/p.name)
     if len(list(figures.glob('*.png')))!=20:raise ValueError('Missing preselected visual grids')
@@ -193,6 +195,7 @@ def phase1():
             'Digits used five domains, dz=64, DigitCNN, optimizer reset per round, one classification epoch and calibrated settings; PathMNIST uses ten label-skewed clients, dz=16, ResNet20V2, persistent optimizers and three classification epochs. Raw MSE scales also differ ([−1,1] versus [0,1]). Interpret qualitative patterns without treating these as controlled cross-benchmark effect sizes.', '',
             f"Phase calendar {campaign['wall_seconds']:.3f} s; process sum {campaign['process_wall_seconds_sum']:.3f} s. Measured per-seed costs and memory are in artifacts/summary.json; executed commands/exit codes in artifacts/campaign.json.", '',
             'Twenty preselected seed-42 visual grids are in figures/: two anchors × ten clients, two training examples per assigned class. All five seeds contribute to numeric statistics. Configuration/indices/hashes are ../plan.json, ../probe.json and ../anchors.json.']
+    lines+=['', 'An earlier replay attempt stopped after saving the first client copy because repository-relative output paths were passed to absolute-path metadata serialization. The output path was canonicalized; no model/loss/optimizer change was made. All five diagnostics restarted from the same immutable anchors. Earlier checkpoints, receipt and logs are preserved in phase1_failed_relative_path/ and logs/phase1-relative-path-failure/; their cost is separate from the successful phase.']
     (folder/'PHASE1_REPORT.md').write_text('\n'.join(lines)+'\n');manifest(folder);return summary
 
 

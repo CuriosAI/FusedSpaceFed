@@ -41,6 +41,12 @@ def finish():
     costs['sum_process_wall_seconds']=sum(c['process_wall_seconds_sum'] for c in histories.values())
     begin=datetime.fromisoformat(histories['originals']['started_utc']);end=datetime.fromisoformat(histories['phase3']['ended_utc'])
     costs['elapsed_first_successful_launch_to_last_diagnostic_seconds']=(end-begin).total_seconds()
+    costs['preserved_failed_attempts']={}
+    for name,path in (('import_only',PRIVATE/'failed_launch_campaign.json'),
+                      ('diagnostic_relative_path',PRIVATE/'phase1_failed_relative_path/campaign.json')):
+        if path.exists():
+            c=json.loads(path.read_text())
+            costs['preserved_failed_attempts'][name]={k:c[k] for k in ('wall_seconds','process_wall_seconds_sum')}
     full=originals['accuracy_percent']['full']
     fmt=lambda s:f"{s['mean']:.6f} ± {s['sd_sample_ddof1']:.6f}"
     lines=['# PathMNIST original settings: five-seed FP32 campaign and mechanism diagnostics','',
@@ -83,7 +89,7 @@ def finish():
     for name in expected:
         c=costs[name];lines.append(f"| {name} | {c['campaign_wall_seconds']:.3f} | {c['sum_process_wall_seconds']:.3f} | {c['max_process_peak_cuda_allocated_bytes']/2**20:.3f} / {c['max_process_peak_cuda_reserved_bytes']/2**20:.3f} |")
     lines+=['',f"Successful first launch→last diagnostic: {costs['elapsed_first_successful_launch_to_last_diagnostic_seconds']:.3f}s including intervening verification/archiving/commits. Sum phase campaign elapsed: {costs['sum_phase_campaign_wall_seconds']:.3f}s; sum process elapsed: {costs['sum_process_wall_seconds']:.3f}s. Concurrent process times are not exclusive GPU-hour charges. Per-seed training/evaluation/session durations, actual optimizer counts, peak allocated/reserved CUDA bytes and RSS are retained in the corresponding archives.", '',
-            'A Python standard-library name collision caused a failed import-only launch, before any training. It was fixed by renaming the precision module and adding three direct-CLI regression tests; the failed receipt/logs remain preserved. It is not a numerical failure, and its cost is separate. No later numerical failure is silently dropped: phase archives require every declared process to complete.', '',
+            'A Python standard-library name collision caused a failed import-only launch, before any training. It was fixed by renaming the precision module and adding three direct-CLI regression tests. The first decoder replay also stopped on relative-path metadata serialization after updating only client copies. Its output path was canonicalized; all five diagnostics restarted from immutable anchors. Both failed receipts, logs and partial diagnostic checkpoints remain preserved, with measured costs separately recorded in cost_summary.json. Neither was a numerical failure or altered the full trained models. Phase archives require every declared process to complete.', '',
             f"Hash verification confirms all {verification['previous_versioned_files_unchanged']} pre-existing tracked files and {verification['previous_private_run_files_unchanged']} files of the previous PathMNIST runs unchanged. Frozen partition/probe/source/checkpoint SHA256 manifests are retained. Full checkpoints (initial/latest/final for20 training runs, plus100 decoder replay snapshots) remain on thanos in `_local/pathmnist_five_seed/fp32/`; scaler is explicitly None, not missing. Dataset/checkpoints/full logs are not published.", '',
             '## Reproduction and commits','',
             'Commands/configurations: README.md, plan.json, initial_sources.json, full_queue.json and phase1–3/queue.json. Successful commands, physical GPU, exit codes and process durations: each artifacts/campaign.json. Numeric result JSON is gzip-compressed losslessly; timings.jsonl are uncompressed. Source version per process is in each archived result/checkpoint. Tests and exact output are in verification_tests.log and verification_cli_tests.log; the final suite result is recorded in final_verification_tests.log.', '',
