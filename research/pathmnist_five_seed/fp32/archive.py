@@ -130,6 +130,8 @@ def originals():
     if campaign['status']!='completed' or len(campaign['runs'])!=5 or any(r['exit_code']!=0 for r in campaign['runs']):
         raise ValueError('Original training still active or failed')
     shutil.copyfile(receipt,PUBLIC/'originals/artifacts/campaign.json')
+    if (PRIVATE/'failed_launch_campaign.json').exists():
+        shutil.copyfile(PRIVATE/'failed_launch_campaign.json',PUBLIC/'originals/artifacts/failed_launch_campaign.json')
     s=summary['accuracy_percent']['full'];lines=['# Five original PathMNIST runs','',
         f"FusedSpaceFed with original settings, FP32: **{s['mean']:.6f} ± {s['sd_sample_ddof1']:.6f}%** (sample SD, five seeds 42–46).",
         '', '| Seed | Accuracy (%) | Correct / predictions | Training (s) | Session (s) |','|---:|---:|---:|---:|---:|']
@@ -139,6 +141,7 @@ def originals():
             'The primary accuracy is the uniform mean of ten private-encoder pipelines; each predicts the same official test set (7180 distinct test images). All raw numerators/denominators reconstruct the reported values. Exactly 50 rounds and one terminal test per run. Full checkpoints contain all private encoders, shared classifier/decoder, BN buffers, local persistent optimizers, RNGs and indices; scaler=None explicitly. AMP and TF32 are disabled everywhere.', '',
             f"Fresh five-run FP32 campaign calendar: {campaign['wall_seconds']:.3f} s; sum of process wall times: {campaign['process_wall_seconds_sum']:.3f} s. Previous FP16 attempts and their costs remain separately archived.", '',
             'The historical Table 4 contains 50.94%. These five audited runs are the evidence for a future paper update; the manuscript is intentionally unchanged. They do not establish statistical equivalence to the historical number. Between-seed SD includes partition and initialization variation; five seeds are not a confidence interval.', '',
+            'The first launch exited during Python imports because a new module named profile.py shadowed the standard library. The module was renamed before any training update; three direct-CLI regression tests were added. The failed receipt and logs remain separately preserved (failed_launch_campaign.json and logs/import-failure/); successful run times do not include that attempt.', '',
             'Raw JSON is gzip-compressed without loss; timing logs, source hashes, configuration identity and private checkpoint hashes are in artifacts/. Configuration is ../plan.json. Full data, checkpoints and complete logs remain on thanos. Existing experiments and manuscript are unchanged.']
     (PUBLIC/'originals/ORIGINALS_REPORT.md').write_text('\n'.join(lines)+'\n');manifest(PUBLIC/'originals');return summary
 

@@ -1,0 +1,27 @@
+[
+  {
+    "seed": 42,
+    "all_ten_models_optimizers_and_loader_rng_exact": true,
+    "fp32_initial_sha256": "d4663e3b8cfa917e69b8f2350ea8eb8206fca23c59b7b70dd05c85558e34d95d"
+  },
+  {
+    "seed": 43,
+    "all_ten_models_optimizers_and_loader_rng_exact": true,
+    "fp32_initial_sha256": "f8a537bf8580f1ee4c14693cceaba80105e7f8acaad68068478939b2b52dd807"
+  },
+  {
+    "seed": 44,
+    "all_ten_models_optimizers_and_loader_rng_exact": true,
+    "fp32_initial_sha256": "af56ecd336c36f4ef632978487750fb91e700ac16e80574ee04e05b8064b7952"
+  },
+  {
+    "seed": 45,
+    "all_ten_models_optimizers_and_loader_rng_exact": true,
+    "fp32_initial_sha256": "e2be42cec96c9492bc17b425502c401580ff82c4d58412e13ad7f82ad643fba1"
+  },
+  {
+    "seed": 46,
+    "all_ten_models_optimizers_and_loader_rng_exact": true,
+    "fp32_initial_sha256": "5e8d9c0c5015c7cd9a2ea958d342c3325544927b0f4c0eae5e4736da896df903"
+  }
+]
