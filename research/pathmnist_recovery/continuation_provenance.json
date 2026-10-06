@@ -1,0 +1,38 @@
+[
+  {
+    "candidate_id": "fp32-matched-reference",
+    "resume_from_round": 20,
+    "terminal_round": 50,
+    "source_checkpoint": "_local/pathmnist_calibrated/screening/fp32-matched-reference-seed-142/round-020.pt",
+    "source_checkpoint_sha256": "f3bbd5044ab5de311e2ad4541e9918e8c06e5ad6626868cdd3a3d8a771fb387b",
+    "output": "_local/pathmnist_recovery/continuation_validation/fp32-matched-reference",
+    "states": "complete clients/optimizer/RNG/loader generators copied without modification"
+  },
+  {
+    "candidate_id": "grid-c0.1-ae0.0001",
+    "resume_from_round": 20,
+    "terminal_round": 50,
+    "source_checkpoint": "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.0001-seed-142/round-020.pt",
+    "source_checkpoint_sha256": "9733c2623518c9844dd7a78fb3b0a68c66277732b57ce9206e9c3ab3e47606ec",
+    "output": "_local/pathmnist_recovery/continuation_validation/grid-c0.1-ae0.0001",
+    "states": "complete clients/optimizer/RNG/loader generators copied without modification"
+  },
+  {
+    "candidate_id": "grid-c0.1-ae0.001",
+    "resume_from_round": 20,
+    "terminal_round": 50,
+    "source_checkpoint": "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.001-seed-142/round-020.pt",
+    "source_checkpoint_sha256": "5141e49179a4d4947dbe4951943bfb481c53f83ff52ae5c4fd63e947703c75ad",
+    "output": "_local/pathmnist_recovery/continuation_validation/grid-c0.1-ae0.001",
+    "states": "complete clients/optimizer/RNG/loader generators copied without modification"
+  },
+  {
+    "candidate_id": "grid-c0.03-ae0.001",
+    "resume_from_round": 20,
+    "terminal_round": 50,
+    "source_checkpoint": "_local/pathmnist_calibrated/screening/grid-c0.03-ae0.001-seed-142/round-020.pt",
+    "source_checkpoint_sha256": "ebc772e64d2f2a21889c547b03e3fcc682f7cd8637256f8f6a25fe9824f47340",
+    "output": "_local/pathmnist_recovery/continuation_validation/grid-c0.03-ae0.001",
+    "states": "complete clients/optimizer/RNG/loader generators copied without modification"
+  }
+]

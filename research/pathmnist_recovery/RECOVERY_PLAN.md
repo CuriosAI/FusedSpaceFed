@@ -68,3 +68,44 @@ originale a 50 round, la modalità sarà scelta usando il riferimento FP32
 con gli stessi LR/epoche, con parità a favore di native e poi dell’ordine
 predefinito. Il riferimento FP16 a 18 round servirà come controllo di
 trasferimento, senza sostituire il criterio dichiarato.
+
+## Passo 3: orizzonte coerente e normalizzazione durante il training
+
+Il secondo tentativo, cross-layerwise scelto sul riferimento di validation,
+ha ottenuto **44,299443%** sul test: non supera la soglia. Il piccolo guadagno
+di validation delle nuove calibrazioni non giustifica altre varianti BN
+simili. La ricerca passa al training, senza cambiare le partizioni.
+
+Quattro checkpoint fit-only seed 142 vengono copiati in nuove directory e
+ripresi esattamente dal round 20 al round 50: riferimento FP32, c0.1/ae0.0001,
+c0.1/ae0.001 e c0.03/ae0.001. Si conservano stati privati, optimizer, generatori
+dei loader e RNG. I sorgenti/iperparametri precedenti sono identici; i round
+20 e i loro risultati restano archiviati. Selezione al terminale round 50,
+mai sul migliore round. Due worker per GPU lasciano un posto per GPU a due
+nuovi training indipendenti.
+
+Due varianti FusedSpaceFed-GN iniziano da zero sul fit, seed 142, 50 round.
+Sostituiscono soltanto le 19 BN del ResNet20-v2 con GroupNorm a 8 gruppi,
+stessi canali e parametri affini; i pesi del classificatore restano condivisi.
+Questo elimina le statistiche accumulate dei batch: la normalizzazione è
+per immagine ed è la stessa durante training e inferenza. È una modifica
+di architettura/normalizzazione rispetto al paper, da riportare come tale.
+Il motivo è un’ipotesi sulla coerenza dei gradienti fra client a due classi,
+non una causa già dimostrata del risultato negativo. Fonti tecniche:
+[Wu e He, Group Normalization, ECCV 2018](https://openaccess.thecvf.com/content_ECCV_2018/html/Yuxin_Wu_Group_Normalization_ECCV_2018_paper.html),
+[documentazione ufficiale PyTorch](https://docs.pytorch.org/docs/stable/generated/torch.nn.modules.normalization.GroupNorm.html).
+
+Profili GN: (1) SGD LR 0,03, Adam/warm-up LR 0,0003, CE 3, nessuna augmentation;
+(2) SGD LR 0,1, Adam LR 0,0003, warm-up LR 0,0001, CE 1, flip e rotazioni di
+90 gradi solo durante il training. Entrambi mantengono warm-up 1, batch 128,
+BF16, clipping 5, SGD senza momentum/decay e Adam persistente, dz16, encoder
+privati, decoder/classificatore condivisi e fusione additiva. L’augmentation
+è una nostra ipotesi di invarianza dell’orientamento dei tessuti e non viene
+applicata al test. Nessun nuovo esempio o sorgente dati.
+
+Si seleziona la configurazione/modo con la migliore accuratezza uniforme su
+validation a 50 round. Per GN è ammessa soltanto inferenza nativa, senza
+ricalibrazione o adattamento al test. La successiva prova usa seed 42 e
+training completo: riutilizza pesi finali compatibili se già disponibili,
+altrimenti parte da zero. Il confronto con il valore pubblicato rimane
+esplorativo e ogni modifica al protocollo viene identificata.
