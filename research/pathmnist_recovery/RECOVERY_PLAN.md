@@ -146,3 +146,32 @@ o classificatore. Le BN vengono eventualmente ricalibrate solo sul fit.
 ammesso come soluzione FusedSpaceFed o come criterio di stop sul test**.
 I guadagni positivi sono varianti esplicite rispetto alla fusione α=1 del
 paper. La selezione usa soltanto validation; nessun nuovo test è letto.
+
+## Passo 4 congelato: fusione positiva attenuata
+
+Le quattro sonde a 50 round sono concluse. Il riferimento FP32 con LR/epoche
+originali raggiunge **52,066934%** su validation con **α=0,25 e BN
+owner-cumulative da fit** (46.829/89.940 predizioni), contro 40,182344% con
+α=1 e la stessa modalità BN. La sonda migliore degli altri profili positivi
+raggiunge 48,702468%; α=0 rimane escluso. Il massimo di conteggi sul
+riferimento compatibile, con parità a favore di α=1, poi native e ordine dei
+guadagni, determina `attempt-04.json` prima del suo test.
+
+Per il primo trasferimento si riutilizza il checkpoint originale completo
+seed42, round50, allenato FP16 con gli stessi LR/epoche. È un limite:
+il modello di validation usa FP32, fit e seed142; non sono traiettorie
+identiche. Non si dichiara una nuova run da zero con questa variante.
+La prova costa secondi; se fallisce, una run FP32 da zero con la stessa
+configurazione selezionata resta un passo successivo possibile.
+
+La formula d'inferenza è `x + 0.25 D(E_i(x))`: tutti gli encoder privati,
+i pesi e gli optimizer allenati sono preservati, ma la fusione e i buffer
+BN differiscono dal protocollo del paper. Il checkpoint finale conserva
+il decoder **allenato originale**, non un decoder riscalato con momenti
+Adam incompatibili; il coefficiente è in `recovery.config.fusion_gain`.
+Per riprodurre l'inferenza si usa `inference.inference_decoder(checkpoint)`.
+`precalibration.pt` conserva lo stato precedente anche per una ripresa
+esatta del training originale. L'architettura e il numero di parametri
+sono invariati. La ricalibrazione usa sempre i 6.400 esempi fit fissati,
+senza label o dati test. Questa è una variante d'inferenza selezionata su
+validation, con stop esplorativo su un test già noto.

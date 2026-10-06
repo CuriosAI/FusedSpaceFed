@@ -1,0 +1,27 @@
+{
+  "attempt": 4,
+  "checkpoint": "_local/pathmnist_pathological/seed-42/final.pt",
+  "checkpoint_sha256": "fa56da01091debe9031a9acb2e3de0f34ce0f751d2c95d2d0d54c05f15697d1e",
+  "partition_sha256": "13d5cc86d039a8bf75b97ee6f6f94c6f177f52dd10829c66fd01150db7ceeb47",
+  "normalization": "owner-cumulative-shared-bn",
+  "fusion_gain": 0.25,
+  "formula": "x + fusion_gain * D(E_i(x))",
+  "training_seed": 42,
+  "training_rounds": 50,
+  "test_access": "one frozen candidate; known benchmark; exploratory threshold stop",
+  "validation_basis": {
+    "source": "_local/pathmnist_recovery/fusion_validation/reference-fp32/results.json",
+    "sha256": "dd11d63bd803c21dddf78322a3384d9fe9730733893ff847f367ac515a43f068",
+    "seed": 142,
+    "rounds": 50,
+    "fit_validation_disjoint": true,
+    "selected_gain": 0.25,
+    "selected_mode": "train-recalibrated",
+    "validation_accuracy_percent": 52.06693351122972,
+    "correct_total": 46829,
+    "predictions_total": 89940,
+    "rule": "max exact correct_total over positive gains and declared modes; ties prefer gain1 then native then declared gain order",
+    "limitations": "FP32 fit seed142 round50 original-LR control transferred to original FP16 full seed42 round50; inference-only variant; known-test exploratory threshold stop"
+  },
+  "checkpoint_semantics": "preserve original trained decoder and optimizer states; recovery.config.fusion_gain must be applied by inference_decoder(); classifier BN buffers recalibrated on fixed fit pool only"
+}

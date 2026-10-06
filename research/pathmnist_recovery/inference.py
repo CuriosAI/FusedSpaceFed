@@ -1,8 +1,9 @@
-"""Training-only BN variant on a complete, immutable FusedSpaceFed checkpoint."""
+"""Frozen positive-fusion/BN inference on an immutable complete checkpoint."""
 import argparse
 import copy
 from datetime import datetime, timezone
 import json
+import math
 import os
 from pathlib import Path
 import resource
@@ -20,6 +21,20 @@ from research.pathmnist_pathological.run import file_hash, write_json, atomic_sa
 from research.pathmnist_calibrated.data import verify, cache, DATA
 from research.pathmnist_calibrated.runner import evaluate, recalibrate_bn
 from research.pathmnist_recovery.normalization import calibrate
+from research.pathmnist_recovery.fusion_probe import scaled_decoder
+
+
+def inference_decoder(checkpoint):
+    """Apply the stored gain without changing trained weights/optimizer states.
+
+    The top-level decoder is always the original trained state. Consumers of
+    a recovery checkpoint must use this function (or multiply its output by
+    recovery.config.fusion_gain) to reproduce its declared inference.
+    """
+    gain = float(checkpoint.get('recovery', {}).get('config', {}).get('fusion_gain', 1.0))
+    if not math.isfinite(gain) or gain <= 0:
+        raise ValueError('A FusedSpaceFed inference gain must be finite and positive')
+    return scaled_decoder(checkpoint['decoder'], gain)
 
 
 def substitute_shared_bn(checkpoint, classifier):
@@ -63,34 +78,39 @@ def main(config_path, output, physical_device):
         raise ValueError('Wrong seed/round')
     if set(checkpoint['encoders']) != {str(i) for i in range(10)}:
         raise ValueError('Incomplete private states')
+    decoder = inference_decoder({**checkpoint, 'recovery': {'config': config}})
     seed_everything(checkpoint['seed'])
     output.mkdir(parents=True, exist_ok=False)
     shutil.copyfile(source, output / 'precalibration.pt')
     images, labels = cache(device)
     before = time.perf_counter()
     if config['normalization']=='owner-cumulative-shared-bn':
-        classifier = recalibrate_bn(checkpoint['classifier'], checkpoint['decoder'],
+        classifier = recalibrate_bn(checkpoint['classifier'], decoder,
                                     checkpoint['encoders'], images, partition, device)
     else:
-        classifier = calibrate(checkpoint['classifier'], checkpoint['decoder'],
+        classifier = calibrate(checkpoint['classifier'], decoder,
                                checkpoint['encoders'], images, partition, device,
                                config['normalization'])
     calibrated = substitute_shared_bn(checkpoint, classifier)
     code = {'base_commit': subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
             'source_sha256': {name: file_hash(ROOT/name) for name in
                 ('research/pathmnist_recovery/inference.py', 'research/pathmnist_recovery/normalization.py',
+                 'research/pathmnist_recovery/fusion_probe.py', 'research/pathmnist_recovery/training.py',
+                 'research/pathmnist_recovery/method.py',
                  'research/pathmnist_calibrated/runner.py',
                  'research/pathmnist_calibrated/data.py', 'fusedspacefed_core.py')},
             'config_sha256': file_hash(config_path)}
     calibrated['recovery'] = {'config': config, 'code': code,
                               'original_checkpoint_sha256': file_hash(source),
-                              'training_weights_and_optimizer_states_unchanged': True}
+                              'training_weights_and_optimizer_states_unchanged': True,
+                              'decoder_representation': 'original trained weights; use inference_decoder() for configured positive gain',
+                              'exact_training_resume_source': str(output / 'precalibration.pt')}
     atomic_save(output / 'final.pt', calibrated)
     calibration_seconds = time.perf_counter()-before
     test_images = torch.from_numpy(np.load(DATA/'test-images.npy')).to(device)
     test_labels = torch.from_numpy(np.load(DATA/'test-labels.npy')).to(device)
     evaluated = time.perf_counter()
-    metric = evaluate(classifier, checkpoint['decoder'], checkpoint['encoders'],
+    metric = evaluate(classifier, inference_decoder(calibrated), checkpoint['encoders'],
                       test_images, test_labels, list(range(7180)), {}, device)
     result = {'status': 'completed', 'kind': 'inference-only variant; no new training',
               'seed': 42, 'round': 50, 'test_evaluations': 1, 'config': config, 'code': code,

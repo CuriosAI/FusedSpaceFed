@@ -1,7 +1,7 @@
 import copy
 import pytest
 import torch
-from research.pathmnist_recovery.inference import substitute_shared_bn
+from research.pathmnist_recovery.inference import substitute_shared_bn, inference_decoder
 
 
 def test_inference_substitution_preserves_weights_encoders_and_optimizers():
@@ -25,3 +25,21 @@ def test_inference_substitution_rejects_parameter_changes():
     original=model.state_dict();changed=copy.deepcopy(original);changed['0.weight'].add_(1.)
     with pytest.raises(ValueError,match='changed a weight'):
         substitute_shared_bn({'classifier':original},changed)
+
+
+def test_gain_checkpoint_keeps_original_training_state_and_reconstructs_inference():
+    source={'decoder':{'final.weight':torch.ones(2,2),'final.bias':torch.full((2,),2.),
+                       'body.weight':torch.full((2,),3.)},
+            'recovery':{'config':{'fusion_gain':.25}}}
+    before=copy.deepcopy(source)
+    decoder=inference_decoder(source)
+    assert torch.equal(decoder['final.weight'],torch.full((2,2),.25))
+    assert torch.equal(decoder['final.bias'],torch.full((2,),.5))
+    assert torch.equal(decoder['body.weight'],before['decoder']['body.weight'])
+    assert all(torch.equal(source['decoder'][k],v) for k,v in before['decoder'].items())
+
+
+@pytest.mark.parametrize('gain',[0.,-1.,float('nan'),float('inf')])
+def test_inference_requires_positive_finite_decoder_path(gain):
+    with pytest.raises(ValueError,match='finite and positive'):
+        inference_decoder({'decoder':{},'recovery':{'config':{'fusion_gain':gain}}})
