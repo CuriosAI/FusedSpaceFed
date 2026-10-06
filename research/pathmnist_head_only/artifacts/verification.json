@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "original_checkpoint_hash_matches": true,
+  "only_shared_fc_weight_and_bias_changed": true,
+  "all_57_original_BN_buffers_bit_identical": true,
+  "all_ten_private_encoders_shared_decoder_optimizer_scaler_rng_and_partition_preserved": true,
+  "all_client_classifiers_synchronized": true,
+  "complete_final_checkpoint_loaded": true,
+  "before_counts_match_original_archive": true,
+  "metrics_reconstructed_from_counts": true,
+  "private_checkpoints": {
+    "_local/pathmnist_head_only/seed-42/training-initial.pt": {
+      "sha256": "2e068afbd9caee88b7f41d7032f054f4918b28dea46b73d17f8701faabcc4a40",
+      "bytes": 18182596
+    },
+    "_local/pathmnist_head_only/seed-42/before.pt": {
+      "sha256": "fa56da01091debe9031a9acb2e3de0f34ce0f751d2c95d2d0d54c05f15697d1e",
+      "bytes": 23390414
+    },
+    "_local/pathmnist_head_only/seed-42/final.pt": {
+      "sha256": "31019b0e1ef8594de1f7da196a6ce4b7e84afdc58fb4ba3d42fcf14b7fd9d4b8",
+      "bytes": 23494606
+    }
+  },
+  "tests": {
+    "passed": 339,
+    "seconds": 86.96,
+    "command": "/home/schroeder/miniconda3/envs/general_ml/bin/python -m pytest -q tests research",
+    "log_sha256": "d6de5f8b559fa506ccdd1ca772c9e0a9610d0a927e66bee61330a7b5501f18f5"
+  },
+  "no_training_or_test_image_evaluation_in_archive": true
+}

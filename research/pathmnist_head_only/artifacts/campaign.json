@@ -1,0 +1,59 @@
+{
+  "status": "completed",
+  "queue_sha256": "fe4ce8da1238893481c9ffaadc8235aac2a9ef1e81b42f81e4976e8abda71d25",
+  "frozen_files": {
+    "research/pathmnist_head_only/run.py": "c8ec7616e58fcdf7a057afc290bae1bba029765da39108721b9d5b914225455b",
+    "research/pathmnist_head_only/config.json": "48b71d1cd3cddcdb3f091024cf8c1bf122caa9154da36ba3640bafa2ac5b3e19",
+    "research/pathmnist_recovery/head_calibration.py": "7ae454213426250ff7ee04fb85078496a9a503f83f6448a5d9a8b4861ef1f945",
+    "research/pathmnist_recovery/method.py": "208720041c665dfd92bcc8eaa3411ea1bc50081226f35546ea7e341117b344b2",
+    "research/pathmnist_recovery/training.py": "32f63d780838d6f7965a97ffd318488858714c3bc3972f3522af2c71dd2d3897",
+    "research/pathmnist_recovery/fusion_probe.py": "ce8b7386877d1bc2ea21bf158945db366ad1dc271e33f7cfcfb75a6186e53b9c",
+    "research/pathmnist_calibrated/data.py": "e2ba5a50da93ed4db801edfc512a0b01380b3c0d1cc2b001e6e8c36d13ddb0f1",
+    "research/pathmnist_calibrated/runner.py": "4e2128c400cc462fc8cb5de79edd11175394e6425325a5a5d75b8336b54d0fcb",
+    "research/pathmnist_calibrated/client.py": "bd74e1a17f99b2517302eadbe5487518ce96769cae2e69e3e7c5d235b70d0473",
+    "research/pathmnist_pathological/run.py": "d328605571295e86c62e577ddfc43a7e2c5a7594e934d99392e0a7d42e4fe88d",
+    "research/pathmnist_pathological/config.json": "f6d803ed0447163432b1f7ccf6316473a768b6d9032a7cada24fd3d232a5e7fd",
+    "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+    "research/pathmnist_calibrated/controller.py": "b23dd03bb4a7715eeb3913fa8093d96564bf2a6aa34ee2e466d7eb7f7a49e396",
+    "research/pathmnist_calibrated/partition.json.gz": "068b38d458f41d3a99ddb51c04869d416752bf06c50f0cb9455c1747714d334c"
+  },
+  "base_commit": "87b2b7759e1b435cacefec9cd2f2d81f7090c735",
+  "gpu_slots": {
+    "cuda:1": 1,
+    "cuda:0": 0
+  },
+  "started_utc": "2026-10-06T16:37:17.228414+00:00",
+  "runs": [
+    {
+      "name": "paper-head-only-seed-42",
+      "script": "research/pathmnist_head_only/run.py",
+      "args": [
+        "--config",
+        "research/pathmnist_head_only/config.json"
+      ],
+      "output": "_local/pathmnist_head_only/seed-42",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_head_only/run.py",
+        "--config",
+        "research/pathmnist_head_only/config.json",
+        "--output",
+        "_local/pathmnist_head_only/seed-42",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1413543,
+      "started_utc": "2026-10-06T16:37:17.259680+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T16:37:32.263551+00:00",
+      "process_wall_seconds": 15.004588685929775
+    }
+  ],
+  "external_actions": "none",
+  "policy": "keep failures, continue other declared candidates; no process signals",
+  "ended_utc": "2026-10-06T16:37:33.264327+00:00",
+  "wall_seconds": 16.038722280878574,
+  "process_wall_seconds_sum": 15.004588685929775
+}

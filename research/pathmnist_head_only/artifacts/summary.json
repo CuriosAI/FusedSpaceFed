@@ -1,0 +1,63 @@
+{
+  "seed": 42,
+  "source_round": 50,
+  "before_percent": 39.619777158774376,
+  "after_percent": 75.33147632311979,
+  "delta_pp": 35.71169916434541,
+  "configuration": {
+    "checkpoint": "_local/pathmnist_pathological/seed-42/final.pt",
+    "checkpoint_sha256": "fa56da01091debe9031a9acb2e3de0f34ce0f751d2c95d2d0d54c05f15697d1e",
+    "source_partition_sha256": "b70fb78ad84a7d7041c5d98938d208f8b23455c3254b8b949e32c58509828a80",
+    "seed": 42,
+    "source_round": 50,
+    "fusion_gain": 1.0,
+    "bn_mode": "original-frozen",
+    "head_penalty": 0.0,
+    "head_max_iter": 100,
+    "lbfgs": {
+      "lr": 1.0,
+      "history_size": 20,
+      "line_search_fn": "strong_wolfe",
+      "tolerance_grad": 1e-07,
+      "tolerance_change": 1e-10
+    },
+    "objective": "uniform mean of ten local-client full-batch cross-entropies",
+    "training_split": "all 89996 original training images; each uses its owner encoder",
+    "trainable_parameters": [
+      "fc.weight",
+      "fc.bias"
+    ],
+    "precision_refit_features_and_test": "float32; no AMP",
+    "evaluation": "uniform mean of all ten pipeline accuracies on the same complete 7180-image test",
+    "test_access": "one predetermined before/after diagnostic; no tuning, checkpoint selection or threshold stop"
+  },
+  "code": {
+    "base_commit": "87b2b7759e1b435cacefec9cd2f2d81f7090c735",
+    "source_sha256": {
+      "research/pathmnist_head_only/run.py": "c8ec7616e58fcdf7a057afc290bae1bba029765da39108721b9d5b914225455b",
+      "research/pathmnist_head_only/config.json": "48b71d1cd3cddcdb3f091024cf8c1bf122caa9154da36ba3640bafa2ac5b3e19",
+      "research/pathmnist_recovery/head_calibration.py": "7ae454213426250ff7ee04fb85078496a9a503f83f6448a5d9a8b4861ef1f945",
+      "research/pathmnist_recovery/method.py": "208720041c665dfd92bcc8eaa3411ea1bc50081226f35546ea7e341117b344b2",
+      "research/pathmnist_recovery/training.py": "32f63d780838d6f7965a97ffd318488858714c3bc3972f3522af2c71dd2d3897",
+      "research/pathmnist_recovery/fusion_probe.py": "ce8b7386877d1bc2ea21bf158945db366ad1dc271e33f7cfcfb75a6186e53b9c",
+      "research/pathmnist_calibrated/data.py": "e2ba5a50da93ed4db801edfc512a0b01380b3c0d1cc2b001e6e8c36d13ddb0f1",
+      "research/pathmnist_calibrated/runner.py": "4e2128c400cc462fc8cb5de79edd11175394e6425325a5a5d75b8336b54d0fcb",
+      "research/pathmnist_calibrated/client.py": "bd74e1a17f99b2517302eadbe5487518ce96769cae2e69e3e7c5d235b70d0473",
+      "research/pathmnist_pathological/run.py": "d328605571295e86c62e577ddfc43a7e2c5a7594e934d99392e0a7d42e4fe88d",
+      "research/pathmnist_pathological/config.json": "f6d803ed0447163432b1f7ccf6316473a768b6d9032a7cada24fd3d232a5e7fd",
+      "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970"
+    },
+    "config_sha256": "48b71d1cd3cddcdb3f091024cf8c1bf122caa9154da36ba3640bafa2ac5b3e19"
+  },
+  "tests": {
+    "passed": 339,
+    "seconds": 86.96,
+    "command": "/home/schroeder/miniconda3/envs/general_ml/bin/python -m pytest -q tests research",
+    "log_sha256": "d6de5f8b559fa506ccdd1ca772c9e0a9610d0a927e66bee61330a7b5501f18f5"
+  },
+  "session_seconds": 9.341288664843887,
+  "head_refit_seconds": 0.99718654807657,
+  "checkpoint": "_local/pathmnist_head_only/seed-42/final.pt",
+  "checkpoint_sha256": "31019b0e1ef8594de1f7da196a6ce4b7e84afdc58fb4ba3d42fcf14b7fd9d4b8",
+  "sample_sd_between_seeds": null
+}
