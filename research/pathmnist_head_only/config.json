@@ -1,0 +1,24 @@
+{
+  "checkpoint": "_local/pathmnist_pathological/seed-42/final.pt",
+  "checkpoint_sha256": "fa56da01091debe9031a9acb2e3de0f34ce0f751d2c95d2d0d54c05f15697d1e",
+  "source_partition_sha256": "b70fb78ad84a7d7041c5d98938d208f8b23455c3254b8b949e32c58509828a80",
+  "seed": 42,
+  "source_round": 50,
+  "fusion_gain": 1.0,
+  "bn_mode": "original-frozen",
+  "head_penalty": 0.0,
+  "head_max_iter": 100,
+  "lbfgs": {
+    "lr": 1.0,
+    "history_size": 20,
+    "line_search_fn": "strong_wolfe",
+    "tolerance_grad": 1e-7,
+    "tolerance_change": 1e-10
+  },
+  "objective": "uniform mean of ten local-client full-batch cross-entropies",
+  "training_split": "all 89996 original training images; each uses its owner encoder",
+  "trainable_parameters": ["fc.weight", "fc.bias"],
+  "precision_refit_features_and_test": "float32; no AMP",
+  "evaluation": "uniform mean of all ten pipeline accuracies on the same complete 7180-image test",
+  "test_access": "one predetermined before/after diagnostic; no tuning, checkpoint selection or threshold stop"
+}
