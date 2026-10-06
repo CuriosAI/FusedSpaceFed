@@ -1,0 +1,26 @@
+{
+  "files_sha256": {
+    "campaign.json": "23458d0c3a0ffe0d67d978cf47146db92bfad3d57f65728f75bc2b68160a0cf1",
+    "fp32-matched-reference/continuation_origin.json.gz": "1c3e41c22103b74cbfbebbf2e86c3bb0cb653f59aa6826b501bfd0968f149880",
+    "fp32-matched-reference/results-round-020.json.gz": "fe376d5ba7a7f1b31c67061a19a9d9591ebf49e4914bacb5a71e1d0cf4bcc717",
+    "fp32-matched-reference/results-round-050.json.gz": "1046d08ee49fc86b71e022722b3f0583b60803912cc45e201a1c0658d2e0b459",
+    "fp32-matched-reference/results.json.gz": "1046d08ee49fc86b71e022722b3f0583b60803912cc45e201a1c0658d2e0b459",
+    "fp32-matched-reference/timings.jsonl.gz": "3a94362cc06a1d96ae824f65159d36b4967e1061db33be8260805167ab001f77",
+    "grid-c0.03-ae0.001/continuation_origin.json.gz": "abe5a2c4a9516eeec4ec7a8aab8c104b3d3b6cd78594952af8d859759a822558",
+    "grid-c0.03-ae0.001/results-round-020.json.gz": "28c4f794b5ea9bbe0076a15e83c2b9c9b415436d77dbdd166181f80e69086250",
+    "grid-c0.03-ae0.001/results-round-050.json.gz": "9e2c63428235734be0bc77bcb35645059df36ee0aad6d233f4da096ab095f4f8",
+    "grid-c0.03-ae0.001/results.json.gz": "9e2c63428235734be0bc77bcb35645059df36ee0aad6d233f4da096ab095f4f8",
+    "grid-c0.03-ae0.001/timings.jsonl.gz": "f1d6e7ab4b988600404a84a95de232f67b37aa223129280f1af095de12d0408b",
+    "grid-c0.1-ae0.0001/continuation_origin.json.gz": "3b6849d7dc5d91169cc9938e683b5651095d20bbc373331551609e364286175c",
+    "grid-c0.1-ae0.0001/results-round-020.json.gz": "35a55ca48b16903f81c286c60edadd16fb47314bdcc398396eded6ebf49f34e0",
+    "grid-c0.1-ae0.0001/results-round-050.json.gz": "21e5dc9e4b8e4ed85fad6d3b868c198d51980c4022dea79b8dad6708dd91f7bb",
+    "grid-c0.1-ae0.0001/results.json.gz": "21e5dc9e4b8e4ed85fad6d3b868c198d51980c4022dea79b8dad6708dd91f7bb",
+    "grid-c0.1-ae0.0001/timings.jsonl.gz": "768b6ba55bf58fe2c2fd777296459e661d6edea68cb228cb3717651a6d38f4ce",
+    "grid-c0.1-ae0.001/continuation_origin.json.gz": "f1209b60f83971be3fe5c4fcf05517c4999877d02f107a1ae9dde2d174fcf1da",
+    "grid-c0.1-ae0.001/results-round-020.json.gz": "af8dcfbc89c934dfdb71a13b5fad678b3e4e0d4420542a3f872055889907022f",
+    "grid-c0.1-ae0.001/results-round-050.json.gz": "c646529b5349c11be0ab4be6eb32c6f9d742cdbd9e65b5c3e4cf60e9a48cdfa0",
+    "grid-c0.1-ae0.001/results.json.gz": "c646529b5349c11be0ab4be6eb32c6f9d742cdbd9e65b5c3e4cf60e9a48cdfa0",
+    "grid-c0.1-ae0.001/timings.jsonl.gz": "ec2b438df6fb4cce03fd0ed1ecb7fda015afaf3cb8f346f8ef0f8f354f492cf3",
+    "provenance.json": "ef13c192b82eb58f2d9c5333143b3a850d6a3969cdb8625878d60aa6a3b47ea7"
+  }
+}

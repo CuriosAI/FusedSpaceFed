@@ -1,7 +1,9 @@
 import copy
+import pytest
 import torch
 from torch.nn import functional as F
 from research.pathmnist_recovery.head_calibration import weighted_ce, refit
+from research.pathmnist_recovery.head_final import substitute_head
 
 
 def test_uniform_client_objective_uses_local_means_not_sample_counts():
@@ -26,3 +28,20 @@ def test_refit_updates_only_fc_and_detaches_features_with_optimizer_saved():
     assert torch.equal(fitted['bn.running_mean'],before['bn.running_mean'])
     assert all(torch.equal(source[k],v) for k,v in before.items())
     assert optimizer['state'] and statistics['closure_evaluations'] > 0
+
+
+def test_complete_head_checkpoint_syncs_only_shared_head_and_bn():
+    original={'fc.weight':torch.zeros(2,2),'fc.bias':torch.zeros(2),
+              'body.weight':torch.ones(2,2),'bn.running_mean':torch.zeros(2)}
+    source={'classifier':original,'decoder':{'w':torch.ones(3)},'encoders':{'0':{'w':torch.ones(1)}},
+            'clients':{'0':{'classifier':copy.deepcopy(original),'ae_optimizer':{'state':{'w':torch.ones(3)}},
+                             'loader_generator':torch.tensor([3,4])}},'rng':{'torch':torch.tensor([7,8])}}
+    modified=copy.deepcopy(original);modified['fc.weight'].add_(2.);modified['bn.running_mean'].add_(1.)
+    result=substitute_head(source,modified)
+    assert torch.equal(result['clients']['0']['classifier']['fc.weight'],modified['fc.weight'])
+    assert torch.equal(result['decoder']['w'],source['decoder']['w'])
+    assert torch.equal(result['encoders']['0']['w'],source['encoders']['0']['w'])
+    assert torch.equal(result['clients']['0']['ae_optimizer']['state']['w'],torch.ones(3))
+    assert torch.equal(result['rng']['torch'],source['rng']['torch'])
+    modified['body.weight'].add_(1.)
+    with pytest.raises(ValueError,match='body weights'):substitute_head(source,modified)

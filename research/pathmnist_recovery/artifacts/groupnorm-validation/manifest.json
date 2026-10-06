@@ -1,0 +1,12 @@
+{
+  "files_sha256": {
+    "campaign.json": "45df615c7983facb9cc04e6a3d03a7352ff02f7e6db910f1a9a4f292c7743331",
+    "gn8-c0.03-ae0.0003-e3/results-round-050.json.gz": "45ef3fb05dc3cffe40b5815cde0d8ce8f349d396259f503e8310b7b0b8f5c7a3",
+    "gn8-c0.03-ae0.0003-e3/results.json.gz": "45ef3fb05dc3cffe40b5815cde0d8ce8f349d396259f503e8310b7b0b8f5c7a3",
+    "gn8-c0.03-ae0.0003-e3/timings.jsonl.gz": "518a83b303f675c0dbcfd37fd6fd010d214a940afe6e1df1d1f875c7d5680592",
+    "gn8-c0.1-ae0.0003-e1-flip90/results-round-050.json.gz": "550eb0ca45da47a9a35f55319e0b171bcd3d4e2141e85c5a51af398872824896",
+    "gn8-c0.1-ae0.0003-e1-flip90/results.json.gz": "550eb0ca45da47a9a35f55319e0b171bcd3d4e2141e85c5a51af398872824896",
+    "gn8-c0.1-ae0.0003-e1-flip90/timings.jsonl.gz": "54f6ac56b79d230a99242488227f271cc1ae9f30d9b76bbd3e5b1c43e46e7256",
+    "provenance.json": "a2357cfe514770cbe802e6d27473fcc09b05a3d833512a86595c0af1a9674282"
+  }
+}

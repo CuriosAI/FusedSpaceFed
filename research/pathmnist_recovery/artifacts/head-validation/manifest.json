@@ -1,0 +1,12 @@
+{
+  "files_sha256": {
+    "best-bn-g0.5/results.json.gz": "a6952272d9e01f9ce352a24cb6ab31e29d8ce2cb366ea4df4bd15ae5daf43869",
+    "best-bn-g1/results.json.gz": "a395b9b9c501dc6f35fdffc7f9730c7f9706eb823622f865df4b61d8c59b1d9e",
+    "campaign.json": "bce74bf3ecf917a8f3d99d9ebc1132b68d5a57664e2c69d12227671e4cde79a9",
+    "previous-g0.1/results.json.gz": "30bc6067cd972f2b6d6e85d274bc10d1e6904f14768d354cbfe6921c3a826e90",
+    "provenance.json": "42e1d67ab1428dedc091ab4c7dc008eec0046bba3e13c43dc921be9233ac2d5c",
+    "reference-g0.1/results.json.gz": "2613167df48bef0a3c1dae8e2824e9de1b075db2ce980268a53ccc6d08b0151d",
+    "reference-g0.25/results.json.gz": "613f636179ee103c2cef0b92998c85bdbce1134df9671bd7c40842f9d6f0b2ec",
+    "reference-g1/results.json.gz": "41897bba3bacfe4c9fa590493b56289fd05429b095950f86f1c11f9c9d525310"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "source_files": {
+    "_local/pathmnist_recovery/fusion_validation/best-bn-c0.03-ae0.001/results.json": {
+      "sha256": "996ccb2401aa1515dfda8afc7934265b4ccc83324377c948420d724bebef3455",
+      "archived_as": "best-bn-c0.03-ae0.001/results.json.gz",
+      "bytes": 23959
+    },
+    "_local/pathmnist_recovery/fusion_validation/gn8-e1-flip90/results.json": {
+      "sha256": "f56f25bcff9a6d97e9228554979c166af382036aacda41f7632d60314a9894bc",
+      "archived_as": "gn8-e1-flip90/results.json.gz",
+      "bytes": 12561
+    },
+    "_local/pathmnist_recovery/fusion_validation/previous-c0.1-ae0.0001/results.json": {
+      "sha256": "5eea02c4f506661015f62e9877f2562f45941f08792f1bffed6bd215aafdff62",
+      "archived_as": "previous-c0.1-ae0.0001/results.json.gz",
+      "bytes": 23933
+    },
+    "_local/pathmnist_recovery/fusion_validation/reference-fp32/results.json": {
+      "sha256": "dd11d63bd803c21dddf78322a3384d9fe9730733893ff847f367ac515a43f068",
+      "archived_as": "reference-fp32/results.json.gz",
+      "bytes": 23907
+    }
+  },
+  "private_checkpoints": {}
+}

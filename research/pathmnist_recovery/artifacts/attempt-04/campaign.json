@@ -1,0 +1,61 @@
+{
+  "status": "completed",
+  "queue_sha256": "00e22b19de6168c853af27f82fd448502d5d1ba2afcc4e4f800ab60c01612d98",
+  "frozen_files": {
+    "research/pathmnist_recovery/inference.py": "71612c912b484d3785fa42fde6f1245ee3a7a4ffa73f703353e5600ac3510235",
+    "research/pathmnist_recovery/fusion_probe.py": "ce8b7386877d1bc2ea21bf158945db366ad1dc271e33f7cfcfb75a6186e53b9c",
+    "research/pathmnist_recovery/normalization.py": "9c2e81db3fc7ed0899002851d3b95394cc59d13fcb2c33197f7ea2ed5e3a1c11",
+    "research/pathmnist_recovery/training.py": "32f63d780838d6f7965a97ffd318488858714c3bc3972f3522af2c71dd2d3897",
+    "research/pathmnist_recovery/method.py": "208720041c665dfd92bcc8eaa3411ea1bc50081226f35546ea7e341117b344b2",
+    "research/pathmnist_recovery/training_plan.json": "ddc8d77120e78ecc46db5f9fb3cb29f89f70b72147c90f2f86994e76b7cbc1f9",
+    "research/pathmnist_recovery/attempt-04.json": "110f4a4d0a3e740c979c70796f2dedd5ca0bed2056210606e9e5cdb3daa54fae",
+    "research/pathmnist_calibrated/controller.py": "b23dd03bb4a7715eeb3913fa8093d96564bf2a6aa34ee2e466d7eb7f7a49e396",
+    "research/pathmnist_calibrated/runner.py": "4e2128c400cc462fc8cb5de79edd11175394e6425325a5a5d75b8336b54d0fcb",
+    "research/pathmnist_calibrated/client.py": "bd74e1a17f99b2517302eadbe5487518ce96769cae2e69e3e7c5d235b70d0473",
+    "research/pathmnist_calibrated/data.py": "e2ba5a50da93ed4db801edfc512a0b01380b3c0d1cc2b001e6e8c36d13ddb0f1",
+    "research/pathmnist_pathological/run.py": "d328605571295e86c62e577ddfc43a7e2c5a7594e934d99392e0a7d42e4fe88d",
+    "research/pathmnist_calibrated/search_plan.json": "fb2dcd7ee4103b56bb4631e434b302f6b755d8f4c396cebb34d458bb050c83cf",
+    "research/pathmnist_calibrated/partition.json.gz": "068b38d458f41d3a99ddb51c04869d416752bf06c50f0cb9455c1747714d334c",
+    "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+    "_local/pathmnist_recovery/fusion_validation/reference-fp32/results.json": "dd11d63bd803c21dddf78322a3384d9fe9730733893ff847f367ac515a43f068"
+  },
+  "base_commit": "e2190f723c0883ec7d02d3ee56cb0547fa06e310",
+  "gpu_slots": {
+    "cuda:1": 1,
+    "cuda:0": 0
+  },
+  "started_utc": "2026-10-06T15:13:51.676633+00:00",
+  "runs": [
+    {
+      "name": "attempt-04",
+      "script": "research/pathmnist_recovery/inference.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/attempt-04.json"
+      ],
+      "output": "_local/pathmnist_recovery/attempt-04",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_recovery/inference.py",
+        "--config",
+        "research/pathmnist_recovery/attempt-04.json",
+        "--output",
+        "_local/pathmnist_recovery/attempt-04",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1388388,
+      "started_utc": "2026-10-06T15:13:51.707812+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T15:14:00.710941+00:00",
+      "process_wall_seconds": 9.004494098946452
+    }
+  ],
+  "external_actions": "none",
+  "policy": "keep failures, continue other declared candidates; no process signals",
+  "ended_utc": "2026-10-06T15:14:01.711709+00:00",
+  "wall_seconds": 10.037856857990846,
+  "process_wall_seconds_sum": 9.004494098946452
+}

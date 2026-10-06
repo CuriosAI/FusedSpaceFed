@@ -1,0 +1,83 @@
+{
+  "status": "completed",
+  "queue_sha256": "94be2993cb82e3dab675898d6021789693446a24677186deb5847d95198af25a",
+  "frozen_files": {
+    "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+    "research/pathmnist_pathological/run.py": "d328605571295e86c62e577ddfc43a7e2c5a7594e934d99392e0a7d42e4fe88d",
+    "research/pathmnist_calibrated/data.py": "e2ba5a50da93ed4db801edfc512a0b01380b3c0d1cc2b001e6e8c36d13ddb0f1",
+    "research/pathmnist_calibrated/client.py": "bd74e1a17f99b2517302eadbe5487518ce96769cae2e69e3e7c5d235b70d0473",
+    "research/pathmnist_calibrated/runner.py": "4e2128c400cc462fc8cb5de79edd11175394e6425325a5a5d75b8336b54d0fcb",
+    "research/pathmnist_calibrated/partition.json.gz": "068b38d458f41d3a99ddb51c04869d416752bf06c50f0cb9455c1747714d334c",
+    "research/pathmnist_calibrated/search_plan.json": "fb2dcd7ee4103b56bb4631e434b302f6b755d8f4c396cebb34d458bb050c83cf",
+    "research/pathmnist_recovery/method.py": "208720041c665dfd92bcc8eaa3411ea1bc50081226f35546ea7e341117b344b2",
+    "research/pathmnist_recovery/training.py": "32f63d780838d6f7965a97ffd318488858714c3bc3972f3522af2c71dd2d3897",
+    "research/pathmnist_recovery/training_plan.json": "ddc8d77120e78ecc46db5f9fb3cb29f89f70b72147c90f2f86994e76b7cbc1f9",
+    "research/pathmnist_recovery/configs/groupnorm/gn8-c0.03-ae0.0003-e3.json": "f2d53e98bf87eb548d19e421ed33d4c0e0b1fa74b82736af17f7b69d989db132",
+    "research/pathmnist_recovery/configs/groupnorm/gn8-c0.1-ae0.0003-e1-flip90.json": "ba9fcb86c901be9ed8c6b5580318efe49d755cb1d6f60ca85f1db9dba6ef656e"
+  },
+  "base_commit": "da4bbc4b60e062b72e5b2ca7ef3cbf7d75d1c505",
+  "gpu_slots": {
+    "cuda:1": 1,
+    "cuda:0": 1
+  },
+  "started_utc": "2026-10-06T14:30:21.394420+00:00",
+  "runs": [
+    {
+      "name": "gn8-c0.03-ae0.0003-e3",
+      "script": "research/pathmnist_recovery/training.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/groupnorm/gn8-c0.03-ae0.0003-e3.json"
+      ],
+      "output": "_local/pathmnist_recovery/groupnorm_validation/gn8-c0.03-ae0.0003-e3",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_recovery/training.py",
+        "--config",
+        "research/pathmnist_recovery/configs/groupnorm/gn8-c0.03-ae0.0003-e3.json",
+        "--output",
+        "_local/pathmnist_recovery/groupnorm_validation/gn8-c0.03-ae0.0003-e3",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1382773,
+      "started_utc": "2026-10-06T14:30:21.424715+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T15:01:05.774402+00:00",
+      "process_wall_seconds": 1844.350314184092
+    },
+    {
+      "name": "gn8-c0.1-ae0.0003-e1-flip90",
+      "script": "research/pathmnist_recovery/training.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/groupnorm/gn8-c0.1-ae0.0003-e1-flip90.json"
+      ],
+      "output": "_local/pathmnist_recovery/groupnorm_validation/gn8-c0.1-ae0.0003-e1-flip90",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_recovery/training.py",
+        "--config",
+        "research/pathmnist_recovery/configs/groupnorm/gn8-c0.1-ae0.0003-e1-flip90.json",
+        "--output",
+        "_local/pathmnist_recovery/groupnorm_validation/gn8-c0.1-ae0.0003-e1-flip90",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1382776,
+      "started_utc": "2026-10-06T14:30:21.460481+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T14:46:05.630016+00:00",
+      "process_wall_seconds": 944.170315469848
+    }
+  ],
+  "external_actions": "none",
+  "policy": "keep failures, continue other declared candidates; no process signals",
+  "ended_utc": "2026-10-06T15:01:06.775328+00:00",
+  "wall_seconds": 1845.383243991062,
+  "process_wall_seconds_sum": 2788.52062965394
+}

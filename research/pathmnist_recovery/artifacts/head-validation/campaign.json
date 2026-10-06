@@ -1,0 +1,194 @@
+{
+  "status": "completed",
+  "queue_sha256": "bf2d9c27f24d70cb61769a1b33ae89dd4de3208a2f2331a2112ec8879c79eabb",
+  "frozen_files": {
+    "research/pathmnist_recovery/head_calibration.py": "7ae454213426250ff7ee04fb85078496a9a503f83f6448a5d9a8b4861ef1f945",
+    "research/pathmnist_recovery/fusion_probe.py": "ce8b7386877d1bc2ea21bf158945db366ad1dc271e33f7cfcfb75a6186e53b9c",
+    "research/pathmnist_recovery/method.py": "208720041c665dfd92bcc8eaa3411ea1bc50081226f35546ea7e341117b344b2",
+    "research/pathmnist_recovery/training.py": "32f63d780838d6f7965a97ffd318488858714c3bc3972f3522af2c71dd2d3897",
+    "research/pathmnist_recovery/training_plan.json": "ddc8d77120e78ecc46db5f9fb3cb29f89f70b72147c90f2f86994e76b7cbc1f9",
+    "research/pathmnist_calibrated/runner.py": "4e2128c400cc462fc8cb5de79edd11175394e6425325a5a5d75b8336b54d0fcb",
+    "research/pathmnist_calibrated/controller.py": "b23dd03bb4a7715eeb3913fa8093d96564bf2a6aa34ee2e466d7eb7f7a49e396",
+    "research/pathmnist_calibrated/client.py": "bd74e1a17f99b2517302eadbe5487518ce96769cae2e69e3e7c5d235b70d0473",
+    "research/pathmnist_calibrated/data.py": "e2ba5a50da93ed4db801edfc512a0b01380b3c0d1cc2b001e6e8c36d13ddb0f1",
+    "research/pathmnist_pathological/run.py": "d328605571295e86c62e577ddfc43a7e2c5a7594e934d99392e0a7d42e4fe88d",
+    "research/pathmnist_calibrated/search_plan.json": "fb2dcd7ee4103b56bb4631e434b302f6b755d8f4c396cebb34d458bb050c83cf",
+    "research/pathmnist_calibrated/partition.json.gz": "068b38d458f41d3a99ddb51c04869d416752bf06c50f0cb9455c1747714d334c",
+    "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+    "research/pathmnist_recovery/configs/head/reference-g0.1.json": "aeeb4649c2f0080e1001b70cc13ca85dccf81b09c958230bda67611d81fc8295",
+    "research/pathmnist_recovery/configs/head/reference-g0.25.json": "7b164786118d5280562d66e40f658a565abf887478a2e51045d72ca75fc0ec8c",
+    "research/pathmnist_recovery/configs/head/reference-g1.json": "bced46afb4b27aa17eff876043c707fffe3974854cc496935474446ff7ba1855",
+    "research/pathmnist_recovery/configs/head/best-bn-g0.5.json": "da4d365ca56e5c18db69e0bc9087c58c6a1cd98bd071d63cd3f4b632431d51a7",
+    "research/pathmnist_recovery/configs/head/best-bn-g1.json": "06adb8af5accec409ddeaa6d629e76f64fba366890fa7f4d4780fd34700a90a3",
+    "research/pathmnist_recovery/configs/head/previous-g0.1.json": "4d9c083bca5aa743ba81df3b6d05ebb09f3a36541173e7e2f30f9a6531a7fa3e"
+  },
+  "base_commit": "9e6c0bc87e10c63be45bae367982cd4579057139",
+  "gpu_slots": {
+    "cuda:1": 3,
+    "cuda:0": 3
+  },
+  "started_utc": "2026-10-06T15:18:48.106312+00:00",
+  "runs": [
+    {
+      "name": "reference-g0.1",
+      "script": "research/pathmnist_recovery/head_calibration.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/head/reference-g0.1.json"
+      ],
+      "output": "_local/pathmnist_recovery/head_validation/reference-g0.1",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_recovery/head_calibration.py",
+        "--config",
+        "research/pathmnist_recovery/configs/head/reference-g0.1.json",
+        "--output",
+        "_local/pathmnist_recovery/head_validation/reference-g0.1",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1389579,
+      "started_utc": "2026-10-06T15:18:48.142162+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T15:19:26.326796+00:00",
+      "process_wall_seconds": 38.18534730793908
+    },
+    {
+      "name": "reference-g0.25",
+      "script": "research/pathmnist_recovery/head_calibration.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/head/reference-g0.25.json"
+      ],
+      "output": "_local/pathmnist_recovery/head_validation/reference-g0.25",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_recovery/head_calibration.py",
+        "--config",
+        "research/pathmnist_recovery/configs/head/reference-g0.25.json",
+        "--output",
+        "_local/pathmnist_recovery/head_validation/reference-g0.25",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1389582,
+      "started_utc": "2026-10-06T15:18:48.172525+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T15:19:25.325567+00:00",
+      "process_wall_seconds": 37.15390882291831
+    },
+    {
+      "name": "reference-g1",
+      "script": "research/pathmnist_recovery/head_calibration.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/head/reference-g1.json"
+      ],
+      "output": "_local/pathmnist_recovery/head_validation/reference-g1",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_recovery/head_calibration.py",
+        "--config",
+        "research/pathmnist_recovery/configs/head/reference-g1.json",
+        "--output",
+        "_local/pathmnist_recovery/head_validation/reference-g1",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1389587,
+      "started_utc": "2026-10-06T15:18:49.205761+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T15:19:28.329691+00:00",
+      "process_wall_seconds": 39.124660182977095
+    },
+    {
+      "name": "best-bn-g0.5",
+      "script": "research/pathmnist_recovery/head_calibration.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/head/best-bn-g0.5.json"
+      ],
+      "output": "_local/pathmnist_recovery/head_validation/best-bn-g0.5",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_recovery/head_calibration.py",
+        "--config",
+        "research/pathmnist_recovery/configs/head/best-bn-g0.5.json",
+        "--output",
+        "_local/pathmnist_recovery/head_validation/best-bn-g0.5",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1389590,
+      "started_utc": "2026-10-06T15:18:49.238115+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T15:19:27.327980+00:00",
+      "process_wall_seconds": 38.090542000951245
+    },
+    {
+      "name": "best-bn-g1",
+      "script": "research/pathmnist_recovery/head_calibration.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/head/best-bn-g1.json"
+      ],
+      "output": "_local/pathmnist_recovery/head_validation/best-bn-g1",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_recovery/head_calibration.py",
+        "--config",
+        "research/pathmnist_recovery/configs/head/best-bn-g1.json",
+        "--output",
+        "_local/pathmnist_recovery/head_validation/best-bn-g1",
+        "--device",
+        "cuda:1"
+      ],
+      "device": "cuda:1",
+      "pid": 1389599,
+      "started_utc": "2026-10-06T15:18:50.271418+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T15:19:28.330842+00:00",
+      "process_wall_seconds": 38.06007791403681
+    },
+    {
+      "name": "previous-g0.1",
+      "script": "research/pathmnist_recovery/head_calibration.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/head/previous-g0.1.json"
+      ],
+      "output": "_local/pathmnist_recovery/head_validation/previous-g0.1",
+      "command": [
+        "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+        "-u",
+        "research/pathmnist_recovery/head_calibration.py",
+        "--config",
+        "research/pathmnist_recovery/configs/head/previous-g0.1.json",
+        "--output",
+        "_local/pathmnist_recovery/head_validation/previous-g0.1",
+        "--device",
+        "cuda:0"
+      ],
+      "device": "cuda:0",
+      "pid": 1389602,
+      "started_utc": "2026-10-06T15:18:50.304079+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-10-06T15:19:29.332497+00:00",
+      "process_wall_seconds": 39.029191561974585
+    }
+  ],
+  "external_actions": "none",
+  "policy": "keep failures, continue other declared candidates; no process signals",
+  "ended_utc": "2026-10-06T15:19:30.333326+00:00",
+  "wall_seconds": 42.22984972689301,
+  "process_wall_seconds_sum": 229.64372779079713
+}

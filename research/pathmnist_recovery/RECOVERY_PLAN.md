@@ -198,3 +198,28 @@ dei profili e delle penalità. Non si usano test o adattamento al test per
 questa selezione. I nuovi optimizer della testa e ogni tentativo rimangono
 archiviati. La ricerca di training aggiuntivo viene rimandata fino all'esito
 di questo controllo più economico.
+
+## Passo 5 congelato: testa condivisa selezionata su validation
+
+Tutti i sei worker hanno concluso con exit0. Il massimo dei 30 refit e dei
+sei controlli è **80,205693% validation** (72.137/89.940), nel profilo
+c0.1/ae0.0001, **α=0,1, BN da fit, λ=0 e massimo 100 iterazioni L-BFGS**.
+Il controllo dello stesso profilo prima del refit era 47,585057%. Il ranking
+integrale e la selezione sono in `head_selection.json`. Non è una nuova
+valutazione test: tutti questi checkpoint sono fit-only seed142, round50.
+
+Il trasferimento seed42 usa il checkpoint completo `native-final.pt` della
+run calibrata già conclusa, stessi LR/precisione/clipping/epoche/optimizer
+del profilo selezionato, sul training completo congelato. Non si riaddestra
+inutilmente la stessa traiettoria: si applicano una volta BN da fit,
+guadagno positivo e refit della testa usando **tutti gli 89.996 esempi di
+training originali** con encoder del client d'origine. Poi si salva lo stato
+completo prima dell'unico test della configurazione. Nessun cambiamento
+degli encoder, decoder o pesi del corpo ResNet; nessun early stopping,
+best-round o selezione di singole pipeline. `initial.pt` conserva anche
+l'inizializzazione round0 della run completa originale; `precalibration.pt`
+conserva lo stato completo round50 prima della fase aggiuntiva, e `final.pt`
+quello effettivo con optimizer L-BFGS separato, RNG e coefficiente registrati.
+È una variante FusedSpaceFed con fase aggiuntiva, non una replica degli
+iperparametri/protocollo del paper. Il test già noto e lo stop adattivo
+limitano l'interpretazione del futuro risultato a un singolo esito esplorativo.
