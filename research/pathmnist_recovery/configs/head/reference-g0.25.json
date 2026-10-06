@@ -1,0 +1,19 @@
+{
+  "profile": "reference-g0.25",
+  "candidate_id": "fp32-matched-reference",
+  "checkpoint": "_local/pathmnist_recovery/continuation_validation/fp32-matched-reference/round-050.pt",
+  "checkpoint_sha256": "b6fde5e9a68d4876f35feb6d0e12394b48575b6e9081df100d98d13059b7e022",
+  "gain": 0.25,
+  "mode": "train-recalibrated",
+  "penalties": [
+    0.0,
+    0.0001,
+    0.001,
+    0.01,
+    0.1
+  ],
+  "max_iter": 100,
+  "objective": "uniform local-client CE plus half penalty times shared fc.weight squared norm; bias unpenalized",
+  "variant": "extra shared-head global full-batch optimization after unchanged E-only warm-up and E/D/C classification training; frozen C body and private E/shared D; training owner features only",
+  "selection": "max terminal heldout correct_total over registered positive gain/profile/penalty, then smaller head intervention and registration order; no test access"
+}

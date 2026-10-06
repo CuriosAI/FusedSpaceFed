@@ -1,0 +1,19 @@
+{
+  "profile": "previous-g0.1",
+  "candidate_id": "grid-c0.1-ae0.0001",
+  "checkpoint": "_local/pathmnist_recovery/continuation_validation/grid-c0.1-ae0.0001/round-050.pt",
+  "checkpoint_sha256": "ebb2f99a3feb51d552231d18d3cd4a727c92fc3f76b2111a51bb730e74089a37",
+  "gain": 0.1,
+  "mode": "train-recalibrated",
+  "penalties": [
+    0.0,
+    0.0001,
+    0.001,
+    0.01,
+    0.1
+  ],
+  "max_iter": 100,
+  "objective": "uniform local-client CE plus half penalty times shared fc.weight squared norm; bias unpenalized",
+  "variant": "extra shared-head global full-batch optimization after unchanged E-only warm-up and E/D/C classification training; frozen C body and private E/shared D; training owner features only",
+  "selection": "max terminal heldout correct_total over registered positive gain/profile/penalty, then smaller head intervention and registration order; no test access"
+}

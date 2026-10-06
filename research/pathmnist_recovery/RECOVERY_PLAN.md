@@ -175,3 +175,26 @@ esatta del training originale. L'architettura e il numero di parametri
 sono invariati. La ricalibrazione usa sempre i 6.400 esempi fit fissati,
 senza label o dati test. Questa è una variante d'inferenza selezionata su
 validation, con stop esplorativo su un test già noto.
+
+Il trasferimento α=0,25 ha ottenuto **43,168524%** sul test e non supera la
+soglia. Il prossimo controllo rapido usa sei worker (3+3 GPU) sui checkpoint
+fit-only a 50 round: riferimento FP32 con α=0,1/0,25/1, c0.03/ae0.001 con
+α=0,5/1, c0.1/ae0.0001 con α=0,1. Ogni profilo usa BN da fit e confronta
+cinque penalità L2 del solo ultimo strato condiviso: 0, 1e-4, 1e-3, 1e-2,
+0,1. Si conserva anche il controllo senza refit. Questa **fase aggiuntiva**
+non appartiene al paper: corpo del classificatore, encoder privati e decoder
+sono fissi; la testa 64→9 condivisa ottimizza la media delle CE dei client,
+pesati uniformemente, con L-BFGS (massimo 100 iterazioni). Il termine L2 è
+0,5 λ ||W_fc||², senza penalità sul bias. Tutte le feature training sono
+prodotte dall'encoder del client d'origine; non si assegnano immagini fit
+a encoder di altri client. I gradienti dell'obiettivo equivalgono alla
+media di gradienti locali full-batch. Il simulatore conserva feature locali
+in memoria: non si afferma un protocollo di privacy/deployment equivalente
+al metodo originale, né un costo equivalente alle sue sole due fasi.
+
+Si sceglie il massimo dei conteggi di validation terminale sui profili
+registrati; in parità si preferisce il controllo senza refit, poi l'ordine
+dei profili e delle penalità. Non si usano test o adattamento al test per
+questa selezione. I nuovi optimizer della testa e ogni tentativo rimangono
+archiviati. La ricerca di training aggiuntivo viene rimandata fino all'esito
+di questo controllo più economico.
