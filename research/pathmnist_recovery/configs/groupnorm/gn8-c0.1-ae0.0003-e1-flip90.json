@@ -1,0 +1,28 @@
+{
+  "candidate_id": "gn8-c0.1-ae0.0003-e1-flip90",
+  "seed": 142,
+  "stage": "validation",
+  "settings": {
+    "classifier_lr": 0.1,
+    "autoencoder_lr": 0.0003,
+    "warmup_lr": 0.0001,
+    "gradient_clip_norm": 5.0,
+    "precision": "bf16",
+    "schedule": "constant",
+    "schedule_horizon": 100,
+    "batch_size": 128,
+    "warmup_epochs": 1,
+    "local_epochs": 1,
+    "aggregation": "uniform",
+    "optimizer_reset": false,
+    "classifier": "ResNet20V2-GN8",
+    "autoencoder": "UNetSmallAE",
+    "dz": 16,
+    "classifier_optimizer": "SGD(momentum=0,weight_decay=0)",
+    "autoencoder_optimizer": "Adam(betas=(0.9,0.999),eps=1e-8,weight_decay=0)",
+    "classifier_normalization": "groupnorm8",
+    "augmentation": "flip-rot90"
+  },
+  "rounds": 50,
+  "partition_sha256": "13d5cc86d039a8bf75b97ee6f6f94c6f177f52dd10829c66fd01150db7ceeb47"
+}
