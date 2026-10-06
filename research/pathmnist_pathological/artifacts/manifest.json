@@ -1,0 +1,38 @@
+{
+  "private_checkpoint_directory": "/mnt/data/codex/FusedSpaceFed/_local/pathmnist_pathological/seed-42",
+  "checkpoint_sha256": {
+    "initial.pt": {
+      "round": 0,
+      "seed": 42,
+      "all_10_encoders_loaded": true,
+      "batchnorm_buffers": 57,
+      "all_10_optimizers_loaded": true,
+      "training_probe_shapes_finite": true,
+      "bytes": 18182596,
+      "sha256": "2e068afbd9caee88b7f41d7032f054f4918b28dea46b73d17f8701faabcc4a40"
+    },
+    "final.pt": {
+      "round": 50,
+      "seed": 42,
+      "all_10_encoders_loaded": true,
+      "batchnorm_buffers": 57,
+      "all_10_optimizers_loaded": true,
+      "training_probe_shapes_finite": true,
+      "bytes": 23390414,
+      "sha256": "fa56da01091debe9031a9acb2e3de0f34ce0f751d2c95d2d0d54c05f15697d1e"
+    }
+  },
+  "files_sha256": {
+    "data_manifest.json": "bafd711fcdfe687ea1a6fa889dd2e43a187ede4c33b2dd1e5f4d4b36f2c3fb76",
+    "execution.json": "e6fba337ea0a217bc724600253333fe1b3b9323a2ea07f575c72a16e0a9fa8b6",
+    "identity.json": "8b27d36403b4cf8eb5a83c2c0135b660b7625e2f47f1355b1b45cd41501dd9f9",
+    "optimizer_audit.json": "bc103baea3a3bc3e950b3db35384ddac1b49d09754e4c85d96ac8fcef9992743",
+    "partitions.json.gz": "43862183cb8095468d3c775b37499fa6f5569491f41f0a8f27cf5cdb7d8df3e4",
+    "results.json": "1794afa40434eb47049d041040044049f7c0358d8e9f2c2ce76ff75176c11cdc",
+    "run.log": "a52fde8c3f40a105157a8fd0fc87ef011d568fc8a9d2906822a18e73a8449c29",
+    "runtime.json": "0aab59030169b106f560f49cb9e41b6ac7e0c2216dba760baa97533d7c87d606",
+    "tests.log": "2793384575e5e9f37ef470dac2aea1d17146eab3df1a130ee4d0ff23aaca3d88",
+    "timings.jsonl": "cd9a133b4282cd5a837c09ae7a1ec7e0535e3b1704e7d59203c1de5caee6b62c",
+    "verification.json": "114a54e4f409a0f807a3ed8d11ed8998ccbc4dd740bfe0c6dbe6ff8bd6cd623f"
+  }
+}

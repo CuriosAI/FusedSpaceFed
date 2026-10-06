@@ -1,0 +1,152 @@
+{
+  "status": "passed",
+  "optimizer_moment_shapes_valid": true,
+  "parameters": {
+    "classifier": 272217,
+    "decoder": 38851,
+    "private_encoder_per_client": 23600
+  },
+  "clients": [
+    {
+      "client_id": 0,
+      "adam_parameter_states": 26,
+      "adam_step_min": 7796.0,
+      "adam_step_max": 10396.0,
+      "scaler": {
+        "scale": 8192.0,
+        "growth_factor": 2.0,
+        "backoff_factor": 0.5,
+        "growth_interval": 2000,
+        "_growth_tracker": 1611
+      },
+      "sgd_state_empty_expected_no_momentum": true
+    },
+    {
+      "client_id": 1,
+      "adam_parameter_states": 26,
+      "adam_step_min": 11696.0,
+      "adam_step_max": 15596.0,
+      "scaler": {
+        "scale": 16384.0,
+        "growth_factor": 2.0,
+        "backoff_factor": 0.5,
+        "growth_interval": 2000,
+        "_growth_tracker": 1795
+      },
+      "sgd_state_empty_expected_no_momentum": true
+    },
+    {
+      "client_id": 2,
+      "adam_parameter_states": 26,
+      "adam_step_min": 9446.0,
+      "adam_step_max": 12596.0,
+      "scaler": {
+        "scale": 16384.0,
+        "growth_factor": 2.0,
+        "backoff_factor": 0.5,
+        "growth_interval": 2000,
+        "_growth_tracker": 1591
+      },
+      "sgd_state_empty_expected_no_momentum": true
+    },
+    {
+      "client_id": 3,
+      "adam_parameter_states": 26,
+      "adam_step_min": 12747.0,
+      "adam_step_max": 16997.0,
+      "scaler": {
+        "scale": 32768.0,
+        "growth_factor": 2.0,
+        "backoff_factor": 0.5,
+        "growth_interval": 2000,
+        "_growth_tracker": 1595
+      },
+      "sgd_state_empty_expected_no_momentum": true
+    },
+    {
+      "client_id": 4,
+      "adam_parameter_states": 26,
+      "adam_step_min": 11698.0,
+      "adam_step_max": 15598.0,
+      "scaler": {
+        "scale": 32768.0,
+        "growth_factor": 2.0,
+        "backoff_factor": 0.5,
+        "growth_interval": 2000,
+        "_growth_tracker": 1820
+      },
+      "sgd_state_empty_expected_no_momentum": true
+    },
+    {
+      "client_id": 5,
+      "adam_parameter_states": 26,
+      "adam_step_min": 9294.0,
+      "adam_step_max": 12394.0,
+      "scaler": {
+        "scale": 4096.0,
+        "growth_factor": 2.0,
+        "backoff_factor": 0.5,
+        "growth_interval": 2000,
+        "_growth_tracker": 60
+      },
+      "sgd_state_empty_expected_no_momentum": true
+    },
+    {
+      "client_id": 6,
+      "adam_parameter_states": 26,
+      "adam_step_min": 10797.0,
+      "adam_step_max": 14397.0,
+      "scaler": {
+        "scale": 16384.0,
+        "growth_factor": 2.0,
+        "backoff_factor": 0.5,
+        "growth_interval": 2000,
+        "_growth_tracker": 1652
+      },
+      "sgd_state_empty_expected_no_momentum": true
+    },
+    {
+      "client_id": 7,
+      "adam_parameter_states": 26,
+      "adam_step_min": 10196.0,
+      "adam_step_max": 13596.0,
+      "scaler": {
+        "scale": 4096.0,
+        "growth_factor": 2.0,
+        "backoff_factor": 0.5,
+        "growth_interval": 2000,
+        "_growth_tracker": 1832
+      },
+      "sgd_state_empty_expected_no_momentum": true
+    },
+    {
+      "client_id": 8,
+      "adam_parameter_states": 26,
+      "adam_step_min": 14697.0,
+      "adam_step_max": 19597.0,
+      "scaler": {
+        "scale": 16384.0,
+        "growth_factor": 2.0,
+        "backoff_factor": 0.5,
+        "growth_interval": 2000,
+        "_growth_tracker": 1076
+      },
+      "sgd_state_empty_expected_no_momentum": true
+    },
+    {
+      "client_id": 9,
+      "adam_parameter_states": 26,
+      "adam_step_min": 7797.0,
+      "adam_step_max": 10397.0,
+      "scaler": {
+        "scale": 16384.0,
+        "growth_factor": 2.0,
+        "backoff_factor": 0.5,
+        "growth_interval": 2000,
+        "_growth_tracker": 1691
+      },
+      "sgd_state_empty_expected_no_momentum": true
+    }
+  ],
+  "note": "Step counts in timings are attempted minibatches; AMP can skip non-finite gradients. Saved parameter/optimizer states and losses are finite."
+}

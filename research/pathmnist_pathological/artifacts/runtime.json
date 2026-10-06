@@ -1,0 +1,31 @@
+{
+  "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:27:36) [GCC 11.2.0]",
+  "torch": "2.5.1+cu124",
+  "torchvision": "0.20.1+cu124",
+  "medmnist": "3.0.2",
+  "cuda": "12.4",
+  "cudnn": 90100,
+  "gpus": {
+    "0": {
+      "name": "NVIDIA RTX 6000 Ada Generation",
+      "clients": [
+        1,
+        5,
+        7,
+        8,
+        9
+      ]
+    },
+    "1": {
+      "name": "NVIDIA RTX 6000 Ada Generation",
+      "clients": [
+        0,
+        2,
+        3,
+        4,
+        6
+      ]
+    }
+  },
+  "started_at_utc": "2026-10-06T09:39:00.977793+00:00"
+}

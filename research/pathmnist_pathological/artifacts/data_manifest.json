@@ -1,0 +1,238 @@
+{
+  "medmnist_version": "3.0.2",
+  "source_url": "https://zenodo.org/records/10519652/files/pathmnist_64.npz?download=1",
+  "source_md5": "55aa9c1e0525abe5a6b9d8343a507616",
+  "source_sha256": "1e7fc200dd5aac79f39f0da26178be801ffac8e6d59c8533e51acebae953745a",
+  "config_sha256": "071dec8c75dd504a4ff370d97ed2ac0572ddb7975e1987ecc8a6bcff6911f33c",
+  "preprocessing": "PIL Resize(32,32) then ToTensor; no augmentation",
+  "splits": {
+    "train": {
+      "samples": 89996,
+      "class_counts": [
+        9366,
+        9509,
+        10360,
+        10401,
+        8006,
+        12182,
+        7886,
+        9401,
+        12885
+      ]
+    },
+    "test": {
+      "samples": 7180,
+      "class_counts": [
+        1338,
+        847,
+        339,
+        634,
+        1035,
+        592,
+        741,
+        421,
+        1233
+      ]
+    }
+  },
+  "files_sha256": {
+    "partitions.json": "b70fb78ad84a7d7041c5d98938d208f8b23455c3254b8b949e32c58509828a80",
+    "test-images.npy": "0f16ab486db3abe0254becd3bd1abed52a28ebeca4105b83473c53f889bb1e70",
+    "test-labels.npy": "b882b60f84772abb91d9946d6f2c606993efd3ba4e531968a1851ae34e6284ce",
+    "train-images.npy": "ed963d1357c40c6c309d93dd45fa7144e0a6309ece3d14954236a71b02cfe00a",
+    "train-labels.npy": "882f31faafc00594be102bd4d28091fe062c9fad1c09752fd81ee24781f0c3f6"
+  },
+  "clients": [
+    {
+      "client_id": 0,
+      "samples": 6589,
+      "classes": [
+        0,
+        3
+      ],
+      "class_counts": [
+        3122,
+        0,
+        0,
+        3467,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "client_id": 1,
+      "samples": 9881,
+      "classes": [
+        2,
+        7
+      ],
+      "class_counts": [
+        0,
+        0,
+        5180,
+        0,
+        0,
+        0,
+        0,
+        4701,
+        0
+      ]
+    },
+    {
+      "client_id": 2,
+      "samples": 7946,
+      "classes": [
+        4,
+        6
+      ],
+      "class_counts": [
+        0,
+        0,
+        0,
+        0,
+        4003,
+        0,
+        3943,
+        0,
+        0
+      ]
+    },
+    {
+      "client_id": 3,
+      "samples": 10846,
+      "classes": [
+        1,
+        5
+      ],
+      "class_counts": [
+        0,
+        4755,
+        0,
+        0,
+        0,
+        6091,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "client_id": 4,
+      "samples": 9910,
+      "classes": [
+        3,
+        8
+      ],
+      "class_counts": [
+        0,
+        0,
+        0,
+        3467,
+        0,
+        0,
+        0,
+        0,
+        6443
+      ]
+    },
+    {
+      "client_id": 5,
+      "samples": 7822,
+      "classes": [
+        0,
+        7
+      ],
+      "class_counts": [
+        3122,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4700,
+        0
+      ]
+    },
+    {
+      "client_id": 6,
+      "samples": 9183,
+      "classes": [
+        2,
+        4
+      ],
+      "class_counts": [
+        0,
+        0,
+        5180,
+        0,
+        4003,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "client_id": 7,
+      "samples": 8697,
+      "classes": [
+        1,
+        6
+      ],
+      "class_counts": [
+        0,
+        4754,
+        0,
+        0,
+        0,
+        0,
+        3943,
+        0,
+        0
+      ]
+    },
+    {
+      "client_id": 8,
+      "samples": 12533,
+      "classes": [
+        5,
+        8
+      ],
+      "class_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        6091,
+        0,
+        0,
+        6442
+      ]
+    },
+    {
+      "client_id": 9,
+      "samples": 6589,
+      "classes": [
+        0,
+        3
+      ],
+      "class_counts": [
+        3122,
+        0,
+        0,
+        3467,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "partition_sha256": "b70fb78ad84a7d7041c5d98938d208f8b23455c3254b8b949e32c58509828a80"
+}

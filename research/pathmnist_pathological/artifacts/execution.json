@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/home/schroeder/miniconda3/envs/general_ml/bin/python",
+    "-u",
+    "research/pathmnist_pathological/run.py",
+    "run"
+  ],
+  "cwd": "/mnt/data/codex/FusedSpaceFed",
+  "pid": 1338708,
+  "started_at_utc": "2026-10-06T09:38:50.683965+00:00",
+  "status": "completed",
+  "exit_code": 0,
+  "wall_seconds": 963.6593077629805,
+  "finished_at_utc": "2026-10-06T09:54:54.343319+00:00"
+}

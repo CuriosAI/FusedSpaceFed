@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "checkpoints": {
+    "initial.pt": {
+      "round": 0,
+      "seed": 42,
+      "all_10_encoders_loaded": true,
+      "batchnorm_buffers": 57,
+      "all_10_optimizers_loaded": true,
+      "training_probe_shapes_finite": true,
+      "bytes": 18182596,
+      "sha256": "2e068afbd9caee88b7f41d7032f054f4918b28dea46b73d17f8701faabcc4a40"
+    },
+    "final.pt": {
+      "round": 50,
+      "seed": 42,
+      "all_10_encoders_loaded": true,
+      "batchnorm_buffers": 57,
+      "all_10_optimizers_loaded": true,
+      "training_probe_shapes_finite": true,
+      "bytes": 23390414,
+      "sha256": "fa56da01091debe9031a9acb2e3de0f34ce0f751d2c95d2d0d54c05f15697d1e"
+    }
+  },
+  "test_accuracies_reconstructed_from_counts": true,
+  "partition_exhaustive_disjoint_two_classes_per_client": true
+}
