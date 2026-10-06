@@ -36,3 +36,35 @@ un eventuale successo sarà un risultato esplorativo di un singolo seed,
 non una conferma indipendente della media del paper. Tutti i tentativi e
 le valutazioni, anche negativi, saranno conservati. Nessuna media sarà
 sostituita dal migliore encoder o seed. Il manoscritto non sarà modificato.
+
+## Primo esito e secondo passo congelato
+
+Il primo tentativo ha ottenuto **43,938719%**, quindi non supera la soglia.
+La calibrazione/inferenza ha richiesto 3,510 secondi di sessione, oltre al
+training originale già eseguito; costi e receipt del processo sono archiviati.
+I checkpoint completi prima/dopo la calibrazione sono conservati in
+`_local/pathmnist_recovery/attempt-01/`.
+
+Il passo 2 confronta cinque modalità: native, owner-cumulative,
+owner-layerwise, cross-cumulative e cross-layerwise. La calibrazione usa
+sempre lo stesso pool di 6.400 esempi fit unici. Owner applica a ogni immagine
+l’encoder del suo client d’origine; cross assegna gli stessi esempi agli
+encoder con una permutazione fissa, indipendente dal client e dalla label,
+640 esempi per encoder. I buffer risultanti restano interamente condivisi.
+
+Cumulative replica la media progressiva di statistiche in training mode.
+Layerwise misura media e varianza globale degli input di ciascuna BN,
+seguendo l’ordine del grafo: i livelli precedenti usano già le statistiche
+finali in eval. Cambiano solo i buffer, senza pesi, label o optimizer step.
+Sono scelte nostre, non un protocollo recuperato dagli autori.
+
+Le cinque modalità vengono confrontate su sei checkpoint fit-only seed 142:
+il riferimento FP32, i profili c0.1/ae0.0001, c0.1/ae0.001, c0.03/ae0.001,
+c0.01/ae0.0003 (round 20), e il checkpoint finito round 18 del riferimento
+FP16 fallito al round 19. Il round 18 è un controllo separato, non un risultato
+a 20 round. Sei worker indipendenti, tre per GPU, valutano soltanto le 8.994
+immagini di validation. Per un successivo trasferimento al checkpoint
+originale a 50 round, la modalità sarà scelta usando il riferimento FP32
+con gli stessi LR/epoche, con parità a favore di native e poi dell’ordine
+predefinito. Il riferimento FP16 a 18 round servirà come controllo di
+trasferimento, senza sostituire il criterio dichiarato.

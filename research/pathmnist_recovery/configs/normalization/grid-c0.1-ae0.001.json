@@ -1,0 +1,17 @@
+{
+  "candidate_id": "grid-c0.1-ae0.001",
+  "checkpoint": "_local/pathmnist_calibrated/screening/grid-c0.1-ae0.001-seed-142/round-020.pt",
+  "checkpoint_sha256": "5141e49179a4d4947dbe4951943bfb481c53f83ff52ae5c4fd63e947703c75ad",
+  "partition_sha256": "13d5cc86d039a8bf75b97ee6f6f94c6f177f52dd10829c66fd01150db7ceeb47",
+  "modes": [
+    "native",
+    "owner-cumulative",
+    "owner-layerwise",
+    "cross-cumulative",
+    "cross-layerwise"
+  ],
+  "split": "training-holdout",
+  "rule": "greatest uniform-pipeline validation accuracy; ties native, then original declared mode order",
+  "source_round": 20,
+  "purpose": "inference calibration only; no test access; weights unchanged"
+}
