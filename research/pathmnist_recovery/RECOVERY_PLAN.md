@@ -132,3 +132,17 @@ pesi e gli iperparametri e ripristina l’inferenza del paper. **La modalità
 nativa non è quella preferita dalla validation**: il suo test è una diagnosi
 esplorativa del protocollo d’inferenza sul benchmark già noto, e non verrà
 presentato come una modalità selezionata su validation indipendente.
+
+Il controllo nativo ha ottenuto 25,023677%, quindi non recupera la soglia.
+Le due varianti GN hanno ottenuto 29,177229% (CE1 + flip/rot90) e 33,476762%
+(CE3), soltanto su validation; non vengono valutate sul test.
+
+Il prossimo passo rapido confronta guadagni di fusione α = 0, 0.1, 0.25,
+0.5, 1 e 2, con formula `x + α D(E_i(x))`, sui checkpoint fit-only a 50
+round. La linearità della convoluzione finale del decoder permette di
+applicare esattamente il guadagno, in una copia, senza modificare encoder
+o classificatore. Le BN vengono eventualmente ricalibrate solo sul fit.
+α=0 è un controllo diagnostico che esclude il percorso privato: **non è
+ammesso come soluzione FusedSpaceFed o come criterio di stop sul test**.
+I guadagni positivi sono varianti esplicite rispetto alla fusione α=1 del
+paper. La selezione usa soltanto validation; nessun nuovo test è letto.

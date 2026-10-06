@@ -1,0 +1,18 @@
+{
+  "profile": "reference-fp32",
+  "checkpoint": "_local/pathmnist_recovery/continuation_validation/fp32-matched-reference/round-050.pt",
+  "checkpoint_sha256": "b6fde5e9a68d4876f35feb6d0e12394b48575b6e9081df100d98d13059b7e022",
+  "gains": [
+    0.0,
+    0.1,
+    0.25,
+    0.5,
+    1.0,
+    2.0
+  ],
+  "modes": [
+    "native",
+    "train-recalibrated"
+  ],
+  "policy": "alpha0 diagnostic only; positive gains eligible; validation only; no test access"
+}

@@ -1,0 +1,18 @@
+{
+  "profile": "previous-c0.1-ae0.0001",
+  "checkpoint": "_local/pathmnist_recovery/continuation_validation/grid-c0.1-ae0.0001/round-050.pt",
+  "checkpoint_sha256": "ebb2f99a3feb51d552231d18d3cd4a727c92fc3f76b2111a51bb730e74089a37",
+  "gains": [
+    0.0,
+    0.1,
+    0.25,
+    0.5,
+    1.0,
+    2.0
+  ],
+  "modes": [
+    "native",
+    "train-recalibrated"
+  ],
+  "policy": "alpha0 diagnostic only; positive gains eligible; validation only; no test access"
+}

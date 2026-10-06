@@ -1,0 +1,56 @@
+{
+  "gpu_slots": {
+    "cuda:1": 2,
+    "cuda:0": 2
+  },
+  "minimum_free_mib": 16384,
+  "frozen_files": {
+    "research/pathmnist_recovery/fusion_probe.py": "ce8b7386877d1bc2ea21bf158945db366ad1dc271e33f7cfcfb75a6186e53b9c",
+    "research/pathmnist_recovery/training.py": "32f63d780838d6f7965a97ffd318488858714c3bc3972f3522af2c71dd2d3897",
+    "research/pathmnist_recovery/method.py": "208720041c665dfd92bcc8eaa3411ea1bc50081226f35546ea7e341117b344b2",
+    "research/pathmnist_calibrated/runner.py": "4e2128c400cc462fc8cb5de79edd11175394e6425325a5a5d75b8336b54d0fcb",
+    "fusedspacefed_core.py": "8e985128314da84adc4751a66084ae0b1d00da707d47ab2ebe3768fd73d17970",
+    "research/pathmnist_recovery/configs/fusion/reference-fp32.json": "289d97c572b6261c2b6e02b01c423b0bbc911dba6db8317f1ed612b1b850dc07",
+    "research/pathmnist_recovery/configs/fusion/best-bn-c0.03-ae0.001.json": "577471b754bafc4f59e41e9bdcd62713a76645a48056a83f017437873130405b",
+    "research/pathmnist_recovery/configs/fusion/previous-c0.1-ae0.0001.json": "a6015f3d92b3718c0b445daaa6d67e72f3d739269554905159660440fc93b279",
+    "research/pathmnist_recovery/configs/fusion/gn8-e1-flip90.json": "17f0e1b745352a95c653284bdcd29f0b7b3bcff19b72da536a93b276254139ba"
+  },
+  "jobs": [
+    {
+      "name": "reference-fp32",
+      "script": "research/pathmnist_recovery/fusion_probe.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/fusion/reference-fp32.json"
+      ],
+      "output": "_local/pathmnist_recovery/fusion_validation/reference-fp32"
+    },
+    {
+      "name": "best-bn-c0.03-ae0.001",
+      "script": "research/pathmnist_recovery/fusion_probe.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/fusion/best-bn-c0.03-ae0.001.json"
+      ],
+      "output": "_local/pathmnist_recovery/fusion_validation/best-bn-c0.03-ae0.001"
+    },
+    {
+      "name": "previous-c0.1-ae0.0001",
+      "script": "research/pathmnist_recovery/fusion_probe.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/fusion/previous-c0.1-ae0.0001.json"
+      ],
+      "output": "_local/pathmnist_recovery/fusion_validation/previous-c0.1-ae0.0001"
+    },
+    {
+      "name": "gn8-e1-flip90",
+      "script": "research/pathmnist_recovery/fusion_probe.py",
+      "args": [
+        "--config",
+        "research/pathmnist_recovery/configs/fusion/gn8-e1-flip90.json"
+      ],
+      "output": "_local/pathmnist_recovery/fusion_validation/gn8-e1-flip90"
+    }
+  ]
+}

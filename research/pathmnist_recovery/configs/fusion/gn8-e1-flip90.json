@@ -1,0 +1,17 @@
+{
+  "profile": "gn8-e1-flip90",
+  "checkpoint": "_local/pathmnist_recovery/groupnorm_validation/gn8-c0.1-ae0.0003-e1-flip90/round-050.pt",
+  "checkpoint_sha256": "cdc8a4cacf4da93aed460532943e8019326af9f5fa200d967b78e0e169860702",
+  "gains": [
+    0.0,
+    0.1,
+    0.25,
+    0.5,
+    1.0,
+    2.0
+  ],
+  "modes": [
+    "native"
+  ],
+  "policy": "alpha0 diagnostic only; positive gains eligible; validation only; no test access"
+}
