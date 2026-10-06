@@ -1,0 +1,22 @@
+{
+  "attempt": 1,
+  "checkpoint": "_local/pathmnist_pathological/seed-42/final.pt",
+  "checkpoint_sha256": "fa56da01091debe9031a9acb2e3de0f34ce0f751d2c95d2d0d54c05f15697d1e",
+  "partition_sha256": "13d5cc86d039a8bf75b97ee6f6f94c6f177f52dd10829c66fd01150db7ceeb47",
+  "normalization": "owner-cumulative-shared-bn",
+  "training_seed": 42,
+  "training_rounds": 50,
+  "test_access": "one frozen candidate; known benchmark; exploratory threshold stop",
+  "validation_basis": {
+    "source": "_local/pathmnist_calibrated/screening/fp32-matched-reference-seed-142/results.json",
+    "sha256": "c43d5388a22e8c05a0dbb4fcb64b50efadeaa01bacb07d4e3f9c92fa160c7bc0",
+    "seed": 142,
+    "rounds": 20,
+    "fit_validation_disjoint": true,
+    "classifier_lr": 0.01,
+    "autoencoder_lr": 0.001,
+    "native_accuracy_percent": 24.838781409828776,
+    "recalibrated_accuracy_percent": 34.392928619079385,
+    "limitations": "FP32 vs original FP16; validation horizon20 vs checkpoint50; selected inference-only variant, no changed training hyperparameters"
+  }
+}
