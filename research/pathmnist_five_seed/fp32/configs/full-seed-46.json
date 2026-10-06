@@ -1,0 +1,16 @@
+{
+  "seed": 46,
+  "variant": "full",
+  "settings": {
+    "rounds": 50,
+    "warmup_epochs": 1,
+    "local_epochs": 3,
+    "batch_size": 128,
+    "classifier_lr": 0.01,
+    "autoencoder_lr": 0.001,
+    "use_amp": false
+  },
+  "partition_sha256": "afc01847341dc4888ddd710828276c2f1e842393d1a129836596d032992054d1",
+  "paired_initial_checkpoint": "_local/pathmnist_five_seed/full/seed-46/initial.pt",
+  "paired_initial_sha256": "ec1afe825979da91ea62e81c6c8758a361c3a2b4a8aa2fcdcd98a2ff14cb4c8a"
+}

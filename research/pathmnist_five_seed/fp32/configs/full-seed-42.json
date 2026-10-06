@@ -1,0 +1,16 @@
+{
+  "seed": 42,
+  "variant": "full",
+  "settings": {
+    "rounds": 50,
+    "warmup_epochs": 1,
+    "local_epochs": 3,
+    "batch_size": 128,
+    "classifier_lr": 0.01,
+    "autoencoder_lr": 0.001,
+    "use_amp": false
+  },
+  "partition_sha256": "b70fb78ad84a7d7041c5d98938d208f8b23455c3254b8b949e32c58509828a80",
+  "paired_initial_checkpoint": "_local/pathmnist_pathological/seed-42/initial.pt",
+  "paired_initial_sha256": "2e068afbd9caee88b7f41d7032f054f4918b28dea46b73d17f8701faabcc4a40"
+}

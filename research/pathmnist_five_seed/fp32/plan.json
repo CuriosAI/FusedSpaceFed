@@ -1,0 +1,43 @@
+{
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "variants": [
+    "full",
+    "no-warmup",
+    "shared-encoder",
+    "decoder-only"
+  ],
+  "settings": {
+    "rounds": 50,
+    "warmup_epochs": 1,
+    "local_epochs": 3,
+    "batch_size": 128,
+    "classifier_lr": 0.01,
+    "autoencoder_lr": 0.001,
+    "use_amp": false
+  },
+  "selection": "none; fixed paper hyperparameters; no validation or test tuning",
+  "classifier": "ResNet20V2 RGB 9 classes",
+  "autoencoder": "UNetSmallAE RGB dz=16",
+  "aggregation": "uniform classifier and decoder; encoder additionally averaged only in shared-encoder ablation",
+  "optimizers": "SGD without momentum for classifier; Adam defaults for encoder/decoder; persistent local states",
+  "test": "one final Float32 evaluation at round 50; native BN; uniform mean over 10 private pipelines, each on all 7180 test examples",
+  "partition": "original pathological_partition(labels, 10, 2, run_seed); frozen per seed, paired across variants",
+  "reference_seed42": "fresh FP32 rerun from the immutable original initial.pt; no terminal checkpoint reused",
+  "diagnostics": "training-only fixed 640 examples/client; checkpoints at 0 and 50; replay warmup 1/classification 3 with saved persistent optimizers; native-eval and batch-stateless Float32 gradient probes",
+  "exclusions": [
+    "tuning",
+    "BN recalibration",
+    "head refit",
+    "baseline training",
+    "manuscript changes"
+  ],
+  "precision": "FP32 model, activations and optimizer arithmetic; autocast and GradScaler absent; CUDA matmul/cudnn TF32 disabled",
+  "initialization": "all full runs restore the corresponding original round-0 checkpoint, model/optimizer states and exact client loader generators; AMP scaler removed",
+  "previous_campaign": "research/pathmnist_five_seed/originals; preserved read-only, including the seed43 FP16 overflow"
+}

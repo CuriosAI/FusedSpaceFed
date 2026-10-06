@@ -1,0 +1,45 @@
+{
+  "seeds": {
+    "42": {
+      "path": "_local/pathmnist_pathological/seed-42/initial.pt",
+      "sha256": "2e068afbd9caee88b7f41d7032f054f4918b28dea46b73d17f8701faabcc4a40",
+      "bytes": 18182596,
+      "partition_sha256": "b70fb78ad84a7d7041c5d98938d208f8b23455c3254b8b949e32c58509828a80",
+      "round": 0,
+      "original_amp_scaler_discarded": true
+    },
+    "43": {
+      "path": "_local/pathmnist_five_seed/full/seed-43/initial.pt",
+      "sha256": "52d01c194d256e2004431342d094dc66b1a55646edf51105787e5ca92c863f8d",
+      "bytes": 19135470,
+      "partition_sha256": "2faa54c8674b035db940ab82881d6ebef360b83ec2e4154ece6f898029e84a1c",
+      "round": 0,
+      "original_amp_scaler_discarded": true
+    },
+    "44": {
+      "path": "_local/pathmnist_five_seed/full/seed-44/initial.pt",
+      "sha256": "b0de102622aca25769e618c614bfbfb646068a4c8c2bf1cc7a15af0de4a906dd",
+      "bytes": 19135406,
+      "partition_sha256": "194f3e10fb14610a838fd384e0d6ed5f788214a64b3c8b282ed5883c3ae9b102",
+      "round": 0,
+      "original_amp_scaler_discarded": true
+    },
+    "45": {
+      "path": "_local/pathmnist_five_seed/full/seed-45/initial.pt",
+      "sha256": "f6d8ed0e17bd192498fc964f556561fd392f34f3b58bc94ac71dde29d509c761",
+      "bytes": 19135406,
+      "partition_sha256": "eaafee23588d635fcbb04d067815a8391a0b052ffc948b667865888064e2f003",
+      "round": 0,
+      "original_amp_scaler_discarded": true
+    },
+    "46": {
+      "path": "_local/pathmnist_five_seed/full/seed-46/initial.pt",
+      "sha256": "ec1afe825979da91ea62e81c6c8758a361c3a2b4a8aa2fcdcd98a2ff14cb4c8a",
+      "bytes": 19135406,
+      "partition_sha256": "afc01847341dc4888ddd710828276c2f1e842393d1a129836596d032992054d1",
+      "round": 0,
+      "original_amp_scaler_discarded": true
+    }
+  },
+  "policy": "exact original round-zero model/optimizer/loader states, not trained or refitted states"
+}
