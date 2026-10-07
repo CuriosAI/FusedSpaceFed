@@ -1,0 +1,45 @@
+{
+  "files": {
+    "PHASE3_REPORT.md": {
+      "sha256": "972bb3db0aa2263b9948ddb5168542f2a975abd0500b5eb2164f2440928921c2",
+      "bytes": 6245
+    },
+    "queue.json": {
+      "sha256": "5eca546a8c60a24f13715ba2bbf79b7d6656fc2b2b720b2b52b14e882c477abf",
+      "bytes": 3671
+    },
+    "probe_gradients.py": {
+      "sha256": "32a8c5b64ec99d9ef911261973c843a737a8ba87a12a3456af504c88f3c8e227",
+      "bytes": 5438
+    },
+    "artifacts/seed-43.json.gz": {
+      "sha256": "5c79176e465051d10a3c7c90d7febdda40c4f6104429ee3b0a14cf8f6549680f",
+      "bytes": 127156
+    },
+    "artifacts/campaign.json": {
+      "sha256": "cd33dae0deebe81e8b71e246d24913d3245c3f09f23a918139222c1dfcaf2fe4",
+      "bytes": 6906
+    },
+    "artifacts/seed-46.json.gz": {
+      "sha256": "267338276a4f6e940a7c605822019c6c0cdfd6bf8c94f46476da353e6aa917ae",
+      "bytes": 127450
+    },
+    "artifacts/seed-42.json.gz": {
+      "sha256": "2768c9d6ea26cdce6988a19eb9c7e7334787ce6e04a4467d8099461947b79acc",
+      "bytes": 126770
+    },
+    "artifacts/seed-44.json.gz": {
+      "sha256": "b3f93ab454f4b742f7a7e62140227e4f807560694276b75b568c56c9d8375b4c",
+      "bytes": 127115
+    },
+    "artifacts/summary.json": {
+      "sha256": "b94205c6502da95c729a649bd5d6e0d2357e8dcde5b5d9a526517e89dc67820f",
+      "bytes": 21313
+    },
+    "artifacts/seed-45.json.gz": {
+      "sha256": "e8c2a1d3f516e36c534b4b4760e95a1cbd1d1715e2124a7852bc3fcce7f66431",
+      "bytes": 127008
+    }
+  },
+  "checkpoint_policy": "private thanos _local only; no dataset or checkpoint uploaded"
+}
