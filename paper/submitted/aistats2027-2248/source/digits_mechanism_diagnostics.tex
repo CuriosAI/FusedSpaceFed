@@ -1,0 +1,125 @@
+% Results archived at d13c1a0c3131ba81adbeb911a50aa3f92d5aafe9.
+% Numeric tables are generated from the unmodified JSON files in
+% ../evidence/digits/ by ../scripts/build_digits_tables.py.
+\clearpage
+\section{Component and Gradient Diagnostics on Digits}
+\label{app:digits_diagnostics}
+
+We use the five calibrated FusedSpaceFed runs (seeds 42--46) reported in
+Sections~\ref{sec:feature_heterogeneity_digits} and \ref{sec:capacity_compute}.
+The data partition, architecture, and validation-selected hyperparameters
+are those in Appendices~\ref{app:capacity_compute_comparison} and
+\ref{app:feature_heterogeneity_digits}. The full-model reference is therefore
+the same $85.86\pm0.85\%$ uniform-domain accuracy reported in the main text.
+
+\subsection{Decoder Behavior and Reconstruction Warm-Up}
+\label{app:digits_decoder}
+
+What role does reconstruction warm-up play before task-driven optimization?
+We replay one local participation from copies of the initial and final
+(round 300) checkpoints of the five full-model runs, using a fixed training
+probe of 160 examples per domain, arranged in five batches of 32.
+Each replay performs one encoder-only warm-up epoch followed by one
+end-to-end classification epoch. Optimizers are reset at the start of
+participation, as in the Digits training protocol, with continuous Adam
+state between the two phases. Metrics are evaluated with frozen BatchNorm
+statistics. The intermediate states are local diagnostic replays from the
+saved checkpoints.
+
+Warm-up reduces reconstruction MSE averaged across seeds in every domain
+at both checkpoint stages (Table~\ref{tab:digits_reconstruction}).
+At the final checkpoints, MSE averaged across domains and seeds decreases
+from 0.4512 to 0.4477 after warm-up, then increases to 0.5028 after
+classification. These observations illustrate the distinct roles of the
+two phases: warm-up improves reconstruction, whereas subsequent
+classification shapes the decoder output through the prediction objective
+alone.
+
+\input{digits_reconstruction_table}
+
+The decoder ends with a linear convolution, allowing output values beyond
+the normalized input range $[-1,1]$. Figure~\ref{fig:digits_decoder_probe}
+illustrates the image-space signals before and after each phase.
+All measured outputs, losses, and model states remain finite in these
+replays. During warm-up, only the encoder changes; classification updates
+the encoder, decoder, and classifier.
+
+\input{digits_decoder_figure}
+
+\subsection{Component Ablations}
+\label{app:digits_ablation}
+
+How do the design choices affect the accuracy of the complete fusion
+pipeline? We reuse the five full-model runs and train each of three variants
+from scratch with the same five seeds, giving 15 additional runs of
+300 rounds. The variants remove reconstruction warm-up, share the encoder,
+or remove the original-input pathway. In the shared-encoder variant, all
+clients start with the same encoder and uniformly average its state together
+with the decoder and classifier after each round. The decoder-only variant
+classifies $D(E_i(x))$ while retaining private encoders and warm-up.
+
+All variants inherit the hyperparameters selected for the full pipeline,
+without additional tuning: classifier SGD with learning rate 0.1,
+encoder--decoder Adam with learning rate 0.0003, clipping at 10, batch size
+32, and $d_z=64$. Training uses all 743 examples per domain and one
+classification epoch per round; the full, shared-encoder, and decoder-only
+variants additionally perform one warm-up epoch. Each final model is
+evaluated once on the five domain test sets, containing 147,509 examples
+in total. Uniform-domain accuracy is computed within each run.
+
+\input{digits_ablation_table}
+
+Results are reported as mean $\pm$ sample standard deviation across five
+paired seeds; differences are computed within each seed.
+Removing warm-up also reduces the optimization budget and changes the Adam
+state and minibatch order at the start of classification. This intervention
+therefore measures the overall effect of removing the warm-up phase.
+
+The complete pipeline achieves $85.86\%$ mean uniform-domain accuracy,
+compared with $84.86\%$ when the original-input pathway is removed.
+This 1.00-point average advantage supports combining the learned decoder
+output with the original image. The no-warm-up and shared-encoder variants
+obtain $85.71\%$ and $86.18\%$, respectively, showing smaller mean changes
+under these interventions in the feature-heterogeneous Digits setting.
+
+\subsection{Fixed-State Gradient Dispersion}
+\label{app:digits_gradients}
+
+Can the learned fusion pathway realize the variance--covariance reduction
+condition in Equation~\eqref{eq:exact_decomp}? We compare original and fused
+inputs at the initial and final checkpoints using identical classifier,
+decoder, and private-encoder parameters. We use the same fixed training
+probes as in Appendix~\ref{app:digits_decoder}, with no optimizer steps or
+adaptation. For each client, we average the gradients of five minibatch
+losses before computing cross-client dispersion.
+
+The primary measurement freezes BatchNorm running statistics. A second
+measurement uses batch statistics and restores all buffers before and after
+each input pathway. These batch-statistic measurements condition the loss
+on the fixed minibatches. Gradients are computed in float32 and accumulated
+in float64. Table~\ref{tab:digits_gradient_decomposition} reports the terms
+of the decomposition, which satisfy the identity to numerical precision.
+
+\input{digits_gradient_tables}
+
+At the final checkpoints, the mean per-seed ratio
+$\Gamma^{\mathrm{fused}}/\Gamma^{\mathrm{orig}}$ is $0.792\pm0.253$
+with frozen BatchNorm statistics and $0.148\pm0.141$ with batch statistics.
+The reduction condition holds in four of five seeds and all five seeds,
+respectively. These trained fusion pathways therefore provide empirical
+instances of the absolute-dispersion reduction identified by the analysis.
+
+To distinguish absolute dispersion from gradient scale and direction, we
+also measure
+$\Gamma/(K^{-1}\sum_i\|g_i\|_2^2)$ and the mean pairwise cosine similarity
+of client gradients (Table~\ref{tab:digits_gradient_normalized}).
+With frozen statistics, final-state normalized dispersion changes from
+0.7942 to 0.7996 and mean pairwise cosine similarity from 0.0906 to 0.0440.
+With batch statistics, the corresponding values change from 0.7966 to
+0.7890 and from 0.0218 to 0.0235.
+These results characterize a reduction in absolute dispersion, with
+substantial sensitivity to gradient scale and BatchNorm statistics.
+Both input pathways are evaluated at the same FusedSpaceFed state, whose
+classifier was trained on fused inputs. Thus, the original-input pathway
+is a fixed-state counterfactual; the cross-method measurements in
+Section~\ref{sec:experiments} instead use each method's own final state.

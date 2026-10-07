@@ -1,0 +1,63 @@
+\begin{table*}[t]
+\coauthorcolor
+\centering
+\small
+\setlength{\tabcolsep}{9pt}
+\caption{Test accuracy (\%) on the five-domain Digits benchmark.
+Published reference values for FedAvg, FedProx, and FedBN are taken from
+Table~11 of the supplementary material of \citet{li2021fedbn}.
+FusedSpaceFed results are mean $\pm$ sample standard deviation over five
+independent runs, evaluated at communication round 300.
+Bold indicates the highest reported mean accuracy in each row.}
+\label{tab:feature_heterogeneity_digits}
+\begin{tabular}{lrrrr}
+\toprule
+Domain & \shortstack{FedAvg\\published} & \shortstack{FedProx\\published}
+       & \shortstack{FedBN\\published} & \shortstack{FusedSpaceFed\\ours} \\
+\midrule
+MNIST       & $97.38\pm0.05$ & $97.30\pm0.17$ & $\boldsymbol{97.55\pm0.11}$ & $96.95\pm0.24$ \\
+SVHN        & $70.59\pm0.51$ & $71.55\pm0.75$ & $\boldsymbol{76.93\pm0.25}$ & $67.83\pm2.88$ \\
+USPS        & $96.91\pm0.11$ & $96.98\pm0.19$ & $\boldsymbol{97.69\pm0.10}$ & $96.67\pm0.28$ \\
+SynthDigits & $86.66\pm0.21$ & $86.60\pm0.18$ & $\boldsymbol{87.46\pm0.20}$ & $86.32\pm0.50$ \\
+MNIST-M     & $82.44\pm0.41$ & $82.67\pm0.75$ & $\boldsymbol{83.57\pm0.38}$ & $81.55\pm0.77$ \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\newpage
+\section{Feature Heterogeneity on Digits}
+\label{app:feature_heterogeneity_digits}
+
+We use the data partition, preprocessing, and FusedSpaceFed architecture
+described in Appendix~\ref{app:capacity_compute_comparison}. Each domain
+contributes 743 training examples, with the class frequencies present in
+the distributed partition. Images are represented as three-channel
+$28\times28$ inputs normalized to $[-1,1]$. All five clients participate
+in every round, with uniform aggregation of the shared decoder and
+classifier. The classifier's batch-normalization parameters and running
+statistics are included in its shared state.
+
+Hyperparameter selection uses a fixed split of 594 training and 149
+validation examples per client. Candidate configurations are screened for
+120 rounds, followed by 300-round confirmation of shortlisted
+configurations using two validation seeds. Selection is based on the mean
+final-round validation accuracy across domains and confirmation seeds.
+The selected configuration uses classifier SGD with learning rate 0.1,
+encoder--decoder Adam with learning rate 0.0003, and gradient-norm clipping
+at 10. Each communication round includes one encoder-only reconstruction
+warm-up epoch followed by one end-to-end classification epoch, with batch
+size 32.
+
+The selected configuration is then trained from scratch on all 743
+training examples per client using seeds 42--46. At round 300, each
+client-conditioned predictor is evaluated on its domain's test set.
+We report the mean and sample standard deviation across the five runs
+for each domain in Table~\ref{tab:feature_heterogeneity_digits}.
+The uniform mean across domains is computed within each run and then
+summarized across runs.
+
+Unlike our severe label-skew experiments, the Digits benchmark primarily
+evaluates feature heterogeneity, which FedBN is specifically designed to
+address. This difference in regime may partly explain the gap to the
+published FedBN results, although validating this hypothesis would
+require further controlled experiments.

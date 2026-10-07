@@ -16,6 +16,14 @@ The code follows the two-phase protocol in the manuscript:
 FedAvg, FedProx and SCAFFOLD use the same ResNet20-v2 classifier and initial
 classifier parameters.
 
+## Submitted manuscript
+
+The submitted AISTATS 2027 manuscript (submission 2248), including the original
+PDF, Overleaf ZIP and unchanged LaTeX sources, is archived in
+[paper/submitted/aistats2027-2248](paper/submitted/aistats2027-2248/).
+The source folder is also present in the Overleaf project under the name
+`aistats-inviato_20261007`.
+
 ## Repository layout
 
 | File | Purpose |

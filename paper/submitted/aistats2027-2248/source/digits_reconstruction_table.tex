@@ -1,0 +1,21 @@
+\begin{table*}[t]
+\coauthorcolor
+\centering
+\small
+\setlength{\tabcolsep}{8pt}
+\caption{Reconstruction MSE on the fixed Digits training probes, averaged over five seeds. Each checkpoint is copied before a local replay. Before, Warm-up, and Classification denote successive replay states; the two column groups start from initialization and round 300.}
+\label{tab:digits_reconstruction}
+\begin{tabular}{lrrrrrr}
+\toprule
+& \multicolumn{3}{c}{Initial checkpoints} & \multicolumn{3}{c}{Final checkpoints} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Domain & Before & Warm-up & Classification & Before & Warm-up & Classification \\
+\midrule
+MNIST & 0.9428 & 0.9213 & 0.9239 & 0.9023 & 0.8962 & 1.1163 \\
+SVHN & 0.1965 & 0.1921 & 0.1924 & 0.1877 & 0.1853 & 0.1955 \\
+USPS & 0.5946 & 0.5804 & 0.5813 & 0.5649 & 0.5611 & 0.5715 \\
+SynthDigits & 0.3730 & 0.3656 & 0.3670 & 0.3517 & 0.3482 & 0.3668 \\
+MNIST-M & 0.2845 & 0.2795 & 0.2772 & 0.2496 & 0.2475 & 0.2639 \\
+\bottomrule
+\end{tabular}
+\end{table*}

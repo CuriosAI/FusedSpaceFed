@@ -1,4 +1,15 @@
-# Sorgenti del manoscritto
+# Manoscritto: versione sottoposta e sorgenti precedenti
+
+La **versione effettivamente sottoposta ad AISTATS 2027 (submission 2248)** è
+archiviata in [submitted/aistats2027-2248](submitted/aistats2027-2248/), con PDF
+inviato, ZIP originale e sorgenti LaTeX invariati. È il riferimento per le
+revisioni successive. La cartella dei sorgenti è presente anche nel progetto
+Overleaf con il nome `aistats-inviato_20261007`.
+
+Il resto di questo documento descrive l'importazione precedente del 3 ottobre
+2026 e il sorgente `aistats_2027.tex`, conservato come versione precedente.
+
+## Sorgenti precedenti
 
 Il sorgente principale è `aistats_2027.tex`, nella versione AISTATS scelta
 dall'autore. I sei file importati sono copie byte per byte dei file omonimi

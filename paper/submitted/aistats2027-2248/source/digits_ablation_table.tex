@@ -1,0 +1,18 @@
+\begin{table*}[t]
+\coauthorcolor
+\centering
+\small
+\setlength{\tabcolsep}{15pt}
+\caption{Digits component ablations. Uniform-domain test accuracy at round 300 and paired differences are mean $\pm$ sample standard deviation over seeds 42--46. Positive differences favor the full pipeline. Bold marks the highest mean accuracy among the evaluated variants.}
+\label{tab:digits_ablation}
+\begin{tabular}{lcc}
+\toprule
+Variant & Uniform-domain accuracy (\%) & Full $-$ variant (pp) \\
+\midrule
+Full FusedSpaceFed & $85.86\pm0.85$ & -- \\
+Without warm-up & $85.71\pm0.79$ & $+0.15\pm0.53$ \\
+Shared encoder & $\boldsymbol{86.18\pm0.47}$ & $-0.32\pm0.58$ \\
+Decoder output only & $84.86\pm0.58$ & $+1.00\pm1.22$ \\
+\bottomrule
+\end{tabular}
+\end{table*}

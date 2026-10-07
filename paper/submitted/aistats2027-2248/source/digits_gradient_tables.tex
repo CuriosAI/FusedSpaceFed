@@ -1,0 +1,38 @@
+\begin{table*}[t]
+\coauthorcolor
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Fixed-state classifier-gradient decomposition on Digits. Terms $\Gamma^{\mathrm{orig}}$, $\Gamma^{\mathrm{fused}}$, $B$, and $\Phi$ are means across five seeds. The ratio is computed within each seed and reported as mean $\pm$ sample standard deviation. The last column counts seeds satisfying $B+\Phi<0$. Frozen and Batch denote the two BatchNorm modes.}
+\label{tab:digits_gradient_decomposition}
+\begin{tabular}{llrrrrcc}
+\toprule
+Stage & BN & $\Gamma^{\mathrm{orig}}$ & $\Gamma^{\mathrm{fused}}$ & $B$ & $\Phi$ & $\Gamma^{\mathrm{fused}}/\Gamma^{\mathrm{orig}}$ & Reduced \\
+\midrule
+Initial & Frozen & $2.001\times10^{-2}$ & $2.012\times10^{-2}$ & $1.054\times10^{-3}$ & $-9.383\times10^{-4}$ & $1.006\pm0.013$ & 2/5 \\
+Initial & Batch & $78.6571$ & $78.5144$ & $10.5506$ & $-10.6934$ & $0.998\pm0.004$ & 3/5 \\
+Final & Frozen & $13.8595$ & $10.6770$ & $1.2951$ & $-4.4775$ & $0.792\pm0.253$ & 4/5 \\
+Final & Batch & $6.732\times10^{-2}$ & $1.580\times10^{-3}$ & $5.700\times10^{-2}$ & $-0.1227$ & $0.148\pm0.141$ & 5/5 \\
+\bottomrule
+\end{tabular}
+
+\par\vspace{10pt}
+\coauthorcolor
+\centering
+\small
+\setlength{\tabcolsep}{13pt}
+\caption{Normalized and directional Digits gradient diagnostics, averaged across five seeds. Normalized dispersion is $\Gamma/(K^{-1}\sum_i\|g_i\|_2^2)$; cosine similarity is averaged over distinct pairs of client gradients. Orig.\ and Fused use identical model parameters and fixed training probes.}
+\label{tab:digits_gradient_normalized}
+\begin{tabular}{llrrrr}
+\toprule
+& & \multicolumn{2}{c}{Normalized dispersion} & \multicolumn{2}{c}{Pairwise cosine} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Stage & BN & Orig. & Fused & Orig. & Fused \\
+\midrule
+Initial & Frozen & 0.7989 & 0.7988 & -0.0048 & -0.0049 \\
+Initial & Batch & 0.7364 & 0.7370 & 0.0775 & 0.0763 \\
+Final & Frozen & 0.7942 & 0.7996 & 0.0906 & 0.0440 \\
+Final & Batch & 0.7966 & 0.7890 & 0.0218 & 0.0235 \\
+\bottomrule
+\end{tabular}
+\end{table*}

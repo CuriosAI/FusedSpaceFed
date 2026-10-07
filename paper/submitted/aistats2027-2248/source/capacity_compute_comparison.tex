@@ -1,0 +1,179 @@
+\section{Capacity- and Compute-Matched Comparison with FedAvg}
+\label{app:capacity_compute_comparison}
+
+\subsection{Digits setting and model}
+
+We use the five-domain Digits benchmark associated with
+\citet{li2021fedbn}: MNIST, SVHN, USPS, SynthDigits and MNIST-M.
+Each domain is assigned to one client with 743 training images, giving
+3,715 training images in total. The fixed training partition and the full
+domain test sets are used for both methods. Images are represented as
+three-channel $28\times28$ inputs, with pixel values normalized to
+$[-1,1]$. All five clients participate in each of 300 communication rounds,
+and shared states are aggregated uniformly.
+
+The classifier has three convolutional layers with channel widths
+$3,64,64,128$, followed by fully connected layers with widths
+$6272,2048,512,10$. Its batch-normalization parameters and buffers are shared.
+FusedSpaceFed uses a compact U-Net with base width 16 and bottleneck
+width $d_z=64$, a persistent private encoder for each client, and a shared
+decoder. Classification uses the fused input $x+D(E_i(x))$.
+
+For FedAvg, the first fully connected layer is widened from 2048 to 2065
+units; the following layer and the corresponding batch-normalization
+layer are adjusted accordingly. The active parameter count per client is
+14,336,285 for FusedSpaceFed, comprising 14,219,210 classifier parameters,
+72,080 encoder parameters and 44,995 decoder parameters.
+The enlarged FedAvg classifier has 14,334,589 parameters, a relative
+difference of $0.01183\%$. FusedSpaceFed stores its five client encoders
+separately, together with the shared decoder and classifier.
+
+\subsection{Local optimization and FLOP budget}
+
+Each FusedSpaceFed client performs one encoder-only reconstruction epoch
+with the decoder frozen, followed by one classification epoch updating
+the encoder, decoder and classifier. Reconstruction uses mean squared
+error; classification uses cross-entropy. The maximum batch size is 32,
+and the final batch of each epoch is retained.
+
+The FedAvg local workload is set using the combined reconstruction and
+classification FLOP budget of FusedSpaceFed for each client and round.
+It comprises one pass through the local training set followed by additional
+shuffled minibatches. Batch sizes are selected using integer arithmetic,
+and the unspent remainder is carried to subsequent rounds.
+
+Dense forward and backward operations are counted with Torch 2.5.1
+\texttt{FlopCounterMode}, assigning two FLOPs to a fused multiply-add.
+The count includes gradient propagation through the frozen decoder during
+reconstruction. Optimizer updates and gradient-norm clipping are accounted
+for using $5P$ scalar operations per SGD step and $16P$ per Adam step,
+where $P$ is the number of parameters updated by that optimizer.
+Batch normalization, activations, pooling, loss evaluation, finite-value
+checks, copies, aggregation and kernel overhead are outside this FLOP
+accounting convention.
+
+Table~\ref{tab:capacity_compute_resources} gives the cumulative counts
+per final run. The relative difference in counted training FLOPs is
+$0.000198\%$. Across all clients and rounds, FusedSpaceFed performs
+36,000 reconstruction steps and 36,000 classification steps; FedAvg
+performs 63,000 classification steps. The corresponding numbers of
+supervised sample presentations are 1,114,500 and 1,956,535.
+
+\begin{table}[H]
+\coauthorcolor
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Active parameters per client and cumulative training FLOPs
+per run. The FusedSpaceFed FLOP count includes reconstruction warm-up.}
+\label{tab:capacity_compute_resources}
+\begin{tabular}{lrr}
+\toprule
+Method & Parameters & FLOPs ($10^{12}$) \\
+\midrule
+FusedSpaceFed & 14,336,285 & 551.898005 \\
+FedAvg, enlarged & 14,334,589 & 551.896914 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Validation-based calibration}
+
+For each domain, 149 of the 743 training images are assigned to
+validation and 594 to fitting, using deterministic class-stratified
+selection with data seed 20261005. The same split is used by both
+methods.
+
+For FedAvg, nine configurations are evaluated for 60 rounds with
+seed 142, combining classifier learning rates
+$\{0.005,0.01,0.02\}$ and gradient-clipping norms $\{0.5,1,2\}$.
+Selection uses the uniform mean of domain validation accuracies at
+round 60 and yields classifier learning rate 0.02 and clipping norm 2.
+
+FusedSpaceFed uses the validation-selected configuration described in
+Appendix~\ref{app:feature_heterogeneity_digits}. Candidate configurations
+are screened for 120 rounds and shortlisted configurations are confirmed
+over 300 rounds using two validation seeds. The selected configuration
+uses classifier learning rate 0.1, autoencoder learning rate
+$3\times10^{-4}$, and clipping norm 10.
+
+The classifier optimizer is SGD with zero momentum and weight decay.
+Encoder and decoder use Adam with $\beta=(0.9,0.999)$,
+$\epsilon=10^{-8}$ and zero weight decay. Optimizers are initialized at
+each client participation, with Adam state retained between the two
+local phases. Learning rates are constant. Computation uses Float32
+with AMP and TF32 disabled.
+
+The selected configurations are fixed before the final runs.
+Both methods are trained from scratch on all 743 training images per
+client for 300 rounds, using paired seeds 42--46.
+
+\subsection{Evaluation and results}
+
+At round 300, each client is evaluated on its domain's full test set.
+FusedSpaceFed predictions combine that client's encoder with the final
+shared decoder and classifier; FedAvg uses its final shared classifier.
+Evaluation uses inference mode and the parameters obtained from training.
+
+Let $c_{s,d}$ and $n_d$ denote the correct-prediction count and test-set
+size for seed $s$ and domain $d$, respectively. The uniform-domain
+primary accuracy and the sample-weighted accuracy are, respectively,
+\[
+ U_s=\frac{100}{5}\sum_{d=1}^{5}\frac{c_{s,d}}{n_d},
+ \qquad
+ A_s=100\frac{\sum_{d=1}^{5}c_{s,d}}{\sum_{d=1}^{5}n_d}.
+\]
+We report means and sample standard deviations across the five paired
+seeds, using the $n-1$ denominator. The uniform-domain accuracy is
+$85.86\pm0.85\%$ for FusedSpaceFed and $82.06\pm0.22\%$ for FedAvg.
+Table~\ref{tab:capacity_compute_seeds} reports the primary result and
+paired differences. The sample-weighted result is $84.51\pm0.75\%$
+for FusedSpaceFed and $79.68\pm0.39\%$ for FedAvg.
+Table~\ref{tab:capacity_compute_domains} gives the domain-level results.
+
+\begin{table}[H]
+\coauthorcolor
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Final-round uniform-domain accuracy (\%) and paired difference
+(FusedSpaceFed minus FedAvg, in percentage points).
+Bold indicates the higher accuracy in each row.}
+\label{tab:capacity_compute_seeds}
+\begin{tabular}{lrrr}
+\toprule
+Seed & FusedSpaceFed & FedAvg & Difference \\
+\midrule
+42 & \textbf{84.67} & 82.27 & $+2.40$ \\
+43 & \textbf{86.30} & 82.15 & $+4.15$ \\
+44 & \textbf{85.32} & 82.25 & $+3.08$ \\
+45 & \textbf{86.76} & 81.78 & $+4.98$ \\
+46 & \textbf{86.26} & 81.89 & $+4.37$ \\
+\midrule
+Mean & \textbf{85.86} & 82.06 & $+3.80$ \\
+Sample SD & 0.85 & 0.22 & 1.04 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\coauthorcolor
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Final-round domain accuracy (\%): mean and sample standard
+deviation across five seeds.
+Bold indicates the higher mean accuracy in each row.}
+\label{tab:capacity_compute_domains}
+\begin{tabular}{lrr}
+\toprule
+Domain & FusedSpaceFed & FedAvg \\
+\midrule
+MNIST & $\boldsymbol{96.95\pm0.24}$ & $95.93\pm0.24$ \\
+SVHN & $\boldsymbol{67.83\pm2.88}$ & $61.57\pm1.43$ \\
+USPS & $\boldsymbol{96.67\pm0.28}$ & $95.94\pm0.25$ \\
+SynthDigits & $\boldsymbol{86.32\pm0.50}$ & $81.31\pm0.54$ \\
+MNIST-M & $\boldsymbol{81.55\pm0.77}$ & $75.58\pm0.64$ \\
+\bottomrule
+\end{tabular}
+\end{table}

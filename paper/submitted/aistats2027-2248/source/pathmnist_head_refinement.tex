@@ -1,0 +1,63 @@
+% Source: research/pathmnist_federated_head/FEDERATED_HEAD_REPORT.md,
+% results commit eff87948e9fc95fd4163b0746cb7e18c910cdb86.
+\clearpage
+\section{Federated Classifier Refinement on PathMNIST}
+\label{app:pathmnist_head_refinement}
+
+Classifier calibration after federated training has previously been studied
+under data heterogeneity~\citep{luo2021nofear}. We explore this direction for
+FusedSpaceFed by refining its final linear classification layer while keeping
+the learned representation fixed.
+
+We start from the original round-50 PathMNIST checkpoint for seed 42,
+trained with mixed precision using ten clients and two classes per client.
+Private encoders, the shared decoder, the classifier backbone, and all
+BatchNorm buffers remain unchanged. Only the 585 parameters of the final
+64-to-9 linear layer are optimized, starting from their checkpoint values.
+
+In a federated simulation with separate client processes, each client computes
+frozen features from its own training images using its private encoder.
+The server broadcasts candidate head parameters and receives only local losses
+and head gradients. Uniform averaging across clients implements the mean
+client cross-entropy objective without pooling features or labels.
+Optimization uses FP32 L-BFGS with learning rate 1, strong-Wolfe line search,
+history size 20, and a fixed budget of 100 iterations. The refined head is
+frozen before test evaluation.
+
+% Keep the results together in the second column of this final appendix page.
+\newpage
+\begin{table}[ht]
+\coauthorcolor
+\centering
+\caption{PathMNIST head refinement from the same original checkpoint
+(seed 42, round 50). Accuracy is averaged uniformly over ten
+client-conditioned predictors, each evaluated on the same 7,180 official
+test images. All entries concern a single seed.}
+\label{tab:pathmnist_head_refinement}
+\begin{tabular}{@{}p{0.67\columnwidth}r@{}}
+\toprule
+Model & Accuracy (\%) \\
+\midrule
+Original FusedSpaceFed checkpoint & 39.62 \\
+Centralized head refinement, pooled training features & 75.33 \\
+Federated head refinement, client-local training features & \textbf{75.46} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Federated refinement improves accuracy by 35.84 percentage points
+(Table~\ref{tab:pathmnist_head_refinement}). It requires 107 additional
+full-participation gradient aggregations, corresponding to 5.01 MB of
+bidirectional optimization payload, excluding initial model distribution
+and transport overhead.
+
+Loss and gradient checks at common parameter values satisfy the prespecified
+tolerances against the centralized reference. The two truncated optimization
+runs nevertheless produce different terminal models, with 2.36\% disagreement
+in test predictions, and do not satisfy the stricter terminal-equivalence
+criteria.
+
+This experiment shows that substantial predictive performance can be recovered
+through final-layer optimization while preserving client-local data processing.
+The single-seed result motivates further evaluation of this additional
+federated stage across seeds, datasets, and communication budgets.

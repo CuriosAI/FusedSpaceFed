@@ -1,0 +1,20 @@
+\begin{table*}[t]
+\coauthorcolor
+\centering
+\small
+\setlength{\tabcolsep}{13pt}
+\caption{Normalized and directional Digits gradient diagnostics, averaged across five seeds. Normalized dispersion is $\Gamma/(K^{-1}\sum_i\|g_i\|_2^2)$; cosine similarity is averaged over distinct pairs of client gradients. Orig.\ and Fused use identical model parameters and fixed training probes.}
+\label{tab:digits_gradient_normalized}
+\begin{tabular}{llrrrr}
+\toprule
+& & \multicolumn{2}{c}{Normalized dispersion} & \multicolumn{2}{c}{Pairwise cosine} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Stage & BN & Orig. & Fused & Orig. & Fused \\
+\midrule
+Initial & Frozen & 0.7989 & 0.7988 & -0.0048 & -0.0049 \\
+Initial & Batch & 0.7364 & 0.7370 & 0.0775 & 0.0763 \\
+Final & Frozen & 0.7942 & 0.7996 & 0.0906 & 0.0440 \\
+Final & Batch & 0.7966 & 0.7890 & 0.0218 & 0.0235 \\
+\bottomrule
+\end{tabular}
+\end{table*}

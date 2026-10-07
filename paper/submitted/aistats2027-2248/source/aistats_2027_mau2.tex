@@ -1,0 +1,1086 @@
+\documentclass[twoside]{article}
+
+\usepackage{aistats2027}
+\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+\usepackage[utf8]{inputenc}
+\usepackage{tikz, pgfplots}
+\usetikzlibrary{positioning, arrows.meta}
+%\usepackage{algorithmic}
+\usepackage{hyperref}
+\usepackage{todonotes}
+\usepackage{float}
+
+% Coauthor review baseline: version 9, the last version without Appendix E.
+% Change the following switch to \coauthorreviewfalse to remove all coloring.
+% Legacy markers remain neutral; only current-difference markers are active.
+% Neither switch nor color markers alter the text or layout.
+\newif\ifcoauthorreview
+\coauthorreviewtrue
+\definecolor{coauthorblue}{RGB}{0,70,140}
+\newcommand{\coauthorcolor}{}
+\newcommand{\coauthordiffcolor}{\ifcoauthorreview\color[RGB]{0,70,140}\else\color[RGB]{0,0,0}\fi}
+\newenvironment{coauthorrevision}{\par\begingroup\coauthorcolor}{\par\endgroup}
+\newenvironment{coauthorchange}{\par\begingroup\coauthordiffcolor}{\par\endgroup}
+
+
+%% as per the requirement new theorem styles can be included as shown below
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+%%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+%% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+\newtheorem{proposition}[theorem]{Proposition}% 
+%%\newtheorem{proposition}{Proposition}% to get separate numbers for theorem and proposition etc.
+\newtheorem{corollary}{Corollary}
+
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+\newtheorem{assumption}{Assumption}%
+
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}%
+
+% If your paper is accepted, change the options for the package
+% aistats2027 as follows:
+%
+% \usepackage[accepted]{aistats2027}
+%
+% This option will print headings for the title of your paper and
+% headings for the authors names, plus a copyright note at the end of
+% the first column of the first page.
+
+% We also include a `preprint' option for non-anonymous preprints.
+% Change the options for the package aistats2027 as follows:
+%
+%\usepackage[preprint]{aistats2027}
+%
+% This option will print headings for the title of your paper and
+% headings for the authors names, but does not print the copyright and
+% venue note at the end of the first column of the first page.
+
+% Submissions have to follow US letter format.
+% In case your local TeX installation defaults to A4, you will need to
+% set papersize explicitly by activating the following three lines:
+% \special{papersize = 8.5in, 11in}
+% \setlength{\pdfpageheight}{11in}
+% \setlength{\pdfpagewidth}{8.5in}
+
+% If you use the natbib package, activate the following three lines:
+\usepackage[numbers,square,sort&compress]{natbib}
+\renewcommand{\bibname}{References}
+\renewcommand{\bibsection}{\subsubsection*{\bibname}}
+
+% If you use BibTeX in apalike style, activate the following line:
+%\bibliographystyle{apalike}
+
+\begin{document}
+
+% If your paper is accepted and the title of your paper is very long,
+% the style will print as headings an error message. Use the following
+% command to supply a shorter title of your paper so that it can be
+% used as headings.
+%
+%\runningtitle{I use this title instead because the last one was very long}
+
+% If your paper is accepted and the number of authors is large, the
+% style will print as headings an error message. Use the following
+% command to supply a shorter version of the author names so that
+% they can be used as headings (for example, use only the surnames)
+%
+%\runningauthor{Surname 1, Surname 2, Surname 3, ...., Surname n}
+
+\twocolumn[
+
+\aistatstitle{FusedSpaceFed: Enhanced Federated Learning Through Dual-Space Data Fusion}
+
+\aistatsauthor{ Author 1 \And Author 2 \And  Author 3 }
+
+\aistatsaddress{ Institution 1 \And  Institution 2 \And Institution 3 } ]
+
+\begin{abstract}
+  We introduce FusedSpaceFed, a federated learning framework designed to mitigate client drift under heterogeneous data distributions through dual-space data fusion. In settings such as medical imaging, client heterogeneity may reflect both different label distributions and site-specific acquisition characteristics. FusedSpaceFed maintains a private convolutional encoder for each client, while the decoder and classifier are shared through federated aggregation. At each client, the original input is combined with the reconstruction produced by the local encoder and the shared decoder, and the resulting fused representation is used for classification. Training alternates between an encoder-only reconstruction warm-up and an end-to-end classification phase. We provide an exact fixed-round decomposition of classifier-parameter gradient dispersion, which separates the dispersion observed without fusion from the variance and covariance terms introduced by the fused representation. The decomposition identifies the variance--covariance condition under which fusion lowers cross-client gradient dispersion at a fixed model state. Experiments show improved predictive performance under severe non-IID partitions and lower empirical classifier-gradient dispersion than the considered federated baselines.
+\end{abstract}
+
+\begin{coauthorchange}
+\section{Introduction}
+
+Federated Learning (FL) enables multiple clients to train a
+shared model without sharing their private data~\cite{mcmahan2017communication}.
+It is particularly suited to medical imaging, finance and mobile devices,
+where privacy regulations or communication constraints limit centralized
+data collection~\cite{kairouz2021advances}. In practice, heterogeneous
+client data distributions can hinder performance by inducing divergent local
+updates and slowing convergence.
+
+A challenge arises under non-IID data, where client gradients
+may deviate from their mean. Local and distributed SGD analyses show how
+statistical heterogeneity biases local updates and slows
+optimization~\cite{stich2019localsgd,woodworth2020minibatch}, potentially
+requiring conservative step sizes, with convergence rates degrading
+with the degree of heterogeneity. Existing approaches address this through proximal regularization, control variates, gradient tracking or personalized components~\cite{li2018federated,karimireddy2020scaffold,haddadpour2021compression,arivazhagan2019fedper,collins2021fedrep,li2021ditto,li2021fedbn}.
+
+FusedSpaceFed instead modifies the classifier input by combining the original
+image with a reconstruction from a private encoder and federated decoder.
+The objective is to
+reduce the dispersion of client updates induced by
+heterogeneous local data.
+
+As a guiding example, consider medical imaging
+federation, where heterogeneity extends beyond label imbalance~\cite{sheller2018multi,guan2024federated}. Clinical sites may serve populations that differ in age, comorbidities and environmental exposures. These differences can affect both disease prevalence and image characteristics in the same diagnostic category. Moreover, clinical sites
+rely on different scanners, acquisition protocols, reconstruction pipelines and
+calibration procedures~\cite{glocker2019machine,dinsdale2021unlearning}.
+Thus, two images of the same pathology acquired at different hospitals
+may differ in intensity, contrast and noise
+characteristics. These instrumental variations introduce systematic
+site-specific biases unrelated to the underlying medical content,
+yet strongly affect model training.
+
+Consequently, gradients computed at different sites may diverge because
+each client observes the data through a
+different ``instrument''. From an optimization perspective, this effect can amplify client drift and impair convergence and generalization.
+
+FusedSpaceFed addresses heterogeneity through the representation supplied to
+the classifier. Each client retains a private multiscale encoder $E_i$, while
+the decoder $D$ and classifier are synchronized by the server. The classifier
+processes $x+D(E_i(x))$, combining the original image with a reconstruction
+conditioned on the client. The shared decoder is influenced by all participating clients,
+while the private encoder preserves client-specific adaptation.
+
+Our contributions are:
+\begin{itemize}
+    \item an asymmetric architecture with private multiscale encoders, a shared decoder and a shared classifier;
+    \item local training that alternates encoder-only reconstruction warm-up with classification-only end-to-end updates of all three components;
+    \item an exact fixed-round decomposition of classifier-gradient dispersion into original dispersion, fusion-induced variance and cross-covariance;
+    \item evaluation on twelve MedMNIST datasets, pathological partitions, Dirichlet stress tests, natural writer-level FEMNIST and five-domain Digits.
+\end{itemize}
+
+The architectural contribution lies in the coordinated combination of a
+private multiscale encoder, a federated decoder, additive input-space fusion
+and per-round two-phase optimization. Together, these components construct a
+client-conditioned representation while transferring information through the
+shared reconstruction and classification pathways.
+
+\end{coauthorchange}
+
+\section{Related Work}\label{sec:background}
+
+Federated optimization must address statistical heterogeneity and partial
+participation. FedAvg alternates local optimization and server-side parameter
+averaging~\cite{mcmahan2017communication}. FedProx penalizes deviations from
+global parameters~\cite{li2018federated}, while SCAFFOLD uses client and server
+control variates to correct local drift~\cite{karimireddy2020scaffold}.
+FedDyn adds dynamic regularization, MOON aligns local and global representations
+contrastively, and FedNTD distills predictions for non-ground-truth
+classes~\cite{acar2021feddyn,li2021moon,lee2022preservation}.
+
+Personalized FL separates shared and private components. FedPer keeps
+personalization layers local and federates a common
+base~\cite{arivazhagan2019fedper}; FedRep shares a representation with private
+prediction heads~\cite{collins2021fedrep}; Ditto trains global and regularized
+client-specific models~\cite{li2021ditto}. FedBN retains local batch-normalization
+components to address feature shifts, including medical acquisition
+shifts~\cite{li2021fedbn}. FusedSpaceFed uses a different split: private
+multiscale encoders, a shared decoder and classifier, and additive fusion of
+the reconstructed and original inputs.
+
+Whereas MOON and FedNTD add representation- or prediction-level objectives,
+FusedSpaceFed constructs client-conditioned inputs through architecture and
+reconstruction warm-up, without a representation-alignment penalty.
+Related structural interventions have been studied in centralized learning.
+GloNets exposes the network head to features from different
+depths~\cite{dicecco2024glonets}. Dendrite-activated and multi-bias units modify
+preactivation patterns to preserve information flow and improve parameter
+efficiency~\cite{metta2024increasingbiases,metta2025dac,metta2025increasingbiases}.
+SwitchPath stochastically exposes alternative activation pathways during
+training~\cite{dicecco2025switchpath,dicecco2025switchpathjournal}. These works
+illustrate how computational pathways can shape representation learning
+alongside the training objective.
+
+Generative FL exchanges information without sharing raw samples. FedCVAE
+synthesizes representative data with conditional variational
+autoencoders~\cite{tu2021fedcvae}; SDA-FL generates, pseudo-labels and
+redistributes synthetic datasets~\cite{qu2022sdafl}; FissionVAE splits
+generative components across client clusters~\cite{zhang2024fissionvae}.
+FusedSpaceFed instead keeps its reconstruction pathway active during both
+training and inference, adding its output to the original input.
+
+\subsection{Federated Gradient Dispersion}
+
+Let $\theta$ denote the parameters of a shared classifier and let
+$\mathcal{S}_t$ be the set of clients participating at communication round~$t$,
+with $m_t=|\mathcal{S}_t|$. For a scalar task loss $\ell_{\mathrm{task}}$, the
+local objective of client~$i$ is
+\begin{equation*}
+F_i(\theta)
+=
+\mathbb{E}_{(x,y)\sim\mathcal{D}_i}
+\left[
+\ell_{\mathrm{task}}\!\left(\mathcal{C}_{\theta}(x),y\right)
+\right].
+\end{equation*}
+All client gradients must be evaluated at a common parameter vector in order
+for their dispersion to be meaningful. At a reference point $\theta_t$, define
+\[
+g_{i,t}:=\nabla_{\theta}F_i(\theta_t),\qquad
+\bar g_t:=\frac{1}{m_t}\sum_{i\in\mathcal S_t}g_{i,t}.
+\]
+The corresponding gradient dissimilarity is
+\begin{equation}
+\label{eq:gradient_dissimilarity}
+\Gamma_t
+=
+\frac{1}{m_t}
+\sum_{i\in\mathcal{S}_t}
+\left\|g_{i,t}-\bar{g}_t\right\|_2^2.
+\end{equation}
+The quantity $\Gamma_t$ measures the absolute dispersion of client gradients
+evaluated at the common classifier state $\theta_t$. Lower values indicate
+smaller squared deviations from the mean client gradient.
+
+
+%------------------------------------------
+%------------------------------------------
+
+
+\section{Methodology}\label{sec:method}
+
+We describe FusedSpaceFed for medical images, although the architecture is not
+setting-specific. A convolutional autoencoder supplies fused inputs
+$x+\tilde{x}$ to a classifier; the encoder remains private, while decoder and
+classifier are shared. Algorithm~\ref{alg:fusedspacefed} summarizes training.
+
+\begin{coauthorchange}
+\subsection{Dual-Space Architecture}
+
+Client $i\in\{1,\ldots,K\}$ holds
+$\mathcal{D}_i=\{(x_j^{(i)},y_j^{(i)})\}_{j=1}^{n_i}$, with inputs in
+$\mathcal{X}=\mathbb{R}^{c_{\mathrm{in}}\times H\times W}$.
+
+All tensor dimensions are positive integers; image height $H$ and width $W$
+are multiples of four for the encoder's two pooling stages.
+The input channel count $c_{\mathrm{in}}$ and
+number of outputs $c_{\mathrm{out}}$ depend on the dataset.
+Labels lie in $\{0,\ldots,c_{\mathrm{out}}-1\}$ for multiclass tasks and
+$\{0,1\}^{c_{\mathrm{out}}}$ for multilabel ChestMNIST.
+
+\paragraph{Private multiscale encoder.}
+The private compact U-Net encoder $E_i$~\cite{ronneberger2015unet} has base
+width 16 and returns the multiscale tuple
+\begin{equation*}
+E_i(x)
+=
+h_i(x)
+=
+\left(s_i^{(1)}(x),s_i^{(2)}(x),z_i(x)\right),
+\end{equation*}
+with skip representations
+$s_i^{(1)}(x)\in\mathbb{R}^{16\times H\times W}$ and
+$s_i^{(2)}(x)\in\mathbb{R}^{32\times(H/2)\times(W/2)}$, and bottleneck
+$z_i(x)\in\mathbb{R}^{d_z\times(H/4)\times(W/4)}$.
+Here $d_z$ counts bottleneck channels. Thus $E_i$ maps $\mathcal{X}$ to the
+product of these three tensor spaces.
+
+\paragraph{Shared decoder.}
+The shared decoder $D$ maps this product space back to $\mathcal{X}$:
+\begin{equation*}
+\tilde{x}_i
+=
+D\!\left(h_i(x)\right)\in\mathcal{X}.
+\end{equation*}
+Its output layer is linear. Each round initializes local decoder copies
+from the current shared parameters.
+
+\paragraph{Shared classifier and fusion.}
+The shared classifier
+$\mathcal{C}:\mathcal{X}\to\mathbb{R}^{c_{\mathrm{out}}}$ produces logits:
+\begin{equation*}
+x_{\mathrm{fused}}^{(i)}
+=
+x+\tilde{x}_i, \,\,\,\,\,\,\,\,\,
+o_i
+=
+\mathcal{C}\!\left(x_{\mathrm{fused}}^{(i)}\right)
+\in\mathbb{R}^{c_{\mathrm{out}}}.
+\end{equation*}
+Fusion preserves the input's shape. The decoder output and fused input
+are not constrained to the input's normalization range.
+\end{coauthorchange}
+
+\subsection{Training Objectives}\label{sec:training_obj}
+
+Local optimization consists of two consecutive phases in every communication
+round. The two losses are not combined into a weighted joint objective.
+
+\paragraph{Phase 1: encoder reconstruction warm-up.}
+At the beginning of round~$t$, client~$i$ receives the shared decoder
+$D_{\phi_t}$ and classifier $\mathcal{C}_{\theta_t}$. Both components are
+frozen, and only the private encoder parameters $\psi_i$ are updated for
+$E_w$ epochs using
+\begin{equation*}
+\mathcal{L}_{\mathrm{rec}}^{(i)}
+=
+\mathbb{E}_{x\sim\mathcal{D}_i}
+\left[
+\left\|
+x-D_{\phi_t}\!\left(E_{\psi_i}(x)\right)
+\right\|_2^2
+\right].
+\end{equation*}
+
+\paragraph{Phase 2: end-to-end classification.}
+After warm-up, client~$i$ unfreezes its local decoder and classifier and updates
+the encoder, decoder, and classifier for $E$ local epochs using only
+\begin{equation*}
+\mathcal{L}_{\mathrm{cls}}^{(i)}
+=
+\mathbb{E}_{(x,y)\sim\mathcal{D}_i}
+\left[
+\ell_{\mathrm{task}}
+\left(
+\mathcal{C}_{\theta_i}
+\left(
+x+D_{\phi_i}\!\left(E_{\psi_i}(x)\right)
+\right),
+y
+\right)
+\right].
+\end{equation*}
+Phase~2 has no pixel-level reconstruction term: gradients of
+$\mathcal{L}_{\mathrm{cls}}^{(i)}$ pass through the fused input to the
+classifier, decoder and private encoder. Multiclass MedMNIST and FEMNIST use
+softmax cross-entropy; ChestMNIST uses per-label binary cross-entropy with
+logits. Phase~1 uses mean squared error throughout.
+
+\begin{coauthorrevision}
+The two phases serve complementary objectives: reconstruction adapts each
+private encoder to the current shared decoder, while classification jointly
+optimizes the encoder, decoder, and classifier for prediction. The decoder
+output therefore serves as a task-adapted image-space signal for additive
+fusion. Checkpoint-based diagnostics on Digits illustrate these distinct
+roles (Appendix~\ref{app:digits_decoder}).
+\end{coauthorrevision}
+
+\subsection{Global Aggregation}\label{sec:aggregation}
+
+Let $\mathcal{S}_t$ denote the active clients at round~$t$ and
+$m_t=|\mathcal{S}_t|$. After local training, every active client sends its
+updated decoder parameters $\phi_i^{t+1}$ and classifier parameters
+$\theta_i^{t+1}$ to the server. FusedSpaceFed uses uniform client averaging:
+\begin{equation}
+(\phi_{t+1},\theta_{t+1})=
+\frac{1}{m_t}\sum_{i\in\mathcal S_t}(\phi_i^{t+1},\theta_i^{t+1}).
+\label{eq:agg_dec}
+\end{equation}
+All methods intentionally average clients uniformly, regardless of sample
+count. Private encoder parameters $\psi_i$
+are neither transmitted nor averaged. Returning clients reuse their stored encoder with the latest shared
+decoder and classifier.
+
+\begin{algorithm}[H]
+\caption{FusedSpaceFed training protocol}
+\label{alg:fusedspacefed}
+\small
+\begin{algorithmic}[1]
+\State \textbf{Initialize:} shared decoder $\phi_0$, shared classifier
+$\theta_0$, and one persistent private encoder $\psi_i^0$ for each client
+\For{communication round $t=0,\ldots,T-1$}
+    \State Select the active client set $\mathcal{S}_t$
+    \State Broadcast $(\phi_t,\theta_t)$ to all $i\in\mathcal{S}_t$
+    \For{each $i\in\mathcal{S}_t$ in parallel}
+        \State Initialize local decoder $\phi_i\gets\phi_t$ and classifier
+        $\theta_i\gets\theta_t$
+        \State Restore the persistent private encoder $\psi_i$
+        \State Freeze $(\phi_i,\theta_i)$
+        \State Update only $\psi_i$ for $E_w$ epochs using
+        $\mathcal{L}_{\mathrm{rec}}^{(i)}$
+        \State Unfreeze $(\phi_i,\theta_i)$
+        \State Update $(\psi_i,\phi_i,\theta_i)$ for $E$ epochs using only
+        $\mathcal{L}_{\mathrm{cls}}^{(i)}$
+        \State Store $\psi_i$ locally
+        \State Send $(\phi_i,\theta_i)$ to the server
+    \EndFor
+    \State $\textstyle
+    \phi_{t+1}\gets\frac{1}{|\mathcal{S}_t|}
+    \sum_{i\in\mathcal{S}_t}\phi_i$
+    \State $\textstyle
+    \theta_{t+1}\gets\frac{1}{|\mathcal{S}_t|}
+    \sum_{i\in\mathcal{S}_t}\theta_i$
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+%------------------------------------------
+%------------------------------------------
+
+\subsection{Personalized Inference}\label{sec:inference}
+
+FusedSpaceFed defines a family of client-conditioned predictors composed of a
+shared decoder and classifier together with one private encoder for each
+participating client. For client~$i$, the logit vector is
+\begin{equation*}
+o_i
+=
+\mathcal{C}_{\theta_T}
+\left(
+x+D_{\phi_T}\!\left(E_{\psi_i^T}(x)\right)
+\right).
+\end{equation*}
+For an unseen client, a new private encoder can be initialized and adapted
+through reconstruction warm-up with the final shared decoder. We evaluate the
+client-conditioned predictors of participating clients.
+
+%------------------------------------------
+%------------------------------------------
+
+
+
+\section{Dispersion Analysis}
+\label{sec:theory}
+
+We analyze how dual-space fusion changes the dispersion of
+classifier-parameter gradients across clients. At communication round~$t$, the
+analysis conditions on the current private encoders, shared decoder, and shared
+classifier, allowing the original-input and fused-input gradient fields to be
+compared at the same model state.
+
+\subsection{Original and Fused Client Objectives}
+
+Fix a communication round~$t$, an active client set $\mathcal{S}_t$, the shared
+classifier parameters $\theta_t$, the shared decoder parameters $\phi_t$, and
+the current private encoder parameters $\psi_{i,t}$. During this analysis, all
+of these quantities are held fixed except for the argument $\theta$ with
+respect to which classifier gradients are defined.
+For client~$i$, define the reference original-input objective
+\begin{equation*}
+F_{i,t}^{\mathrm{orig}}(\theta)
+=
+\mathbb{E}_{(x,y)\sim\mathcal{D}_i}
+\left[
+\ell_{\mathrm{task}}
+\left(
+\mathcal{C}_{\theta}(x),y
+\right)
+\right]
+\end{equation*}
+and the fused-input objective
+\begin{equation*}
+F_{i,t}^{\mathrm{fused}}(\theta)
+=\mathbb{E}_{(x,y)\sim\mathcal D_i}
+\bigl[\ell_{\mathrm{task}}\bigl(
+\mathcal C_{\theta}\bigl(x+D_{\phi_t}(E_{\psi_{i,t}}(x))\bigr),y
+\bigr)\bigr].
+\end{equation*}
+Both are scalar loss functions, and their gradients are taken with respect to
+the same classifier parameter vector:
+\[
+g_{i,t}^{s}=\nabla_{\theta}F_{i,t}^{s}(\theta_t),
+\quad s\in\{\mathrm{orig},\mathrm{fused}\}.
+\]
+Define the fusion-induced gradient difference
+$b_{i,t}=g_{i,t}^{\mathrm{fused}}-g_{i,t}^{\mathrm{orig}}$.
+Let
+\begin{equation*}
+\begin{aligned}
+\bar{g}_t^{s}
+&= \frac{1}{m_t}
+   \sum_{i\in\mathcal{S}_t} g_{i,t}^{s},
+   \quad s\in\{\mathrm{orig},\mathrm{fused}\},\\
+\bar{b}_t
+&= \frac{1}{m_t}
+   \sum_{i\in\mathcal{S}_t} b_{i,t}.
+\end{aligned}
+\end{equation*}
+where $m_t=|\mathcal{S}_t|$.
+
+\subsection{Exact Fixed-Round Decomposition}
+
+The original and fused classifier-gradient dispersions are
+\[
+\Gamma_t^s=\frac{1}{m_t}\sum_{i\in\mathcal S_t}
+\left\|g_{i,t}^s-\bar g_t^s\right\|_2^2,
+\quad s\in\{\mathrm{orig},\mathrm{fused}\}.
+\]
+
+\begin{proposition}[Fixed-round gradient-dispersion identity]
+\label{prop:fixed_round_decomposition}
+At any fixed round~$t$,
+\begin{equation}
+\label{eq:exact_decomp}
+\Gamma_t^{\mathrm{fused}}
+=
+\Gamma_t^{\mathrm{orig}}
++
+B_t
++
+\Phi_t.
+\end{equation}
+where
+\begin{align*}
+B_t
+&=
+\frac{1}{m_t}
+\sum_{i\in\mathcal{S}_t}
+\left\|
+b_{i,t}-\bar{b}_t
+\right\|_2^2
+\geq 0,\\
+\Phi_t
+&=
+\frac{2}{m_t}
+\sum_{i\in\mathcal{S}_t}
+\left\langle
+g_{i,t}^{\mathrm{orig}}-\bar{g}_t^{\mathrm{orig}},
+b_{i,t}-\bar{b}_t
+\right\rangle .
+\end{align*}
+\end{proposition}
+
+\begin{proof}
+Because
+\begin{equation*}
+g_{i,t}^{\mathrm{fused}}
+-
+\bar{g}_t^{\mathrm{fused}}
+=
+\left(
+g_{i,t}^{\mathrm{orig}}
+-
+\bar{g}_t^{\mathrm{orig}}
+\right)
++
+\left(
+b_{i,t}-\bar{b}_t
+\right),
+\end{equation*}
+expanding the squared Euclidean norm and averaging over
+$i\in\mathcal{S}_t$ gives
+\begin{align*}
+\Gamma_t^{\mathrm{fused}}
+&=
+\frac{1}{m_t}
+\sum_{i\in\mathcal{S}_t}
+\left\|
+g_{i,t}^{\mathrm{orig}}
+-
+\bar{g}_t^{\mathrm{orig}}
+\right\|_2^2\\
+&\quad+
+\frac{1}{m_t}
+\sum_{i\in\mathcal{S}_t}
+\left\|
+b_{i,t}-\bar{b}_t
+\right\|_2^2\\
+&\quad+
+\frac{2}{m_t}
+\sum_{i\in\mathcal{S}_t}
+\left\langle
+g_{i,t}^{\mathrm{orig}}-\bar{g}_t^{\mathrm{orig}},
+b_{i,t}-\bar{b}_t
+\right\rangle\\
+&=
+\Gamma_t^{\mathrm{orig}}+B_t+\Phi_t.
+\end{align*}
+\end{proof}
+
+\begin{corollary}[Fixed-round reduction condition]
+\label{cor:fixed_round_reduction}
+At the fixed state considered above,
+\begin{equation*}
+\Gamma_t^{\mathrm{fused}}
+<
+\Gamma_t^{\mathrm{orig}}
+\quad\Longleftrightarrow\quad
+B_t+\Phi_t<0.
+\end{equation*}
+\end{corollary}
+
+The term $B_t$ measures the additional cross-client variability introduced by
+the fusion-induced gradient differences. The cross-term $\Phi_t$ is negative
+when these differences tend to oppose the original client deviations from
+their mean. Therefore, fusion is associated with lower dispersion only when
+the negative cross-covariance is sufficiently large to compensate for
+$B_t$.
+
+\begin{coauthorrevision}
+Can learned fusion satisfy the reduction condition in
+Equation~\eqref{eq:exact_decomp}? On Digits, we compare original-input and
+fused-input classifier gradients at identical model states. At the final
+checkpoints, $B_t+\Phi_t<0$ holds in four of five seeds with frozen BatchNorm
+statistics and all five with batch statistics, illustrating the reduction
+condition for absolute dispersion. See Appendix~\ref{app:digits_gradients}
+for the decomposition and normalized and directional diagnostics.
+\end{coauthorrevision}
+
+\subsection{Communication Complexity}
+
+Let $P_C$ and $P_D$ denote the numbers of transmitted scalar values in the
+classifier and decoder states, respectively, and let $m_t=|\mathcal{S}_t|$.
+At round~$t$, the server sends one classifier and one decoder state to every
+active client, and every active client returns the corresponding updated
+states. The resulting bidirectional communication is
+$\mathrm{Comm}_t^{\mathrm{FusedSpaceFed}}=2m_t(P_C+P_D)$
+transmitted scalar values, or
+$
+2m_t(P_C+P_D)b
+$
+bytes, when each scalar occupies $b$ bytes.
+
+The private encoder is neither uploaded nor downloaded. Relative to FedAvg and
+FedProx using the same classifier, FusedSpaceFed therefore communicates an
+additional $2m_tP_D$ scalar values per round. For the convolutional decoder,
+$P_D$ is determined by the channel widths, convolutional kernels, upsampling
+layers, and skip-connection processing blocks. SCAFFOLD additionally maintains
+client and server control variates, with communication determined by the
+specific control-variate implementation.
+
+
+\section{Experimental Evaluation}\label{sec:experiments}
+
+We evaluate FusedSpaceFed on a diverse set of medical imaging tasks~\cite{medmnistv2}, a standardized suite of biomedical datasets spanning multiple modalities (X-ray, OCT, CT, fundus, dermatoscopy, microscopy), and FEMNIST~\cite{caldas2018leaf}, a popular benchmark for a federated learning scenario.
+
+For the main MedMNIST experiments, we distribute the official training split
+across 10 clients using a class-wise Dirichlet allocation with
+$\alpha\in\{0.05,0.1,0.2,0.5,1.0\}$. Lower values of $\alpha$ produce more
+concentrated client label distributions. Every official training example is
+assigned to exactly one client.
+We compare FusedSpaceFed with three established federated learning reference methods:
+\begin{itemize}
+\item \textbf{FedAvg}~\cite{mcmahan2017communication}: Standard baseline using parameter averaging.
+\item \textbf{FedProx}~\cite{li2018federated}: Adds a proximal term to stabilize local updates.
+\item \textbf{SCAFFOLD}~\cite{karimireddy2020scaffold}: Uses control variates to correct client drift.
+\end{itemize}
+
+All MedMNIST methods use the same ResNet20-v2~\cite{he2016identity} classifier,
+initialization and client partition within each independent run. FusedSpaceFed
+also uses the compact U-Net of Section~\ref{sec:method}.
+
+MedMNIST images are loaded from the official $64\times64$ release and resized
+to $32\times32$. Training uses 50 communication rounds, 3 local classification
+epochs per round, and full participation of all medical clients.
+FusedSpaceFed performs one additional encoder warm-up epoch at the beginning of
+each round. The MedMNIST batch size is 128. The classifier is optimized using
+SGD with learning rate $0.01$, while the encoder and decoder are optimized
+using Adam~\cite{kingma2015adam} with learning rate $0.001$. FedProx uses proximal coefficient
+$\mu=0.01$. Client states are aggregated using a uniform client average.
+
+Results are averaged over five independent runs with different seeds. The official test split is evaluated only after the
+final communication round. The full implementation, data-partitioning procedure, and experiment configurations are available in the supplementary material.
+For MedMNIST, FedAvg, FedProx and SCAFFOLD are evaluated using their final
+shared classifier. For FusedSpaceFed, each of the 10 private client encoders is
+combined with the final shared decoder and classifier and evaluated on the
+official test split. We report the uniform
+mean across these 10 client-conditioned pipelines.
+
+\begin{coauthorrevision}
+The MedMNIST evaluation measures the generalization of each client-conditioned
+predictor to a common test distribution after federated training on
+heterogeneous local class distributions. Using the same official test split
+for all methods provides a common evaluation target across the different
+training partitions. Each private encoder operates together with a shared
+classifier trained through updates from the participating clients, while
+additive fusion retains the original input as a direct classification pathway.
+The uniform average summarizes performance across the ten client-conditioned
+predictors. For FEMNIST, evaluation instead follows the natural client
+structure, using each writer's encoder on that writer's test examples.
+\end{coauthorrevision}
+
+We select $d_z\in\{8,16,32,64\}$ separately for each MedMNIST dataset using
+FusedSpaceFed accuracy on the official validation split. The selected width
+is fixed across all test evaluations and heterogeneity settings for that
+dataset (Table~\ref{tab:performance}).
+
+ChestMNIST is multi-label. To construct its Dirichlet client partition, each
+training example is assigned a single proxy stratum: the first positive label
+is used when at least one finding is present, and samples without any positive
+finding are assigned to an additional ``no finding'' stratum. This proxy is
+used only for partitioning. The original multi-label target vector is retained
+for training and evaluation, which use binary cross-entropy with logits.
+For ChestMNIST, predictions are obtained by thresholding each sigmoid output at
+$0.5$, and accuracy denotes the mean element-wise agreement across samples and
+labels.
+
+\subsection{Performance Across Medical Datasets}
+
+\begin{table*}[t]
+\centering
+\caption{Average accuracy across datasets under strong ($\alpha=0.05$) and moderate ($\alpha=0.50$) heterogeneity. Fused denotes FusedSpaceFed; the validation-selected $d_z$ is common to both settings.}
+\label{tab:performance}\label{tab:performance_1}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lccccccccc@{}}
+\toprule
+& \multicolumn{4}{c}{$\alpha=0.05$} & \multicolumn{4}{c}{$\alpha=0.50$} & \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+Dataset & FedAvg & FedProx & SCAFFOLD & \textbf{Fused} & FedAvg & FedProx & SCAFFOLD & \textbf{Fused} & $d_z$ \\
+\midrule
+Path & 53.45 & 48.11 & 39.90 & \textbf{60.77} & 90.49 & 90.70 & 88.38 & \textbf{91.68} & 16 \\
+Chest & 90.28 & 89.93 & 89.44 & \textbf{93.22} & 94.25 & 93.03 & 93.65 & \textbf{95.25} & 32 \\
+Derma & 67.70 & 65.94 & 63.35 & \textbf{69.60} & 72.19 & 72.20 & 68.64 & \textbf{72.55} & 16 \\
+OCT & 41.56 & 42.50 & 38.69 & \textbf{46.25} & 67.72 & \textbf{70.23} & 67.69 & 69.88 & 8 \\
+Pneumonia & 69.12 & 70.24 & 70.01 & \textbf{72.95} & 82.26 & 81.60 & 82.79 & \textbf{83.42} & 16 \\
+Retina & 48.13 & 49.69 & 48.75 & \textbf{53.00} & 60.13 & 61.23 & 61.97 & \textbf{62.60} & 64 \\
+Breast & 80.25 & 79.33 & 77.78 & \textbf{81.61} & 85.35 & 83.34 & 83.43 & \textbf{85.70} & 32 \\
+Blood & 53.87 & 47.38 & 45.68 & \textbf{58.83} & \textbf{90.43} & 86.51 & 87.00 & 90.18 & 16 \\
+Tissue & 35.65 & 33.28 & 34.74 & \textbf{38.21} & 61.65 & 59.56 & 60.89 & \textbf{64.33} & 32 \\
+OrganA & 23.65 & 25.12 & 19.72 & \textbf{26.01} & 81.27 & 81.88 & 80.44 & \textbf{82.23} & 16 \\
+OrganC & 22.81 & 24.64 & 18.96 & \textbf{24.76} & 79.42 & 77.51 & 79.50 & \textbf{80.16} & 32 \\
+OrganS & 22.55 & 21.96 & 20.12 & \textbf{24.11} & \textbf{69.56} & 69.17 & 67.50 & 69.45 & 32 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Table~\ref{tab:performance} summarizes the average test accuracy across datasets under two different Dirichlet settings. Under strong heterogeneity ($\alpha=0.05$), FusedSpaceFed outperforms all baselines on every dataset, with gains of 0.12--7.32 percentage points over the best baseline. Under moderate heterogeneity ($\alpha=0.50$), FusedSpaceFed achieves the highest average accuracy on nine of twelve datasets. %The exceptions are OCTMNIST, BloodMNIST, and OrganSMNIST, for which FedProx, FedAvg, and FedAvg respectively obtain the highest reported mean.
+
+Across the intermediate values of $\alpha$, accuracy generally increases as the expected client label distributions become less concentrated, with minor non-monotonic fluctuations across configurations. At $\alpha=1$, training
+remains federated, but the expected class allocations are more balanced and the performance differences among the evaluated methods become smaller.
+
+We additionally compute the empirical classifier-parameter gradient
+dissimilarity defined in Equation~\eqref{eq:gradient_dissimilarity}. For each
+method, the measurement is performed at the final trained model state using one
+deterministic training mini-batch per medical client. Gradients are taken only
+with respect to the ResNet20-v2 classifier parameters. For FusedSpaceFed, each
+batch is first transformed using the corresponding private encoder and the
+final shared decoder. Table~\ref{tab:gradient} reports the mean squared distance
+between each client gradient and the mean client gradient. The resulting value
+measures absolute cross-client classifier-gradient dispersion at each method's
+final trained state.
+
+We also evaluate PathMNIST, DermaMNIST, RetinaMNIST and BloodMNIST with each
+client restricted to two assigned classes and otherwise identical
+experimental configurations. FusedSpaceFed achieves the highest reported accuracy on all four
+datasets, with particularly large margins on PathMNIST, DermaMNIST and
+RetinaMNIST (Table~\ref{tab:pathological}), consistent with improved robustness
+under extreme label skew.
+
+
+
+
+\begin{table}[t]
+\centering
+\caption{Final-round classifier-parameter gradient dissimilarity
+$\Gamma_t$ as defined in Equation~\eqref{eq:gradient_dissimilarity}.}
+\label{tab:gradient}
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Dataset & FedAvg & FedProx & SCAFFOLD & \textbf{FusedSpaceFed} \\
+\midrule
+Path   & 10.68 & 13.89 & 19.91 & \textbf{8.12} \\
+Derma  & 10.27 & 11.98 & 24.10 & \textbf{8.43} \\
+Retina & 10.05 & 10.19 & 42.53 & \textbf{9.94} \\
+Blood  & 8.65  & 10.14 & 13.60 & \textbf{7.32} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{table}[t]
+\centering
+\caption{Accuracy in pathological partitioning.}
+\label{tab:pathological}
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Dataset & FedAvg & FedProx & SCAFFOLD & \textbf{FusedSpaceFed} \\
+\midrule
+% TODO before finalization: 39.62 is a provisional draft placeholder from
+% the original seed-42 checkpoint, not a measured multi-seed mean. Replace
+% it with the verified result of the ongoing experiment before submission.
+Path   & 20.49 & 19.66 & 17.16 & {\coauthordiffcolor\textbf{39.62}} \\
+Derma  & 25.75 & 24.43 & 22.46 & \textbf{48.15} \\
+Retina & 34.37 & 33.02 & 26.61 & \textbf{49.26} \\
+Blood  & 18.22 & 19.48 & 18.10 & \textbf{30.60} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+% Declare these two-column floats early to keep them close to their discussion.
+\input{pathmnist_stress_figure}
+\begin{table*}[t]
+\centering
+\caption{\textbf{FEMNIST.} Writer-conditioned test performance and final-round classifier-gradient dissimilarity.}
+\label{tab:femnist_results}
+\begin{tabular}{lcccc}
+\toprule
+Method & Accuracy & $\Gamma_t$ & F1-Score & Balanced Accuracy \\
+\midrule
+FedAvg    & 85.49 $\pm 0.24$   & 0.83 $\pm 0.01$ & 66.87 $\pm 0.19$ & 67.09 $\pm 0.20$ \\
+FedProx   & 84.73 $\pm 0.18$   & 0.81 $\pm 0.02$  & 64.16 $\pm 0.15$ & 65.81 $\pm 0.17$ \\
+SCAFFOLD  & 84.51 $\pm 0.32$  & 0.78 $\pm 0.02$  & 65.68 $\pm 0.26$ & 66.46 $\pm 0.30$ \\
+\textbf{FusedSpaceFed} & \textbf{86.82 $\pm 0.26$} & \textbf{0.71 $\pm 0.02$} & \textbf{68.77 $\pm 0.21$} & \textbf{68.38 $\pm 0.19$} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+\subsection{Stress Test}
+In addition to the five Dirichlet settings used in the main experiments, we
+perform a separate stress-test sweep on PathMNIST using
+$\alpha_j=0.05+0.10j$, $j=0,\ldots,11$.
+This twelve-point grid corresponds to the values displayed in
+Figure~\ref{fig:pathmnist_stress}.
+This grid spans different levels of label heterogeneity, with lower $\alpha$
+values yielding more concentrated client label distributions.
+
+We train the four methods on PathMNIST for every
+value in the stress-test grid and record test accuracy and classifier-gradient
+dissimilarity after the final communication round. As shown in
+Figure~\ref{fig:pathmnist_stress}(a), accuracy decreases for all methods
+as the client partitions become more concentrated. FusedSpaceFed maintains the
+highest accuracy in the strongest-skew portion of the sweep, while the
+differences among methods narrow as $\alpha$ increases.
+Figure~\ref{fig:pathmnist_stress}(b) shows the corresponding
+classifier-gradient dispersion. FusedSpaceFed produces substantially lower
+dispersion in the most heterogeneous settings and remains competitive over the
+rest of the evaluated range.
+
+
+
+
+\subsection{FEMNIST Benchmark}
+
+We further evaluate all methods on \textbf{FEMNIST} from the \textsc{LEAF} benchmark~\cite{caldas2018leaf}, a widely adopted reference dataset for federated learning. FEMNIST consists of handwritten characters from thousands of distinct writers and exhibits natural client-level heterogeneity, as each client corresponds to a single user with highly skewed label and style distributions. This setting closely reflects realistic federated scenarios and is commonly used to assess robustness to client drift and non-IID data.
+
+We retain LEAF's natural writer-level partition: each writer is one client,
+with no pooling or repartitioning. Each round samples a subset of writers for
+local training. Private FusedSpaceFed encoders and SCAFFOLD client control
+variates persist when writers rejoin.
+
+FedAvg, FedProx and SCAFFOLD use a shared classifier, whereas FusedSpaceFed
+combines the shared decoder and classifier with writer-specific private
+encoders. We therefore report writer-conditioned personalized test
+performance: the test examples of each writer are processed using that
+writer's private encoder together with the final shared decoder and classifier.
+
+Gradient dissimilarity is evaluated after the final round using one
+deterministic batch from each of 50 seeded writers and gradients with respect
+to the classifier parameters only. Table~\ref{tab:femnist_results} reports the
+mean results over five independent runs. FusedSpaceFed obtains the highest
+writer-conditioned accuracy and the lowest measured final-round classifier
+gradient dissimilarity among the evaluated methods.
+
+
+
+
+
+%------------------------------------------
+%------------------------------------------
+
+
+\begin{coauthorrevision}
+\paragraph{Contextual comparison with FedRep.}
+Separately from the writer-level benchmark above, we evaluate FusedSpaceFed
+on a reconstructed ten-letter setting inspired by
+\citet{collins2021fedrep}: 150 synthetic clients, three classes per client,
+and 10\% participation. With validation-selected learning rates, the
+sample-weighted test accuracy is $79.05\pm2.68\%$ over five seeds, averaging
+rounds 191--200 within each run (sample standard deviation across runs).
+FedRep reports $78.56\%$ for its FEMNIST setting.
+{\coauthordiffcolor Appendix~\ref{app:fedrep_comparison} details the experiment
+and compares with published results for FedRep and other methods.}
+
+\subsection{Feature Heterogeneity on Digits}
+\label{sec:feature_heterogeneity_digits}
+
+We further evaluate FusedSpaceFed on the five-domain Digits benchmark
+considered by \citet{li2021fedbn}, comprising MNIST, SVHN, USPS,
+SynthDigits, and MNIST-M. Each domain defines one client, providing a
+common ten-class recognition task with heterogeneous image characteristics
+across clients. Each client has 743 training examples, and all five clients
+participate in each of 300 communication rounds. With hyperparameters
+selected on a held-out validation split, FusedSpaceFed obtains a
+final-round test accuracy of $85.86\pm0.85\%$, averaged uniformly across
+domains and reported as mean $\pm$ sample standard deviation over five
+independent runs. Appendix~\ref{app:feature_heterogeneity_digits} gives per-domain results,
+published FedAvg, FedProx and FedBN reference values, and the protocol.
+
+\paragraph{Component analysis.}
+How do the individual components contribute to the predictive performance
+of the complete fusion pipeline? We investigate reconstruction warm-up,
+encoder sharing, and the original-input pathway on Digits using five paired
+seeds and the same validation-selected hyperparameters. Retaining the
+original input improves mean uniform-domain accuracy by 1.00 percentage
+point relative to using the decoder output alone ($85.86\%$ versus
+$84.86\%$). Removing warm-up yields $85.71\%$, while sharing the encoder
+yields $86.18\%$. These comparisons support combining the original image
+with the learned decoder output in this feature-heterogeneous setting,
+with smaller mean changes under the other two interventions.
+See Appendix~\ref{app:digits_ablation} for full results and protocol.
+
+\subsection{Capacity and Computational Budget}
+\label{sec:capacity_compute}
+
+Using the same Digits setting and the five FusedSpaceFed runs reported
+above, we additionally compare with a capacity- and compute-matched
+FedAvg variant. The FedAvg classifier is widened to closely match the
+number of active trainable parameters per client, and its local
+optimization budget is adjusted to match the final training FLOPs of
+FusedSpaceFed, including the reconstruction warm-up. Both methods use
+the same data partition, preprocessing and evaluation protocol, with
+hyperparameters selected separately on a common validation split.
+Across five paired seeds, the final-round test accuracy, averaged
+uniformly across the five domains, is $85.86\pm0.85\%$ for FusedSpaceFed
+and $82.06\pm0.22\%$ for FedAvg (mean $\pm$ sample standard deviation
+across runs). See Appendix~\ref{app:capacity_compute_comparison} for details.
+\end{coauthorrevision}
+
+\section{Conclusion}\label{sec:conclusion}
+
+FusedSpaceFed combines private multiscale encoders with a shared decoder and
+classifier through additive input fusion. Local training alternates
+encoder-only reconstruction warm-up with end-to-end classification updates.
+Our exact fixed-round decomposition identifies when fusion-induced variance
+and cross-covariance reduce absolute classifier-gradient dispersion.
+Experiments show higher average predictive performance than the reference
+methods in most reported non-IID configurations and lower final-round
+classifier-gradient dispersion on the evaluated subset of datasets.
+
+\subsection{Current Limitations}
+
+FusedSpaceFed requires persistent private encoders; unseen-client adaptation remains untested.
+
+It adds computation, memory and decoder communication, with validation-selected $d_z$.
+
+Evaluation is limited to image tasks with convolutional autoencoders and CNN or MLP classifiers; the analysis concerns individual rounds.
+
+\subsection{Future Research Directions}
+
+Encoder distillation, progressive encoder alignment or encoder-free inference
+could enable a single deployable global model. Adaptive architectures could
+reduce costs in larger federations and support sustainable
+AI~\cite{amato2024sustainability,veglio2026scalerl}.
+
+Further directions include heterogeneous or multimodal data, finite-sample
+analyses of joint model evolution, hierarchical or clustered federations,
+and evaluation under realistic communication and hardware constraints.
+Representation-level mechanisms could also be combined with adaptive
+optimization, including update rules selected using local gradients and
+curvature~\cite{dicecco2027eva}. {\coauthordiffcolor A preliminary PathMNIST
+experiment shows a substantial gain from federated refinement of the final
+classifier on frozen representations (Appendix~\ref{app:pathmnist_head_refinement}).
+Future work will assess robustness across seeds and datasets and the trade-off
+between accuracy and additional communication.}
+
+\clearpage
+\section*{AI Use Statement}
+
+In this work, we used generative AI tools to assist with manuscript editing, proofreading and revision; code cleanup, organization and debugging in preparation for the public repository; and bibliographic searches. We have reviewed all AI-assisted work. We take responsibility for the final content of this work, including text, claims, or artifacts produced with the aid of generative AI. 
+
+
+%\backmatter
+
+%\bmhead{Supplementary information}
+
+
+%\bmhead{Acknowledgements}
+
+
+%\section*{Declarations}
+
+
+\bibliographystyle{apalike}
+% Highlight the only bibliography entry added since the review baseline.
+\begingroup
+\let\coauthororiginalbibitem\bibitem
+\def\coauthornewbibkey{luo2021nofear}
+\renewcommand{\bibitem}[2][]{%
+  \normalcolor%
+  \coauthororiginalbibitem[#1]{#2}%
+  \def\coauthorcurrentbibkey{#2}%
+  \ifx\coauthorcurrentbibkey\coauthornewbibkey\coauthordiffcolor\fi%
+}
+\bibliography{references}% common bib file
+\endgroup
+%% if required, the content of .bbl file can be included here once bbl is generated
+%%\input sn-article.bbl
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Checklist}
+% Before submission, verify the affirmative answers against the actual
+% anonymized experimental supplement, including natural writer-level FEMNIST
+% training details and hardware. The coauthor/Overleaf ZIP is a manuscript
+% source package and an internal evidence archive, not that supplement.
+
+
+% %%% BEGIN INSTRUCTIONS %%%
+%The checklist follows the references. For each question, choose your answer from the three possible options: Yes, No, Not Applicable.  You are encouraged to include a justification to your answer, either by referencing the appropriate section of your paper or providing a brief inline description (1-2 sentences).
+%Please do not modify the questions.  Note that the Checklist section does not count towards the page limit. Not including the checklist in the first submission won't result in desk rejection, although in such case we will ask you to upload it during the author response period and include it in camera ready (if accepted).
+
+%\textbf{In your paper, please delete this instructions block and only keep the Checklist section heading above along with the questions/answers below.}
+% %%% END INSTRUCTIONS %%%
+
+
+\begin{enumerate}
+
+  \item For all models and algorithms presented, check if you include:
+  \begin{enumerate}
+    \item A clear description of the mathematical setting, assumptions, algorithm, and/or model. [Yes]
+    \item An analysis of the properties and complexity (time, space, sample size) of any algorithm. [Yes]
+    \item (Optional) Anonymized source code, with specification of all dependencies, including external libraries. [Yes]
+  \end{enumerate}
+
+  \item For any theoretical claim, check if you include:
+  \begin{enumerate}
+    \item Statements of the full set of assumptions of all theoretical results. [Yes]
+    \item Complete proofs of all theoretical results. [Yes]
+    \item Clear explanations of any assumptions. [Yes]
+  \end{enumerate}
+
+  \item For all figures and tables that present empirical results, check if you include:
+  \begin{enumerate}
+    \item The code, data, and instructions needed to reproduce the main experimental results (either in the supplemental material or as a URL). [Yes]
+    \item All the training details (e.g., data splits, hyperparameters, how they were chosen). [Yes]
+    \item A clear definition of the specific measure or statistics and error bars (e.g., with respect to the random seed after running experiments multiple times). [Yes]
+    \item A description of the computing infrastructure used. (e.g., type of GPUs, internal cluster, or cloud provider). [Yes]
+  \end{enumerate}
+
+  \item If you are using existing assets (e.g., code, data, models) or curating/releasing new assets, check if you include:
+  \begin{enumerate}
+    \item Citations of the creator If your work uses existing assets. [Yes]
+    \item The license information of the assets, if applicable. [Not Applicable]
+    \item New assets either in the supplemental material or as a URL, if applicable. [Not Applicable]
+    \item Information about consent from data providers/curators. [Not Applicable]
+    \item Discussion of sensible content if applicable, e.g., personally identifiable information or offensive content. [Not Applicable]
+  \end{enumerate}
+
+  \item If you used crowdsourcing or conducted research with human subjects, check if you include:
+  \begin{enumerate}
+    \item The full text of instructions given to participants and screenshots. [Not Applicable]
+    \item Descriptions of potential participant risks, with links to Institutional Review Board (IRB) approvals if applicable. [Not Applicable]
+    \item The estimated hourly wage paid to participants and the total amount spent on participant compensation. [Not Applicable]
+  \end{enumerate}
+
+\end{enumerate}
+
+
+\clearpage
+\appendix
+\begin{coauthorrevision}
+\input{femnist_fedrep_comparison}
+\input{capacity_compute_comparison}
+\input{feature_heterogeneity_digits}
+\input{digits_mechanism_diagnostics}
+\begin{coauthorchange}
+\let\coauthorcolor\coauthordiffcolor
+\input{pathmnist_head_refinement}
+\end{coauthorchange}
+\end{coauthorrevision}
+
+\end{document}

@@ -1,0 +1,152 @@
+\section{\texorpdfstring{\coauthordiffcolor Reconstructed FEMNIST Comparison with Published Baselines}{Reconstructed FEMNIST Comparison with Published Baselines}}
+\label{app:fedrep_comparison}
+
+\subsection{Scope and data reconstruction}
+
+This experiment places FusedSpaceFed alongside the published FEMNIST
+results of \citet{collins2021fedrep}. We construct 150 synthetic clients
+from the ten lowercase letters a--j, with three classes per client.
+
+We use the NIST Special Database 19 \texttt{by\_class.zip} archive,
+specifically the \texttt{train\_}\textit{class} PNG directories.
+Images are converted to grayscale $28\times28$ inputs in $[0,1]$, preserving
+orientation, with no augmentation. Following the historical generator's
+recipe, each class pool contains at most 4,000 images. Client $i$, indexed
+from zero, receives classes $(i+j)\bmod10$, $j=0,1,2$, with requested
+per-class count $\lfloor(\exp Z_i+100)/3\rfloor$, where
+$Z_i\sim\mathcal{N}(4,1)$; the data seed is 20261003.
+
+The requested totals exceed the available pools for f (2,555 requested,
+2,493 available), i (3,078; 2,788), and j (3,196; 1,920). For these classes
+only, we reduce each client's quota proportionally and allocate integer
+remainders in decreasing fractional-remainder order, breaking ties by
+client ID. This changes the quotas of 105 clients. All assigned classes
+are retained, and each source image is assigned at most once globally.
+Each client is shuffled and split into $\lfloor0.9N_i\rfloor$ training
+examples and the remaining test examples, using split seed 20261004.
+The resulting fixed partition contains 25,339 images: 22,736 training and
+2,603 test, with disjoint source identifiers across clients and splits.
+All five runs use this same partition; variability across partitions is
+not measured.
+
+\subsection{Model and training choices}
+
+The classifier is an MLP with widths $784,512,256,64,10$, biases, and ReLU
+after each hidden layer. The classifier dimensions follow the FedRep
+source code. We apply cross-entropy to logits.
+
+FusedSpaceFed retains its private persistent encoder and shared decoder,
+using the compact U-Net with base width 16 and $d_z=64$. The decoder has
+a linear output, and fusion is $x+D(E_i(x))$, without clamping or extra
+normalization. Each of 200 rounds samples 15 clients uniformly without
+replacement. With batch size 10, a selected client performs one epoch
+of encoder-only MSE warm-up, followed by five epochs of cross-entropy
+training of encoder, decoder, and classifier. The latter phase has no
+reconstruction loss. Decoder and classifier updates are averaged
+uniformly across selected clients.
+
+The selected classifier optimizer is SGD with learning rate 0.02,
+momentum 0.5, weight decay $10^{-4}$ on weights and zero on biases.
+Encoder and decoder use Adam with learning rate $3\times10^{-4}$,
+$\beta=(0.9,0.999)$, $\epsilon=10^{-8}$, and no weight decay.
+Active gradients are clipped to L2 norm 1.0 separately for each optimizer.
+Optimizers restart at each client participation; Adam state persists
+between the two local phases. Learning rates are constant. Computation
+uses Float32 with AMP and TF32 disabled.
+
+\subsection{Validation-based calibration}
+
+Calibration uses only the original training portion. Within each
+client--class group, $\lfloor n/5\rfloor$ examples are held out using a
+deterministic hash ordering with seed 20261004, leaving 18,374 fit and
+4,362 validation examples. Six configurations are specified in advance,
+as triples (classifier learning rate, autoencoder learning rate, clipping
+norm): $(0.01,0.001,1)$, $(0.01,0.0003,1)$, $(0.01,0.0001,1)$,
+$(0.02,0.0003,1)$, $(0.005,0.0003,1)$, and $(0.01,0.0003,2)$.
+
+All six are screened for 80 rounds with seed 141, using sample-weighted
+validation accuracy averaged over rounds 71--80. The reference and the
+two highest-scoring alternatives are extended to 200 rounds and also
+run with seed 142. Selection uses the mean of the two seeds' validation
+accuracies over rounds 191--200. The chosen triple $(0.02,0.0003,1)$
+obtains $88.77\%$ on this selection criterion. It is frozen before the
+five final runs, which start afresh with seeds 41--45 and use all 22,736
+original training examples.
+
+\subsection{Evaluation and results}
+
+After each of rounds 191--200, all 150 clients are evaluated on their
+original local test examples, using the current shared decoder and
+classifier and their persistent private encoder, without test-time
+adaptation. For seed $s$ and round $t$, let $c_{s,t,i}$ be the number of
+correct predictions on client $i$ and $n_i$ its test-set size. Our primary
+and secondary accuracies are, respectively,
+\[
+ A_{s,t}=100\frac{\sum_i c_{s,t,i}}{\sum_i n_i},
+ \qquad
+ U_{s,t}=\frac{100}{150}\sum_i\frac{c_{s,t,i}}{n_i}.
+\]
+We average ten rounds within each seed, then report the mean and sample
+standard deviation ($n-1$ denominator) across five seed means.
+All runs complete 200 rounds; no best seed, round, or checkpoint is selected.
+
+The primary result is $79.05\pm2.68\%$; the uniform-client result is
+$80.90\pm2.81\%$ (Table~\ref{tab:fedrep_reconstructed_seeds}).
+Table~\ref{tab:fedrep_published_comparison} presents the comparison with
+the published FEMNIST reference values.
+
+\begin{table*}[t]
+\coauthorcolor
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\caption{Accuracy (\%) by seed on our fixed reconstructed partition.
+Each entry averages rounds 191--200. SD is across five seed means.}
+\label{tab:fedrep_reconstructed_seeds}
+\begin{tabular}{lrr}
+\toprule
+Seed & Sample-weighted & Uniform-client \\
+\midrule
+41 & 82.34 & 84.39 \\
+42 & 75.26 & 77.77 \\
+43 & 77.71 & 78.31 \\
+44 & 80.21 & 82.47 \\
+45 & 79.72 & 81.57 \\
+\midrule
+Mean & 79.05 & 80.90 \\
+Sample SD & 2.68 & 2.81 \\
+\bottomrule
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\caption{Published FEMNIST reference values from Table~1 of
+\citet{collins2021fedrep}, column $(150,3)$, and our separately measured
+result. Bold indicates the highest reported mean accuracy.}
+\label{tab:fedrep_published_comparison}
+\begin{tabular}{lr}
+\toprule
+Method & Accuracy (\%) \\
+\midrule
+\multicolumn{2}{l}{\textit{Published; uncertainty not reported}} \\
+Local Only & 60.86 \\
+FedAvg & 51.64 \\
+FedAvg+FT & 72.41 \\
+FedProx & 18.89 \\
+FedProx+FT & 53.54 \\
+SCAFFOLD & 17.65 \\
+SCAFFOLD+FT & 52.11 \\
+Fed-MTL & 54.11 \\
+PerFedAvg & 71.51 \\
+LG-Fed & 62.08 \\
+L2GD & 66.18 \\
+APFL & 70.74 \\
+Ditto & 68.28 \\
+FedPer & 76.91 \\
+FedRep & 78.56 \\
+\midrule
+\multicolumn{2}{l}{\textit{Ours; reconstructed partition, mean $\pm$ SD}} \\
+FusedSpaceFed, calibrated & $\boldsymbol{79.05\pm2.68}$ \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{table*}
