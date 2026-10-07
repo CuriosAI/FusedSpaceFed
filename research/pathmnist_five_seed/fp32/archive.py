@@ -124,6 +124,25 @@ def manifest(folder):
     write_json(folder/'manifest.json',{'files':files,'checkpoint_policy':'private thanos _local only; no dataset or checkpoint uploaded'})
 
 
+def state_update_summary(records):
+    value={}
+    for anchor in ANCHORS:
+        value[anchor]={}
+        for phase in ('warmup','classification'):
+            components={}
+            for name in ('encoder','decoder','classifier'):
+                rows=[[c['state_l2_changes'][phase][name]['parameter_l2']
+                       for c in r['anchors'][anchor]['clients'].values()] for r in records]
+                components[name]={'client_mean_parameter_l2':stats([statistics.mean(row) for row in rows]),
+                                  'zero_update_count_per_seed':stats([sum(x==0 for x in row) for row in rows])}
+            value[anchor][phase]=components
+        value[anchor]['encoder_unchanged_in_both_phases']=[
+            {'seed':r['seed'],'client_id':int(cid)} for r in records
+            for cid,c in r['anchors'][anchor]['clients'].items()
+            if all(c['state_l2_changes'][p]['encoder']['parameter_l2']==0 for p in ('warmup','classification'))]
+    return value
+
+
 def originals():
     summary=archive_runs(['full'],PUBLIC/'originals/artifacts')
     receipt=PRIVATE/'full_campaign.json';campaign=json.loads(receipt.read_text())
@@ -173,6 +192,7 @@ def phase1():
                               for k in metrics} for s in STAGES} for a in ANCHORS},'private_checkpoints':checkpoints,
              'costs':[{'seed':r['seed'],'wall_seconds':r['wall_seconds'],'peak_cuda_allocated_bytes':r['peak_cuda_allocated_bytes'],
                        'peak_cuda_reserved_bytes':r['peak_cuda_reserved_bytes']} for r in records]}
+    summary['state_updates']=state_update_summary(records)
     write_json(dest/'summary.json',summary);shutil.copyfile(PRIVATE/'phase1/campaign.json',dest/'campaign.json')
     failed=PRIVATE/'phase1_failed_relative_path/campaign.json'
     if failed.exists():shutil.copyfile(failed,dest/'failed_relative_path_campaign.json')
@@ -191,7 +211,7 @@ def phase1():
         ce=[statistics.mean(r['anchors'][a]['clients'][c]['after_classification']['reconstruction_mse']-r['anchors'][a]['clients'][c]['after_warmup']['reconstruction_mse'] for c in map(str,range(10))) for r in records]
         lines+=['',f"Mean MSE change: warm-up {statistics.mean(warm):+.6f}; classification {statistics.mean(ce):+.6f}.",'']
     lines+=['## Controls and limits','',
-            'All measured values/checkpoints are finite. Shared classifier/decoder states are bitwise unchanged by warm-up; encoder updates are recorded. Classification changes encoder/decoder/classifier; weight distances and BN-buffer distances are separate. Every attempted FP32 optimizer update is executed; no scaler or skipped AMP step exists. A lower MSE does not imply better classification, and CE training need not preserve faithful reconstruction. The final training probe has already been seen during training. No generalization or causal claim follows from a local replay.', '',
+            'All measured values/checkpoints are finite. Shared classifier/decoder states are bitwise unchanged by warm-up. At initialization all 50 local copies update their encoder in warm-up and all three components in classification. At the final anchor some encoders remain unchanged in both phases; exact cases are in summary.json/state_updates. Weight distances and BN-buffer distances are separate; BN-buffer norms include the integer update counter and are not solely a change in running statistics. Every attempted FP32 optimizer update is executed; no scaler or skipped AMP step exists. Finite arithmetic does not establish continuing encoder learning, faithful reconstruction or good classification. The final training probe has already been seen during training. No generalization or causal claim follows from a local replay.', '',
             'Digits used five domains, dz=64, DigitCNN, optimizer reset per round, one classification epoch and calibrated settings; PathMNIST uses ten label-skewed clients, dz=16, ResNet20V2, persistent optimizers and three classification epochs. Raw MSE scales also differ ([−1,1] versus [0,1]). Interpret qualitative patterns without treating these as controlled cross-benchmark effect sizes.', '',
             f"Phase calendar {campaign['wall_seconds']:.3f} s; process sum {campaign['process_wall_seconds_sum']:.3f} s. Measured per-seed costs and memory are in artifacts/summary.json; executed commands/exit codes in artifacts/campaign.json.", '',
             'Twenty preselected seed-42 visual grids are in figures/: two anchors × ten clients, two training examples per assigned class. All five seeds contribute to numeric statistics. Configuration/indices/hashes are ../plan.json, ../probe.json and ../anchors.json.']
@@ -213,6 +233,10 @@ def phase2():
     for v,s in summary['accuracy_percent'].items():
         delta='reference' if v=='full' else f"{paired[v]['mean']:+.6f} ± {paired[v]['sd_sample_ddof1']:.6f}"
         lines.append('| '+v+' | '+' | '.join(f'{x:.6f}' for x in s['values'])+f" | {s['mean']:.6f} ± {s['sd_sample_ddof1']:.6f} | {delta} |")
+    lines+=['', '## Paired interpretation', '']
+    for v,s in paired.items():
+        lower=sum(x<0 for x in s['values']);higher=sum(x>0 for x in s['values'])
+        lines.append(f"- {v}: lower than the full method in {lower}/5 pairs, higher in {higher}/5; ablation minus full {s['mean']:+.6f} ± {s['sd_sample_ddof1']:.6f} percentage points. These are descriptive paired effects at fixed settings, without a significance claim or selection of a winning variant.")
     lines+=['',
             'No-warmup removes only the reconstruction phase; classification remains three epochs. This changes compute, Adam history and shuffle progression inherently; it is not compute-matched. Shared-encoder additionally averages encoder model state uniformly after every round, retaining separate persistent local Adam moments. Decoder-only removes the additive raw input from CE and test; warm-up is unchanged. Neither optimizer moments nor BN statistics are specially recalibrated. Full and ablated FP32 runs each use one GPU process, identical original initial weights and loader states. Changing precision can change the trajectory relative to the preserved FP16 campaign.', '',
             'All accuracies are reconstructed from the ten saved client correct/total counts (7180 images/pipeline). All five seeds are shown, no best-seed selection. Paired deltas are calculated within seed before reporting mean/sample SD; this is descriptive, with five pairs and no significance claim. Between-seed variation includes the run-seeded pathological partition.', '',
@@ -263,6 +287,7 @@ def phase3():
     lines+=['## Interpretation, controls and comparison with Digits','',
             'All parameters and BN buffers are unchanged by paired measurement; RNG unchanged. Raw gradient norms/decoder dispersion, per-client/per-batch records and Gram matrices are archived. A raw Γ decrease can follow smaller gradients rather than better angular alignment: inspect normalized dispersion and cosines together. Batch-stateless BN couples examples, so it is a distinct batch-conditioned gradient objective; native eval remains the inference-aligned measurement.', '',
             'Digits final models: native-eval Γf/Γo 0.791656 ± 0.253408, batch-stateless 0.148367 ± 0.140864. Native normalized dispersion 0.794160→0.799588 and mean pairwise cosine 0.090559→0.043966 already showed why raw scale reduction alone does not establish alignment. PathMNIST uses a different classifier, label-skewed clients, persistent optimizers and uncalibrated original settings. These are descriptive cross-benchmark observations, not a controlled causal comparison.', '',
+            'The final classifier was trained on fused inputs. Its original-input branch is a counterfactual at the same weights, not an independently trained raw-input classifier. Native BN statistics also reflect fused training inputs. Consequently a smaller fused gradient can reflect loss calibration or an input-distribution shift, beyond any alignment effect. Batch-stateless BN is a distinct objective and cannot fully remove that interpretation limit.', '',
             'Two anchors and finite training probes do not describe every round or the population objective. Five seeds do not justify a universal reduction claim. No tuning or additional generalization evaluation was performed; the manuscript is unchanged.', '',
             f"Phase calendar {campaign['wall_seconds']:.3f} s; sum process time {campaign['process_wall_seconds_sum']:.3f} s. Per-seed costs/memory in artifacts/summary.json. Configuration, exact probe IDs and anchor hashes: ../plan.json, ../probe.json, ../anchors.json. Executed commands and exit codes: artifacts/campaign.json."]
     (folder/'PHASE3_REPORT.md').write_text('\n'.join(lines)+'\n');manifest(folder);return summary

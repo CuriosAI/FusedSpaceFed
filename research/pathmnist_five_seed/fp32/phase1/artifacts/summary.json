@@ -963,5 +963,346 @@
       "peak_cuda_allocated_bytes": 1540854784,
       "peak_cuda_reserved_bytes": 1820327936
     }
-  ]
+  ],
+  "state_updates": {
+    "initialization": {
+      "warmup": {
+        "encoder": {
+          "client_mean_parameter_l2": {
+            "values": [
+              2.8555093665634765,
+              3.2801189809035463,
+              3.345637519017002,
+              3.6442298093035377,
+              2.8846280869574192
+            ],
+            "mean": 3.202024752548996,
+            "sd_sample_ddof1": 0.33282210092912956,
+            "n": 5
+          },
+          "zero_update_count_per_seed": {
+            "values": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "mean": 0,
+            "sd_sample_ddof1": 0.0,
+            "n": 5
+          }
+        },
+        "decoder": {
+          "client_mean_parameter_l2": {
+            "values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "mean": 0.0,
+            "sd_sample_ddof1": 0.0,
+            "n": 5
+          },
+          "zero_update_count_per_seed": {
+            "values": [
+              10,
+              10,
+              10,
+              10,
+              10
+            ],
+            "mean": 10,
+            "sd_sample_ddof1": 0.0,
+            "n": 5
+          }
+        },
+        "classifier": {
+          "client_mean_parameter_l2": {
+            "values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "mean": 0.0,
+            "sd_sample_ddof1": 0.0,
+            "n": 5
+          },
+          "zero_update_count_per_seed": {
+            "values": [
+              10,
+              10,
+              10,
+              10,
+              10
+            ],
+            "mean": 10,
+            "sd_sample_ddof1": 0.0,
+            "n": 5
+          }
+        }
+      },
+      "classification": {
+        "encoder": {
+          "client_mean_parameter_l2": {
+            "values": [
+              1.426320515327619,
+              1.6953056233926356,
+              1.8038527354039284,
+              1.6248999808666327,
+              1.6961255430295428
+            ],
+            "mean": 1.6493008796040718,
+            "sd_sample_ddof1": 0.14009899035966858,
+            "n": 5
+          },
+          "zero_update_count_per_seed": {
+            "values": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "mean": 0,
+            "sd_sample_ddof1": 0.0,
+            "n": 5
+          }
+        },
+        "decoder": {
+          "client_mean_parameter_l2": {
+            "values": [
+              1.877739715082433,
+              1.6135446508463611,
+              1.6050847253751876,
+              1.5658119563718236,
+              1.8337501614293694
+            ],
+            "mean": 1.699186241821035,
+            "sd_sample_ddof1": 0.14488535881450915,
+            "n": 5
+          },
+          "zero_update_count_per_seed": {
+            "values": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "mean": 0,
+            "sd_sample_ddof1": 0.0,
+            "n": 5
+          }
+        },
+        "classifier": {
+          "client_mean_parameter_l2": {
+            "values": [
+              1.3840619817090167,
+              1.412741703015438,
+              1.396217862051285,
+              1.4274773370410245,
+              1.4068869413671299
+            ],
+            "mean": 1.4054771650367788,
+            "sd_sample_ddof1": 0.016455343496112676,
+            "n": 5
+          },
+          "zero_update_count_per_seed": {
+            "values": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "mean": 0,
+            "sd_sample_ddof1": 0.0,
+            "n": 5
+          }
+        }
+      },
+      "encoder_unchanged_in_both_phases": []
+    },
+    "final-round50": {
+      "warmup": {
+        "encoder": {
+          "client_mean_parameter_l2": {
+            "values": [
+              0.3069824722654331,
+              0.6707158267663269,
+              0.7409114430740023,
+              0.3630402762855891,
+              0.4444896278292882
+            ],
+            "mean": 0.505227929244128,
+            "sd_sample_ddof1": 0.1911417628638648,
+            "n": 5
+          },
+          "zero_update_count_per_seed": {
+            "values": [
+              2,
+              0,
+              1,
+              0,
+              0
+            ],
+            "mean": 0.6,
+            "sd_sample_ddof1": 0.8944271909999159,
+            "n": 5
+          }
+        },
+        "decoder": {
+          "client_mean_parameter_l2": {
+            "values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "mean": 0.0,
+            "sd_sample_ddof1": 0.0,
+            "n": 5
+          },
+          "zero_update_count_per_seed": {
+            "values": [
+              10,
+              10,
+              10,
+              10,
+              10
+            ],
+            "mean": 10,
+            "sd_sample_ddof1": 0.0,
+            "n": 5
+          }
+        },
+        "classifier": {
+          "client_mean_parameter_l2": {
+            "values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "mean": 0.0,
+            "sd_sample_ddof1": 0.0,
+            "n": 5
+          },
+          "zero_update_count_per_seed": {
+            "values": [
+              10,
+              10,
+              10,
+              10,
+              10
+            ],
+            "mean": 10,
+            "sd_sample_ddof1": 0.0,
+            "n": 5
+          }
+        }
+      },
+      "classification": {
+        "encoder": {
+          "client_mean_parameter_l2": {
+            "values": [
+              0.29986553570199037,
+              0.680842821938539,
+              0.7580896863989011,
+              0.30761751144688737,
+              0.6814900040742283
+            ],
+            "mean": 0.5455811119121092,
+            "sd_sample_ddof1": 0.2230076629496503,
+            "n": 5
+          },
+          "zero_update_count_per_seed": {
+            "values": [
+              2,
+              0,
+              1,
+              0,
+              0
+            ],
+            "mean": 0.6,
+            "sd_sample_ddof1": 0.8944271909999159,
+            "n": 5
+          }
+        },
+        "decoder": {
+          "client_mean_parameter_l2": {
+            "values": [
+              0.2916899353209152,
+              0.6886048659263728,
+              1.0519715123143725,
+              0.5164076636989349,
+              0.6875392635026306
+            ],
+            "mean": 0.6472426481526452,
+            "sd_sample_ddof1": 0.27869141918637946,
+            "n": 5
+          },
+          "zero_update_count_per_seed": {
+            "values": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "mean": 0,
+            "sd_sample_ddof1": 0.0,
+            "n": 5
+          }
+        },
+        "classifier": {
+          "client_mean_parameter_l2": {
+            "values": [
+              0.3905652786746673,
+              0.42995457431860873,
+              0.44491281508418173,
+              0.394130839265102,
+              0.4462075761262761
+            ],
+            "mean": 0.4211542166937672,
+            "sd_sample_ddof1": 0.027090285008859842,
+            "n": 5
+          },
+          "zero_update_count_per_seed": {
+            "values": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "mean": 0,
+            "sd_sample_ddof1": 0.0,
+            "n": 5
+          }
+        }
+      },
+      "encoder_unchanged_in_both_phases": [
+        {
+          "seed": 42,
+          "client_id": 0
+        },
+        {
+          "seed": 42,
+          "client_id": 1
+        },
+        {
+          "seed": 44,
+          "client_id": 3
+        }
+      ]
+    }
+  }
 }
