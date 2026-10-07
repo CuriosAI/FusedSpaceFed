@@ -1,0 +1,39 @@
+{
+  "originals": {
+    "campaign_wall_seconds": 3916.9730062950402,
+    "sum_process_wall_seconds": 17234.925857103895,
+    "max_process_peak_cuda_allocated_bytes": 1491932160,
+    "max_process_peak_cuda_reserved_bytes": 1790967808
+  },
+  "phase1": {
+    "campaign_wall_seconds": 173.2065796018578,
+    "sum_process_wall_seconds": 747.5033209803514,
+    "max_process_peak_cuda_allocated_bytes": 1540854784,
+    "max_process_peak_cuda_reserved_bytes": 1820327936
+  },
+  "phase2": {
+    "campaign_wall_seconds": 10388.716993464157,
+    "sum_process_wall_seconds": 53524.393719153246,
+    "max_process_peak_cuda_allocated_bytes": 1491932160,
+    "max_process_peak_cuda_reserved_bytes": 1793064960
+  },
+  "phase3": {
+    "campaign_wall_seconds": 23.184903964865953,
+    "sum_process_wall_seconds": 93.37792098661885,
+    "max_process_peak_cuda_allocated_bytes": 1185290752,
+    "max_process_peak_cuda_reserved_bytes": 1220542464
+  },
+  "sum_phase_campaign_wall_seconds": 14502.081483325921,
+  "sum_process_wall_seconds": 71600.20081822411,
+  "elapsed_first_successful_launch_to_last_diagnostic_seconds": 14803.821411,
+  "preserved_failed_attempts": {
+    "import_only": {
+      "wall_seconds": 7.168451406061649,
+      "process_wall_seconds_sum": 20.348862330894917
+    },
+    "diagnostic_relative_path": {
+      "wall_seconds": 15.184627685928717,
+      "process_wall_seconds_sum": 61.37196166627109
+    }
+  }
+}

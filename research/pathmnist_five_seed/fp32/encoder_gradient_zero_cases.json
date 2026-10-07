@@ -1,0 +1,35 @@
+{
+  "anchor": "final-round50",
+  "batch_count": 5,
+  "modes": {
+    "eval": [
+      {
+        "seed": 42,
+        "client_id": 0
+      },
+      {
+        "seed": 42,
+        "client_id": 1
+      },
+      {
+        "seed": 44,
+        "client_id": 3
+      }
+    ],
+    "batch-stateless": [
+      {
+        "seed": 42,
+        "client_id": 0
+      },
+      {
+        "seed": 42,
+        "client_id": 1
+      },
+      {
+        "seed": 44,
+        "client_id": 3
+      }
+    ]
+  },
+  "interpretation": "zero encoder CE gradients on these fixed training probes; not a universal population claim"
+}

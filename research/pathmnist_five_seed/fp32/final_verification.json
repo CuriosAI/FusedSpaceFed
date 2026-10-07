@@ -1,0 +1,16 @@
+{
+  "phase_manifest_files_verified": {
+    "originals": 14,
+    "phase1": 31,
+    "phase2": 59,
+    "phase3": 10
+  },
+  "twenty_accuracies_reconstructed_from_client_counts": true,
+  "all_four_five_seed_means_and_sample_sd_independently_recomputed": true,
+  "old_files_unchanged": true,
+  "no_resumed_training_runs": true,
+  "tests": "372 passed in 92.55s",
+  "complete_training_runs": 20,
+  "decoder_replays": 100,
+  "gradient_probes": 5
+}
