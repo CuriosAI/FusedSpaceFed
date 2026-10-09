@@ -87,6 +87,7 @@ def test_shared_encoder_aggregation_keeps_local_optimizer_moments():
     assert_tree(moments,[a.ae_optimizer.state_dict(),b.ae_optimizer.state_dict()])
 
 
+@pytest.mark.local_artifacts
 def test_partitions_frozen_complete_two_classes_and_reproduce_original():
     labels=np.load('_local/pathmnist_pathological/prepared/train-labels.npy')
     for seed in range(42,47):
@@ -112,6 +113,7 @@ def test_checkpoint_resume_same_models_optimizers_rng_indices(tmp_path):
     with pytest.raises(FileExistsError):train(config,tmp_path/'all','cpu',synthetic=synthetic)
 
 
+@pytest.mark.local_artifacts
 def test_guard_original_settings_and_paired_ablations():
     plan=json.loads(Path('research/pathmnist_five_seed/plan.json').read_text())
     value,spec=partition(42);cfg={'seed':42,'variant':'full','settings':plan['settings'],'partition_sha256':spec['sha256']}

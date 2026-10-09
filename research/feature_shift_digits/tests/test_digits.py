@@ -55,6 +55,7 @@ def test_classifier_and_reconstruction_shapes():
         model(torch.randn(2,3,32,32))
 
 
+@pytest.mark.local_artifacts
 def test_author_model_exact_parity_if_reference_present():
     source = Path('_local/feature_shift_digits/reference/FedBN/nets/models.py')
     if not source.exists():

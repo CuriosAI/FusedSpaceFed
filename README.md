@@ -61,7 +61,31 @@ Then install and test:
 ```bash
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
-python -m pytest -q
+python -m pytest -q -m "not local_artifacts"
+```
+
+## Tests
+
+Pytest discovers the repository tests under `tests/` and `research/`, avoiding
+archived code and temporary test copies under `_local/`.
+GitHub Actions runs all self-contained tests, including synthetic PathMNIST
+training, checkpoint/resume and gradient checks, with the command above.
+Only tests marked `local_artifacts` are excluded: they verify frozen PathMNIST
+partitions, validation splits, training probes and historical initial checkpoints,
+or compare the Digits classifier with the private FedBN reference copy. These require files
+under `_local/`, which are not versioned or downloaded by CI. No test is removed.
+
+On thanos, from the repository root with the existing local artifacts, run the
+complete suite using the verified environment:
+
+```bash
+/home/schroeder/miniconda3/envs/general_ml/bin/python -m pytest -q
+```
+
+To run only the artifact-dependent checks on thanos:
+
+```bash
+/home/schroeder/miniconda3/envs/general_ml/bin/python -m pytest -q -m local_artifacts
 ```
 
 ## MedMNIST

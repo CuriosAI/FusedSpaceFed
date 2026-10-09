@@ -23,5 +23,5 @@ jobs:
           python -m pip install -r requirements.txt
       - name: Compile Python files
         run: python -m py_compile fusedspacefed_core.py train_medmnist.py train_femnist.py tests/test_core.py
-      - name: Run tests
-        run: python -m pytest -q
+      - name: Run self-contained tests
+        run: python -m pytest -q -m "not local_artifacts"

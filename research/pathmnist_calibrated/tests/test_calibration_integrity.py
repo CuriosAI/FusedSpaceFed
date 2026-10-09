@@ -1,6 +1,7 @@
 import copy
 import json
 import numpy as np
+import pytest
 import torch
 from fusedspacefed_core import FusedSpaceFedClient, ResNet20V2, UNetSmallAE, clone_state_dict
 from research.pathmnist_pathological.run import resident_loader, client_snapshot, restore_client
@@ -48,6 +49,7 @@ def test_clipping_keeps_two_phase_gradient_flow_and_complete_resume():
     assert_same(client_snapshot(client),client_snapshot(restored))
 
 
+@pytest.mark.local_artifacts
 def test_holdout_globally_disjoint_and_bn_uses_fit_only():
     p=verify()
     fit={i for row in p['fit'].values() for i in row}

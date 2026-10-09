@@ -21,6 +21,7 @@ def test_direct_cli_imports_do_not_shadow_python_standard_library(entrypoint):
     assert '--device' in result.stdout
 
 
+@pytest.mark.local_artifacts
 def test_precision_only_profile_and_same_fixed_training_probes():
     previous=json.loads((PUBLIC.parent/'plan.json').read_text())
     current=json.loads((PUBLIC/'plan.json').read_text())
@@ -40,6 +41,7 @@ def test_no_amp_scaler_fp32_forward_and_no_tf32():
 
 
 @pytest.mark.parametrize('seed',range(42,47))
+@pytest.mark.local_artifacts
 def test_historical_initial_models_optimizers_and_loader_restored_exactly(seed):
     force_fp32();registry=json.loads((PUBLIC/'initial_sources.json').read_text())['seeds'][str(seed)]
     path=ROOT/registry['path'];assert file_hash(path)==registry['sha256']
@@ -53,6 +55,7 @@ def test_historical_initial_models_optimizers_and_loader_restored_exactly(seed):
     assert not actual['classifier_optimizer']['state'] and not actual['ae_optimizer']['state']
 
 
+@pytest.mark.local_artifacts
 def test_production_guards_reject_amp_unregistered_or_trained_sources():
     parts,spec=partition(42);cfg=json.loads((PUBLIC/'configs/full-seed-42.json').read_text())
     validate(cfg,parts,spec)

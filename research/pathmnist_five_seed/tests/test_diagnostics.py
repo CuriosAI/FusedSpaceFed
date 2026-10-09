@@ -33,6 +33,7 @@ def test_training_probe_immutable_bn_rng_and_loader_generator():
     assert modes==(a.classifier.training,a.autoencoder.training)
 
 
+@pytest.mark.local_artifacts
 def test_frozen_probes_match_seed_specific_train_indices():
     value=json.loads(Path('research/pathmnist_five_seed/probe.json').read_text())
     assert value['batches_per_client']==5 and value['batch_size']==128
